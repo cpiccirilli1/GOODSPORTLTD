@@ -48,7 +48,7 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5">
                     <h4>Sign In</h4>
-                    <form method="post" action="#">
+                    <form method="post" action="http://localhost:8080/GoodSport/LoginServlet">
                         <div class="form-group">
                             <label>Username: </label>
                             <input type="text" name="usernameSignIn" required>
@@ -56,6 +56,16 @@
                         <div class="form-group">
                             <label>Password: </label>
                             <input type="password" name="passwordSignIn" required>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input type="radio" name="employeeCheck" id="customer" value="Customer" checked="true">
+                                <label>Customer</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="employeeCheck" id="employee" value="Employee">
+                                <label>Employee</label>
+                            </div>
                         </div>
                         <input type="submit" value="Sign In">
                     </form>
