@@ -50,8 +50,8 @@
                     <h4>Sign In</h4>
                     <form method="post" action="http://localhost:8080/GoodSport/LoginServlet">
                         <div class="form-group">
-                            <label>Username: </label>
-                            <input type="text" name="usernameSignIn" required>
+                            <label>Email: </label>
+                            <input type="text" name="emailSignIn" required>
                         </div>
                         <div class="form-group">
                             <label>Password: </label>

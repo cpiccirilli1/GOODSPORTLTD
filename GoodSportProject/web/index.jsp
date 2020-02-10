@@ -39,7 +39,7 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                    <li><a href="Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
                      <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>

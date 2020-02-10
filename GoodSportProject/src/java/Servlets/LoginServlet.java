@@ -30,10 +30,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
-        String username = request.getParameter("usernameSignIn");
-        if (username.indexOf("@") > 0) {
-            username = username.substring(0, username.indexOf("@"));
-        }
+        String email = request.getParameter("emailSignIn");
         String password = request.getParameter("passwordSignIn");
         String check = request.getParameter("employeeCheck");
         RequestDispatcher rd;
@@ -41,9 +38,9 @@ public class LoginServlet extends HttpServlet {
         boolean customer;
         if (check.equals("Customer")) {
             Customer c1 = new Customer();
-            c1.selectDB(username);
+            c1.selectDB(email);
             String dbPassword = c1.getPassword();
-            //  V This line throws nullPointerException
+            System.out.println(dbPassword);
             if (dbPassword.equals(password)) {
                 customer = true;
                 ses1.setAttribute("c1", c1);
