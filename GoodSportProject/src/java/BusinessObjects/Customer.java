@@ -15,6 +15,7 @@ public class Customer {
     String custAddress;
     String custPhone;
     String custEmail;
+    
     public void Customer() {
         custId = "";
         custPassword = "";
@@ -24,6 +25,7 @@ public class Customer {
         custPhone = "";
         custEmail = "";
     }
+    
     public void Customer(String Id, String Pswd, String FName, String LName, 
             String Adr, String Phone, String Email) {
         custId = Id;
@@ -34,27 +36,35 @@ public class Customer {
         custPhone = Phone;
         custEmail = Email;
     }
+    
     public String getId() {
         return custId;
     }
+    
     public String getPassword() {
         return custPassword;
     }
+    
     public String getFName() {
         return custFirstName;
     }
+    
     public String getLName() {
         return custLastName;
     }
+    
     public String getAddr() {
         return custAddress;
     }
+    
     public String getPhone() {
         return custPhone;
     }
+    
     public String getEmail() {
         return custEmail;
     }
+    
     private Statement connectDB() {
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -69,24 +79,26 @@ public class Customer {
         }
         return null;
     }
-    public void selectDB(String custID) {
+    
+    public void selectDB(String Email) {
         try {
-            String sql = "SELECT * FROM Customers WHERE CustID = " + custID;
+            String sql = "SELECT * FROM Customers WHERE Email = '" + Email + "'";
             Statement stmt = connectDB();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 custId = rs.getString("CustID");
+                custFirstName = rs.getString("FirstName");
+                custLastName = rs.getString("LastName");
+                custAddress = rs.getString("Address");
+                custPhone = rs.getString("PhoneNum");
+                custEmail = rs.getString("Email");
                 custPassword = rs.getString("CustPassword");
-                custFirstName = rs.getString("CustFirstName");
-                custLastName = rs.getString("CustLastName");
-                custAddress = rs.getString("CustAddress");
-                custPhone = rs.getString("phoneNum");
-                custEmail = rs.getString("CustEmail");
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
+    
     public void insertDB(String Id, String Pswd, String FName, 
             String LName, String Adr, String Phone,  String Email) {
         try {
@@ -99,21 +111,23 @@ public class Customer {
             System.out.println(e);
         }
     }
-    public void updateDB(String passwd, String fName, String lName, String address, String phone, String eMail, String insComp) {
+    
+    public void updateDB(String passwd, String fName, String lName, String address, String phone, String eMail) {
         try {
-            String sql = "UPDATE Customers SET CustId = '" + custId + "', CustPassword = '"
+            String sql = "UPDATE Customers SET CustID = '" + custId + "', CustPassword = '"
                     + passwd + "', FirstName = '" + fName + "', LastName = '" +
                     lName + "', Address = '" + address + "', PhoneNum = '" + phone + "', Email = '" + eMail +
-                    "', insCo = '" + insComp + "' WHERE custID = '" + custId + "'";
+                    "' WHERE CustID = '" + custId + "'";
             Statement stmt = connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
             System.out.println(e);
         }
     }
+    
     public void deleteDB() {
         try {
-            String sql = "DELETE FROM Customers WHERE CustID = " + custId;
+            String sql = "DELETE FROM Customers WHERE CustID = '" + custId + "'";
             Statement stmt = connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
