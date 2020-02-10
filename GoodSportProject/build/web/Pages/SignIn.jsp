@@ -1,0 +1,158 @@
+<%-- 
+    Document   : index
+    Created on : Jan 27, 2020, 3:31:36 PM
+    Author     : mitho
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>Good Sport</title>
+        <link href="../CSS/FrameCSS.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../index.jsp">Good Sport</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Page 1-1</a></li>
+                            <li><a href="#">Page 1-2</a></li>
+                            <li><a href="#">Page 1-3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" action="/action_page.php">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5">
+                    <h4>Sign In</h4>
+                    <form method="post" action="#">
+                        <div class="form-group">
+                            <label>Username: </label>
+                            <input type="text" name="usernameSignIn" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password: </label>
+                            <input type="password" name="passwordSignIn" required>
+                        </div>
+                        <input type="submit" value="Sign In">
+                    </form>
+                </div>
+                <div class="col-sm-5">
+                    <h4>Sign Up</h4>
+                    <form onsubmit="return validate()" action="#" method="Post">
+                        <div class="form-group">
+                            <label>Email: </label>
+                            <input type="text" name="emailSignUp" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password: </label>
+                            <input type="password" name="passwordSignUp" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password: </label>
+                            <input type="password" name="confirmPswd" required>
+                        </div>
+                        <div class="form-group">
+                            <label>First Name: </label>
+                            <input type="password" name="firstNameSignUp">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name: </label>
+                            <input type="password" name="lastNameSignUp">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number: </label>
+                            <input type="password" name="phoneNumberSignUp">
+                        </div>
+                        <div class="form-group">
+                            <label>Add address</label>
+                            <input type="checkbox" name="address" onclick="visibility()">
+                        </div>
+                        <div id="addressBoxes" style="display:none;">
+                            <div class="form-group">
+                                <label>Street: </label>
+                                <input type="password" name="streetSignUp">
+                            </div>
+                            <div class="form-group">
+                                <label>City: </label>
+                                <input type="password" name="citySignUp">
+                            </div>
+                            <div class="form-group">
+                                <label>State: </label>
+                                <input type="password" name="stateSignUp">
+                            </div>
+                            <div class="form-group">
+                                <label>Zipcode: </label>
+                                <input type="password" name="zipcodeSignUp">
+                            </div>
+                        </div>
+                        <input type="submit" value="Sign Up">
+                    </form>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+        <script>
+            function visibility() {
+                var x = document.getElementById("addressBoxes");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+            function validate() {
+                if (document.getElementsByName(usernameSignUp).toString().indexOf("@") > 0) {
+                    
+                } else {
+                    alert("Please enter a valid email address");
+                }
+                var x = document.getElementsByName(passwordSignUp).toString();
+                if ((x != null) && (x !== document.getElementsByName(confirmPswd).toString())) {
+                    alert("Confirm password does not match");
+                }
+            }
+    </script>
+    </body>
+    <footer>
+        <ul style="list-style: none;"> 
+            
+            <li style="display:inline;"><a href ="account.jsp">My Account</a>  </li>
+
+            <li style="display:inline;"><a href ="SignIn.jsp">Sign In</a>  </li>
+
+            <li style="display:inline;"><a href ="ItemGrid.jsp">Item Grid</a>  </li>
+
+            <li style="display:inline;"><a href ="../index.jsp">Home</a>  </li>
+
+            <li style="display:inline;"><a href ="ItemDisplay.jsp">Item Display</a>  </li>
+
+            <li style="display:inline;"><a href ="">page 6 </a>  </li>
+        
+        </ul>
+
+    </footer>
+</html>
