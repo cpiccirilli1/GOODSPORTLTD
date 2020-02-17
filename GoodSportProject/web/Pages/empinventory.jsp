@@ -4,18 +4,25 @@
     Author     : natha
 --%>
 
+<%@page import="BusinessObjects.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="CSS/empstylesheet.css">
+        <link rel="stylesheet" href="../CSS/empstylesheet.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Inventory</title>
 
     </head>
+    <% Item i1 = new Item();
+       int count = i1.numItems();
+       System.out.println(count);
+    %>
+    
+    
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -25,7 +32,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="empPortal.jsp">Order Fulfillment</a></li>
                     <li class=active"><a href="empinventory.jsp">Check Inventory</a></li>
-                    <li><a href="emporder.jsp">Reorder Products</a></li>
+                    <li><a href="empReorder.jsp">Reorder Products</a></li>
                 </ul>
             </div>
         </nav>
@@ -42,27 +49,20 @@
                 </tr>
             </thead>
             <tbody>
+                <% for(int i = 1; i <= count; i++)
+                {
+                 i1.selectDB(i);
+
+                %>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Product1</td>
-                    <td>A short description about Product1</td>
-                    <td>$30.99</td>
-                    <td>30</td>
-                    
+                    <td><%=i1.getId()%></td>
+                    <td><%=i1.getProdName()%></td>
+                    <td><%=i1.getProdDesc()%></td>
+                    <td><%=i1.getPrice()%></td>
+                    <td><%=i1.getQuantity()%></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Product2</td>
-                    <td>A short description about Product2</td>
-                    <td>$10.99</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <% } %>
+               
             </tbody>
         </table>
         </div>
