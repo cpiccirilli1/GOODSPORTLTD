@@ -48,7 +48,7 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5">
                     <h4>Sign In</h4>
-                    <form method="post" action="http://localhost:8080/GoodSport/LoginServlet">
+                    <form method="post" action="http://localhost:8080/GoodSportProject/LoginServlet">
                         <div class="form-group">
                             <label>Email: </label>
                             <input type="text" name="emailSignIn" required>

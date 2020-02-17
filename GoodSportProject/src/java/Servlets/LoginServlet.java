@@ -45,7 +45,8 @@ public class LoginServlet extends HttpServlet {
                 customer = true;
                 ses1.setAttribute("c1", c1);
                 ses1.setAttribute("customer", customer);
-                rd = request.getRequestDispatcher("/account.jsp");
+                System.out.println("help");
+                rd = request.getRequestDispatcher("/Pages/account.jsp");
                 rd.forward(request, response);
             } else {
                 rd = request.getRequestDispatcher("/error.jsp");

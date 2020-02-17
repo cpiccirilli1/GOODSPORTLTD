@@ -6,7 +6,11 @@ body{
     padding:0px;
     width:100%;
 }
-	
+.logo_wrapper{
+    margin:auto;
+}
+.logo{
+}	
 footer {
     background-color: #210934;
     font-size: 1em;
