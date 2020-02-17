@@ -51,25 +51,10 @@ public class Employee {
         return empEmail;
     }
     
-    private Statement connectDB() {
-        try {
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection conn;
-            //Edit this next line of code starting with C: to the file path of the database
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:" +
-                    "\\Users\\mitho\\GoodSportsDB.accdb");
-            Statement stmt = conn.createStatement();
-            return stmt;
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return null;
-    }
-    
     public void selectDB(String Email) {
         try {
             String sql = "SELECT * FROM Employees WHERE Email = '" + Email + "'";
-            Statement stmt = connectDB();
+            Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 empId = rs.getString("CustID");
@@ -88,7 +73,7 @@ public class Employee {
         try {
             String sql = "INSERT INTO Employees VALUES ('" + Id + "', '" + 
                     Pswd + "', '" + FName + "', '" + LName + "', '" + Email + "')";
-            Statement stmt = connectDB();
+            Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
             System.out.println(e);
@@ -101,7 +86,7 @@ public class Employee {
                     + passwd + "', FirstName = '" + fName + "', LastName = '" +
                     lName + "', Email = '" + eMail +
                     "' WHERE EmpID = '" + empId + "'";
-            Statement stmt = connectDB();
+            Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
             System.out.println(e);
@@ -111,7 +96,7 @@ public class Employee {
     public void deleteDB() {
         try {
             String sql = "DELETE FROM Employees WHERE EmpID = '" + empId + "'";
-            Statement stmt = connectDB();
+            Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
             System.out.println(e);

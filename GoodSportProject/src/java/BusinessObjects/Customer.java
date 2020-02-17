@@ -65,7 +65,7 @@ public class Customer {
         return custEmail;
     }
     
-    private Statement connectDB() {
+    protected static Statement connectDB() {
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection conn;

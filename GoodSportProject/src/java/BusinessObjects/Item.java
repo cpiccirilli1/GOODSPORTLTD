@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package BusinessObjects;
 
 import java.sql.*;
@@ -53,25 +49,10 @@ public class Item {
         return price;
     }
     
-    private Statement connectDB() {
-        try {
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection conn;
-            //Edit this next line of code starting with C: to the file path of the database
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:" +
-                    "\\Users\\mitho\\GoodSportsDB.accdb");
-            Statement stmt = conn.createStatement();
-            return stmt;
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return null;
-    }
-    
     public void selectDB(int ID) {
         try {
-            String sql = "SELECT * FROM Inventory WHERE ProductID = '" + "'";
-            Statement stmt = connectDB();
+            String sql = "SELECT * FROM Inventory WHERE ProductID = '" + ID + "'";
+            Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 productID = rs.getInt("ProductID");
@@ -80,6 +61,41 @@ public class Item {
                 quantity = rs.getInt("Quantity");
                 price = rs.getDouble("Price");
             }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void insertDB(int Id, String ProductName, String PlaceholderText, 
+            int Quantity, Double Price) {
+        try {
+            String sql = "INSERT INTO Inventory VALUES ('" + Id + "', '" + 
+                    ProductName + "', '" + PlaceholderText + "', '" + Quantity + "', '" + Price + "')";
+            Statement stmt = Customer.connectDB();
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void updateDB(String ProductName, String PlaceholderText, int Quantity, Double Price) {
+        try {
+            String sql = "UPDATE Inventory SET ProductID = '" + productID + "', ProductName = '"
+                    + ProductName + "', PlaceholderText = '" + PlaceholderText + "', Quantity = '" +
+                    Quantity + "', Price = '" + Price +
+                    "' WHERE ProductID = '" + productID + "'";
+            Statement stmt = Customer.connectDB();
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void deleteDB() {
+        try {
+            String sql = "DELETE FROM Inventory WHERE ProductID = '" + productID + "'";
+            Statement stmt = Customer.connectDB();
+            stmt.execute(sql);
         } catch (Exception e) {
             System.out.println(e);
         }
