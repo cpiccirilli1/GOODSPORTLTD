@@ -102,16 +102,17 @@ public class Item {
     }
     
     public int numItems() {
+        int count = 0;
         try {
-            String sql = "SELECT COUNT() AS rows FROM Inventory";
+            String sql = "SELECT COUNT(*) AS rows FROM Inventory";
             Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(sql);
-            int count = rs.getInt("rows");
+            rs.next();
+            count = rs.getInt("rows");
             return count;
         } catch(Exception e) {
             System.out.println(e);
         }
-        int count = 0;
         return count;
     }
 }

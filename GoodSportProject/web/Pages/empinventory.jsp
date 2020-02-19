@@ -19,7 +19,6 @@
     </head>
     <% Item i1 = new Item();
        int count = i1.numItems();
-       System.out.println(count);
     %>
     
     
@@ -52,7 +51,6 @@
                 <% for(int i = 1; i <= count; i++)
                 {
                  i1.selectDB(i);
-
                 %>
                 <tr>
                     <td><%=i1.getId()%></td>
