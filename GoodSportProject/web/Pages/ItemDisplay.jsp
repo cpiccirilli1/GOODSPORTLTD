@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="BusinessObjects.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +19,15 @@
         <link rel="stylesheet" href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" />
     </head>
     <body>
+        <%
+            Item item1 = (Item)request.getSession().getAttribute("ses1");
+            int id = item1.getId();
+            String name = item1.getProdName();
+            double price = item1.getPrice();
+            String desc = item1.getProdDesc();
+            int quant = item1.getQuantity();
+            String avail = "Out of stock";
+            %>
         <nav class="">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -49,13 +59,25 @@
         <br><img src= "../Media/BankJavaIII.png" alt="testpic" height="160" width="240" id = "floatright"/>
 		<div class="container" >
                     <div class=""><!--/product-information-->
-                            <h2>Anne Klein Sleeveless Color block Scuba</h2>
-                            <p>Web ID: 1089772</p>
-                                    <p>US $59</p>
-                                    <label for="lname"> Quantity:</label>
+                        <form>
+                            <h2><%= name %></h2>
+                            <input type="hidden" value="<%= id %>" name="itemNumber">
+                            <p>Prod id: <%= id %></p>
+                                    <p>Price: <%= price %></p>
+                                    <label for="lname"> Quantity: <%= quant %></label>
                                     <input type="text" id="lname" name="Quantity" value="1" />
-                                    <br/><button type="button" class="">Add to cart</button>
-                            <p><b>Availability:</b> In Stock</p>
+                                    
+                                    <%
+                                        if (quant > 0){
+                                            avail = "In Stock";
+                                        
+                                        %>
+                                    <br/><input type="submit" value="Add to Cart">
+                                    <% } else{ %>
+                                    Out of stock!
+                                    <% } %>
+                            <p><b>Availability:</b> <%= avail %></p>
+                        </form>
                             <p><b>Condition:</b> New</p>
                             <p><b>Brand:</b> E-SHOPPER</p>
                             <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
