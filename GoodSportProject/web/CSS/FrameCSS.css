@@ -6,13 +6,35 @@ body{
     padding:0px;
     width:100%;
 }
+.navbar-custom{
+    background-color:#0c2c56;
+}
+.navbar-custom a,ul,li{
+    color: lightgray;
+    font-size:18px;
+    margin: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+
+}
+.search-bar-wrapper{
+    width:900px;
+}
+.search-bar{
+    width:100%;
+    height:35px;
+    border-radius: 5px;
+    padding: 5px;
+
+}
 .logo_wrapper{
-    margin:auto;
+    width:130px;
 }
 .logo{
+    width:130px;
 }	
 footer {
-    background-color: #210934;
+    background-color: #0c2c56;
     font-size: 1em;
     font-style: italic;
     text-align: center;

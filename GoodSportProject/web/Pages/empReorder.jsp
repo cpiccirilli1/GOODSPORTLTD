@@ -35,7 +35,7 @@
             <div class="well">
                 Refer to the ProductID that requires a restock with the desired quantity.
                 
-                <form action="/action_page.php">
+                <form action="http://localhost:8080/GoodSportProject/Servlets/Search.java">
                     <div class="form-group">
                         <label for="productID">ProductID:</label>
                         <input type="productNo" class="form-control" id="productID">
