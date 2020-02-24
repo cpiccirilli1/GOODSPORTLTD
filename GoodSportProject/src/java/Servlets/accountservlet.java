@@ -89,7 +89,7 @@ public class accountservlet extends HttpServlet {
 
     protected static String addressGlue(String add1, String add2, String city, String state,
             String zip){
-        String AddressStr = add1 + "," + add2 + "," + "city" + "," + "state" + "," + zip;
+        String AddressStr = add1 + "," + add2 + "," + city + "," + state + "," + zip;
         
         return AddressStr;
     }

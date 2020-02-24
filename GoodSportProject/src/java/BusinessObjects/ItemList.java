@@ -23,11 +23,16 @@ public class ItemList {
             System.out.println(e);
         }
     }
-    public void addToCart(Item i1) {
-        try {
+    public void addToCart(String itemID) {
+        Item i1 = new Item();
+        i1.selectDB(Integer.parseInt(itemID));
+        iArr.add(i1);
+    }
+    public void populateCart(String[] cart) {
+        for(int i = 0; i < cart.length; i++) {
+            Item i1 = new Item();
+            i1.selectDB(Integer.parseInt(cart[i]));
             iArr.add(i1);
-        } catch (Exception e) {
-            System.out.println(e);
         }
     }
 }

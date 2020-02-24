@@ -25,6 +25,7 @@ public class Item {
     public void Item(int id, String name, String desc, int quant, double pri) {
         productID = id;
         productName = name;
+        productDesc = desc;
         quantity = quant;
         price = pri;
     }
@@ -57,7 +58,7 @@ public class Item {
             while (rs.next()) {
                 productID = rs.getInt("ProductID");
                 productName = rs.getString("ProductName");
-                productDesc = rs.getString("PlaceholderText");
+                productDesc = rs.getString("Description");
                 quantity = rs.getInt("Quantity");
                 price = rs.getDouble("Price");
             }
@@ -66,11 +67,11 @@ public class Item {
         }
     }
     
-    public void insertDB(int Id, String ProductName, String PlaceholderText, 
+    public void insertDB(int Id, String ProductName, String Description, 
             int Quantity, Double Price) {
         try {
             String sql = "INSERT INTO Inventory VALUES ('" + Id + "', '" + 
-                    ProductName + "', '" + PlaceholderText + "', '" + Quantity + "', '" + Price + "')";
+                    ProductName + "', '" + Description + "', '" + Quantity + "', '" + Price + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
@@ -78,10 +79,10 @@ public class Item {
         }
     }
     
-    public void updateDB(String ProductName, String PlaceholderText, int Quantity, Double Price) {
+    public void updateDB(String ProductName, String Description, int Quantity, Double Price) {
         try {
             String sql = "UPDATE Inventory SET ProductID = '" + productID + "', ProductName = '"
-                    + ProductName + "', PlaceholderText = '" + PlaceholderText + "', Quantity = '" +
+                    + ProductName + "', Description = '" + Description + "', Quantity = '" +
                     Quantity + "', Price = '" + Price +
                     "' WHERE ProductID = '" + productID + "'";
             Statement stmt = Customer.connectDB();
