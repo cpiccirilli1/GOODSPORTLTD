@@ -10,13 +10,6 @@ import java.sql.*;
 public class Customer {
 
     /**
-     * @return the cart
-     */
-    public String getCart() {
-        return cart;
-    }
-
-    /**
      * @param cart the cart to set
      */
     public void setCart(String cart) {
@@ -138,6 +131,13 @@ public class Customer {
     
     public String getEmail() {
         return custEmail;
+    }
+    
+    /**
+     * @return the cart
+     */
+    public String getCart() {
+        return cart;
     }
     
     protected static Statement connectDB() {

@@ -23,4 +23,11 @@ public class ItemList {
             System.out.println(e);
         }
     }
+    public void addToCart(Item i1) {
+        try {
+            iArr.add(i1);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

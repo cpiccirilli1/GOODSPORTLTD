@@ -53,15 +53,15 @@ public class Employee {
     
     public void selectDB(String Email) {
         try {
-            String sql = "SELECT * FROM Employees WHERE Email = '" + Email + "'";
+            String sql = "SELECT * FROM Employees WHERE EmpEmail = '" + Email + "'";
             Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                empId = rs.getString("CustID");
+                empId = rs.getString("EmpID");
                 empFirstName = rs.getString("FirstName");
                 empLastName = rs.getString("LastName");
-                empEmail = rs.getString("Email");
-                empPassword = rs.getString("CustPassword");
+                empEmail = rs.getString("EmpEmail");
+                empPassword = rs.getString("EmpPassword");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -84,7 +84,7 @@ public class Employee {
         try {
             String sql = "UPDATE Employees SET EmpID = '" + empId + "', EmpPassword = '"
                     + passwd + "', FirstName = '" + fName + "', LastName = '" +
-                    lName + "', Email = '" + eMail +
+                    lName + "', EmpEmail = '" + eMail +
                     "' WHERE EmpID = '" + empId + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
