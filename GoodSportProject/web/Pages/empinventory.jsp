@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="BusinessObjects.Item"%>
+<%@page import="BusinessObjects.ItemList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,8 +18,8 @@
         <title>Inventory</title>
 
     </head>
-    <% Item i1 = new Item();
-       int count = i1.numItems();
+    <% ItemList inventory = new ItemList();
+    inventory.findAllItems();
     %>
     
     
@@ -48,9 +49,10 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(int i = 1; i <= count; i++)
+                <% for(int i = 0; i < inventory.iArr.size(); i++)
                 {
-                 i1.selectDB(i);
+                    Item i1 = new Item();
+                    i1 = inventory.iArr.get(i);
                 %>
                 <tr>
                     <td><%=i1.getId()%></td>
