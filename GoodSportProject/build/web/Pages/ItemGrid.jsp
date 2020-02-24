@@ -14,14 +14,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Item Grid</title>
-        <link rel="stylesheet" href="../CSS/ItemGridCSS.css" />
-        <link rel="stylesheet" href="../CSS/FrameCSS.css" />
+        <link rel="stylesheet" href="http://localhost:8080/GoodSportProject/CSS/ItemGridCSS.css" />
+        <link rel="stylesheet" href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" />
     </head>
     <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <nav class="">
+            <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="../index.jsp">Good Sport!</a>
+                    <div class="logo_wrapper">
+                        <a href="http://localhost:8080/GoodSportProject/index.jsp"><img class="logo" src="http://localhost:8080/GoodSportProject/Media/Logo.png"/></a>
+                    </div>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop <span class="caret"></span></a>
@@ -32,14 +34,14 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search" name="search">
+                <form class="navbar-form navbar-left" action="http://localhost:8080/GoodSportProject/Servlets/Search.java">
+                    <div class="form-group search-bar-wrapper">
+                        <input type="text" class="search-bar" placeholder="Search" name="search">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Search</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
                      <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>

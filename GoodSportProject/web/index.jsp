@@ -11,17 +11,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Good Sport</title>
-        <link href="CSS/FrameCSS.css" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="logo_wrapper">
-                    <a class="logo" href="http://localhost:8080/GoodSportProject/index.jsp"><img src="http://localhost:8080/GoodSportProject/Media/Logo.png"/></a>
+        <nav class="">
+            <div class="container-fluid navbar-custom">
+                <div class="navbar-header">
+                    <div class="logo_wrapper">
+                        <a href="http://localhost:8080/GoodSportProject/index.jsp"><img class="logo" src="http://localhost:8080/GoodSportProject/Media/Logo.png"/></a>
+                    </div>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop <span class="caret"></span></a>
@@ -32,11 +34,11 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search" name="search">
+                <form class="navbar-form navbar-left search-bar-wrapper" action="http://localhost:8080/GoodSportProject/Servlets/Search.java">
+                    <div class="form-group search-bar-wrapper">
+                        <input type="text" class="search-bar" placeholder="Search" name="search">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Search</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
