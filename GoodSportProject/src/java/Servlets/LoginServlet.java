@@ -52,7 +52,20 @@ public class LoginServlet extends HttpServlet {
                 rd.forward(request, response);
             }
         } else {
-            System.out.println(check);
+            Employee e1 = new Employee();
+            customer = false;
+            e1.selectDB(email);
+            String dbPassword = e1.getPassword();
+            System.out.println(dbPassword);
+            if (dbPassword.equals(password)) {
+                ses1.setAttribute("e1", e1);
+                ses1.setAttribute("customer", customer);
+                rd = request.getRequestDispatcher("/Pages/empPortal.jsp");
+                rd.forward(request, response);
+            } else {
+                rd = request.getRequestDispatcher("/Pages/error.jsp");
+                rd.forward(request, response);
+            }
         }
     }
 
