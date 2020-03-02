@@ -35,4 +35,29 @@ public class ItemList {
             iArr.add(i1);
         }
     }
+    
+    public ArrayList get_related(String term){
+        ArrayList<Item> itemArr = new ArrayList<>();
+         try {
+            String sql = "SELECT * FROM Inventory Where ProductName='%"+term+"%'";
+            Statement stmt = Customer.connectDB();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Item il = new Item();
+                int pid = rs.getInt("ProductID");
+                String pName = rs.getString("ProductName");
+                String pDisc = rs.getString("Description");
+                int quant = rs.getInt("Quantity");
+                double price = rs.getDouble("Price");
+                String img = rs.getString("Image");
+                il.Item(pid,pName,pDisc,quant,price);
+                itemArr.add(il);
+            }
+            
+         }
+         catch(SQLException ex){
+             System.out.println(ex.toString());
+         }
+         return itemArr;
+    }
 }

@@ -102,4 +102,13 @@ public class Item {
         }
     }
     
+    public void display(){
+        System.out.println(this.getId());
+        System.out.println(this.getPrice());
+        System.out.println(this.getProdDesc());
+        System.out.println(this.getProdName());
+        System.out.println(this.getQuantity());
+                
+    }
+    
 }
