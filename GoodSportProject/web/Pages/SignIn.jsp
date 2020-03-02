@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-sm-5">
                     <h4>Sign Up</h4>
-                    <form onsubmit="return validate()" action="#" method="Post">
+                    <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/CreateAccountServlet" method="Post">
                         <div class="form-group">
                             <label>Email: </label>
                             <input type="text" name="emailSignUp" required>
