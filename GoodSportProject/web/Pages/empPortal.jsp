@@ -29,9 +29,9 @@
                     <a class="navbar-brand" href="#">GoodSports</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="empPortal.jsp">Order Fulfillment</a></li>
-                    <li><a href="empinventory.jsp">Check Inventory</a></li>
-                    <li><a href="">Reorder Products</a></li>
+                    <li class="active"><a href="/Pages/empPortal.jsp">Order Fulfillment</a></li>
+                    <li><a href="/Pages/empinventory.jsp">Check Inventory</a></li>
+                    <li><a href="/Pages/empReorder.jsp">Reorder Products</a></li>
                 </ul>
             </div>
         </nav>
