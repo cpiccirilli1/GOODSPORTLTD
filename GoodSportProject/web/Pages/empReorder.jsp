@@ -4,6 +4,8 @@
     Author     : natha
 --%>
 
+<%@page import="BusinessObjects.EmpOrderList"%>
+<%@page import="BusinessObjects.EmpOrder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +18,10 @@
         <title>Employee Portal</title>
 
     </head>
+    <% EmpOrderList restock = new EmpOrderList();
+    restock.findAllItems();
+    %>
+    
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -35,14 +41,14 @@
             <div class="well">
                 Refer to the ProductID that requires a restock with the desired quantity.
                 
-                <form action="http://localhost:8080/GoodSportProject/Servlets/Search.java">
+                <form method="post" action="http://localhost:8080/GoodSportProject/EmpOrderServlet">
                     <div class="form-group">
                         <label for="productID">ProductID:</label>
-                        <input type="productNo" class="form-control" id="productID">
+                        <input type="productNo" class="form-control" name="productID">
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity needed:</label>
-                        <input type="count" class="form-control" id="quantity">
+                        <input type="count" class="form-control" name="quantity">
                     </div>
 
                     <button type="submit" class="btn btn-default">Submit order</button>
@@ -50,25 +56,27 @@
                 
             </div>
             
-             <h1>Order Fulfillment</h1>
+             <h1>Reorder History</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">EmpOrderID</th>
                     <th scope="col">ProductID</th>
                     <th scope="col">Quantity needed</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Street</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Payment Complete?</th>
-                    <th scope="col">Order Status</th>
                 </tr>
             </thead>
             <tbody>
+                <% for(int i = 0; i < restock.iArr.size(); i++)
+                {
+                    EmpOrder eOrder = new EmpOrder();
+                    eOrder = restock.iArr.get(i);
+                %>
                 <tr>
-                    
+                    <td><%=eOrder.getOrderID()%></td>
+                    <td><%=eOrder.getProductID()%></td>
+                    <td><%=eOrder.getQuantity()%></td>
                 </tr>
-                
+                <% } %>
             </tbody>
         </table>
         </div>

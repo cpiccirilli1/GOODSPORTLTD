@@ -31,7 +31,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="empPortal.jsp">Order Fulfillment</a></li>
-                    <li class=active"><a href="empinventory.jsp">Check Inventory</a></li>
+                    <li class="active"><a href="empinventory.jsp">Check Inventory</a></li>
                     <li><a href="empReorder.jsp">Reorder Products</a></li>
                 </ul>
             </div>
