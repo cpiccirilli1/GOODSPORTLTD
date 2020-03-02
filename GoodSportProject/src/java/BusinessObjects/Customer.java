@@ -145,7 +145,7 @@ public class Customer {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection conn;
             //Edit this next line of code starting with C: to the file path of the database
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rmatano\\Desktop\\GoodSportsDB.accdb");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://I:\\GoodSportsDB.accdb");
             Statement stmt = conn.createStatement();
             return stmt;
         } catch (Exception e) {
@@ -173,13 +173,23 @@ public class Customer {
             System.out.println(e);
         }
     }
-    
+    // change order
     public void insertDB(String Id, String Pswd, String FName, 
             String LName, String Adr, String Phone,  String Email, String cart) {
         try {
             String sql = "INSERT INTO Customers VALUES ('" + Id + "', '" + 
                     Pswd + "', '" + FName + "', '" + LName + "', '" + Adr + 
                     "', '" + Phone + "', '" + Email + "', '" + cart + "')";
+            Statement stmt = connectDB();
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void insertDB2(String LName, String FName, String Adr, String Phone, String Email, String Pswd) {
+        try {
+            String sql = "INSERT INTO Customers (LastName, FirstName, Address, PhoneNum, Email, CustPassword) VALUES ('" + LName + "', '" + FName + "','" + Adr + "','" + Phone + "','" + Email + "','" + Pswd + "')";
             Statement stmt = connectDB();
             stmt.execute(sql);
         } catch (Exception e) {

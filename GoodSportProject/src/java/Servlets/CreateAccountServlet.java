@@ -42,6 +42,13 @@ public class CreateAccountServlet extends HttpServlet {
         String phone = request.getParameter("phoneNumberSignUp");
         String adEntered = request.getParameter("address");
         String address = "null";
+        
+        System.out.println(email);
+        System.out.println(passwd);
+        System.out.println(fName);
+        System.out.println(lName);
+        System.out.println(phone);
+        
         if ("on".equals(adEntered)) {
             String street = request.getParameter("streetSignUp");
             String city = request.getParameter("citySignUp");
@@ -51,8 +58,8 @@ public class CreateAccountServlet extends HttpServlet {
         } else {
         }
         Customer c1 = new Customer();
-        //c1.insertDB("null", passwd, fName, lName, address, phone, email, "null");
-        c1.insertDB("null", "null", "null", "null", "null", "null", "null", "null");
+        c1.insertDB2(lName, fName, address, phone, email, passwd);
+        //c1.insertDB("null", "null", "null", "null", "null", "null", "null", "null");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
