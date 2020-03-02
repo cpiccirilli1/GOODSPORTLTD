@@ -89,15 +89,15 @@
                         </div>
                         <div class="form-group">
                             <label>First Name: </label>
-                            <input type="password" name="firstNameSignUp">
+                            <input type="text" name="firstNameSignUp">
                         </div>
                         <div class="form-group">
                             <label>Last Name: </label>
-                            <input type="password" name="lastNameSignUp">
+                            <input type="text" name="lastNameSignUp">
                         </div>
                         <div class="form-group">
                             <label>Phone Number: </label>
-                            <input type="password" name="phoneNumberSignUp">
+                            <input type="text" name="phoneNumberSignUp">
                         </div>
                         <div class="form-group">
                             <label>Add address</label>
@@ -106,19 +106,19 @@
                         <div id="addressBoxes" style="display:none;">
                             <div class="form-group">
                                 <label>Street: </label>
-                                <input type="password" name="streetSignUp">
+                                <input type="text" name="streetSignUp">
                             </div>
                             <div class="form-group">
                                 <label>City: </label>
-                                <input type="password" name="citySignUp">
+                                <input type="text" name="citySignUp">
                             </div>
                             <div class="form-group">
                                 <label>State: </label>
-                                <input type="password" name="stateSignUp">
+                                <input type="text" name="stateSignUp">
                             </div>
                             <div class="form-group">
                                 <label>Zipcode: </label>
-                                <input type="password" name="zipcodeSignUp">
+                                <input type="text" name="zipcodeSignUp">
                             </div>
                         </div>
                         <input type="submit" value="Sign Up">
