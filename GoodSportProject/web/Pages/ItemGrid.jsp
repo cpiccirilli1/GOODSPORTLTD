@@ -61,7 +61,7 @@
                          <span class="product-discount-label">-30%</span>
                      </div>
                      <div class="product-content">
-                         <div class="price">£ 8.00<span>£ 10.00</span></div>
+                         <div class="price">$ 8.00<span>$ 10.00</span></div>
                          <span class="product-shipping">Free Shipping</span>
                          <h3 class="title"><a href="#">Women's Plain Top</a></h3>
                          <a class="all-deals" href="">See all deals <i class="fa fa-angle-right icon"></i></a>
@@ -81,7 +81,7 @@
                          <span class="product-discount-label">-30%</span>
                      </div>
                      <div class="product-content">
-                         <div class="price">£ 7.00<span>£ 10.00</span></div>
+                         <div class="price">$ 7.00<span>$ 10.00</span></div>
                          <span class="product-shipping">Free Shipping</span>
                          <h3 class="title"><a href="#">Women's Designer Top</a></h3>
                          <a class="all-deals" href="">See all deals <i class="fa fa-angle-right icon"></i></a>
@@ -101,7 +101,7 @@
                          <span class="product-discount-label">-20%</span>
                      </div>
                      <div class="product-content">
-                         <div class="price">£ 8.00<span>£ 10.00</span></div>
+                         <div class="price">$ 8.00<span>$ 10.00</span></div>
                          <span class="product-shipping">Free Shipping</span>
                          <h3 class="title"><a href="#">Women's Plain Top</a></h3>
                          <a class="all-deals" href="">See all deals <i class="fa fa-angle-right icon"></i></a>

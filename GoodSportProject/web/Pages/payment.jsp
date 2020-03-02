@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <title>Good Sport</title>
+        <title>Payment Information</title>
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
     </head>
     <body>
@@ -70,7 +70,7 @@
 				<h3 style="font-size:1.5vw;">Estimated Order Total: </h3>
 				<br>
 				<br>
-				<button type="button" class="btn btn-primary btn-block">PLACE MY ORDER</button> 
+                                <a href="#"<button type="button" class="btn btn-primary btn-block">PLACE MY ORDER</button></a>
 		</div>
 		</div>
 		</div>

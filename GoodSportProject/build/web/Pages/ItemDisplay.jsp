@@ -42,7 +42,7 @@
                             <li><a href="#">Page 1-2</a></li>
                             <li><a href="#">Page 1-3</a></li>
                         </ul>
-                    </li>
+                    </li>                                                                                                                                                                                                    
                 </ul>
                 <form class="navbar-form navbar-left" action="http://localhost:8080/GoodSportProject/Servlets/Search.java">
                     <div class="form-group search-bar-wrapper">
