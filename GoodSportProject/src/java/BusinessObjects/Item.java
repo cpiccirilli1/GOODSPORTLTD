@@ -11,23 +11,32 @@ public class Item {
     int productID;
     String productName;
     String productDesc;
+    String category;
+    String sport;
     int quantity;
     double price;
+    String imgLink;
     
     public void Item() {
         productID = 0;
         productName = "";
         productDesc = "";
+        category = "";
+        sport = "";
         quantity = 0;
         price = 0.00;
+        imgLink =" ";
     }
     
-    public void Item(int id, String name, String desc, int quant, double pri) {
+    public void Item(int id, String name, String desc, String cat, String sprt, int quant, double pri, String img) {
         productID = id;
         productName = name;
         productDesc = desc;
+        category = cat;
+        sport = sprt;
         quantity = quant;
         price = pri;
+        imgLink = img;
     }
     
     public int getId() {
@@ -41,6 +50,12 @@ public class Item {
     public String getProdDesc() {
         return productDesc;
     }
+    public String getCategory() {
+        return category;
+    }
+    public String getSport() {
+        return sport;
+    }
     
     public int getQuantity() {
         return quantity;
@@ -48,6 +63,9 @@ public class Item {
     
     public double getPrice() {
         return price;
+    }
+    public String getimgLink() {
+        return imgLink;
     }
     
     public void selectDB(int ID) {
@@ -61,17 +79,16 @@ public class Item {
                 productDesc = rs.getString("Description");
                 quantity = rs.getInt("Quantity");
                 price = rs.getDouble("Price");
+                imgLink = rs.getString("ImageLink");
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
     
-    public void insertDB(int Id, String ProductName, String Description, 
-            int Quantity, Double Price) {
+    public void insertDB(int Id, String ProductName, String Description, String cat, String sprt, int Quantity, Double Price, String imgLink) {
         try {
-            String sql = "INSERT INTO Inventory VALUES ('" + Id + "', '" + 
-                    ProductName + "', '" + Description + "', '" + Quantity + "', '" + Price + "')";
+            String sql = "INSERT INTO Inventory VALUES ('" + Id + "', '" + ProductName + "', '" + Description + "', '" + cat + "', '" + sprt + "', '" + Quantity + "', '" + Price + ", " + imgLink +"')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
@@ -79,11 +96,11 @@ public class Item {
         }
     }
     
-    public void updateDB(String ProductName, String Description, int Quantity, Double Price) {
+    public void updateDB(String ProductName, String Description, String cat, String sprt, int Quantity, Double Price) {
         try {
             String sql = "UPDATE Inventory SET ProductID = '" + productID + "', ProductName = '"
-                    + ProductName + "', Description = '" + Description + "', Quantity = '" +
-                    Quantity + "', Price = '" + Price +
+                    + ProductName + "', Description = '" + Description + "', Category = '" + cat + "', Sport = '" + sprt + "', Quantity = '" +
+                    Quantity + "', Price = '" + Price + "', ImageLink = '" + imgLink +
                     "' WHERE ProductID = '" + productID + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
