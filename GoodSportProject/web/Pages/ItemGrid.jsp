@@ -4,6 +4,7 @@
     Author     : cgoswic1
 --%>
 
+<%@page import="BusinessObjects.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,6 +19,11 @@
         <link rel="stylesheet" href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" />
     </head>
     <body>
+            <%
+            Item item1 = new Item();
+            item1.selectDB(1);
+            String link = item1.getimgLink();
+            %>
         <nav class="">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -49,16 +55,17 @@
         <div class="container">
              <h3 class="h3">shopping Demo-8 </h3>
              <div class="row">  
+                 
              <div class="col-md-4 col-sm-6">
                  <div class="product-grid8">
                      <div class="product-image8">
-                         <a href="#"><img class="pic-1" src="../Media/BankJavaIII.png"></a>
+                         <a href="#"><img class="pic-1" src="<%= link %>" + ></a>
                          <ul class="social">
                              <li><a href="" class="fa fa-search" ><img class="pic-0" src="../Media/search.png"></a></li>
                              <li><a href="" class="fa fa-shopping-bag"><img class="pic-0" src="../Media/search.png"></a></li>
                              <li><a href="" class="fa fa-shopping-cart"><img class="pic-0" src="../Media/search.png"></a></li>
                          </ul>
-                         <span class="product-discount-label">-30%</span>
+                         <span class="product-discount-label">-20%</span>
                      </div>
                      <div class="product-content">
                          <div class="price">$ 8.00<span>$ 10.00</span></div>
