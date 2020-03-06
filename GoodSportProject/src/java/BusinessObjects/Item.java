@@ -8,35 +8,93 @@ import java.sql.*;
  * @author mitho
  */
 public class Item {
-    int productID;
-    String productName;
-    String productDesc;
-    String category;
-    String sport;
-    int quantity;
-    double price;
-    String imgLink;
+
+
+    private int productID;
+    private String productName;
+    private String productDesc;
+    private String category;
+    private String sport;
+    private int quantity;
+    private double price;
+    private String imgLink;
     
     public void Item() {
-        productID = 0;
-        productName = "";
-        productDesc = "";
-        category = "";
-        sport = "";
-        quantity = 0;
-        price = 0.00;
-        imgLink =" ";
+        setProductID(0);
+        setProductName("");
+        setProductDesc("");
+        setCategory("");
+        setSport("");
+        setQuantity(0);
+        setPrice(0.00);
+        setImgLink(" ");
     }
     
     public void Item(int id, String name, String desc, String cat, String sprt, int quant, double pri, String img) {
-        productID = id;
-        productName = name;
-        productDesc = desc;
-        category = cat;
-        sport = sprt;
-        quantity = quant;
-        price = pri;
-        imgLink = img;
+        setProductID(id);
+        setProductName(name);
+        setProductDesc(desc);
+        setCategory(cat);
+        setSport(sprt);
+        setQuantity(quant);
+        setPrice(pri);
+        setImgLink(img);
+    }
+    
+     /**
+     *   productID the productID to set
+     */
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    /**
+     *   productName the productName to set
+     */
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    /**
+     *   productDesc the productDesc to set
+     */
+    public void setProductDesc(String productDesc) {
+        this.productDesc = productDesc;
+    }
+
+    /**
+     *   category the category to set
+     */
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     *   sport the sport to set
+     */
+    public void setSport(String sport) {
+        this.sport = sport;
+    }
+
+    /**
+     *   quantity the quantity to set
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    /**
+     *   price the price to set
+     */
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    /**
+     *   imgLink the imgLink to set
+     */
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
     }
     
     public int getId() {
@@ -74,12 +132,14 @@ public class Item {
             Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                productID = rs.getInt("ProductID");
-                productName = rs.getString("ProductName");
-                productDesc = rs.getString("Description");
-                quantity = rs.getInt("Quantity");
-                price = rs.getDouble("Price");
-                imgLink = rs.getString("ImageLink");
+                setProductID(rs.getInt("ProductID"));
+                setProductName(rs.getString("ProductName"));
+                setProductDesc(rs.getString("Description"));
+                setSport(rs.getString("Sport"));
+                setCategory(rs.getString("Category"));
+                setQuantity(rs.getInt("Quantity"));
+                setPrice(rs.getDouble("Price"));
+                setImgLink(rs.getString("ImageLink"));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -120,12 +180,26 @@ public class Item {
     }
     
     public void display(){
-        System.out.println(this.getId());
-        System.out.println(this.getPrice());
-        System.out.println(this.getProdDesc());
-        System.out.println(this.getProdName());
-        System.out.println(this.getQuantity());
+        //int id, String name, String desc, String cat, String sprt, int quant, double pri, String img
+        
+        String div = "**********************";
+        System.out.println(div);
+        System.out.println("Prod. Name: "+this.getProdName());
+        System.out.println("Prod. ID: "+this.getId());
+        System.out.println("Prod. Price: "+this.getPrice());
+        System.out.println("Prod. Desc: "+this.getProdDesc());
+        System.out.println("Prod. Cat.: "+this.getCategory());
+        System.out.println("Prod. Sport: "+this.getSport());
+        System.out.println("IMG: "+this.getimgLink());
+        System.out.println("QUANTITY: "+this.getQuantity());
                 
+    }
+    
+    public static void main(String[] args){
+        Item i = new Item();
+        i.selectDB(10);
+        i.display();
+        
     }
     
 }

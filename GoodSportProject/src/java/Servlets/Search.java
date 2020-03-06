@@ -41,17 +41,21 @@ public class Search extends HttpServlet {
             ArrayList<Item> arrItems;
                         
             ItemList il = new ItemList();
-            arrItems = il.get_related(query);
+            il.get_related(query);
+            arrItems = il.getArray();
             
             String[] splitQuery = query.split(" ");
             for (String str : splitQuery){
+                
                 ArrayList<Item> arrItems0;
-                arrItems0 = il.get_related(str);
+                il.get_related(str);
+                arrItems0 = il.getArray();
                 arrItems.addAll(arrItems0);
+                System.out.println("SEARCH SERVLET: LITTLE ARRAY ADDED TO BIG ARRAY.");
             }
             
             HttpSession ses1 = request.getSession();
-            ses1.setAttribute("itemArr", arrItems);
+            ses1.setAttribute("arrItems", arrItems);
            
             System.out.println("SearchServlet: Success redirect");
             RequestDispatcher rd = request.getRequestDispatcher("ItemGrid.jsp");
@@ -63,10 +67,10 @@ public class Search extends HttpServlet {
             ArrayList<Item> arrItems;
                         
             ItemList il = new ItemList();
-            arrItems = il.get_related(query);
-            
+            il.get_related(query);
+            arrItems = il.getArray();
             HttpSession ses1 = request.getSession();
-            ses1.setAttribute("itemArr", arrItems);
+            ses1.setAttribute("arrItems", arrItems);
            
             System.out.println("SearchServlet: Success redirect");
             RequestDispatcher rd = request.getRequestDispatcher("ItemGrid.jsp");

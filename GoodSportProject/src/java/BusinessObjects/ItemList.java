@@ -23,6 +23,12 @@ public class ItemList {
             System.out.println(e);
         }
     }
+    
+    public ArrayList getArray(){
+        return this.iArr;
+    }
+    
+    
     public void addToCart(String itemID) {
         Item i1 = new Item();
         i1.selectDB(Integer.parseInt(itemID));
@@ -36,28 +42,48 @@ public class ItemList {
         }
     }
     
-    public ArrayList get_related(String term){
-        ArrayList<Item> itemArr = new ArrayList<>();
+    
+    public void get_related(String term){
+        
          try {
-            String sql = "SELECT * FROM Inventory Where ProductName='%"+term+"%'";
+            String sql = "SELECT * FROM Inventory WHERE description LIKE '% "+term+" %'";
             Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 Item il = new Item();
-                int pid = rs.getInt("ProductID");
-                String pName = rs.getString("ProductName");
-                String pDisc = rs.getString("Description");
-                int quant = rs.getInt("Quantity");
-                double price = rs.getDouble("Price");
-                String img = rs.getString("Image");
-                il.Item(pid,pName,pDisc,quant,price);
-                itemArr.add(il);
+                il.setProductID(rs.getInt("ProductID"));
+                il.setProductName(rs.getString("ProductName"));
+                il.setProductDesc(rs.getString("Description"));
+                il.setCategory(rs.getString("Category"));
+                il.setSport(rs.getString("Sport"));
+                il.setQuantity(rs.getInt("Quantity"));
+                il.setPrice(rs.getDouble("Price"));
+                il.setImgLink(rs.getString("ImageLink"));
+                
+                iArr.add(il);
+    
+            //int id, String name, String desc, String cat, String sprt, int quant, double pri, String img
             }
             
          }
          catch(SQLException ex){
              System.out.println(ex.toString());
          }
-         return itemArr;
+         
+    }
+    
+    public void disp_related(){
+        
+        
+        for(Item i : iArr){
+            i.display();
+        }
+    }
+    
+    public static void main(String[] args){
+        ItemList list = new ItemList();
+        list.get_related("shoe");
+        list.disp_related();
+        
     }
 }
