@@ -20,7 +20,7 @@
     <body>
         
         <%
-            Customer cust = (Customer)request.getSession().getAttribute("sess1");
+            Customer cust = (Customer)request.getSession().getAttribute("c1");
             String pass = cust.getPassword();
             String fname = cust.getFName();
             String lname = cust.getLName();
@@ -67,17 +67,9 @@
             </div>
         </nav>
         <h1 class="center">Update Customer Account</h1>
-        <form method="post" action="#">
+        <form method="post" action="http://localhost:8080/GoodSportProject/accountservlet">
         <table class="center" border="0">
-            <tr>
-                <td colspan="2"><center><image src="index.png" /></center></td>
-            </tr>
-            <tr>
-                <td>Update Avatar:</td>
-                <td colspan="2"><input type="file"
-                id="avatar" name="avatar"
-                accept="image/png, image/jpeg"></td>
-            </tr>
+            
             <tr>
                 <td>First Name</td><td><input type="text" name="firstname" value="<%= fname %>"></td>
             </tr>
@@ -99,21 +91,21 @@
             </tr>
             <tr>
                 
-                <td>City</td><td><input type="text" name="city" value="<%= city %>"></td>
+                <td>City:</td><td><input type="text" name="city" value="<%= city %>"></td>
                 
             </tr>            
             <tr>
-                <td>State</td><td><input type="text" name="state" value="<%= state %>"></td>
+                <td>State:</td><td><input type="text" name="state" value="<%= state %>"></td>
             </tr>
             <tr>
-                <td>Zip Code:</td><td><input type="text" name="zip" value="<%= zip %>"></td>
+                <td>Zip:</td><td><input type="text" name="zip" value="<%= zip %>"></td>
             </tr>
             <tr>
-                <td>Password Update:</td><td><input type="text" name="password" value="<%= pass %>"></td>
+                <td>Password:</td><td><input type="text" name="password" value="<%= pass %>"></td>
             </tr>
             
             <tr>
-                <td></td><td><input type="submit" name="submit-btn">"></td>
+                <td></td><td><input type="submit" name="submit-btn"></td>
         </table>
         </form>
         

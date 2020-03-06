@@ -51,10 +51,11 @@ public class CreateAccountServlet extends HttpServlet {
         
         if ("on".equals(adEntered)) {
             String street = request.getParameter("streetSignUp");
+            String street1 = request.getParameter("streetSignUp1");
             String city = request.getParameter("citySignUp");
             String state = request.getParameter("stateSignUp");
             String zipcode = request.getParameter("zipcodeSignUp");
-            address = street + "," + city + "," + state + "," + zipcode + ",";
+            address = street + ","+street1+","+ city + "," + state + "," + zipcode;
         } else {
         }
         Customer c1 = new Customer();

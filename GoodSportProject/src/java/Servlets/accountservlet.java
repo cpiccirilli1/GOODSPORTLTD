@@ -36,17 +36,21 @@ public class accountservlet extends HttpServlet {
         String zip = request.getParameter("zip");
         String password = request.getParameter("password");
         
+        if(address2 == null){
+            address2 = " ";
+        }
         
         String address = addressGlue(address1, address2, city, state, zip);
         
-        Customer cust1 = (Customer)request.getSession().getAttribute("ses1");
+        Customer cust1 = (Customer)request.getSession().getAttribute("c1");
+        
         String id = cust1.getId();
         String cart = cust1.getCart();
         
         //Basically none of the fields can be empty, otherwise they get kicked to
         //the err page. LONG 'OR' statement chain. 
         if( isNullOrEmpty(fname) || isNullOrEmpty(lname) || isNullOrEmpty(phone) ||
-            isNullOrEmpty(email) || isNullOrEmpty(address1) || isNullOrEmpty(address2) ||
+            isNullOrEmpty(email) || isNullOrEmpty(address1) ||
             isNullOrEmpty(city) || isNullOrEmpty(state) || isNullOrEmpty(zip) ||
                 isNullOrEmpty(password)){
             
@@ -63,7 +67,7 @@ public class accountservlet extends HttpServlet {
             cust1.setCustPassword(password);
             cust1.setCustFirstName(fname);
             cust1.setCustLastName(lname);
-            cust1.setCustAddress(addressGlue(address1, address2, city, state, zip));
+            cust1.setCustAddress(address);
             cust1.setCustPhone(phone);
             cust1.setCustEmail(email);
             cust1.setCart(cart);
@@ -72,7 +76,7 @@ public class accountservlet extends HttpServlet {
             ses1.setAttribute("customer", cust1);
            
             System.out.println("AccountServlet: Success redirect");
-            RequestDispatcher rd = request.getRequestDispatcher("/acctsuccess.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/acctsuccess.jsp");
             rd.forward(request, response);
         }
         

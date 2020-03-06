@@ -50,8 +50,7 @@
     </body>
     <footer>
         <ul style="list-style: none;"> 
-            
-            <li style="display:inline;"><a href ="Pages/account.jsp">My Account</a>  </li>
+           
 
             <li style="display:inline;"><a href ="Pages/SignIn.jsp">Sign In</a>  </li>
 

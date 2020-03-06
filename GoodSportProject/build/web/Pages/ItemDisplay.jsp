@@ -87,6 +87,7 @@
     <footer>
         <ul style="list-style: none;"> 
             
+            
             <li style="display:inline;"><a href ="account.jsp">My Account</a>  </li>
 
             <li style="display:inline;"><a href ="SignIn.jsp">Sign In</a>  </li>

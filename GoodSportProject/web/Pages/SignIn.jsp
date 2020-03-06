@@ -109,6 +109,10 @@
                                 <input type="text" name="streetSignUp">
                             </div>
                             <div class="form-group">
+                                <label>Street cont.: </label>
+                                <input type="text" name="streetSignUp1">
+                            </div>
+                            <div class="form-group">
                                 <label>City: </label>
                                 <input type="text" name="citySignUp">
                             </div>

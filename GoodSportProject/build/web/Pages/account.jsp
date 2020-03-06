@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="BusinessObjects.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,44 +46,66 @@
                 </ul>
             </div>
         </nav>
+        
+        <%
+            if (null == session.getAttribute("c1")){
+            %>
+            <h2>Please Login to view your account.</h2>
+            
+            <%
+            } else{
+                Customer c1 = (Customer)request.getSession().getAttribute("c1");
+                String name = c1.getFName()+c1.getLName();
+                String email = c1.getEmail();
+                String phone = c1.getPhone();
+                String address = c1.getAddr();
+                
+                String[] addr = address.split(",");
+                String addr1 = addr[0];
+                String addr2 = addr[1];
+                String city = addr[2];
+                String state = addr[3];
+                String zip = addr[4];
+
+                
+                
+            %>
+        
         <h1 class="center">Customer Account</h1>
         
         <table class="center" border="0">
+            
             <tr>
-                <td colspan="2"><image src="index.png" /></td>
+                <td>Name: </td><td><%= name %></td>
+            <tr>
+                <td>Email:</td><td><%= email %></td>
             </tr>
             <tr>
-                <td>Name/Company: </td><td>JSP first and last Name Variable</td>
+                <td>Phone Number:</td><td><%= phone %></td>
             </tr>
             <tr>
-                <td>Account #: </td><td>JSP Acct # Variable</td>
-               
-            </tr>
-            <tr>
-                <td>Email:</td><td>email variable</td>
-            </tr>
-            <tr>
-                <td>Phone Number:</td><td>number variable</td>
-            </tr>
-            <tr>
-                <td>Address:</td><td>Address variable</td>
-            </tr>
-            <tr>
-                <td>Address cont.:</td><td>Address variable</td>
-            </tr>
-            <tr>
-                <td>City</td><td>City Variable</td>
+                <td>Address:</td><td><%= addr1 %><br/>
+                    <% 
+                        if (addr2==null){
+                            %>
+                            <%= city+", "+state+" "+ zip %>
+                            
+                       <%     
+                        }else{
+                    %>
+                    <%= addr2 %><br/>
+                    <%= city+", "+state+" "+ zip %>
+                    <% } %>
                 
-            </tr>            
-            <tr>
-                <td>State</td><td> State variable</td>
+                </td>
             </tr>
+            
             <tr>
           
-                <td><a href="accountedit.jsp">(edit)</a></td
+                <td><a href="Pages/accountedit.jsp">(edit)</a></td
             </tr>
         </table>
-
+        <% } %>
     </body>
     <footer>
         <ul style="list-style: none;"> 
