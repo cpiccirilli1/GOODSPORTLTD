@@ -18,27 +18,6 @@
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
     </head>
     <body>
-        <%
-            Customer cust = (Customer)request.getSession().getAttribute("ses1");
-            String pass = cust.getPassword();
-            String fname = cust.getFName();
-            String lname = cust.getLName();
-            String address = cust.getAddr();
-            String email = cust.getEmail();
-            String phone = cust.getPhone();
-            
-            String[] addressln = address.split(",");
-            
-            String add1 = addressln[0];
-            String add2 = addressln[1];
-            String city = addressln[2];
-            String state = addressln[3];
-            String zip = addressln[4];
-            
-            
-            %>
-        
-        
         <nav class="">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -67,18 +46,37 @@
                 </ul>
             </div>
         </nav>
+        
+        <%
+            if (null == session.getAttribute("c1")){
+            %>
+            <h2>Please Login to view your account.</h2>
+            
+            <%
+            } else{
+                Customer c1 = (Customer)request.getSession().getAttribute("c1");
+                String name = c1.getFName()+c1.getLName();
+                String email = c1.getEmail();
+                String phone = c1.getPhone();
+                String address = c1.getAddr();
+                
+                String[] addr = address.split(",");
+                String addr1 = addr[0];
+                String addr2 = addr[1];
+                String city = addr[2];
+                String state = addr[3];
+                String zip = addr[4];
+
+                
+                
+            %>
+        
         <h1 class="center">Customer Account</h1>
         
-        <h2 class="center">UPDATED! Your information has been updated! </h2>
-        
         <table class="center" border="0">
+            
             <tr>
-                <td colspan="2"><image src="index.png" /></td>
-            </tr>
-            <tr>
-                <td>Name/Company: </td><td><%= fname + " " + lname %></td>
-            </tr>
-          
+                <td>Name: </td><td><%= name %></td>
             <tr>
                 <td>Email:</td><td><%= email %></td>
             </tr>
@@ -86,33 +84,41 @@
                 <td>Phone Number:</td><td><%= phone %></td>
             </tr>
             <tr>
-                <td>Address:</td><td><%= add1 %><br />
-                        <%
-                            if(!add2.equals("")){ %>
-                                <%= add2 %><br />
-                        <%}                 %>
-                        <%= city +", " + state + " "+ zip %>
-                        
-                        </td>
+                <td>Address:</td><td><%= addr1 %><br/>
+                    <% 
+                        if (addr2==null){
+                            %>
+                            <%= city+", "+state+" "+ zip %>
+                            
+                       <%     
+                        }else{
+                    %>
+                    <%= addr2 %><br/>
+                    <%= city+", "+state+" "+ zip %>
+                    <% } %>
+                
+                </td>
             </tr>
+            
+            <tr>
           
-                <td><a href="accountedit.jsp">(edit)</a></td
+                <td><a href="Pages/accountedit.jsp">(edit)</a></td
             </tr>
         </table>
-
+        <% } %>
     </body>
     <footer>
         <ul style="list-style: none;"> 
             
-            <li style="display:inline;"><a href ="account.jsp">My Account</a>  </li>
+            <li style="display:inline;"><a href ="http://localhost:8080/GoodSportProject/Pages/account.jsp">My Account</a>  </li>
 
-            <li style="display:inline;"><a href ="SignIn.jsp">Sign In</a>  </li>
+            <li style="display:inline;"><a href ="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp">Sign In</a>  </li>
 
-            <li style="display:inline;"><a href ="ItemGrid.jsp">Item Grid</a>  </li>
+            <li style="display:inline;"><a href ="http://localhost:8080/GoodSportProject/Pages/ItemGrid.jsp">Item Grid</a>  </li>
 
-            <li style="display:inline;"><a href ="../index.jsp">Home</a>  </li>
+            <li style="display:inline;"><a href ="http://localhost:8080/GoodSportProject/index.jsp">Home</a>  </li>
 
-            <li style="display:inline;"><a href ="ItemDisplay.jsp">Item Display</a>  </li>
+            <li style="display:inline;"><a href ="http://localhost:8080/GoodSportProject/Pages/ItemDisplay.jsp">Item Display</a>  </li>
 
             <li style="display:inline;"><a href ="">page 6 </a>  </li>
         
