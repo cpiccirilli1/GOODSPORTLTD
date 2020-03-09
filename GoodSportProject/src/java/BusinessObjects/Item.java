@@ -18,6 +18,7 @@ public class Item {
     private int quantity;
     private double price;
     private String imgLink;
+    private ItemList iList;
     
     public void Item() {
         setProductID(0);
@@ -197,7 +198,7 @@ public class Item {
     
     public static void main(String[] args){
         Item i = new Item();
-        i.selectDB(10);
+        i.selectDB(1);
         i.display();
         
     }

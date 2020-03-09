@@ -41,8 +41,24 @@ public class ItemList {
             iArr.add(i1);
         }
     }
+        public void selectSportDB(String sport){
+        try{
+            String sql = "SELECT * FROM Inventory WHERE Sport = '" + sport + "'";
+            Statement stmt = Customer.connectDB();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Item i1 = new Item();
+                i1.selectDB(rs.getInt("productID"));
+                iArr.add(i1);
+            }
+            
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     
-    
+    }
+
     public void get_related(String term){
         
          try {
@@ -72,7 +88,7 @@ public class ItemList {
          
     }
     
-    public void disp_related(){
+    public void display(){
         
         
         for(Item i : iArr){
@@ -82,8 +98,9 @@ public class ItemList {
     
     public static void main(String[] args){
         ItemList list = new ItemList();
-        list.get_related("shoe");
-        list.disp_related();
+        list.selectSportDB("football");
+        list.display();
+        
         
     }
 }
