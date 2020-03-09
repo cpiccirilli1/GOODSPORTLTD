@@ -170,6 +170,17 @@ public class Item {
         }
     }
     
+    public void updateQuantity(int Quantity) {
+        try {
+            String sql = "UPDATE Inventory SET Quantity = '" +
+                    Quantity + "' WHERE ProductID = '" + productID + "'";
+            Statement stmt = Customer.connectDB();
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     public void deleteDB() {
         try {
             String sql = "DELETE FROM Inventory WHERE ProductID = '" + productID + "'";
