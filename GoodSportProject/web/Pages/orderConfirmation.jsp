@@ -1,6 +1,6 @@
 <%-- 
-    Document   : shoppingCart
-    Created on : Feb 17, 2020, 3:35:11 PM
+    Document   : orderConfirmation
+    Created on : Mar 7, 2020, 3:48:57 PM
     Author     : rikam
 --%>
 
@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <title>Your Cart</title>
+        <title>Order Complete!</title>
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
     </head>
     <body>
-        <nav class="">
+       <nav class="">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
                     <div class="logo_wrapper">
@@ -45,32 +45,47 @@
                 </ul>
             </div>
         </nav>
-		<div class="container">		
-			<h2 style="font-size:2.5vw;">Your Cart</h2>
-			<h2 style="font-size:1vw;">Order Number #</h2>
+		<div id="order" class="container-fluid">
+		  <div class="text-center">
+			<h3 style="font-size:2.5vw;">Thank you for your order!</h3>
+		  </div>
+		  <div class="col-sm-3 col-xs-12">
+		  </div>
+		  <div class="col-sm-4 col-xs-12">
+			<h3>Order number: </h3>
 			<hr class="style2">
-			<div class="row">
-				<div class="form-group col-sm-3">
-					 <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-				</div>
-				<div class="form-group col-sm-5">
-					<h3 style="font-size:1.2vw;">Product ID:</h3>
-				</div>
-				<div class="form-group col-sm-4">
-					<h3 style="font-size:1vw;">Order Subtotal: </h3>
-					<h3 style="font-size:1vw;">Estimated Shipping: </h3>
-					<h3 style="font-size:1vw;">Estimated Tax: </h3>
-					<h3 style="font-size:1.5vw;">Estimated Order Total: </h3>
-					<br>
-                                        <a href="purchase.jsp"<button type="button" class="btn btn-primary btn-block">Proceed to Checkout</button></a>
-					<br>
-				</div>
+			<p>We are currently processing your order.</p>
+			<p>For your convenience you may want to save your order confirmation.</p>
+			<br>
+			<h3>Deliverly Details</h3>
+			<hr class="style2">
+			<h4><strong>Delivery for</strong></h4>
+			<br>
+			<br>
+			<br>
+			<br>
+			<h4><strong>Address</strong></h4>
+			<br>
+			<br>
+			<h4><strong>Shipping Method</strong></h4>
+			<br>
+			<br>
+		  </div>
+		  <div class="col-sm-2 col-xs-12">
+			<h3 style="font-size:1.5vw;">Order Summary</h3>
+			 <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+			 <h3 style="font-size:1vw;">Order Subtotal: </h3>
+				<h3 style="font-size:1vw;">Estimated Shipping: </h3>
+				<h3 style="font-size:1vw;">Estimated Tax: </h3>
+				<h3 style="font-size:1.2vw;">Estimated Order Total: </h3>
+				<br>
+				<br>
 			</div>
 		</div>
-	</body>
-	<br>
-	<br>
-	<br>
+		</div>
+		</div>
+		</div>
+    </body>
     <footer>
         <ul style="list-style: none;"> 
             

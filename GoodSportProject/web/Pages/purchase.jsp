@@ -15,6 +15,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Getting Your Order</title>
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
+     
     </head>
     <body>
         <nav class="">
@@ -50,6 +51,7 @@
 		<hr class="style2">
 		<h3 style="font-size:2vw;">Shipping Information</h3>
 		<div class="row">
+                   <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
 			<div class="form-group col-sm-4">
 			  <label for="name">First Name</label>
 			  <input type="name" class="form-control" id="fname" name="fname">
@@ -69,16 +71,7 @@
 			  <label for="zip">Zip Code</label>
 			  <input type="zip" class="form-control" id="zip" name="zip">
 			</div>
-			<div class="form-group col-sm-3">
-			<h3 style="font-size:1.5vw;">Get it by</h3>
-			<label class="radio-inline">
-			<input type="radio" name="ship" checked>Today
-			</label>
-			<br>
-			<br>
-			<label class="radio-inline">
-			<input type="radio" name="ship">Friday, Feb 21
-			</label>
+			<div class="col-sm-3">
 			</div>
 			<div class="form-group col-sm-3">
 			<h3 style="font-size:1.8vw;">Order Summary</h3>
@@ -106,10 +99,12 @@
 				</div>
 				<p><a href="#" data-toggle="tooltip">Remove</a></p>
 			</div>
+                   </form>
 		</div>
 	
 	<hr class="style2">
 	<div class="row">
+              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
 		<div class="form-group col-sm-4">
 		<h3 style="font-size:2vw;">Contact Information</h3>
 		  <label for="email">Email Address</label>
@@ -119,9 +114,11 @@
 		</div>
 		<div class="form-group col-sm-2">
 		</div>
+              </form>
 	</div>
 	
 	<div class="row">
+              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
 		<div class="form-group col-sm-4">
 		  <label for="phone">Phone Number</label>
 		  <input type="phone" class="form-control" id="phone" name="phone">
@@ -130,12 +127,7 @@
 		</div>
 		<div class="form-group col-sm-2">
 		</div>
-	</div>
-	<div class="row">
-		<div class="form-group col-sm-4">
-		  <label for="phone">Phone Number</label>
-		  <input type="phone" class="form-control" id="phone" name="phone">
-		</div>
+              </form>
 	</div>
 	
 	<div class="row">
@@ -144,6 +136,7 @@
 		</div>
 	</div>
 	<div class="row">
+              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
 		<div class="form-group col-sm-3">
 		<label for="name">First Name</label>
 		  <input type="name" class="form-control" id="name" name="name">
@@ -152,24 +145,29 @@
 		<label for="name">Last Name</label>
 		  <input type="name" class="form-control" id="name" name="name">
 		</div>
+              </form>
 	</div>
 	
 	<div class="row">
+              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
 		<div class="form-group col-sm-4">
 		  <label for="name">Address</label>
 		  <input type="address" class="form-control" id="addr" name="addr">
 		</div>
-		
+              </form>
 	</div>
 	
 	<div class="row">
+              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
 		<div class="form-group col-sm-4">
 		  <label for="name"></label>
 		  <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="addr" name="addr">
 		</div>
+              </form>
 	</div>
 	
 	<div class="row">
+              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
 		<div class="form-group col-sm-2">
 		  <label for="state">State</label>
 		  <input type="state" class="form-control" id="state" name="state">
@@ -177,7 +175,8 @@
 		<div class="form-group col-sm-2">
 		  <label for="state">Zip Code</label>
 		  <input type="zip" class="form-control" id="zip" name="zip">
-		</div>			
+		</div>	
+              </form>
 	</div>
 	<br>
 	<br>
@@ -187,17 +186,15 @@
     <footer>
         <ul style="list-style: none;"> 
             
-        <li style="display:inline;"><a href ="">page 1 </a>  </li>
-        
-        <li style="display:inline;"><a href ="">page 2 </a>  </li>
-        
-        <li style="display:inline;"><a href ="">page 3 </a>  </li>
-        
-        <li style="display:inline;"><a href ="">page 4 </a>  </li>
-        
-        <li style="display:inline;"><a href ="">page 5 </a>  </li>
-        
-        <li style="display:inline;"><a href ="">page 6 </a>  </li>
+             <li style="display:inline;"><a href ="Pages/SignIn.jsp">Sign In</a>  </li>
+
+            <li style="display:inline;"><a href ="Pages/ItemGrid.jsp">Item Grid</a>  </li>
+
+            <li style="display:inline;"><a href ="index.jsp">Home</a>  </li>
+
+            <li style="display:inline;"><a href ="Pages/ItemDisplay.jsp">Item Display</a>  </li>
+
+            <li style="display:inline;"><a href ="">page 6 </a>  </li>
         
         </ul>
     </footer>

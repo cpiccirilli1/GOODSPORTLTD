@@ -117,7 +117,30 @@
              </div>
              </div>
              <br>
-         </div>
+             <div class= "col-sm-4">
+             </div>
+            
+              <ul class="pagination pagination-circle pg-blue">
+                <li class="page-item disabled"><a class="page-link">First</a></li>
+                <li class="page-item disabled">
+                  <a class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item"><a href="ItemGrid.jsp">1</a></li>
+                <li class="page-item"><a href="ItemGrid.jsp">2</a></li>
+                <li class="page-item"><a href="ItemGrid.jsp">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link">Last</a></li>
+             </ul>
+    
+         </div>         
     </body>
     <footer>
         <ul style="list-style: none;"> 
