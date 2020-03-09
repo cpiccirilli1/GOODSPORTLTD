@@ -51,7 +51,8 @@
                         <input type="count" class="form-control" name="quantity">
                     </div>
 
-                    <button type="submit" class="btn btn-default">Submit order</button>
+                    <button type="submit" name="action" value="addtoOrderList" class="btn btn-default">Submit order</button>
+                    <button type="submit" name="action" value="updateInventory" class="btn btn-default">Update quantity</button>
                 </form> 
                 
             </div>

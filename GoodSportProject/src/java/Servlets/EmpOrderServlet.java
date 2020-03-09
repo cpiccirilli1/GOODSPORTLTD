@@ -26,20 +26,37 @@ public class EmpOrderServlet extends HttpServlet {
             
             String product = request.getParameter("productID");
             String quant = request.getParameter("quantity");
+            int prod = Integer.parseInt(product);
+            int quan = Integer.parseInt(quant);
+            System.out.println(prod);
+            System.out.println(quan);
             
-            System.out.println(product);
-            System.out.println(quant);
             
+            
+            String action = request.getParameter("action");
+
+            if ("addtoOrderList".equals(action)) {
             EmpOrder emp1 = new EmpOrder();
             ses1.setAttribute("emp1", emp1);
             ses1.setAttribute("product", product);
             ses1.setAttribute("quant", quant);
-
             
             emp1.insertDBorder(product, quant);
             RequestDispatcher rd;
             rd = request.getRequestDispatcher("/Pages/empReorder.jsp");
             rd.forward(request, response);
+            
+            } else if ("updateInventory".equals(action)) {
+            Item i2 = new Item();
+            i2.selectDB(prod);
+            int currentquant = i2.getQuantity();
+            quan += currentquant;
+            
+            i2.updateQuantity(quan);
+            RequestDispatcher rd;
+            rd = request.getRequestDispatcher("/Pages/empinventory.jsp");
+            rd.forward(request, response);
+            }
         }
     }
 
