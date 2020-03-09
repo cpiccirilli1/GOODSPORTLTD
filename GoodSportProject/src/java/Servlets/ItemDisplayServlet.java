@@ -7,7 +7,6 @@ package Servlets;
 
 import BusinessObjects.Item;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,13 +34,14 @@ public class ItemDisplayServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int item = Integer.parseInt(request.getParameter("productId"));
+        String id = request.getParameter("itemNumber");
+        int item = Integer.parseInt(id);
         Item i1= new Item();
         i1.selectDB(item);
         HttpSession ses1 = request.getSession();
         ses1.setAttribute("i1",i1);
         RequestDispatcher rd;
-        rd = request.getRequestDispatcher("http://localhost:8080/GoodSportProject/Pages/ItemDisplay.jsp");
+        rd = request.getRequestDispatcher("Pages/ItemDisplay.jsp");
         rd.forward(request, response);
         
     }

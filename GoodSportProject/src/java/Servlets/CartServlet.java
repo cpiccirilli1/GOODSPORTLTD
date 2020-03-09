@@ -6,10 +6,9 @@
 package Servlets;
 
 import BusinessObjects.Customer;
-import BusinessObjects.Item;
 import BusinessObjects.ItemList;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,23 +36,36 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
-        Customer c1 = (Customer)ses1.getAttribute("c1");
-        ItemList shoppingCart = new ItemList();
-        if (!c1.getCart().equals("")) {
-            String[] cart = c1.getCart().split(",");
-            shoppingCart.populateCart(cart);
-        }
         String itemID = request.getParameter("itemNumber");
-        shoppingCart.addToCart(itemID);
-        String newCart = "";
-        for (int i = 0; i < shoppingCart.iArr.size(); i++) {
-            if (i == 0) {
-                newCart = shoppingCart.iArr.get(i).toString();
-            } else {
-                newCart = shoppingCart.iArr.get(i).toString() + ",";
+        try {
+            Customer c1 = (Customer)ses1.getAttribute("c1");
+            ItemList shoppingCart = new ItemList();
+            if (!c1.getCart().equals("")) {
+                String[] cart = c1.getCart().split(",");
+                shoppingCart.populateCart(cart);
             }
+            shoppingCart.addToCart(itemID);
+            String newCart = "";
+            for (int i = 0; i < shoppingCart.iArr.size(); i++) {
+                if (i == 0) {
+                    newCart = shoppingCart.iArr.get(i).toString();
+                } else {
+                    newCart = shoppingCart.iArr.get(i).toString() + ",";
+                }
+            }
+            c1.updateDB(c1.getPassword(), c1.getFName(), c1.getLName(), c1.getAddr(), c1.getPhone(), c1.getEmail(), newCart);
+        } catch(NullPointerException e) {
+            ItemList cart = new ItemList();
+            if (ses1.getAttribute("cart") != null) {
+                cart = (ItemList)ses1.getAttribute("cart");
+            }
+            cart.addToCart(itemID);
+            ses1.setAttribute("cart", cart);
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
         }
-        c1.updateDB(c1.getPassword(), c1.getFName(), c1.getLName(), c1.getAddr(), c1.getPhone(), c1.getEmail(), newCart);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

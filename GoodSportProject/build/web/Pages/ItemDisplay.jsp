@@ -20,7 +20,7 @@
     </head>
     <body>
         <%
-            Item item1 = (Item)request.getSession().getAttribute("ses1");
+            Item item1 = (Item)request.getSession().getAttribute("i1");
             int id = item1.getId();
             String name = item1.getProdName();
             double price = item1.getPrice();
@@ -52,7 +52,7 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-                     <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                     <li><a href="Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>
         </nav>
@@ -72,7 +72,7 @@
                                             avail = "In Stock";
                                         
                                         %>
-                                    <br/><input type="submit" value="Add to Cart">
+                                        <br/><a href="http://localhost:8080/GoodSportProject/CartServlet?itemNumber=<%=id%>">Add to Cart</a>
                                     <% } else{ %>
                                     Out of stock!
                                     <% } %>

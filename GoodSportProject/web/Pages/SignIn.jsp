@@ -109,7 +109,7 @@
                                 <input type="text" name="streetSignUp">
                             </div>
                             <div class="form-group">
-                                <label>Street cont.: </label>
+                                <label>Appt/Suite No.: </label>
                                 <input type="text" name="streetSignUp1">
                             </div>
                             <div class="form-group">

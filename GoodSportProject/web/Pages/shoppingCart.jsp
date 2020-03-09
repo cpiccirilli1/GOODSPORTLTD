@@ -4,6 +4,9 @@
     Author     : rikam
 --%>
 
+<%@page import="BusinessObjects.Item"%>
+<%@page import="BusinessObjects.Customer"%>
+<%@page import="BusinessObjects.ItemList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -49,23 +52,45 @@
 			<h2 style="font-size:2.5vw;">Your Cart</h2>
 			<h2 style="font-size:1vw;">Order Number #</h2>
 			<hr class="style2">
-			<div class="row">
+                        <%
+                            ItemList cart = new ItemList();
+                            try
+                            {
+                                Customer c1 = (Customer)session.getAttribute("c1");
+                                cart.populateCart(c1.getCart().split(","));
+                            } catch (NullPointerException e)
+                            {
+                                try {
+                                    cart = (ItemList)session.getAttribute("cart");
+                                } catch (NullPointerException npe) {
+                                    System.out.println("No cart for guest");
+                                }
+                            }
+                            for(int i = 0; i < cart.iArr.size(); i++)
+                            {
+                                Item i1 = cart.iArr.get(i);
+                        %>
+                            <div class="row">
 				<div class="form-group col-sm-3">
-					 <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+                                    <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
 				</div>
 				<div class="form-group col-sm-5">
-					<h3 style="font-size:1.2vw;">Product ID:</h3>
+                                    <h3 style="font-size:1.2vw;">Product ID: <%=i1.getId()%></h3>
 				</div>
-				<div class="form-group col-sm-4">
-					<h3 style="font-size:1vw;">Order Subtotal: </h3>
-					<h3 style="font-size:1vw;">Estimated Shipping: </h3>
-					<h3 style="font-size:1vw;">Estimated Tax: </h3>
-					<h3 style="font-size:1.5vw;">Estimated Order Total: </h3>
-					<br>
-                                        <a href="purchase.jsp"<button type="button" class="btn btn-primary btn-block">Proceed to Checkout</button></a>
-					<br>
-				</div>
-			</div>
+                            </div>
+                        <%
+                            }
+                        %>
+                        <div class="form-group col-sm-4">
+                            <h3 style="font-size:1vw;">Order Subtotal: </h3>
+                            <h3 style="font-size:1vw;">Estimated Shipping: </h3>
+                            <h3 style="font-size:1vw;">Estimated Tax: </h3>
+                            <h3 style="font-size:1.5vw;">Estimated Order Total: </h3>
+                            <br>
+                            <a href="purchase.jsp"<button type="button" class="btn btn-primary btn-block">Proceed to Checkout</button></a>
+                            <br>
+                        </div>
+		</div>
 		</div>
 	</body>
 	<br>

@@ -42,7 +42,7 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-                     <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                     <li><a href="Pages/shoppingCart.jsp    "><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>
         </nav>

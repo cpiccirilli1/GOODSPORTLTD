@@ -23,6 +23,7 @@
             Item item1 = new Item();
             item1.selectDB(1);
             String link = item1.getimgLink();
+            item1.display(); 
             %>
         <nav class="">
             <div class="container-fluid navbar-custom">
@@ -59,7 +60,7 @@
              <div class="col-md-4 col-sm-6">
                  <div class="product-grid8">
                      <div class="product-image8">
-                         <a href="#"><img class="pic-1" src="<%= link %>" + ></a>
+                         <a href="http://localhost:8080/GoodSportProject/Servlets/ItemDisplayServlet.java"><img class="pic-1" src="<%= link %>"></a>
                          <ul class="social">
                              <li><a href="" class="fa fa-search" ><img class="pic-0" src="../Media/search.png"></a></li>
                              <li><a href="" class="fa fa-shopping-bag"><img class="pic-0" src="../Media/search.png"></a></li>
@@ -70,7 +71,7 @@
                      <div class="product-content">
                          <div class="price">$ 8.00<span>$ 10.00</span></div>
                          <span class="product-shipping">Free Shipping</span>
-                         <h3 class="title"><a href="#">Women's Plain Top</a></h3>
+                         <h3 class="title"><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?itemNumber=<%=item1.getId()%>">Women's Plain Top</a></h3>
                          <a class="all-deals" href="">See all deals <i class="fa fa-angle-right icon"></i></a>
                      </div>
                  </div>
