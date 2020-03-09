@@ -145,7 +145,7 @@ public class Customer {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection conn;
             //Edit this next line of code starting with C: to the file path of the database
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rikam\\Desktop\\GoodSportsDB.accdb");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\cpicciri\\Documents\\Database\\GoodSportsDB.accdb");
             Statement stmt = conn.createStatement();
             return stmt;
         } catch (Exception e) {
@@ -219,5 +219,26 @@ public class Customer {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    public void Display(){
+        System.out.println("ID: " + this.getId());
+        System.out.println("FName: "+this.getFName());
+        System.out.println("LName: "+this.getLName());
+        System.out.println("Email: "+this.getEmail());
+        System.out.println("Addr: "+this.getAddr());
+        System.out.println("Pass: "+this.getPassword());
+        System.out.println("Phone: "+this.getPhone());
+        System.out.println("Cart: "+this.getCart());
+    }
+    
+    public static void main(String[] args){
+        Customer c1 = new Customer();
+        c1.selectDB("johndoe1@mail.com");
+        c1.updateDB("sesame", "jane", "doe", "1234 Sanity St.,apt B,New York,NY,303030","5555555", "janedoe1@mail.com", " ");
+        
+        c1.selectDB("janedoe1@mail.com");
+        c1.Display();
+        
     }
 }
