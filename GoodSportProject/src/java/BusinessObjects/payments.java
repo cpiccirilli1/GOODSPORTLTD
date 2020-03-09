@@ -207,7 +207,7 @@ public class payments {
             
             while(rs.next()){
                 
-                this.setPayId(rs.getInt("OrderID"));
+                this.setPayId(rs.getInt("PayID"));
                 this.setFname(rs.getString("FirstName"));
                 this.setLname(rs.getString("LastName"));
                 this.setEmail(rs.getString("Email"));
