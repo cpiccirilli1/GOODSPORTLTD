@@ -23,16 +23,16 @@ public class EmpOrderServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession ses1 = request.getSession();
-            
+
             String product = request.getParameter("productID");
             String quant = request.getParameter("quantity");
             int prod = Integer.parseInt(product);
             int quan = Integer.parseInt(quant);
             System.out.println(prod);
             System.out.println(quan);
-            
-            
-            
+
+            // if statement to determine whether user clicked Submit Order or Update Quantity
+
             String action = request.getParameter("action");
 
             if ("addtoOrderList".equals(action)) {
@@ -57,6 +57,10 @@ public class EmpOrderServlet extends HttpServlet {
             rd = request.getRequestDispatcher("/Pages/empinventory.jsp");
             rd.forward(request, response);
             }
+            
+            }
+
+            
         }
     }
 
