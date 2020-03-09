@@ -36,16 +36,19 @@ public class accountservlet extends HttpServlet {
         String zip = request.getParameter("zip");
         String password = request.getParameter("password");
         
-        if(address2 == null){
-            address2 = " ";
-        }
         
-        String address = addressGlue(address1, address2, city, state, zip);
         
         Customer cust1 = (Customer)request.getSession().getAttribute("c1");
         
         String id = cust1.getId();
         String cart = cust1.getCart();
+        if(address2 == null || cart == null){
+            address2 = " ";
+            cart = " ";
+        }
+        
+        String address = addressGlue(address1, address2, city, state, zip);
+//        System.out.println(id + cart + address);
         
         //Basically none of the fields can be empty, otherwise they get kicked to
         //the err page. LONG 'OR' statement chain. 
@@ -55,27 +58,22 @@ public class accountservlet extends HttpServlet {
                 isNullOrEmpty(password)){
             
             System.out.println("AccountServlet: Error page redirect");
-            RequestDispatcher rd = request.getRequestDispatcher("/accterr.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/accterr.jsp");
             rd.forward(request, response);
         }
         else{
-
+           
+            cust1.updateDB(password, fname, lname, address, phone, email, cart);
+            cust1.selectDB(email);
             
-           cust1.insertDB(id, password, fname, lname,  address, phone, email, cart);
            System.out.println("Customer Updated!");
            
-            cust1.setCustPassword(password);
-            cust1.setCustFirstName(fname);
-            cust1.setCustLastName(lname);
-            cust1.setCustAddress(address);
-            cust1.setCustPhone(phone);
-            cust1.setCustEmail(email);
-            cust1.setCart(cart);
-            
-            HttpSession ses1 = request.getSession();
-            ses1.setAttribute("customer", cust1);
+           HttpSession ses1 = request.getSession();
+           ses1.removeAttribute("c1");
+           ses1.setAttribute("c1", cust1);
            
-            System.out.println("AccountServlet: Success redirect");
+           
+            System.out.println("AccountServlet: Successful insert");
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/acctsuccess.jsp");
             rd.forward(request, response);
         }
