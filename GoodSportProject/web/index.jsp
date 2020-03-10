@@ -18,7 +18,7 @@
         <title>Good Sport</title>
     </head>
     <body>
-        <nav class="">
+        <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
                     <div class="logo_wrapper">
@@ -27,44 +27,40 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                        <ul class="dropdown-menu category-drop-down">
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left search-bar-wrapper" action="http://localhost:8080/GoodSportProject/Servlets/Search.java">
+                <form class="navbar-form navbar-left search-bar-wrapper" action="http://localhost:8080/GoodSportProject/Search">
                     <div class="form-group search-bar-wrapper">
                         <input type="text" class="search-bar" placeholder="Search" name="search">
                     </div>
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-                     <li><a href="Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                     <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>
         </nav>
         <h1>Hello World!</h1>
+        <footer>									<!-- footer begins here -->
+            <div class="footer">
+                    <div class="signature">
+                            <h2><a href="index.jsp">Good Sport</a></h2>
+                            <p>This website was create and designed by Project Team #1</p>
+                    </div>
+                    <div class="contactcontainer">
+                            <div class="contactbutton">
+                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                            </div>
+                    </div>
+            </div>
+	</footer>
     </body>
-    <footer>
-        <ul style="list-style: none;"> 
-           
-
-            <li style="display:inline;"><a href ="Pages/SignIn.jsp">Sign In</a>  </li>
-
-            <li style="display:inline;"><a href ="Pages/ItemGrid.jsp">Item Grid</a>  </li>
-
-            <li style="display:inline;"><a href ="index.jsp">Home</a>  </li>
-
-            <li style="display:inline;"><a href ="Pages/ItemDisplay.jsp">Item Display</a>  </li>
-
-            <li style="display:inline;"><a href ="">page 6 </a>  </li>
-        
-        </ul>
-
-    </footer>
 </html>
 
 

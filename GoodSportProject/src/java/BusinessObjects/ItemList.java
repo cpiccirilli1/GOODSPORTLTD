@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class ItemList {
     public ArrayList<Item> iArr = new ArrayList<>();
+    int iCount;
     public void findAllItems() {
         try {
             String sql = "SELECT * FROM Inventory";
@@ -51,6 +52,7 @@ public class ItemList {
                 i1.selectDB(rs.getInt("productID"));
                 iArr.add(i1);
             }
+            iCount = iArr.size();
             
         }
         catch (Exception e) {
@@ -80,7 +82,7 @@ public class ItemList {
     
             //int id, String name, String desc, String cat, String sprt, int quant, double pri, String img
             }
-            
+            iCount = iArr.size();
          }
          catch(SQLException ex){
              System.out.println(ex.toString());

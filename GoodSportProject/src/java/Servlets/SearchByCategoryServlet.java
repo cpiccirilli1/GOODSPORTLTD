@@ -35,10 +35,9 @@ public class SearchByCategoryServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try {
             /* TODO output your page here. You may use following sample code. */
             String sport = request.getParameter("sport");
-            out.println("This is my sport " + sport);
             ItemList il1 = new ItemList();
             il1.selectSportDB(sport);
             HttpSession ses1 = request.getSession();
@@ -47,6 +46,7 @@ public class SearchByCategoryServlet extends HttpServlet {
             rd = request.getRequestDispatcher("/Pages/ItemGrid.jsp");
             rd.forward(request, response);
         }
+        catch(Exception e){System.out.println(e);}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
