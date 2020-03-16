@@ -8,7 +8,6 @@ import java.sql.*;
  * @author mitho
  */
 public class Customer {
-
     /**
      * @param cart the cart to set
      */

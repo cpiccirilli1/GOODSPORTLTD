@@ -18,6 +18,18 @@
         <title>Good Sport</title>
     </head>
     <body>
+        <%
+            session = request.getSession();
+            Customer c1 = (Customer)session.getAttribute("c1");
+            String fName;
+            if(null==session.getAttribute("c1")){
+                fName = "My";
+                
+            }
+            else{
+                fName = c1.getFName()+"'s";
+            }
+        %>
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -41,7 +53,7 @@
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> <%=fName%>Account</a></li>
                      <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>
@@ -54,7 +66,6 @@
             
             <%
             } else{
-                Customer c1 = (Customer)request.getSession().getAttribute("c1");
                 String name = c1.getFName()+c1.getLName();
                 String email = c1.getEmail();
                 String phone = c1.getPhone();
@@ -101,8 +112,7 @@
             </tr>
             
             <tr>
-          
-                <td><a href="Pages/accountedit.jsp">(edit)</a></td
+                <td><a href="http://localhost:8080/GoodSportProject/Pages/accountedit.jsp">(edit)</a></td>
             </tr>
         </table>
         <% } %>

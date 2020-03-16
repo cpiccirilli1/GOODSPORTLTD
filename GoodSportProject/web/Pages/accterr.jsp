@@ -48,6 +48,7 @@
         </nav>
         
         <%
+            
             if (null == session.getAttribute("c1")){
             %>
             <h2>Please Login to view your account.</h2>

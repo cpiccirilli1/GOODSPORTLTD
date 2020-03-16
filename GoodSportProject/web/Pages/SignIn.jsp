@@ -4,6 +4,7 @@
     Author     : mitho
 --%>
 
+<%@page import="BusinessObjects.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +18,21 @@
         <title>Good Sport</title>
     </head>
     <body>
+         <%
+            session = request.getSession();
+            String fName;
+            if(null==session.getAttribute("c1")){
+                fName = "My";
+                
+            }
+            else{
+                Customer c1 = (Customer)session.getAttribute("c1");
+                fName = c1.getFName()+"'s";
+                RequestDispatcher rd;
+                rd = request.getRequestDispatcher("/Pages/account.jsp");
+                rd.forward(request, response);
+            }
+            %>
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -40,7 +56,7 @@
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> <%=fName%> Account  </a></li>
                      <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>
@@ -53,7 +69,7 @@
                     <form method="post" action="http://localhost:8080/GoodSportProject/LoginServlet">
                         <div class="form-group">
                             <label>Email: </label>
-                            <input type="text" name="emailSignIn" required>
+                            <input type="email" name="emailSignIn" required>
                         </div>
                         <div class="form-group">
                             <label>Password: </label>
@@ -61,7 +77,7 @@
                         </div>
                         <div class="form-group">
                             <div>
-                                <input type="radio" name="employeeCheck" id="customer" value="Customer" checked="true">
+                                <input type="radio" name="employeeCheck" id="customer" value="Customer" checked>
                                 <label>Customer</label>
                             </div>
                             <div>

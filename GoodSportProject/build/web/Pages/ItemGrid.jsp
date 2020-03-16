@@ -65,7 +65,6 @@
              <div class="row">
                 <%for(int x1=iCount-3;x1!=iCount;iCount--){ 
                     if(x1<0){x1=0;}
-                    System.out.println("x1:" + x1 +"icount:"+iCount);
                     Item i = iArr.get(iCount-1);
                         int id = i.getId();
                         String name = i.getProdName();

@@ -39,8 +39,11 @@ public class LoginServlet extends HttpServlet {
         if (check.equals("Customer")) {
             Customer c1 = new Customer();
             c1.selectDB(email);
+            if (null == c1.getEmail()){
+                rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
+                rd.forward(request, response);
+            }
             String dbPassword = c1.getPassword();
-            System.out.println(dbPassword);
             if (dbPassword.equals(password)) {
                 customer = true;
                 ses1.setAttribute("c1", c1);
@@ -48,13 +51,17 @@ public class LoginServlet extends HttpServlet {
                 rd = request.getRequestDispatcher("/Pages/account.jsp");
                 rd.forward(request, response);
             } else {
-                rd = request.getRequestDispatcher("/Pages/error.jsp");
+                rd = request.getRequestDispatcher("/Pages/accterr.jsp");
                 rd.forward(request, response);
             }
         } else {
             Employee e1 = new Employee();
             customer = false;
             e1.selectDB(email);
+            if (null == e1.getEmail()){
+            rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
+            rd.forward(request, response);
+            }
             String dbPassword = e1.getPassword();
             System.out.println(dbPassword);
             if (dbPassword.equals(password)) {
@@ -63,7 +70,7 @@ public class LoginServlet extends HttpServlet {
                 rd = request.getRequestDispatcher("/Pages/empPortal.jsp");
                 rd.forward(request, response);
             } else {
-                rd = request.getRequestDispatcher("/Pages/error.jsp");
+                rd = request.getRequestDispatcher("/Pages/accterr.jsp");
                 rd.forward(request, response);
             }
         }
