@@ -71,17 +71,8 @@
 			  <br>
                           <br>
 			  <label for="x_card_code" class="control-label mb-1">CVV</label>
-                                <div class="input-group">
-                                    <input id="x_card_code" name="x_card_code" type="tel" class="form-control cc-cvc" required autocomplete="off">
-                                    <span class="invalid-feedback order-last">Enter the 3-digit code on back</span>
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                        <span class="fa fa-question-circle fa-lg" data-toggle="popover" data-container="body" data-html="true" data-title="CVV" 
-                                        data-content="<div class='text-center one-card'>The 3 digit code on back of the card..<div class='visa-mc-cvc-preview'></div></div>"
-                                        data-trigger="hover"></span>
-                                        </div>
-                                    </div>
-                                </div>
+                          <input id="cc-cvv" name="cc-cvv" type="tel" class="form-control cc-cvc" required autocomplete="off">
+                                <span class="invali>-feedback">Enter the 3-digit code on back</span>
 			  <br>	  
 		</div>
                 </form>
@@ -107,6 +98,9 @@
 		</div>
 		</div>
 		<br>
+	<br>
+	<br>
+	<br>
 	<br>
         <footer>									<!-- footer begins here -->
             <div class="footer">
