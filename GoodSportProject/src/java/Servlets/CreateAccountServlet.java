@@ -8,6 +8,7 @@ package Servlets;
 import BusinessObjects.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,7 +61,8 @@ public class CreateAccountServlet extends HttpServlet {
         }
         Customer c1 = new Customer();
         c1.insertDB2(lName, fName, address, phone, email, passwd);
-        //c1.insertDB("null", "null", "null", "null", "null", "null", "null", "null");
+        RequestDispatcher rd = request.getRequestDispatcher("Pages/SignIn.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

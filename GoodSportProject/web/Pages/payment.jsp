@@ -4,6 +4,10 @@
     Author     : rikam
 --%>
 
+<%@page import="BusinessObjects.Customer"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="BusinessObjects.ItemList"%>
+<%@page import="BusinessObjects.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -80,11 +84,51 @@
 		</div>
 		<div class="col-sm-4">
 			<h3 style="font-size:1.6vw;">Order Summary</h3>
-			 <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:80%" alt="Image"></div>
-			 <h3 style="font-size:1vw;">Order Subtotal: </h3>
-				<h3 style="font-size:1vw;">Estimated Shipping: </h3>
-				<h3 style="font-size:1vw;">Estimated Tax: </h3>
-				<h3 style="font-size:1.5vw;">Estimated Order Total: </h3>
+			 <%
+                            ItemList cart = new ItemList();
+                            DecimalFormat df = new DecimalFormat("#,###.##");
+                            try
+                            {
+                                Customer c1 = (Customer)session.getAttribute("c1");
+                                cart.populateCart(c1.getCart().split(","));
+                            } catch (NullPointerException e)
+                            {
+                                try {
+                                    cart = (ItemList)session.getAttribute("cart");
+                                    cart.getArray();
+                                } catch (NullPointerException npe) {
+                                    cart = new ItemList();
+                                }
+                                
+                            }
+                            double cost = 0;
+                            if (cart.iArr.size() == 0) {
+                                %>
+                                <h3>No items in cart</h3>
+                                <%
+                            } else {
+                                
+                                for(int i = 0; i < cart.iArr.size(); i++)
+                                {
+                                    Item i1 = cart.iArr.get(i);
+                                    cost += i1.getPrice();
+                        %>
+                            <div class="row">
+				<div class="form-group col-sm-3">
+                                    <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
+				</div>
+				<div class="form-group col-sm-5">
+                                    <h3 style="font-size:1.2vw;">Product ID: <%=i1.getId()%></h3>
+				</div>
+                            </div>
+                        <%
+                                }
+                            }
+                        %>
+			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
+                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
+                            <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
+                            <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
 				<br>
 				<br>
                                 <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">

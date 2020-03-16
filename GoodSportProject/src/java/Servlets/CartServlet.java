@@ -47,13 +47,10 @@ public class CartServlet extends HttpServlet {
             shoppingCart.addToCart(itemID);
             String newCart = "";
             for (int i = 0; i < shoppingCart.iArr.size(); i++) {
-                if (i == 0) {
-                    newCart = shoppingCart.iArr.get(i).toString();
-                } else {
-                    newCart = shoppingCart.iArr.get(i).toString() + ",";
-                }
+                newCart = newCart.concat(shoppingCart.iArr.get(i).getId() + ",");
             }
-            c1.updateDB(c1.getPassword(), c1.getFName(), c1.getLName(), c1.getAddr(), c1.getPhone(), c1.getEmail(), newCart);
+            c1.updateCart(newCart);
+            ses1.setAttribute("c1", c1);
         } catch(NullPointerException e) {
             ItemList cart = new ItemList();
             if (ses1.getAttribute("cart") != null) {
