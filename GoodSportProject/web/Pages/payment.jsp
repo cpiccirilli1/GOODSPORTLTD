@@ -20,6 +20,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Payment Information</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/GoodSportProject/CSS/purchaseCSS.css">
     </head>
     <body>
         <nav class="navbar-custom-wrapper">
@@ -35,6 +36,9 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -52,35 +56,60 @@
         </nav>
 		<div class="container">
 		<div class="row">
-                <div class="col-sm-1">
-		</div>
-                <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-			<h3 style="font-size:2vw;">Payment Information</h3>
-                        <i class="fa fa-cc-visa" style="font-size:30px"></i>
-                        <i class="fa fa-cc-amex" style="font-size:30px"></i>
-                        <i class="fa fa-cc-discover" style="font-size:30px"></i>
-                        <i class="fa fa-cc-mastercard" style="font-size:30px"></i>
-                        <i class="fa fa-cc-jcb" style="font-size:30px"></i>
+                <div class="col-sm-4">
+                <div class="payment">
+               <form action="http://localhost:8080/GoodSportProject/Pages/orderConfirmation.jsp" method="Post">
+                    <div class="form-group owner">
                         <br>
-                        <br>
-			  <label for="cc-number" class="control-label mb-1">Card number</label>
-                            <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" required autocomplete="off"  >
-                            <span class="invali>-feedback">Enter a valid 12 to 16 digit card number</span>
-			  <br>
-                          <br>
-			   <label for="cc-exp" class="control-label mb-1">Expiration</label>
-                             <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" required placeholder="MM / YY" autocomplete="cc-exp">
-                             <span class="invalid-feedback">Enter the expiration date</span>
-			  <br>
-                          <br>
-			  <label for="x_card_code" class="control-label mb-1">CVV</label>
-                          <input id="cc-cvv" name="cc-cvv" type="tel" class="form-control cc-cvc" required autocomplete="off">
-                                <span class="invali>-feedback">Enter the 3-digit code on back</span>
-			  <br>	  
-		</div>
+                        <label for="owner">Name on Card</label>
+                        <input type="text" class="form-control" id="owner">
+                    </div>
+                    
+                    <div class="form-group" id="card-number-field">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" class="form-control" id="cardNumber">
+                    </div>
+                    <div class="form-group CVV">
+                        <label for="cvv">CVV</label>
+                        <input type="text" class="form-control" id="cvv">
+                    </div>
+                    <div class="form-group" id="expiration-date">
+                        <label>Expiration Date</label>
+                        <select>
+                            <option value="01">January</option>
+                            <option value="02">February </option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select>
+                            <option value="16"> 2020</option>
+                            <option value="17"> 2021</option>
+                            <option value="18"> 2022</option>
+                            <option value="19"> 2023</option>
+                            <option value="20"> 2024</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="credit_cards">
+                        <img src="http://localhost:8080/GoodSportProject/Media/visa.jpg" id="visa">
+                        <img src="http://localhost:8080/GoodSportProject/Media/amex.jpg" id="amex">
+                        <img src="http://localhost:8080/GoodSportProject/Media/mastercard.jpg" id="mastercard">
+                    </div>
+                    <div class="form-group" id="pay-now">
+                        <button type="submit" class="btn btn-primary btn-block" id="confirm-purchase">COMPLETE MY ORDER</button>
+                    </div>
                 </form>
-		<div class="form-group col-sm-1">
+            </div>
+                </div>
+                
+		<div class="col-sm-1">
 		</div>
 		<div class="col-sm-4">
 			<h3 style="font-size:1.6vw;">Order Summary</h3>
@@ -131,13 +160,6 @@
                             <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
 				<br>
 				<br>
-                                <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-                                   <a href="orderConfirmation.jsp"<button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                        <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                        <span id="payment-button-amount">PLACE MY ORDER </span>
-                                        <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                      </a>
-                                </form>
 		</div>
 		</div>
 		</div>
@@ -146,6 +168,7 @@
 	<br>
 	<br>
 	<br>
+    
         <footer>									<!-- footer begins here -->
             <div class="footer">
                     <div class="signature">
@@ -159,5 +182,7 @@
                     </div>
             </div>
 	</footer>
+    <script src="http://localhost:8080/GoodSportProject/JavaScript/jquery.js" charset="utf-8"></script>
+    <script src="http://localhost:8080/GoodSportProject/JavaScript/script.js"></script>
     </body>
 </html>

@@ -51,7 +51,7 @@ body{
 	flex-wrap: wrap;
 	min-height:150px;
 	overflow:hidden;
-	width:100%;
+	width:100%;      
 }
 .footer a{
 	text-decoration:none;
@@ -86,7 +86,6 @@ footer li{
 	float:right;
 	font-size:18px;
 	padding: 14px 20px;
-	text-align: center;
 	text-decoration: none;
 }
 .contactbutton a:hover{

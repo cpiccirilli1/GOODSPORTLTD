@@ -35,6 +35,9 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -55,26 +58,61 @@
 		<hr class="style2">
 		<h3 style="font-size:2vw;">Shipping Information</h3>
 		<div class="row">
-                   <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-			<div class="form-group col-sm-4">
-			  <label for="name">First Name</label>
-			  <input type="name" class="form-control" id="fname" name="fname">
-			  <br>
-			  <label for="name">Last Name</label>
-			  <input type="name" class="form-control" id="lname" name="lname">
-			  <br>
-			  <label for="name">Address</label>
-			  <input type="address" class="form-control" id="addr" name="addr">
-			  <br>
-			  <label for="name"></label>
-			  <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="addr" name="addr">
-			  <br>
-			  <label for="state">State</label>
-			  <input type="state" class="form-control" id="state" name="state">
-			  <br>
-			  <label for="zip">Zip Code</label>
-			  <input type="zip" class="form-control" id="zip" name="zip">
-			</div>
+                    <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/Pages/payment.jsp" method="Post" >
+                        <div class="form-group col-sm-4">
+                            <label>First Name</label>
+                            <input type="name" class="form-control" name="fname"/>
+                            <br>
+                            <label>Last Name</label>
+                            <input type="name" class="form-control" name="lname"/>
+                            <br>
+                            <label>Address</label>
+                            <input type="address" class="form-control" name="addr" required/>
+                            <br>
+                            <label for="name"></label>
+                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addr"/>
+                            <br>
+                            <label>City</label>
+                            <input type="city" class="form-control" name="city" required/>
+                            <br>
+                            <label>State</label>
+                            <input type="state" class="form-control" name="state" required/>
+                            <br>
+                            <label>Zip Code</label>
+                            <input type="zip" class="form-control" name="zip" required/>
+                            <br>
+                            <hr class="style2">               
+                            <h3 style="font-size:2vw;">Contact Information</h3>
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" required/>
+                            <br>
+                            <label for="phone">Phone Number</label>
+                            <input type="phone" class="form-control" id="phone" name="phone" required/>
+                            <br>
+                            <hr class="style2">
+                            <h3 style="font-size:1.5vw;">Billing Address</h3>
+                            <label>First Name</label>
+                            <input type="name" class="form-control" name="fname"/>
+                            <br>
+                            <label>Last Name</label>
+                            <input type="name" class="form-control" name="lname"/>
+                            <br>
+                            <label>Address</label>
+                            <input type="address" class="form-control" name="addr" required/>
+                            <br>
+                            <label for="name"></label>
+                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addr"/>
+                            <br>
+                            <label>City</label>
+                            <input type="city" class="form-control" name="city" required/>
+                            <br>
+                            <label>State</label>
+                            <input type="state" class="form-control" name="state" required/>
+                            <br>
+                            <label>Zip Code</label>
+                            <input type="zip" class="form-control" name="zip" required/>
+                            <br>
+                        </div>
 			<div class="col-sm-3">
 			</div>
 			<div class="form-group col-sm-3">
@@ -126,7 +164,7 @@
                             <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
 				<br>
 				<br>
-                                <a href="payment.jsp"<button type="button" class="btn btn-primary btn-block">CONTINUE TO PAYMENT</button></a>
+                                <button type="submit" class="btn btn-primary btn-block">CONTINUE TO PAYMENT</button>
 			</div>
 			<br>
 			<br>
@@ -144,84 +182,7 @@
 				<p><a href="#" data-toggle="tooltip">Remove</a></p>
 			</div>
                    </form>
-		</div>
-	
-	<hr class="style2">
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		<h3 style="font-size:2vw;">Contact Information</h3>
-		  <label for="email">Email Address</label>
-		  <input type="email" class="form-control" id="email" name="email">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="phone">Phone Number</label>
-		  <input type="phone" class="form-control" id="phone" name="phone">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-		<div class="form-group col-sm-4">
-		<h3 style="font-size:1.5vw;">Billing Address</h3>
-		</div>
-	</div>
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-3">
-		<label for="name">First Name</label>
-		  <input type="name" class="form-control" id="name" name="name">
-		</div>
-		<div class="form-group col-sm-3">
-		<label for="name">Last Name</label>
-		  <input type="name" class="form-control" id="name" name="name">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="name">Address</label>
-		  <input type="address" class="form-control" id="addr" name="addr">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="name"></label>
-		  <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="addr" name="addr">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-2">
-		  <label for="state">State</label>
-		  <input type="state" class="form-control" id="state" name="state">
-		</div>
-		<div class="form-group col-sm-2">
-		  <label for="state">Zip Code</label>
-		  <input type="zip" class="form-control" id="zip" name="zip">
 		</div>	
-              </form>
-	</div>
         </div>
 	<br>
 	<br>
@@ -240,6 +201,8 @@
                     </div>
             </div>
 	</footer>
+        <script
+            
     </body>
 </html>
 

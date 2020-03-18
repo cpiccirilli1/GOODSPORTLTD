@@ -34,6 +34,9 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -49,9 +52,8 @@
                 </ul>
             </div>
         </nav>
-		<div class="container">		
+		<div class="container">	
 			<h2 style="font-size:2.5vw;">Your Cart</h2>
-			<h2 style="font-size:1vw;">Order Number #</h2>
 			<hr class="style2">
                         <%
                             ItemList cart = new ItemList();
@@ -82,28 +84,36 @@
                                     Item i1 = cart.iArr.get(i);
                                     cost += i1.getPrice();
                         %>
+                            
                             <div class="row">
+                                <div class="form-group col-sm-3">
+                                </div>
 				<div class="form-group col-sm-3">
                                     <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
 				</div>
-				<div class="form-group col-sm-5">
+				<div class="form-group col-sm-4">
                                     <h3 style="font-size:1.2vw;">Product ID: <%=i1.getId()%></h3>
+                                    <p><a href="#" data-toggle="tooltip">Remove</a></p>
 				</div>
                             </div>
+                        
                         <%
                                 }
                             }
                         %>
-                        <div class="form-group col-sm-4">
-                            <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
-                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
-                            <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
-                            <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
-                            <br>
-                            <a href="purchase.jsp"<button type="button" class="btn btn-primary btn-block">Proceed to Checkout</button></a>
-                            <br>
-                        </div>
-		</div>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
+                                    <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
+                                    <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
+                                    <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
+                                    <br>
+                                    <a href="purchase.jsp"<button type="button" class="btn btn-primary btn-block">PROCEED TO CHECKOUT</a>
+                                    <br>
+                                </div>
+                            </div>
 		</div>
                 <footer>									<!-- footer begins here -->
 			<div class="footer">
