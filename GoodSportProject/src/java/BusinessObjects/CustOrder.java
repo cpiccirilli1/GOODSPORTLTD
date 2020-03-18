@@ -15,7 +15,7 @@ public class CustOrder {
     String address;
     String phonenum;
     String email;
-    //boolean orderStatus;
+    String orderStatus;
 
     public void CustOrder() {
         orderID = 0;
@@ -25,12 +25,12 @@ public class CustOrder {
         address = "";
         phonenum = "";
         email = "";
-        //orderStatus = false;
+        orderStatus = "";
     }
 
-    public void CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail /*boolean status*/) {
+    public void CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
         
-        //orderStatus = status;
+
     }
 
     public int getOrder() {
@@ -56,6 +56,10 @@ public class CustOrder {
     public String getEmail() {
         return email;
     }
+    
+    public String getStatus() {
+        return orderStatus;
+    }
 
     public void selectDB(int OrderID) {
         try {
@@ -70,17 +74,18 @@ public class CustOrder {
                 address = rs.getString("Address");
                 phonenum = rs.getString("PhoneNum");
                 email = rs.getString("Email");
+                orderStatus = rs.getString("OrderStatus");
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
     
-    public void insertDB(int order, String ID, String lname, String fname, String add, String phone, String mail /*boolean status*/) {
+    public void insertDB(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
         try {
             String sql = "INSERT INTO CustOrders VALUES ('" + order + "', '" + 
                     ID + "', '" + lname + "', '" + fname + "', '" + add + 
-                    "', '" + phone + "', '" + mail + "')";
+                    "', '" + phone + "', '" + mail + "', '" + orderStatus + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
@@ -88,12 +93,21 @@ public class CustOrder {
         }
     }
     
-    public void updateDB(int order, String ID, String lname, String fname, String add, String phone, String mail /*boolean status*/) {
+    public void updateDB(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
     try {
             String sql = "UPDATE CustOrders SET OrderID = '" + order + "', CustID = '"
                     + ID + "', LastName = '" + lname + "', FirstName = '" +
-                    fname + "', Address = '" + add + "', PhoneNum = '" + phone + "', Email = '" + mail +
-                    "' WHERE CustID = '" + ID + "'";
+                    fname + "', Address = '" + add + "', PhoneNum = '" + phone + "', Email = '" + mail + "', OrderStatus = '" + orderStatus + "' WHERE CustID = '" + ID + "'";
+            Statement stmt = Customer.connectDB();
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void updateStatus(int order) {
+        try {
+            String sql = "UPDATE CustOrders SET OrderStatus = 'Shipped' WHERE OrderID = '" + order + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
@@ -110,4 +124,5 @@ public class CustOrder {
             System.out.println(e);
         }
     }
+     
 }

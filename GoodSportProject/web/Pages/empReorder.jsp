@@ -12,16 +12,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../CSS/empstylesheet.css">
+        <link rel="stylesheet" href="/CSS/empstylesheet.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Employee Portal</title>
 
     </head>
-    <% EmpOrderList restock = new EmpOrderList();
-    restock.findAllItems();
-    %>
-    
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -29,13 +25,14 @@
                     <a class="navbar-brand" href="#">GoodSports</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="empPortal.jsp">Order Fulfillment</a></li>
-                    <li><a href="empinventory.jsp">Check Inventory</a></li>
-                    <li><a href="empReorder.jsp">Reorder Products</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/empPortal.jsp">Order Fulfillment</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp">Check Inventory</a></li>
+                    <li class="active"><a href=http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li>
                 </ul>
             </div>
         </nav>
         <div class="mx-auto" style="width: 90%;">
+            <div class="container">
             <h1>Inventory Reorder</h1>
             <br/>
             <div class="well">
@@ -60,6 +57,9 @@
             
              <h1>Reorder History</h1>
         <table class="table table-striped">
+            <% EmpOrderList restock = new EmpOrderList();
+    restock.findAllItems();
+    %>
             <thead>
                 <tr>
                     <th scope="col">EmpOrderID</th>
@@ -81,6 +81,7 @@
                 <% } %>
             </tbody>
         </table>
+        </div>
         </div>
     </body>
 </html>

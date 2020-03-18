@@ -4,6 +4,7 @@
     Author     : natha
 --%>
 <%@page import="BusinessObjects.CustOrder"%>
+<%@page import="BusinessObjects.ShippedOrderList"%>
 <%@page import="BusinessObjects.OrderList"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,9 +20,9 @@
 
     </head>
     <% OrderList order = new OrderList();
-       order.findAllItems();
+        order.findOpenItems();
     %>
-    
+
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -29,45 +30,105 @@
                     <a class="navbar-brand" href="#">GoodSports</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/Pages/empPortal.jsp">Order Fulfillment</a></li>
-                    <li><a href="/Pages/empinventory.jsp">Check Inventory</a></li>
-                    <li><a href="/Pages/empReorder.jsp">Reorder Products</a></li>
+                    <li class="active"><a href="http://localhost:8080/GoodSportProject/Pages/empPortal.jsp">Order Fulfillment</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp">Check Inventory</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li>
                 </ul>
             </div>
         </nav>
-        <div class="mx-auto" style="width: 90%;">
-        <h1>Order Fulfillment</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">CustID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Street</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                   <%-- <th scope="col">Payment Complete?</th>
-                    <th scope="col">Order Status</th> --%>
-                </tr>
-            </thead>
-            <tbody>
-                <% for(int i = 0; i < order.iArr.size(); i++)
-                {
-                 CustOrder co = new CustOrder();
-                 co = order.iArr.get(i);
-                %>
-                <tr>
-                    <td><%=co.getOrder()%></td>
-                    <td><%=co.getFname()%></td>
-                    <td><%=co.getLname()%></td>
-                    <td><%=co.getAddress()%></td>
-                    <td><%=co.getPhone()%></td>
-                    <td><%=co.getEmail()%></td>
-                    
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
-        </div>
-    </body>
+            <div class="container">
+                <h1>View Customer Orders</h1>
+                <p>Open orders will need to be fulfilled first. All completed orders will be shown on the Completed Orders tabs for viewing/deleting.</p>
+                <p>Please enter the OrderID that needs to be shipped.</p>
+                
+                         <form class="form-inline" method="post" action="http://localhost:8080/GoodSportProject/ShipCustOrderServlet">
+                    <div class="form-group">
+                        <label for="order">OrderID:</label>
+                        <input type="text" class="form-control" name="order" id="orderNo">
+                    </div>
+                    <button type="submit" name="action" value="changeToShipped" class="btn btn-default">Submit order</button>
+                </form> 
+                <br>
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#open">Open Orders</a></li>
+                    <li><a data-toggle="tab" href="#shipped">Completed Orders</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="open" class="tab-pane fade in active">
+                        <h1>Open Orders</h1>
+                        
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">OrderID</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Street</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Order Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (int i = 0; i < order.iArr.size(); i++) {
+                                        CustOrder co = new CustOrder();
+                                        co = order.iArr.get(i);
+                                %>
+                                <tr>
+                                   <td><%=co.getOrder()%></td>
+                                    <td><%=co.getFname()%></td>
+                                    <td><%=co.getLname()%></td>
+                                    <td><%=co.getAddress()%></td>
+                                    <td><%=co.getPhone()%></td>
+                                    <td><%=co.getEmail()%></td>
+                                    <td><%=co.getStatus()%></td>                    
+                                </tr>
+                                <% }%>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <div id="shipped" class="tab-pane fade">
+                        <h1>Completed Orders</h1>
+                                <table class="table table-striped">
+                                    <%
+                                        ShippedOrderList shippedOrder = new ShippedOrderList();
+                                        shippedOrder.findShippedItems();
+                                    %>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">OrderID</th>
+                                            <th scope="col">First Name</th>
+                                            <th scope="col">Last Name</th>
+                                            <th scope="col">Street</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Order Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for (int i = 0; i < shippedOrder.iArr.size(); i++) {
+                                                CustOrder co2 = new CustOrder();
+                                                co2 = shippedOrder.iArr.get(i);
+                                        %>
+                                        <tr>
+                                            <td><%=co2.getOrder()%></td>
+                                            <td><%=co2.getFname()%></td>
+                                            <td><%=co2.getLname()%></td>
+                                            <td><%=co2.getAddress()%></td>
+                                            <td><%=co2.getPhone()%></td>
+                                            <td><%=co2.getEmail()%></td>
+                                            <td><%=co2.getStatus()%></td>
+
+                                        </tr>
+                                        <% }%>
+                                    </tbody>
+                                </table>
+                    </div>
+                </div>
+
+            </div>
+</body>
 </html>

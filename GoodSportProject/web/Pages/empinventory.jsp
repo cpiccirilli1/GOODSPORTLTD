@@ -16,7 +16,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Inventory</title>
-
+        
     </head>
     <% ItemList inventory = new ItemList();
     inventory.findAllItems();
@@ -30,22 +30,26 @@
                     <a class="navbar-brand" href="#">GoodSports</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="/Pages/empPortal.jsp">Order Fulfillment</a></li>
-                    <li class="active"><a href="/Pages/empinventory.jsp">Check Inventory</a></li>
-                    <li><a href="/Pages/empReorder.jsp">Reorder Products</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/empPortal.jsp">Order Fulfillment</a></li>
+                    <li class="active"><a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp">Check Inventory</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li>
                 </ul>
             </div>
         </nav>
-        <div class="mx-auto" style="width: 90%;">
+        <div class="mx-auto" style="width: 95%;">
         <h1>Inventory</h1>
+        <h2><a href="http://localhost:8080/GoodSportProject/Pages/UpdateItemList.jsp">Update product listing here.</a></h2>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">ProductID</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Sport</th>
                     <th scope="col">Shelf Price</th>
                     <th scope="col">Quantity</th>
+                    <th scope="col">Img Link</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,13 +62,17 @@
                     <td><%=i1.getId()%></td>
                     <td><%=i1.getProdName()%></td>
                     <td><%=i1.getProdDesc()%></td>
+                    <td><%=i1.getSport()%></td>
+                    <td><%=i1.getCategory()%></td>
                     <td><%=i1.getPrice()%></td>
                     <td><%=i1.getQuantity()%></td>
+                    <td><a href="<%=i1.getimgLink()%>"><%=i1.getimgLink()%></a></td>
                 </tr>
                 <% } %>
                
             </tbody>
         </table>
         </div>
+            
     </body>
 </html>
