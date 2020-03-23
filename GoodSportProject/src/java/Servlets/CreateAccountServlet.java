@@ -42,7 +42,7 @@ public class CreateAccountServlet extends HttpServlet {
         String lName = request.getParameter("lastNameSignUp");
         String phone = request.getParameter("phoneNumberSignUp");
         String adEntered = request.getParameter("address");
-        String address = "null";
+        String address = "NA,NA,NA,NA,NA";
         
         System.out.println(email);
         System.out.println(passwd);

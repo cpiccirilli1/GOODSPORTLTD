@@ -58,20 +58,23 @@
                         <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
-                            try
+                        try {
+                              cart = (ItemList)session.getAttribute("cart");
+                              cart.getArray();
+                          } catch (NullPointerException npe) {
+                              cart = new ItemList();
+                              try
                             {
                                 Customer c1 = (Customer)session.getAttribute("c1");
                                 cart.populateCart(c1.getCart().split(","));
+                                cart.display();
                             } catch (NullPointerException e)
                             {
-                                try {
-                                    cart = (ItemList)session.getAttribute("cart");
-                                    cart.getArray();
-                                } catch (NullPointerException npe) {
-                                    cart = new ItemList();
-                                }
+              
                                 
                             }
+                          }
+                            
                             double cost = 0;
                             if (cart.iArr.size() == 0) {
                                 %>
@@ -110,7 +113,7 @@
                                     <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
                                     <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
                                     <br>
-                                    <a href="purchase.jsp"<button type="button" class="btn btn-primary btn-block">PROCEED TO CHECKOUT</a>
+                                    <a href="http://localhost:8080/GoodSportProject/Pages/purchase.jsp"<button type="button" class="btn btn-primary btn-block">PROCEED TO CHECKOUT</a>
                                     <br>
                                 </div>
                             </div>

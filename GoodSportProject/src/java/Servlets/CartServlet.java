@@ -51,6 +51,7 @@ public class CartServlet extends HttpServlet {
             }
             c1.updateCart(newCart);
             ses1.setAttribute("c1", c1);
+            ses1.setAttribute("cart", shoppingCart);
         } catch(NullPointerException e) {
             ItemList cart = new ItemList();
             if (ses1.getAttribute("cart") != null) {
@@ -59,7 +60,7 @@ public class CartServlet extends HttpServlet {
             cart.addToCart(itemID);
             ses1.setAttribute("cart", cart);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/shoppingCart.jsp");
             rd.forward(request, response);
         }
         

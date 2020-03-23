@@ -40,6 +40,7 @@ public class ItemList {
             Item i1 = new Item();
             i1.selectDB(Integer.parseInt(cart[i]));
             iArr.add(i1);
+            System.out.println(i);
         }
     }
         public void selectSportDB(String sport){
