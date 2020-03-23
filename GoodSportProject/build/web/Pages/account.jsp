@@ -116,6 +116,7 @@
             
             <tr>
                 <td><a href="http://localhost:8080/GoodSportProject/Pages/accountedit.jsp">(edit)</a></td>
+                <td><a href="http://localhost:8080/GoodSportProject/LogoutServlet">Logout</a></td>
             </tr>
         </table>
         <% } %>
