@@ -36,6 +36,7 @@ public class LogoutServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
         ses1.removeAttribute("c1");
+        ses1.removeAttribute("cart");
         RequestDispatcher rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
         rd.forward(request, response);
     }

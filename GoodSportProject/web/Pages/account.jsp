@@ -98,18 +98,15 @@
                 <td>Phone Number:</td><td><%= phone %></td>
             </tr>
             <tr>
-                <td>Address:</td><td><%= addr1 %><br/>
+                <td>Address:</td><td><%= addr1 %>
                     <% 
-                        if (addr2==null){
+                        if (addr2!=null){
                             %>
-                            <%= city+", "+state+" "+ zip %>
-                            
+                            <br/><%= addr2 %> <br/> 
                        <%     
-                        }else{
+                        }
                     %>
-                    <%= addr2 %><br/>
                     <%= city+", "+state+" "+ zip %>
-                    <% } %>
                 
                 </td>
             </tr>

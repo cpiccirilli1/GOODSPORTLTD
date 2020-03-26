@@ -74,7 +74,7 @@ public class accountservlet extends HttpServlet {
            
            
             System.out.println("AccountServlet: Successful insert");
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/acctsuccess.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/account.jsp");
             rd.forward(request, response);
         }
         
