@@ -48,6 +48,9 @@ public class LoginServlet extends HttpServlet {
                 customer = true;
                 ses1.setAttribute("c1", c1);
                 ses1.setAttribute("customer", customer);
+                ItemList cart = new ItemList();
+                cart.populateCart(c1.getCart().split(","));
+                ses1.setAttribute("cart", cart);
                 rd = request.getRequestDispatcher("/Pages/account.jsp");
                 rd.forward(request, response);
             } else {
