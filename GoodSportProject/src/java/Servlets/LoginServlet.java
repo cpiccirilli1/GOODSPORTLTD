@@ -50,6 +50,14 @@ public class LoginServlet extends HttpServlet {
                 ses1.setAttribute("customer", customer);
                 ItemList cart = new ItemList();
                 cart.populateCart(c1.getCart().split(","));
+                if (ses1.getAttribute("cart") != null) {
+                    ItemList guestCart = new ItemList();
+                    guestCart = (ItemList)ses1.getAttribute("cart");
+                    for (int i = 0; i < guestCart.iArr.size(); i++) {
+                        cart.addToCart(String.valueOf(guestCart.iArr.get(i).getId()));
+                    }
+                    c1.updateCart(cart.toString());
+                }
                 ses1.setAttribute("cart", cart);
                 rd = request.getRequestDispatcher("/Pages/account.jsp");
                 rd.forward(request, response);

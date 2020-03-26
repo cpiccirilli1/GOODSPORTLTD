@@ -85,6 +85,7 @@
                                 {
                                     Item i1 = cart.iArr.get(i);
                                     cost += i1.getPrice();
+                                    int id = i1.getId();
                         %>
                             
                             <div class="row">
@@ -94,8 +95,8 @@
                                     <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
 				</div>
 				<div class="form-group col-sm-4">
-                                    <h3 style="font-size:1.2vw;">Product ID: <%=i1.getId()%></h3>
-                                    <p><a href="#" data-toggle="tooltip">Remove</a></p>
+                                    <h3 style="font-size:1.2vw;">Product ID: <%=id%></h3>
+                                    <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
 				</div>
                             </div>
                         

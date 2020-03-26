@@ -6,7 +6,6 @@
 package Servlets;
 
 import BusinessObjects.Customer;
-import BusinessObjects.Item;
 import BusinessObjects.ItemList;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author mitho
  */
-@WebServlet(name = "CartServlet", urlPatterns = {"/CartServlet"})
-public class CartServlet extends HttpServlet {
+@WebServlet(name = "RemoveCartServlet", urlPatterns = {"/RemoveCartServlet"})
+public class RemoveCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,27 +35,16 @@ public class CartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        System.out.println("In remove servlet");
         HttpSession ses1 = request.getSession();
-        String itemID = request.getParameter("itemNumber");
+        ItemList cart = (ItemList)ses1.getAttribute("cart");
+        String id = request.getParameter("id");
+        cart.removeFromCart(id);
         try {
             Customer c1 = (Customer)ses1.getAttribute("c1");
-            ItemList shoppingCart = new ItemList();
-            if (!c1.getCart().equals("")) {
-                String[] cart = c1.getCart().split(",");
-                shoppingCart.populateCart(cart);
-            }
-            shoppingCart.addToCart(itemID);
-            String newCart = shoppingCart.toString();
-            c1.updateCart(newCart);
-            ses1.setAttribute("c1", c1);
-            ses1.setAttribute("cart", shoppingCart);
-        } catch(NullPointerException e) {
-            ItemList cart = new ItemList();
-            if (ses1.getAttribute("cart") != null) {
-                cart = (ItemList)ses1.getAttribute("cart");
-            }
-            cart.addToCart(itemID);
-            ses1.setAttribute("cart", cart);
+            c1.updateCart(cart.toString());
+        } catch (Exception e) {
+            
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/shoppingCart.jsp");
             rd.forward(request, response);

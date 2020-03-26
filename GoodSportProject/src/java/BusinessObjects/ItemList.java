@@ -43,6 +43,11 @@ public class ItemList {
             }
         }
     }
+    
+    public void removeFromCart(String itemID) {
+        System.out.println(iArr.remove(Integer.parseInt(itemID)));
+    }
+    
     public void populateCart(String[] cart) {
         for(int i = 0; i < cart.length; i++) {
             Item i1 = new Item();
@@ -50,7 +55,8 @@ public class ItemList {
             iArr.add(i1);
         }
     }
-        public void selectSportDB(String sport){
+    
+    public void selectSportDB(String sport){
         try{
             String sql = "SELECT * FROM Inventory WHERE Sport = '" + sport + "'";
             Statement stmt = Customer.connectDB();
@@ -104,6 +110,15 @@ public class ItemList {
         for(Item i : iArr){
             i.display();
         }
+    }
+    
+    @Override
+    public String toString() {
+        String newCart = "";
+            for (int i = 0; i < iArr.size(); i++) {
+                newCart = newCart.concat(iArr.get(i).getId() + ",");
+            }
+        return newCart;
     }
     
     public static void main(String[] args){
