@@ -2,6 +2,7 @@ package BusinessObjects;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -9,6 +10,7 @@ import java.util.ArrayList;
  */
 public class ItemList {
     public ArrayList<Item> iArr = new ArrayList<>();
+    private List<Integer> added = new ArrayList<>();
     int iCount;
     public void findAllItems() {
         try {
@@ -32,15 +34,20 @@ public class ItemList {
     
     public void addToCart(String itemID) {
         Item i1 = new Item();
-        i1.selectDB(Integer.parseInt(itemID));
-        iArr.add(i1);
+        int id = Integer.parseInt(itemID);
+        i1.selectDB(id);
+        for (int i = 0; i <= added.size(); i++) {
+            if (!(added.contains(id)) && (i == added.size())) {
+                added.add(id);
+                iArr.add(i1);
+            }
+        }
     }
     public void populateCart(String[] cart) {
         for(int i = 0; i < cart.length; i++) {
             Item i1 = new Item();
             i1.selectDB(Integer.parseInt(cart[i]));
             iArr.add(i1);
-            System.out.println(i);
         }
     }
         public void selectSportDB(String sport){

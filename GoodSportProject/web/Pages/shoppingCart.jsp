@@ -67,7 +67,6 @@
                             {
                                 Customer c1 = (Customer)session.getAttribute("c1");
                                 cart.populateCart(c1.getCart().split(","));
-                                cart.display();
                             } catch (NullPointerException e)
                             {
               

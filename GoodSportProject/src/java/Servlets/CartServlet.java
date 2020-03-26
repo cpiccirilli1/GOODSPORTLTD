@@ -6,6 +6,7 @@
 package Servlets;
 
 import BusinessObjects.Customer;
+import BusinessObjects.Item;
 import BusinessObjects.ItemList;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
