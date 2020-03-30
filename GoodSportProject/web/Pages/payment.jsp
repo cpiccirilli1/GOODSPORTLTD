@@ -54,7 +54,7 @@
 		<div class="row">
                 <div class="col-sm-1">
 		</div>
-                <form action="http://localhost:8080/GoodSportProject/CustPaymentServlet" method="post" novalidate="novalidate" class="needs-validation">
+                <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
 		<div class="form-group col-sm-4">
 			<h3 style="font-size:2vw;">Payment Information</h3>
                         <i class="fa fa-cc-visa" style="font-size:30px"></i>
@@ -64,39 +64,25 @@
                         <i class="fa fa-cc-jcb" style="font-size:30px"></i>
                         <br>
                         <br>
-                         <label for="nameoncard" class="control-label mb-1">Name on card</label>
-                            <input id="name" name="name" type="text" class="form-control name" required autocomplete="off"  >
-                            <span class="invali>-feedback">Please enter name on card</span>
-			  <br>
-                          <br>
 			  <label for="cc-number" class="control-label mb-1">Card number</label>
-                            <input id="cc-number" name="cc-number" type="text" class="form-control cc-number identified visa" required autocomplete="off"  >
+                            <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" required autocomplete="off"  >
                             <span class="invali>-feedback">Enter a valid 12 to 16 digit card number</span>
 			  <br>
                           <br>
 			   <label for="cc-exp" class="control-label mb-1">Expiration</label>
-                             <input id="cc-exp" name="cc-exp" type="text" class="form-control cc-exp" required placeholder="MM / YY" autocomplete="cc-exp">
+                             <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" required placeholder="MM / YY" autocomplete="cc-exp">
                              <span class="invalid-feedback">Enter the expiration date</span>
 			  <br>
                           <br>
 			  <label for="x_card_code" class="control-label mb-1">CVV</label>
-                          <input id="cc-cvv" name="cc-cvv" type="text" class="form-control cc-cvc" required autocomplete="off">
+                          <input id="cc-cvv" name="cc-cvv" type="tel" class="form-control cc-cvc" required autocomplete="off">
                                 <span class="invali>-feedback">Enter the 3-digit code on back</span>
-			  <br>
-                          <br>
-                              <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                        <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                        <span id="payment-button-amount">PLACE MY ORDER </span>
-                                        <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                      </a>
+			  <br>	  
 		</div>
                 </form>
 		<div class="form-group col-sm-1">
 		</div>
 		<div class="col-sm-4">
-                    <br>
-                    <br>
-                    <br>
 			<h3 style="font-size:1.6vw;">Order Summary</h3>
 			 <%
                             ItemList cart = new ItemList();
@@ -145,7 +131,13 @@
                             <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
 				<br>
 				<br>
-                               
+                                <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
+                                   <a href="orderConfirmation.jsp"<button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                        <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                        <span id="payment-button-amount">PLACE MY ORDER </span>
+                                        <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                      </a>
+                                </form>
 		</div>
 		</div>
 		</div>
