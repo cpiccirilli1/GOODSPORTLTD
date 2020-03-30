@@ -9,9 +9,16 @@ import java.util.List;
  * @author mitho
  */
 public class ItemList {
+
+    /**
+     * @return the iCount
+     */
+    public int getCount() {
+        return iCount;
+    }
     public ArrayList<Item> iArr = new ArrayList<>();
-    private List<Integer> added = new ArrayList<>();
-    int iCount;
+    public List<Integer> added = new ArrayList<>();
+    public int iCount;
     public void findAllItems() {
         try {
             String sql = "SELECT * FROM Inventory";
@@ -28,7 +35,7 @@ public class ItemList {
     }
     
     public ArrayList getArray(){
-        return this.iArr;
+        return iArr;
     }
     
     
@@ -122,9 +129,10 @@ public class ItemList {
     }
     
     public static void main(String[] args){
-        ItemList list = new ItemList();
-        list.selectSportDB("football");
-        list.display();
+        ItemList il = new ItemList();
+        il.get_related("Ball");
+        il.display();
+        
         
         
     }
