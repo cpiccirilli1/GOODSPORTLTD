@@ -62,43 +62,82 @@
              </div>
          </nav>
         <br>
-        <img src= "<%=img%>" alt="testpic" height="160" width="240" id = "floatright"/>
-        <div class="container" >
-            <div class=""><!--/product-information-->
+        <div class="container" style="background-color: #f2f2f2;">
+            <div class="row">
+            <div class="col-sm-3">
+            <img src= "<%=img%>" alt="testpic" height="160" width="240" id = "floatright"/>
+            </div>
+            <div class="col-sm-9"><!--/product-information-->
                 <form>
                     <h2><%= name %></h2>
+                    <hr class="style2">
                     <input type="hidden" value="<%= id %>" name="itemNumber">
-                    <p>Prod id: <%= id %></p>
-                            <p>Price: <%= price %></p>
+                    <h3 style="font-size:1.4vw; font-weight: bold;">Product ID: <%= id %></h3>
+                    <h3 style="font-size:1.4vw; font-weight: bold;">Price: $<%= price %></h3>
+                            <div class="row">
+                            <div class="col-sm-2">
                             <label for="lname"> Quantity: <%= quant %></label>
-                            <input type="text" id="lname" name="Quantity" value="1" />
-
+                            <input type="text" class="form-control" id="lname" name="Quantity" value="1" /> 
+                            </div>
+                            </div>
                             <%
                                 if (quant > 0){
                                     avail = "In Stock";
 
                                 %>
                                 <br/><a href="http://localhost:8080/GoodSportProject/CartServlet?itemNumber=<%=id%>">Add to Cart</a>
+                                <br>
                             <% } else{ %>
                             Out of stock!
                             <% } %>
+                            <br>
                     <p><b>Availability:</b> <%= avail %></p>
                 </form>
                     <p><b>Condition:</b> New</p>
                     <p><b>Description:</b> <%=desc%></p>
                     <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+                    <br>
+                    <br>
+            </div>
+            </div>
             </div><!--/product-information-->
+            <br>
+            <br>
+            <br>
         </div>
         <footer>									<!-- footer begins here -->
             <div class="footer">
-                    <div class="signature">
-                            <h2><a href="index.jsp">Good Sport</a></h2>
-                            <p>This website was create and designed by Project Team #1</p>
-                    </div>
-                    <div class="contactcontainer">
-                            <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                    <div class="signature container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <br>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
                             </div>
+                           
+                           <div class="col-sm-3">
+                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                            <br>
+                           </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-2">
+                                <div class="contactbutton">
+                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                     </div>
             </div>
 	</footer>

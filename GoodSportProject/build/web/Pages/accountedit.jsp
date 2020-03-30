@@ -12,6 +12,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
+        <link href="http://localhost:8080/GoodSportProject/CSS/accountEditCSS.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -69,58 +70,88 @@
                 </ul>
             </div>
         </nav>
-        <h1 class="center">Update Customer Account</h1>
+        <div class="container">  
+        <div class="row">
+         <div class="col-sm-3"></div>  
+         <div class="col-sm-6">
+             <h1 style="font-size:2vw;" class="center">Update Customer Account</h1>
+            
         <form method="post" action="http://localhost:8080/GoodSportProject/accountservlet">
-        <table class="center" border="0">
+        <table class="table">          
+            <tr>
+                <td style="font-weight: bold;">First Name</td><td><input type="text" class="form-control" name="firstname" value="<%= fname %>"></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Last Name: </td><td><input type="text" class="form-control" name="lastname" value="<%= lname %>"></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Email:</td><td><input type="text" class="form-control" name="email" value="<%= email %>"></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Phone Number:  </td><td><input type="text" class="form-control" name="phonenum" value="<%= phone %>"></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Address:</td><td><input type="text" class="form-control" name="address1" value="<%= add1 %>"></td>
+            </tr>
             
             <tr>
-                <td>First Name</td><td><input type="text" name="firstname" value="<%= fname %>"></td>
-            </tr>
-            <tr>
-                <td>Last Name: </td><td><input type="text" name="lastname" value="<%= lname %>"></td>
-            </tr>
-            <tr>
-                <td>Email:</td><td><input type="text" name="email" value="<%= email %>"></td>
-            </tr>
-            <tr>
-                <td>Phone Number:</td><td><input type="text" name="phonenum" value="<%= phone %>"></td>
-            </tr>
-            <tr>
-                <td>Address:</td><td><input type="text" name="address1" value="<%= add1 %>"></td>
-            </tr>
-            
-            <tr>
-                <td>Address cont:</td><td><input type="text" name="address2" value="<%= add2 %>"></td>
+                <td style="font-weight: bold;">Address cont:</td><td><input type="text" class="form-control" name="address2" value="<%= add2 %>"></td>
             </tr>
             <tr>
                 
-                <td>City:</td><td><input type="text" name="city" value="<%= city %>"></td>
+                <td style="font-weight: bold;">City:</td><td><input type="text" class="form-control" name="city" value="<%= city %>"></td>
                 
             </tr>            
             <tr>
-                <td>State:</td><td><input type="text" name="state" value="<%= state %>"></td>
+                <td style="font-weight: bold;">State:</td><td><input type="text" class="form-control" name="state" value="<%= state %>"></td>
             </tr>
             <tr>
-                <td>Zip:</td><td><input type="text" name="zip" value="<%= zip %>"></td>
+                <td style="font-weight: bold;">Zip:</td><td><input type="text" class="form-control" name="zip" value="<%= zip %>"></td>
             </tr>
             <tr>
-                <td>Password:</td><td><input type="text" name="password" value="<%= pass %>"></td>
+                <td style="font-weight: bold;">Password:</td><td><input type="text" class="form-control" name="password" value="<%= pass %>"></td>
             </tr>
             
             <tr>
-                <td></td><td><input type="submit" name="submit-btn"></td>
+                <td></td><td><button type="submit" class="btn btn-default">Update</button></td>
         </table>
+         </div>
+        </div>
+        </div>
         </form>
+            <br>
         <footer>									<!-- footer begins here -->
             <div class="footer">
-                    <div class="signature">
-                            <h2><a href="index.jsp">Good Sport</a></h2>
-                            <p>This website was create and designed by Project Team #1</p>
-                    </div>
-                    <div class="contactcontainer">
-                            <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                    <div class="signature container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <br>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
                             </div>
+                           <div class="col-sm-3">
+                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                            <br>
+                           </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-2">
+                                <div class="contactbutton">
+                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                     </div>
             </div>
 	</footer>

@@ -11,8 +11,9 @@
     <head>
         <meta charset="utf-8">
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
+        <link href="http://localhost:8080/GoodSportProject/CSS/accountCSS.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Good Sport</title>
@@ -85,20 +86,22 @@
                 
             %>
         
-        <h1 class="center">Customer Account</h1>
-        
-        <table class="center" border="0">
-            
+       <div class="container">  
+        <div class="row">
+         <div class="col-sm-3"></div>  
+        <div class="col-sm-6">
+        <h1 style="font-size:2vw;" class="center">Customer Account</h1>
+        <table class="table">
             <tr>
-                <td>Name: </td><td><%= name %></td>
+                <td style="font-weight: bold;">Name: </td><td><%= name %></td>
             <tr>
-                <td>Email:</td><td><%= email %></td>
+                <td style="font-weight: bold;">Email:</td><td><%= email %></td>
             </tr>
             <tr>
-                <td>Phone Number:</td><td><%= phone %></td>
+                <td style="font-weight: bold;">Phone Number:</td><td><%= phone %></td>
             </tr>
             <tr>
-                <td>Address:</td><td><%= addr1 %>
+                <td style="font-weight: bold;">Address:</td><td><%= addr1 %>
                     <% 
                         if (addr2!=null){
                             %>
@@ -116,17 +119,48 @@
                 <td><a href="http://localhost:8080/GoodSportProject/LogoutServlet">Logout</a></td>
             </tr>
         </table>
+        </div>
+        </div>
+       </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
         <% } %>
         <footer>									<!-- footer begins here -->
             <div class="footer">
-                    <div class="signature">
-                            <h2><a href="index.jsp">Good Sport</a></h2>
-                            <p>This website was create and designed by Project Team #1</p>
-                    </div>
-                    <div class="contactcontainer">
-                            <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                    <div class="signature container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <br>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
                             </div>
+                           <div class="col-sm-3">
+                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                            <br>
+                           </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-2">
+                                <div class="contactbutton">
+                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                     </div>
             </div>
 	</footer>

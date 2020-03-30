@@ -52,8 +52,10 @@
                 </ul>
             </div>
         </nav>
-		<div class="container">	
-			<h2 style="font-size:2.5vw;">Your Cart</h2>
+        <br>
+        <br>
+        <div class="container" style="background-color: #f2f2f2;">	
+			<h2 style="font-size:2.5vw; font-weight: bold;">Your Cart</h2>
 			<hr class="style2">
                         <%
                             ItemList cart = new ItemList();
@@ -95,7 +97,7 @@
                                     <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
 				</div>
 				<div class="form-group col-sm-4">
-                                    <h3 style="font-size:1.2vw;">Product ID: <%=id%></h3>
+                                    <h3 style="font-size:1.2vw; font-weight: bold;" >Product ID: <%=id%></h3>
                                     <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
 				</div>
                             </div>
@@ -118,17 +120,41 @@
                                 </div>
                             </div>
 		</div>
+                <br>
+                <br>
                 <footer>									<!-- footer begins here -->
 			<div class="footer">
-				<div class="signature">
-					<h2><a href="index.jsp">Good Sport</a></h2>
-					<p>This website was create and designed by Project Team #1</p>
-				</div>
-				<div class="contactcontainer">
-					<div class="contactbutton">
-						<a href="" class="contact" title="Contact Info">Contact us</a>
-					</div>
-				</div>
+				<div class="signature container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <br>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                            </div>
+                           <div class="col-sm-3">
+                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                            <br>
+                           </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-2">
+                                <div class="contactbutton">
+                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
 			</div>
 		</footer>
 	</body>

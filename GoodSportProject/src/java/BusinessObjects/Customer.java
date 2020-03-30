@@ -144,7 +144,7 @@ public class Customer {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection conn;
             //Edit this next line of code starting with C: to the file path of the database
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\coope\\Documents\\DataBases\\GoodSportsDB.accdb");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rikam\\Desktop\\GoodSportsDB.accdb");
             Statement stmt = conn.createStatement();
             return stmt;
         } catch (Exception e) {
