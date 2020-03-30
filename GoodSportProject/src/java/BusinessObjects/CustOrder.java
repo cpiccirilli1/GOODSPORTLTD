@@ -93,6 +93,18 @@ public class CustOrder {
         }
     }
     
+    public void insertDBOrder(String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
+        try {
+            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, OrderStatus ) VALUES ('" + 
+                    ID + "', '" + lname + "', '" + fname + "', '" + add + 
+                    "', '" + phone + "', '" + mail + "', '" + orderStatus + "')";
+            Statement stmt = Customer.connectDB();
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     public void updateDB(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
     try {
             String sql = "UPDATE CustOrders SET OrderID = '" + order + "', CustID = '"

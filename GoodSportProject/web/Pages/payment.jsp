@@ -58,7 +58,7 @@
 		<div class="row">
                 <div class="col-sm-4">
                 <div class="payment">
-               <form action="http://localhost:8080/GoodSportProject/Pages/orderConfirmation.jsp" method="Post">
+               <form action="http://localhost:8080/GoodSportProject/CustPaymentServlet" method="Post">
                     <div class="form-group owner">
                         <br>
                         <label for="owner">Name on Card</label>

@@ -58,7 +58,7 @@
 		<hr class="style2">
 		<h3 style="font-size:2vw;">Shipping Information</h3>
 		<div class="row">
-                    <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/Pages/payment.jsp" method="Post" >
+                    <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/CustOrderServlet" method="Post" >
                         <div class="form-group col-sm-4">
                             <label>First Name</label>
                             <input type="name" class="form-control" name="fname"/>
@@ -92,25 +92,25 @@
                             <hr class="style2">
                             <h3 style="font-size:1.5vw;">Billing Address</h3>
                             <label>First Name</label>
-                            <input type="name" class="form-control" name="fname"/>
+                            <input type="name" class="form-control" name="fname2"/>
                             <br>
                             <label>Last Name</label>
-                            <input type="name" class="form-control" name="lname"/>
+                            <input type="name" class="form-control" name="lname2"/>
                             <br>
                             <label>Address</label>
-                            <input type="address" class="form-control" name="addr" required/>
+                            <input type="address" class="form-control" name="addr2" required/>
                             <br>
                             <label for="name"></label>
-                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addr"/>
+                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addr2"/>
                             <br>
                             <label>City</label>
-                            <input type="city" class="form-control" name="city" required/>
+                            <input type="city" class="form-control" name="city2" required/>
                             <br>
                             <label>State</label>
-                            <input type="state" class="form-control" name="state" required/>
+                            <input type="state" class="form-control" name="state2" required/>
                             <br>
                             <label>Zip Code</label>
-                            <input type="zip" class="form-control" name="zip" required/>
+                            <input type="zip" class="form-control" name="zip2" required/>
                             <br>
                         </div>
 			<div class="col-sm-3">
