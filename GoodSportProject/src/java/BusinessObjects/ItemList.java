@@ -2,14 +2,23 @@ package BusinessObjects;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author mitho
  */
 public class ItemList {
+
+    /**
+     * @return the iCount
+     */
+    public int getCount() {
+        return iCount;
+    }
     public ArrayList<Item> iArr = new ArrayList<>();
-    int iCount;
+    public List<Integer> added = new ArrayList<>();
+    public int iCount;
     public void findAllItems() {
         try {
             String sql = "SELECT * FROM Inventory";
@@ -26,15 +35,26 @@ public class ItemList {
     }
     
     public ArrayList getArray(){
-        return this.iArr;
+        return iArr;
     }
     
     
     public void addToCart(String itemID) {
         Item i1 = new Item();
-        i1.selectDB(Integer.parseInt(itemID));
-        iArr.add(i1);
+        int id = Integer.parseInt(itemID);
+        i1.selectDB(id);
+        for (int i = 0; i <= added.size(); i++) {
+            if (!(added.contains(id)) && (i == added.size())) {
+                added.add(id);
+                iArr.add(i1);
+            }
+        }
     }
+    
+    public void removeFromCart(String itemID) {
+        System.out.println(iArr.remove(Integer.parseInt(itemID)));
+    }
+    
     public void populateCart(String[] cart) {
         for(int i = 0; i < cart.length; i++) {
             Item i1 = new Item();
@@ -42,7 +62,8 @@ public class ItemList {
             iArr.add(i1);
         }
     }
-        public void selectSportDB(String sport){
+    
+    public void selectSportDB(String sport){
         try{
             String sql = "SELECT * FROM Inventory WHERE Sport = '" + sport + "'";
             Statement stmt = Customer.connectDB();
@@ -98,10 +119,29 @@ public class ItemList {
         }
     }
     
+    @Override
+    public String toString() {
+        String newCart = "";
+            for (int i = 0; i < iArr.size(); i++) {
+                newCart = newCart.concat(iArr.get(i).getId() + ",");
+            }
+        return newCart;
+    }
+    
+    public void storeIds() {
+         for (int i = 0; i < iArr.size(); i++) {
+            int id = iArr.get(i).getId();
+            if (!(added.contains(id))) {
+                added.add(id);
+            }
+         }
+    }
+    
     public static void main(String[] args){
-        ItemList list = new ItemList();
-        list.selectSportDB("football");
-        list.display();
+        ItemList il = new ItemList();
+        il.get_related("Ball");
+        il.display();
+        
         
         
     }

@@ -6,6 +6,7 @@
 package Servlets;
 
 import BusinessObjects.Customer;
+import BusinessObjects.Item;
 import BusinessObjects.ItemList;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -39,18 +40,12 @@ public class CartServlet extends HttpServlet {
         String itemID = request.getParameter("itemNumber");
         try {
             Customer c1 = (Customer)ses1.getAttribute("c1");
-            ItemList shoppingCart = new ItemList();
-            if (!c1.getCart().equals("")) {
-                String[] cart = c1.getCart().split(",");
-                shoppingCart.populateCart(cart);
-            }
+            ItemList shoppingCart = (ItemList)ses1.getAttribute("cart");
             shoppingCart.addToCart(itemID);
-            String newCart = "";
-            for (int i = 0; i < shoppingCart.iArr.size(); i++) {
-                newCart = newCart.concat(shoppingCart.iArr.get(i).getId() + ",");
-            }
+            String newCart = shoppingCart.toString();
             c1.updateCart(newCart);
             ses1.setAttribute("c1", c1);
+            ses1.setAttribute("cart", shoppingCart);
         } catch(NullPointerException e) {
             ItemList cart = new ItemList();
             if (ses1.getAttribute("cart") != null) {
@@ -59,7 +54,7 @@ public class CartServlet extends HttpServlet {
             cart.addToCart(itemID);
             ses1.setAttribute("cart", cart);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/shoppingCart.jsp");
             rd.forward(request, response);
         }
         

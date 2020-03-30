@@ -6,8 +6,8 @@
 package Servlets;
 
 import BusinessObjects.Customer;
+import BusinessObjects.ItemList;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author mitho
  */
-@WebServlet(name = "CreateAccountServlet", urlPatterns = {"/CreateAccountServlet"})
-public class CreateAccountServlet extends HttpServlet {
+@WebServlet(name = "RemoveCartServlet", urlPatterns = {"/RemoveCartServlet"})
+public class RemoveCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,34 +35,22 @@ public class CreateAccountServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        System.out.println("In remove servlet");
         HttpSession ses1 = request.getSession();
-        String email = request.getParameter("emailSignUp");
-        String passwd = request.getParameter("passwordSignUp");
-        String fName = request.getParameter("firstNameSignUp");
-        String lName = request.getParameter("lastNameSignUp");
-        String phone = request.getParameter("phoneNumberSignUp");
-        String adEntered = request.getParameter("address");
-        String address = "NA,NA,NA,NA,NA";
-        
-        System.out.println(email);
-        System.out.println(passwd);
-        System.out.println(fName);
-        System.out.println(lName);
-        System.out.println(phone);
-        
-        if ("on".equals(adEntered)) {
-            String street = request.getParameter("streetSignUp");
-            String street1 = request.getParameter("streetSignUp1");
-            String city = request.getParameter("citySignUp");
-            String state = request.getParameter("stateSignUp");
-            String zipcode = request.getParameter("zipcodeSignUp");
-            address = street + ","+street1+","+ city + "," + state + "," + zipcode;
-        } else {
+        ItemList cart = (ItemList)ses1.getAttribute("cart");
+        String id = request.getParameter("id");
+        cart.removeFromCart(id);
+        ses1.setAttribute("cart", cart);
+        try {
+            Customer c1 = (Customer)ses1.getAttribute("c1");
+            c1.updateCart(cart.toString());
+        } catch (Exception e) {
+            
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/shoppingCart.jsp");
+            rd.forward(request, response);
         }
-        Customer c1 = new Customer();
-        c1.insertDB2(lName, fName, address, phone, email, passwd);
-        RequestDispatcher rd = request.getRequestDispatcher("Pages/SignIn.jsp");
-        rd.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

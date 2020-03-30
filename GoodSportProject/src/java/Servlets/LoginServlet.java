@@ -48,6 +48,21 @@ public class LoginServlet extends HttpServlet {
                 customer = true;
                 ses1.setAttribute("c1", c1);
                 ses1.setAttribute("customer", customer);
+                ItemList cart = new ItemList();
+                try {
+                    cart.populateCart(c1.getCart().split(","));
+                } catch (Exception e) {
+                    
+                }
+                if (ses1.getAttribute("cart") != null) {
+                    cart.storeIds();
+                    ItemList guestCart = (ItemList)ses1.getAttribute("cart");
+                    for (int i = 0; i < guestCart.iArr.size(); i++) {
+                        cart.addToCart(String.valueOf(guestCart.iArr.get(i).getId()));
+                    }
+                    c1.updateCart(cart.toString());
+                }
+                ses1.setAttribute("cart", cart);
                 rd = request.getRequestDispatcher("/Pages/account.jsp");
                 rd.forward(request, response);
             } else {

@@ -5,7 +5,6 @@
  */
 package Servlets;
 
-import BusinessObjects.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -20,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author mitho
  */
-@WebServlet(name = "CreateAccountServlet", urlPatterns = {"/CreateAccountServlet"})
-public class CreateAccountServlet extends HttpServlet {
+@WebServlet(name = "LogoutServlet", urlPatterns = {"/LogoutServlet"})
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,32 +35,9 @@ public class CreateAccountServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
-        String email = request.getParameter("emailSignUp");
-        String passwd = request.getParameter("passwordSignUp");
-        String fName = request.getParameter("firstNameSignUp");
-        String lName = request.getParameter("lastNameSignUp");
-        String phone = request.getParameter("phoneNumberSignUp");
-        String adEntered = request.getParameter("address");
-        String address = "NA,NA,NA,NA,NA";
-        
-        System.out.println(email);
-        System.out.println(passwd);
-        System.out.println(fName);
-        System.out.println(lName);
-        System.out.println(phone);
-        
-        if ("on".equals(adEntered)) {
-            String street = request.getParameter("streetSignUp");
-            String street1 = request.getParameter("streetSignUp1");
-            String city = request.getParameter("citySignUp");
-            String state = request.getParameter("stateSignUp");
-            String zipcode = request.getParameter("zipcodeSignUp");
-            address = street + ","+street1+","+ city + "," + state + "," + zipcode;
-        } else {
-        }
-        Customer c1 = new Customer();
-        c1.insertDB2(lName, fName, address, phone, email, passwd);
-        RequestDispatcher rd = request.getRequestDispatcher("Pages/SignIn.jsp");
+        ses1.removeAttribute("c1");
+        ses1.removeAttribute("cart");
+        RequestDispatcher rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
         rd.forward(request, response);
     }
 

@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="http://localhost:8080/GoodSportProject/CSS/SignInCSS.css" rel="stylesheet">
         <title>Good Sport</title>
     </head>
     <body>
@@ -46,6 +47,9 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -61,19 +65,20 @@
                 </ul>
             </div>
         </nav>
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color: #f2f2f2;">
             <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5">
-                    <h4>Sign In</h4>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3">
+                    <h3>Sign In</h3>
+                  
                     <form method="post" action="http://localhost:8080/GoodSportProject/LoginServlet">
                         <div class="form-group">
                             <label>Email: </label>
-                            <input type="email" name="emailSignIn" required>
+                            <input type="email" class="form-control" name="emailSignIn" required>
                         </div>
                         <div class="form-group">
                             <label>Password: </label>
-                            <input type="password" name="passwordSignIn" required>
+                            <input type="password" class="form-control" name="passwordSignIn" required>
                         </div>
                         <div class="form-group">
                             <div>
@@ -85,35 +90,35 @@
                                 <label>Employee</label>
                             </div>
                         </div>
-                        <input type="submit" value="Sign In">
+                        <button type="submit" class="btn btn-default">Sign In</button>
                     </form>
                 </div>
-                <div class="col-sm-5">
-                    <h4>Sign Up</h4>
+                <div class="col-sm-3">
+                    <h3>Sign Up</h3>
                     <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/CreateAccountServlet" method="Post">
                         <div class="form-group">
                             <label>Email: </label>
-                            <input type="text" name="emailSignUp" required>
+                            <input type="text" class="form-control" name="emailSignUp" required>
                         </div>
                         <div class="form-group">
                             <label>Password: </label>
-                            <input type="password" name="passwordSignUp" required>
+                            <input type="password" class="form-control" name="passwordSignUp" required>
                         </div>
                         <div class="form-group">
                             <label>Confirm Password: </label>
-                            <input type="password" name="confirmPswd" required>
+                            <input type="password" class="form-control" name="confirmPswd" required>
                         </div>
                         <div class="form-group">
                             <label>First Name: </label>
-                            <input type="text" name="firstNameSignUp">
+                            <input type="text" class="form-control" name="firstNameSignUp">
                         </div>
                         <div class="form-group">
                             <label>Last Name: </label>
-                            <input type="text" name="lastNameSignUp">
+                            <input type="text" class="form-control" name="lastNameSignUp">
                         </div>
                         <div class="form-group">
                             <label>Phone Number: </label>
-                            <input type="text" name="phoneNumberSignUp">
+                            <input type="text" class="form-control" name="phoneNumberSignUp">
                         </div>
                         <div class="form-group">
                             <label>Add address</label>
@@ -122,26 +127,28 @@
                         <div id="addressBoxes" style="display:none;">
                             <div class="form-group">
                                 <label>Street: </label>
-                                <input type="text" name="streetSignUp">
+                                <input type="text" class="form-control" name="streetSignUp">
                             </div>
                             <div class="form-group">
                                 <label>Appt/Suite No.: </label>
-                                <input type="text" name="streetSignUp1">
+                                <input type="text" class="form-control" name="streetSignUp1">
                             </div>
                             <div class="form-group">
                                 <label>City: </label>
-                                <input type="text" name="citySignUp">
+                                <input type="text" class="form-control" name="citySignUp">
                             </div>
                             <div class="form-group">
                                 <label>State: </label>
-                                <input type="text" name="stateSignUp">
+                                <input type="text" class="form-control" name="stateSignUp">
                             </div>
                             <div class="form-group">
                                 <label>Zipcode: </label>
-                                <input type="text" name="zipcodeSignUp">
+                                <input type="text" class="form-control" name="zipcodeSignUp">
                             </div>
                         </div>
-                        <input type="submit" value="Sign Up">
+                        <button type="submit" class="btn btn-default">Sign Up</button>
+                        <br>
+                        <br>
                     </form>
                 </div>
                 <div class="col-sm-1"></div>
@@ -170,14 +177,36 @@
     </script>
         <footer>									<!-- footer begins here -->
             <div class="footer">
-                    <div class="signature">
-                            <h2><a href="index.jsp">Good Sport</a></h2>
-                            <p>This website was create and designed by Project Team #1</p>
-                    </div>
-                    <div class="contactcontainer">
-                            <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                    <div class="signature container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <br>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
                             </div>
+                           <div class="col-sm-3">
+                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                            <br>
+                           </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-2">
+                                <div class="contactbutton">
+                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                     </div>
             </div>
 	</footer>

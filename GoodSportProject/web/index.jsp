@@ -31,6 +31,9 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -74,8 +77,7 @@
                     <div class="item">
                         <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football"><img src="http://localhost:8080/GoodSportProject/Media/football.jpg" alt="Football" style="width:100%; height:485px !important;"></a>
                         <div class="carousel-caption" style="font-family: Impact, Charcoal, sans-serif;">
-                            <h3>Shop for Football</h3>
-                            
+                            <h3>Shop for Football</h3>                         
                         </div>  
                     </div>
                 </div>
@@ -112,8 +114,8 @@
           <div class="container">    
             <div class="row">
               <div class="col-sm-4">
-                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Wilson Optix AVP Tour Outdoor Volleyball.jpg" title="Shoes" class="img-thumbnail" alt="Volley Ball" width="300" height="300"></a>
-                <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Volley Ball</h3>
+                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Wilson Optix AVP Tour Outdoor Volleyball.jpg" title="Shoes" class="img-thumbnail" alt="Volleball" width="300" height="300"></a>
+                <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Volleyball</h3>
               </div>
               <div class="col-sm-4"> 
                   <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Wilson NFL The Duke Official Football.jpg" title="Football" class="img-thumbnail" alt="Football" width="350" height="300"></a>
@@ -131,14 +133,36 @@
 	<br>
         <footer>									<!-- footer begins here -->
             <div class="footer">
-                    <div class="signature">
-                            <h2><a href="index.jsp">Good Sport</a></h2>
-                            <p>This website was create and designed by Project Team #1</p>
-                    </div>
-                    <div class="contactcontainer">
-                            <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                    <div class="signature container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <br>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
                             </div>
+                           <div class="col-sm-3">
+                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                            <br>
+                           </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-2">
+                                <div class="contactbutton">
+                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                     </div>
             </div>
 	</footer>

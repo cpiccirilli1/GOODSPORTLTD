@@ -35,6 +35,9 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -55,26 +58,61 @@
 		<hr class="style2">
 		<h3 style="font-size:2vw;">Shipping Information</h3>
 		<div class="row">
-                   <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-			<div class="form-group col-sm-4">
-			  <label for="name">First Name</label>
-			  <input type="name" class="form-control" id="fname" name="fname">
-			  <br>
-			  <label for="name">Last Name</label>
-			  <input type="name" class="form-control" id="lname" name="lname">
-			  <br>
-			  <label for="name">Address</label>
-			  <input type="address" class="form-control" id="addr" name="addr">
-			  <br>
-			  <label for="name"></label>
-			  <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="addr" name="addr">
-			  <br>
-			  <label for="state">State</label>
-			  <input type="state" class="form-control" id="state" name="state">
-			  <br>
-			  <label for="zip">Zip Code</label>
-			  <input type="zip" class="form-control" id="zip" name="zip">
-			</div>
+                    <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/Pages/payment.jsp" method="Post" >
+                        <div class="form-group col-sm-4">
+                            <label>First Name</label>
+                            <input type="name" class="form-control" name="fname"/>
+                            <br>
+                            <label>Last Name</label>
+                            <input type="name" class="form-control" name="lname"/>
+                            <br>
+                            <label>Address</label>
+                            <input type="address" class="form-control" name="addr" required/>
+                            <br>
+                            <label for="name"></label>
+                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addr"/>
+                            <br>
+                            <label>City</label>
+                            <input type="city" class="form-control" name="city" required/>
+                            <br>
+                            <label>State</label>
+                            <input type="state" class="form-control" name="state" required/>
+                            <br>
+                            <label>Zip Code</label>
+                            <input type="zip" class="form-control" name="zip" required/>
+                            <br>
+                            <hr class="style2">               
+                            <h3 style="font-size:2vw;">Contact Information</h3>
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" required/>
+                            <br>
+                            <label for="phone">Phone Number</label>
+                            <input type="phone" class="form-control" id="phone" name="phone" required/>
+                            <br>
+                            <hr class="style2">
+                            <h3 style="font-size:1.5vw;">Billing Address</h3>
+                            <label>First Name</label>
+                            <input type="name" class="form-control" name="fname"/>
+                            <br>
+                            <label>Last Name</label>
+                            <input type="name" class="form-control" name="lname"/>
+                            <br>
+                            <label>Address</label>
+                            <input type="address" class="form-control" name="addr" required/>
+                            <br>
+                            <label for="name"></label>
+                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addr"/>
+                            <br>
+                            <label>City</label>
+                            <input type="city" class="form-control" name="city" required/>
+                            <br>
+                            <label>State</label>
+                            <input type="state" class="form-control" name="state" required/>
+                            <br>
+                            <label>Zip Code</label>
+                            <input type="zip" class="form-control" name="zip" required/>
+                            <br>
+                        </div>
 			<div class="col-sm-3">
 			</div>
 			<div class="form-group col-sm-3">
@@ -126,102 +164,14 @@
                             <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
 				<br>
 				<br>
-                                <a href="payment.jsp"<button type="button" class="btn btn-primary btn-block">CONTINUE TO PAYMENT</button></a>
+                                <button type="submit" class="btn btn-primary btn-block">CONTINUE TO PAYMENT</button>
 			</div>
 			<br>
 			<br>
 			<br>
-			<div class="form-group col-sm-1">
-				<div class="form-group">
-				  <label for="sel1">Qty</label>
-				  <select class="form-control" id="sel1" name="sellist1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-				  </select>
-				</div>
-				<p><a href="#" data-toggle="tooltip">Remove</a></p>
-			</div>
+			
                    </form>
-		</div>
-	
-	<hr class="style2">
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		<h3 style="font-size:2vw;">Contact Information</h3>
-		  <label for="email">Email Address</label>
-		  <input type="email" class="form-control" id="email" name="email">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="phone">Phone Number</label>
-		  <input type="phone" class="form-control" id="phone" name="phone">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-		<div class="form-group col-sm-4">
-		<h3 style="font-size:1.5vw;">Billing Address</h3>
-		</div>
-	</div>
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-3">
-		<label for="name">First Name</label>
-		  <input type="name" class="form-control" id="name" name="name">
-		</div>
-		<div class="form-group col-sm-3">
-		<label for="name">Last Name</label>
-		  <input type="name" class="form-control" id="name" name="name">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="name">Address</label>
-		  <input type="address" class="form-control" id="addr" name="addr">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="name"></label>
-		  <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="addr" name="addr">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-2">
-		  <label for="state">State</label>
-		  <input type="state" class="form-control" id="state" name="state">
-		</div>
-		<div class="form-group col-sm-2">
-		  <label for="state">Zip Code</label>
-		  <input type="zip" class="form-control" id="zip" name="zip">
 		</div>	
-              </form>
-	</div>
         </div>
 	<br>
 	<br>
@@ -229,17 +179,41 @@
 	<br>
         <footer>									<!-- footer begins here -->
             <div class="footer">
-                    <div class="signature">
-                            <h2><a href="index.jsp">Good Sport</a></h2>
-                            <p>This website was create and designed by Project Team #1</p>
-                    </div>
-                    <div class="contactcontainer">
-                            <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                    <div class="signature container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <br>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
                             </div>
+                           <div class="col-sm-3">
+                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                            <br>
+                           </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-2">
+                                <div class="contactbutton">
+                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                     </div>
             </div>
 	</footer>
+        <script
+            
     </body>
 </html>
 
