@@ -25,16 +25,20 @@ public class CustOrder {
         address = "";
         phonenum = "";
         email = "";
-        orderStatus = "";
+        orderStatus = "Open";
     }
 
-    public void CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
+    public void CustOrder(int order, String CustID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
         
 
     }
 
     public int getOrder() {
         return orderID;
+    }
+    
+    public String getCustID() {
+        return custID;
     }
 
     public String getLname() {
@@ -81,10 +85,20 @@ public class CustOrder {
         }
     }
     
-    public void insertDB(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
+    public void insertDB(int order, String CustID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
         try {
-            String sql = "INSERT INTO CustOrders VALUES ('" + order + "', '" + 
-                    ID + "', '" + lname + "', '" + fname + "', '" + add + 
+            String sql = "INSERT INTO CustOrders VALUES ('"+ order + "', '" + CustID + "', '" + lname + "', '" + fname + "', '" + add + 
+                    "', '" + phone + "', '" + mail + "', '" + orderStatus + "')";
+            Statement stmt = Customer.connectDB();
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+     public void insertDBOrder(String CustID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
+        try {
+            String sql = "INSERT INTO CustOrders (CustID, LastName, FirstName, Address, PhoneNum, Email, OrderStatus) VALUES ('" + CustID + "', '" + lname + "', '" + fname + "', '" + add + 
                     "', '" + phone + "', '" + mail + "', '" + orderStatus + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
@@ -124,5 +138,20 @@ public class CustOrder {
             System.out.println(e);
         }
     }
+     
+     public void display() {
+        System.out.println("OrderID: " + this.getOrder());
+        System.out.println("LastName: " + this.getLname());
+        System.out.println("FirstName: " + this.getFname());
+        System.out.println("Address: " + this.getAddress());
+        System.out.println("PhoneNo: " + this.getPhone());
+        System.out.println("Email: " + this.getEmail());
+        System.out.println("OrderStatus: " + this.getStatus());
+                }
+     public static void main(String[] args) {
+         CustOrder c1 = new CustOrder();
+         c1.insertDBOrder("1235", "Honey", "Dan", "546 New Road,,State", "4445556666", "danhoney@mail.com", "Open");
+         c1.display();
+     }
      
 }

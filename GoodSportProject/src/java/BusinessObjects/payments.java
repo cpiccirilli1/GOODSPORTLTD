@@ -27,6 +27,29 @@ public class payments {
     }
 
     /**
+     *   the orderID
+     */
+    public String getOrderId() {
+        return orderId;
+    }
+    
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+    
+   /**
+     *   the NameOnCard
+     */
+    public String getNameOnCard() {
+        return NameOnCard;
+    }
+    
+    public void setNameOnCard(String NameOnCard) {
+        this.NameOnCard = NameOnCard;
+    }
+    
+    
+    /**
      *   the fname
      */
     public String getFname() {
@@ -125,6 +148,8 @@ public class payments {
     }
     
     private int payId;
+    private String orderId;
+    private String NameOnCard;
     private String fname;
     private String lname;
     private String email;
@@ -136,6 +161,8 @@ public class payments {
     
     public void payments(){
         this.setPayId(0);
+        this.setOrderId("");
+        this.setNameOnCard("");
         this.setFname("");
         this.setLname("");
         this.setEmail("");
@@ -159,37 +186,22 @@ public class payments {
     }
     
     
-    public void insertDB(){
+    public void insertDB(String orderId, String NameOnCard, Double currency,
+            String card, String exp, String cvc){
         
         try{
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection conn;
-            //Edit this next line of code starting with C: to the file path of the database
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\cpicciri\\Documents\\Database\\GoodSportsDB.accdb");
-            
-            
-            String query = "INSERT INTO Payments(OrderID, LastName, FirstName, Email, PaymentTotal, CCNum, ExpDate, CVC)"+
-                    "Values(?, ?, ?, ?, ?, ?, ?, ?)";                        
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, this.getPayId());
-            stmt.setString(2, this.getLname());
-            stmt.setString(3, this.getFname());
-            stmt.setString(4, this.getEmail());
-            stmt.setDouble(5, this.getCurrency());
-            stmt.setString(6, this.getCardNumber());
-            stmt.setString(7, this.getExp());
-            stmt.setString(8, this.getCvc());
-            stmt.executeUpdate();
-            conn.close();
+            String sql = "INSERT INTO Payments(OrderID, NameOnCard, PaymentTotal, CCNum, ExpDate, CVC)"+
+                    "Values ('" + orderId + "', '" + NameOnCard + "', '" + currency + 
+                    "', '" + card + "', '" + exp + "', '" + cvc + "')";                
+            Statement stmt = Customer.connectDB();
+            stmt.execute(sql);
+            stmt.close();
             
             System.out.println("Payments - Insert Successful!");
             
         }
         catch(SQLException ex){
             System.out.println(ex.toString());
-        }
-        catch(ClassNotFoundException cnfe){
-            System.out.println(cnfe.toString());
         }
         
     }

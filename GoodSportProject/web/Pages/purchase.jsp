@@ -19,8 +19,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Getting Your Order</title>
-     
+
     </head>
+    
     <body>
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
@@ -46,200 +47,170 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-                     <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>
         </nav>
         <div class="container">
-		<h2 style="font-size:2.5vw;">Getting Your Order</h2>
-		<hr class="style2">
-		<h3 style="font-size:2vw;">Shipping Information</h3>
-		<div class="row">
-                   <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-			<div class="form-group col-sm-4">
-			  <label for="name">First Name</label>
-			  <input type="name" class="form-control" id="fname" name="fname">
-			  <br>
-			  <label for="name">Last Name</label>
-			  <input type="name" class="form-control" id="lname" name="lname">
-			  <br>
-			  <label for="name">Address</label>
-			  <input type="address" class="form-control" id="addr" name="addr">
-			  <br>
-			  <label for="name"></label>
-			  <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="addr" name="addr">
-			  <br>
-			  <label for="state">State</label>
-			  <input type="state" class="form-control" id="state" name="state">
-			  <br>
-			  <label for="zip">Zip Code</label>
-			  <input type="zip" class="form-control" id="zip" name="zip">
-			</div>
-			<div class="col-sm-3">
-			</div>
-			<div class="form-group col-sm-3">
-			<h3 style="font-size:1.8vw;">Order Summary</h3>
-			 <%
+            <h2 style="font-size:2.5vw;">Getting Your Order Ready</h2>
+            <hr class="style2">
+            <h3 style="font-size:2vw;">Shipping Information</h3>
+            <div class="row">
+                <form action="http://localhost:8080/GoodSportProject/CustOrderServlet" method="post" novalidate="novalidate" class="needs-validation">
+                    <div class="form-group col-sm-4">
+                        <label for="name">First Name</label>
+                        <input type="name" class="form-control" id="fname" name="fname">
+                        <br>
+                        <label for="name">Last Name</label>
+                        <input type="name" class="form-control" id="lname" name="lname">
+                        <br>
+                        <label for="name">Address</label>
+                        <input type="address" class="form-control" id="addr" name="addr">
+                        <br>
+                        <label for="name"></label>
+                        <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="addr" name="addr">
+                        <br>
+                        <label for="state">State</label>
+                        <input type="state" class="form-control" id="state" name="state">
+                        <br>
+                        <label for="zip">Zip Code</label>
+                        <input type="zip" class="form-control" id="zip" name="zip">
+                        <br>
+                        <br>
+                        <h2>Contact Info</h2>
+                          <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                        <br>
+                        <label for="phone">Phone Number</label>
+                        <input type="phone" class="form-control" id="phone" name="phone">
+                        <hr>
+                        
+                        
+                        <script type="text/javascript" >  
+    
+     function disableMyText(){  
+          if(document.getElementById("checkMe").checked ==== true){  
+              document.getElementById("myText").disabled = true;  
+          }else{
+            document.getElementById("myText").disabled = false;
+          }  
+     }  
+     </script> 
+                        <h2>Billing Info</h2>
+                        <label>Same as shipping address</label>
+                        <input type="checkbox" id="checkMe" name="checkMe" onclick="disableMyText()">
+                        <hr>
+                        <label for="name">First Name</label>
+                        <input type="name" class="form-control" id="myText" name="firstname2">
+                        <br>
+                        <label for="lastname">Last Name</label>
+                        <input type="name" class="form-control" id="myText" name="lastname2">
+                        <br>
+                        <label for="address">Address</label>
+                        <input type="address" class="form-control" id="myText" name="addr2">
+                        <br>
+                        <label for="address"></label>
+                        <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="myText" name="addr2">
+                        <br>
+                        <label for="state">State</label>
+                        <input type="state" class="form-control" id="myText" name="state2">
+                        <br>
+                        <label for="zip">Zip Code</label>
+                        <input type="zip" class="form-control" id="myText" name="zip2">
+                        <br>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <h3 style="font-size:1.8vw;">Order Summary</h3>
+                        <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
-                            try
-                            {
-                                Customer c1 = (Customer)session.getAttribute("c1");
+                            try {
+                                Customer c1 = (Customer) session.getAttribute("c1");
                                 cart.populateCart(c1.getCart().split(","));
-                            } catch (NullPointerException e)
-                            {
+                            } catch (NullPointerException e) {
                                 try {
-                                    cart = (ItemList)session.getAttribute("cart");
+                                    cart = (ItemList) session.getAttribute("cart");
                                     cart.getArray();
                                 } catch (NullPointerException npe) {
                                     cart = new ItemList();
                                 }
-                                
+
                             }
                             double cost = 0;
                             if (cart.iArr.size() == 0) {
-                                %>
-                                <h3>No items in cart</h3>
-                                <%
-                            } else {
-                                
-                                for(int i = 0; i < cart.iArr.size(); i++)
-                                {
-                                    Item i1 = cart.iArr.get(i);
-                                    cost += i1.getPrice();
                         %>
-                            <div class="row">
-				<div class="form-group col-sm-3">
-                                    <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
-				</div>
-				<div class="form-group col-sm-5">
-                                    <h3 style="font-size:1.2vw;">Product ID: <%=i1.getId()%></h3>
-				</div>
+                        <h3>No items in cart</h3>
+                        <%
+                        } else {
+
+                            for (int i = 0; i < cart.iArr.size(); i++) {
+                                Item i1 = cart.iArr.get(i);
+                                cost += i1.getPrice();
+                        %>
+
+                        <div class="row">
+                            <br>
+                        <br>
+                        <br>
+                        <br>
+                            <div class="form-group col-sm-3">
+                                <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
                             </div>
+                            <div class="form-group col-sm-5">
+                                <h3 style="font-size:1.2vw;">Product ID: <%=i1.getId()%></h3>
+                            </div>
+                        </div>
                         <%
                                 }
                             }
                         %>
-			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
-                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
-                            <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
-                            <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
-				<br>
-				<br>
-                                <a href="payment.jsp"<button type="button" class="btn btn-primary btn-block">CONTINUE TO PAYMENT</button></a>
-			</div>
-			<br>
-			<br>
-			<br>
-			<div class="form-group col-sm-1">
-				<div class="form-group">
-				  <label for="sel1">Qty</label>
-				  <select class="form-control" id="sel1" name="sellist1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-				  </select>
-				</div>
-				<p><a href="#" data-toggle="tooltip">Remove</a></p>
-			</div>
-                   </form>
-		</div>
-	
-	<hr class="style2">
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		<h3 style="font-size:2vw;">Contact Information</h3>
-		  <label for="email">Email Address</label>
-		  <input type="email" class="form-control" id="email" name="email">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="phone">Phone Number</label>
-		  <input type="phone" class="form-control" id="phone" name="phone">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-		<div class="form-group col-sm-2">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-		<div class="form-group col-sm-4">
-		<h3 style="font-size:1.5vw;">Billing Address</h3>
-		</div>
-	</div>
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-3">
-		<label for="name">First Name</label>
-		  <input type="name" class="form-control" id="name" name="name">
-		</div>
-		<div class="form-group col-sm-3">
-		<label for="name">Last Name</label>
-		  <input type="name" class="form-control" id="name" name="name">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="name">Address</label>
-		  <input type="address" class="form-control" id="addr" name="addr">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-4">
-		  <label for="name"></label>
-		  <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" id="addr" name="addr">
-		</div>
-              </form>
-	</div>
-	
-	<div class="row">
-              <form action="/echo" method="post" novalidate="novalidate" class="needs-validation">
-		<div class="form-group col-sm-2">
-		  <label for="state">State</label>
-		  <input type="state" class="form-control" id="state" name="state">
-		</div>
-		<div class="form-group col-sm-2">
-		  <label for="state">Zip Code</label>
-		  <input type="zip" class="form-control" id="zip" name="zip">
-		</div>	
-              </form>
-	</div>
+                        <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
+                        <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
+                        <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost * 0.06)%></h3>
+                        <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost * 0.06) + 10)%></h3>
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block">CONTINUE TO PAYMENT</button>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="form-group col-sm-1">
+                        <div class="form-group">
+                            <label for="sel1">Qty</label>
+                            <select class="form-control" id="sel1" name="sellist1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                        <p><a href="#" data-toggle="tooltip">Remove</a></p>
+                    </div>
+                </form>
+            </div>
         </div>
-	<br>
-	<br>
-	<br>
-	<br>
+        <br>
+
         <footer>									<!-- footer begins here -->
             <div class="footer">
-                    <div class="signature">
-                            <h2><a href="index.jsp">Good Sport</a></h2>
-                            <p>This website was create and designed by Project Team #1</p>
+                <div class="signature">
+                    <h2><a href="index.jsp">Good Sport</a></h2>
+                    <p>This website was create and designed by Project Team #1</p>
+                </div>
+                <div class="contactcontainer">
+                    <div class="contactbutton">
+                        <a href="" class="contact" title="Contact Info">Contact us</a>
                     </div>
-                    <div class="contactcontainer">
-                            <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
-                            </div>
-                    </div>
+                </div>
             </div>
-	</footer>
+        </footer>
     </body>
 </html>
 
