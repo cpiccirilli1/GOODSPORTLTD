@@ -35,47 +35,18 @@ public class Search extends HttpServlet {
         
         String query = request.getParameter("search");
         if (query == null){
+            System.out.println("Search Servlet: Parameters Blank!");
             //redirect to err page.
         }
-        if(query.indexOf(" ") != -1){
-            ArrayList<Item> arrItems;
-                        
-            ItemList il = new ItemList();
-            il.get_related(query);
-            arrItems = il.getArray();
-            
-            String[] splitQuery = query.split(" ");
-            for (String str : splitQuery){
-                
-                ArrayList<Item> arrItems0;
-                il.get_related(str);
-                arrItems0 = il.getArray();
-                arrItems.addAll(arrItems0);
-                System.out.println("SEARCH SERVLET: LITTLE ARRAY ADDED TO BIG ARRAY.");
-            }
-            
-            HttpSession ses1 = request.getSession();
-            ses1.setAttribute("arrItems", arrItems);
-           
-            System.out.println("SearchServlet: Success redirect");
-            RequestDispatcher rd = request.getRequestDispatcher("ItemGrid.jsp");
-            rd.forward(request, response);
-            
-        }
         else{
-            //Items to pull.
-            ArrayList<Item> arrItems;
-                        
             ItemList il = new ItemList();
-            il.get_related(query);
-            arrItems = il.getArray();
+            il.get_related("Ball");
+            //il.display();
+            System.out.println("SearchServlet: Got ArrayList");
             HttpSession ses1 = request.getSession();
-            ses1.setAttribute("arrItems", arrItems);
-           
-            System.out.println("SearchServlet: Success redirect");
-            RequestDispatcher rd = request.getRequestDispatcher("ItemGrid.jsp");
+            ses1.setAttribute("arr", il);
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/searchResults.jsp");
             rd.forward(request, response);
-                  
         }
         
     }
