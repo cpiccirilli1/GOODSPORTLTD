@@ -40,6 +40,7 @@ public class RemoveCartServlet extends HttpServlet {
         ItemList cart = (ItemList)ses1.getAttribute("cart");
         String id = request.getParameter("id");
         cart.removeFromCart(id);
+        ses1.setAttribute("cart", cart);
         try {
             Customer c1 = (Customer)ses1.getAttribute("c1");
             c1.updateCart(cart.toString());

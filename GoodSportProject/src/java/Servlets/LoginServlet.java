@@ -49,10 +49,13 @@ public class LoginServlet extends HttpServlet {
                 ses1.setAttribute("c1", c1);
                 ses1.setAttribute("customer", customer);
                 ItemList cart = new ItemList();
-                cart.populateCart(c1.getCart().split(","));
+                try {
+                    cart.populateCart(c1.getCart().split(","));
+                } catch (Exception e) {
+                    
+                }
                 if (ses1.getAttribute("cart") != null) {
-                    ItemList guestCart = new ItemList();
-                    guestCart = (ItemList)ses1.getAttribute("cart");
+                    ItemList guestCart = (ItemList)ses1.getAttribute("cart");
                     for (int i = 0; i < guestCart.iArr.size(); i++) {
                         cart.addToCart(String.valueOf(guestCart.iArr.get(i).getId()));
                     }
