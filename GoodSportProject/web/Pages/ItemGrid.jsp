@@ -29,7 +29,6 @@
                ArrayList<Item> iArr = (ArrayList<Item>)il.getArray();
                int iCount = iArr.size();
                int rows = (int)Math.ceil((float)iCount/3);
-               il.display();
             %>
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">

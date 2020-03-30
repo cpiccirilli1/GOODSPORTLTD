@@ -55,6 +55,7 @@ public class LoginServlet extends HttpServlet {
                     
                 }
                 if (ses1.getAttribute("cart") != null) {
+                    cart.storeIds();
                     ItemList guestCart = (ItemList)ses1.getAttribute("cart");
                     for (int i = 0; i < guestCart.iArr.size(); i++) {
                         cart.addToCart(String.valueOf(guestCart.iArr.get(i).getId()));

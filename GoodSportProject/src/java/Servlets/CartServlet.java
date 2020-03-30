@@ -40,11 +40,7 @@ public class CartServlet extends HttpServlet {
         String itemID = request.getParameter("itemNumber");
         try {
             Customer c1 = (Customer)ses1.getAttribute("c1");
-            ItemList shoppingCart = new ItemList();
-            if (!c1.getCart().equals("")) {
-                String[] cart = c1.getCart().split(",");
-                shoppingCart.populateCart(cart);
-            }
+            ItemList shoppingCart = (ItemList)ses1.getAttribute("cart");
             shoppingCart.addToCart(itemID);
             String newCart = shoppingCart.toString();
             c1.updateCart(newCart);

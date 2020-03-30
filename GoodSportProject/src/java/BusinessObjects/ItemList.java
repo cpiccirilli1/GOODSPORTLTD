@@ -128,6 +128,15 @@ public class ItemList {
         return newCart;
     }
     
+    public void storeIds() {
+         for (int i = 0; i < iArr.size(); i++) {
+            int id = iArr.get(i).getId();
+            if (!(added.contains(id))) {
+                added.add(id);
+            }
+         }
+    }
+    
     public static void main(String[] args){
         ItemList il = new ItemList();
         il.get_related("Ball");

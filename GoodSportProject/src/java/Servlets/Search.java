@@ -40,12 +40,12 @@ public class Search extends HttpServlet {
         }
         else{
             ItemList il = new ItemList();
-            il.get_related("Ball");
+            il.get_related(query);
             //il.display();
             System.out.println("SearchServlet: Got ArrayList");
             HttpSession ses1 = request.getSession();
-            ses1.setAttribute("arr", il);
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/searchResults.jsp");
+            ses1.setAttribute("il1", il);
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/ItemGrid.jsp");
             rd.forward(request, response);
         }
         
