@@ -35,6 +35,8 @@ public class CreateAccountServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+{
+        response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
         String email = request.getParameter("emailSignUp");
         String passwd = request.getParameter("passwordSignUp");
@@ -63,16 +65,25 @@ public class CreateAccountServlet extends HttpServlet {
         c1.selectDB(email);
         if(c1.getEmail() == null){
         c1.insertDB2(lName, fName, address, phone, email, passwd);
+        c1.setCustFirstName(fName);
+        c1.setCustLastName(lName);
+        c1.setCustAddress(address);
+        c1.setCustEmail(email);
+        c1.setCustPassword(passwd);
+        c1.setCustPhone(phone);
         ses1.setAttribute("c1", c1);
-        RequestDispatcher rd = request.getRequestDispatcher("Pages/SignIn.jsp");
+        RequestDispatcher rd;
+        rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
         rd.forward(request, response);
         }
         else{
         signUpErr = ("Account already exist with this email. Either sign in or use another email.");
         ses1.setAttribute("signUpErr", signUpErr);
-        RequestDispatcher rd = request.getRequestDispatcher("Pages/SignIn.jsp");
+        RequestDispatcher rd;
+        rd = request.getRequestDispatcher("Pages/SignIn.jsp");
         rd.forward(request, response);
         }
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
