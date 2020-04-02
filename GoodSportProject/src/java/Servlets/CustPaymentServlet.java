@@ -26,21 +26,26 @@ public class CustPaymentServlet extends HttpServlet {
             // grab payment info from payment.jsp
            String name = request.getParameter("owner");
            String creditcard = request.getParameter("cardNumber");
-           String expiration = request.getParameter("expiration-date");
+           String expMonth = request.getParameter("expiration-month");
+           String expYear = request.getParameter("expiration-year");
            String security = request.getParameter("cvv");
            
            System.out.println("== PAYMENT INFO ==");
            System.out.println("Name On Card: " + name);
            System.out.println("Credit Card Number: " + creditcard);
-           System.out.println("Expiration Date: " + expiration);
+           System.out.println("Expiration Date: " + expMonth + expYear);
            System.out.println("CVC: "+ security);
            
            
-           CustOrder c01 = (CustOrder)request.getSession().getAttribute("c1");
-           int payid = c01.getOrder();
-           payments pm = new payments();
+           //CustOrder c01 = (CustOrder)request.getSession().getAttribute("c01");
+           //int payid = c01.getOrder();
+           payments p1 = new payments();
            //Double payment = 0.00;
-           pm.insertDB(payid, name, creditcard, expiration, security);
+ 
+             
+           String glueexpiration = p1.expirationGlue(expMonth, expYear);
+           //p1.insertDB(payid, name, creditcard, glueexpiration, security);
+           p1.insertDBtemp(name, creditcard, glueexpiration, security);
            
            RequestDispatcher rd;
             rd = request.getRequestDispatcher("/Pages/orderConfirmation.jsp");

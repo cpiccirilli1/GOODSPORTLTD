@@ -62,39 +62,42 @@
                     <div class="form-group owner">
                         <br>
                         <label for="owner">Name on Card</label>
-                        <input type="text" class="form-control" id="owner">
+                        <input type="text" class="form-control" id="owner" name="owner">
                     </div>
                     
                     <div class="form-group" id="card-number-field">
                         <label for="cardNumber">Card Number</label>
-                        <input type="text" class="form-control" id="cardNumber">
+                        <input type="text" class="form-control" id="cardNumber" name="cardNumber">
                     </div>
                     <div class="form-group CVV">
                         <label for="cvv">CVV</label>
-                        <input type="text" class="form-control" id="cvv">
+                        <input type="text" class="form-control" id="cvv" name="cvv">
                     </div>
-                    <div class="form-group" id="expiration-date">
+                    <div class="form-group" id="expiration-month" name="expiration-month">
                         <label>Expiration Date</label>
-                        <select>
-                            <option value="01">January</option>
-                            <option value="02">February </option>
-                            <option value="03">March</option>
-                            <option value="04">April</option>
-                            <option value="05">May</option>
-                            <option value="06">June</option>
-                            <option value="07">July</option>
-                            <option value="08">August</option>
-                            <option value="09">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
+                        <select name="expiration-month">
+                            <option value="JAN">January</option>
+                            <option value="FEB">February </option>
+                            <option value="MAR">March</option>
+                            <option value="APR">April</option>
+                            <option value="MAY">May</option>
+                            <option value="JUN">June</option>
+                            <option value="JUL">July</option>
+                            <option value="AUG">August</option>
+                            <option value="SEPT">September</option>
+                            <option value="OCT">October</option>
+                            <option value="NOV">November</option>
+                            <option value="DEC">December</option>
                         </select>
-                        <select>
-                            <option value="16"> 2020</option>
-                            <option value="17"> 2021</option>
-                            <option value="18"> 2022</option>
-                            <option value="19"> 2023</option>
-                            <option value="20"> 2024</option>
+
+                        <select name="expiration-year">
+                            <option value=" 2020"> 2020</option>
+                            <option value=" 2021"> 2021</option>
+                            <option value=" 2022"> 2022</option>
+                            <option value=" 2023"> 2023</option>
+                            <option value=" 2024"> 2024</option>
+                            <option value=" 2025"> 2025</option>
+                            <option value=" 2026"> 2026</option>
                         </select>
                     </div>
                     <div class="form-group" id="credit_cards">
@@ -103,7 +106,7 @@
                         <img src="http://localhost:8080/GoodSportProject/Media/mastercard.jpg" id="mastercard">
                     </div>
                     <div class="form-group" id="pay-now">
-                        <button type="submit" class="btn btn-primary btn-block" id="confirm-purchase">COMPLETE MY ORDER</button>
+                        <button type="submit" class="btn btn-primary btn-block" id="confirm-order">COMPLETE MY ORDER</button>
                     </div>
                 </form>
             </div>

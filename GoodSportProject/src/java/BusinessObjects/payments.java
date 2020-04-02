@@ -41,48 +41,6 @@ public class payments {
     }
 
     /**
-     *   the fname
-     */
-    public String getFname() {
-        return fname;
-    }
-
-    /**
-     *   param fname the fname to set
-     */
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    /**
-     *   the lname
-     */
-    public String getLname() {
-        return lname;
-    }
-
-    /**
-     *   param lname the lname to set
-     */
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    /**
-     *   the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     *   param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
      *   the currency
      */
     public Double getCurrency() {
@@ -140,9 +98,6 @@ public class payments {
     
     private int payId;
     private String NameOnCard;
-    private String fname;
-    private String lname;
-    private String email;
     private Double currency;
     private String cardNumber;
     private String exp;
@@ -151,10 +106,7 @@ public class payments {
     
     public void payments(){
         this.setPayId(0);
-        this.setNameOnCard("");
-        this.setFname("");
-        this.setLname("");
-        this.setEmail("");
+        this.setNameOnCard("");;
         this.setCurrency(0.0);
         this.setCardNumber("");
         this.setExp("");
@@ -162,12 +114,9 @@ public class payments {
     }
     
     
-    public void payments( int payId, String fname, String lname, String email, Double currency,
+    public void payments( int payId, Double currency,
             String card, String exp, String cvc){
         this.setPayId(payId);
-        this.setFname(fname);
-        this.setLname(lname);
-        this.setEmail(email);
         this.setCurrency(currency);
         this.setCardNumber(card);
         this.setExp(exp);
@@ -194,6 +143,25 @@ public class payments {
         
     }
     
+    /* temporary bypass */
+    public void insertDBtemp(String NameOnCard,
+            String card, String exp, String cvc){
+        
+        try{
+            String sql = "INSERT INTO Payments(NameOnCard, CCNum, ExpDate, CVC)"+
+                    "Values('" + NameOnCard + "', '" + card + "', '" + exp + 
+                    "', '" + cvc + "')";                        
+            Statement stmt = Customer.connectDB();
+           
+            stmt.execute(sql);
+            System.out.println("Payments - Insert Successful!");   
+        }
+        catch(SQLException ex){
+            System.out.println(ex.toString());
+        }
+        
+    }
+    
     public void selectDB(int payid){
          try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -208,9 +176,6 @@ public class payments {
             while(rs.next()){
                 
                 this.setPayId(rs.getInt("PayID"));
-                this.setFname(rs.getString("FirstName"));
-                this.setLname(rs.getString("LastName"));
-                this.setEmail(rs.getString("Email"));
                 this.setCurrency(rs.getDouble("PaymentTotal"));
                 this.setCardNumber(rs.getString("CCNum"));
                 this.setExp(rs.getString("ExpDate"));
@@ -227,26 +192,35 @@ public class payments {
         }
     }
     
+    /* expirationGlue is a method used to string together information from multiple
+    data fields.
+    */
+    public String expirationGlue(String month, String year){
+        String expirationStr = month + "," + year;
+        
+        return expirationStr;
+    }
+    
     public void display(){
-        System.out.println("Pay Id: " + this.getPayId() );
-        System.out.println("First Name: "+this.getFname());
-        System.out.println("Last Name: "+this.getLname());
-        System.out.println("Email: "+this.getEmail());
-        System.out.println("Currency: "+ this.getCurrency());
-        System.out.println("Card #: "+ this.getCardNumber());
-        System.out.println("Exp: "+ this.getExp());
-        System.out.println("CVC #: "+this.getCvc());
+        System.out.println("Pay Id: " + payId );
+        System.out.println("Currency: "+ currency);
+        System.out.println("Card #: "+ cardNumber);
+        System.out.println("Exp: "+ exp);
+        System.out.println("CVC #: "+ cvc);
                 
     }
     
     public static void main(String[] args){
         
-        payments pay = new payments();
+ /*       payments pay = new payments();
         pay.payments(53, "C", "Piccirilli", "Hi@gmail.com", 32.95, "34", "2/2021", "232");
-//        pay.insertDB();
+        pay.insertDB();
         pay.selectDB(53);
-        pay.display();
-        
+        pay.display(); */
+ 
+ payments p1 = new payments();
+ p1.insertDB(6, "JOHN A DOE", "4716108999716531", "January 2023", "257");
+        p1.display();
         
     }
 

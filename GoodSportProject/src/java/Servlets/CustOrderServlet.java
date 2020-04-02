@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author natha
+ * 
+ * CustOrderServlet takes input from the purchase.jsp page, compiling the data and inserting into the database.
  */
 @WebServlet(name = "CustOrderServlet", urlPatterns = {"/CustOrderServlet"})
 public class CustOrderServlet extends HttpServlet {
@@ -28,6 +30,7 @@ public class CustOrderServlet extends HttpServlet {
            String firstname = request.getParameter("fname");
            String lastname = request.getParameter("lname");
            String address = request.getParameter("addr");
+           String addressext = request.getParameter("addrext");
            String city = request.getParameter("city");
            String stat = request.getParameter("state");
            String zipc = request.getParameter("zip");
@@ -35,7 +38,7 @@ public class CustOrderServlet extends HttpServlet {
            System.out.println("== SHIPPING INFO ==");
            System.out.println("First Name: " + firstname);
            System.out.println(" Last Name: " + lastname);
-           System.out.println("Address: " + address);
+           System.out.println("Address: " + address + addressext);
            System.out.println("City: " + city);
            System.out.println("State: " + stat);
            System.out.println("Zipcode: " + zipc);
@@ -51,10 +54,12 @@ public class CustOrderServlet extends HttpServlet {
            
            String fname2 = request.getParameter("fname2");
            String lname2 = request.getParameter("lname2");
-           String address2 = request.getParameter("addr2");
+           String address2 = request.getParameter("addr");
            String city2 = request.getParameter("city2");
            String state2 = request.getParameter("state2");
            String zipc2 = request.getParameter("zip2");
+           
+           
            
            System.out.println("== BILLING INFO ==");
            System.out.println("First Name: " + fname2);           
@@ -68,8 +73,9 @@ public class CustOrderServlet extends HttpServlet {
            Customer c1 = (Customer)request.getSession().getAttribute("c1");
            String id = c1.getCustId();
            CustOrder c0 = new CustOrder();
+           String glue = c0.addressGlue(address, addressext, city, stat, zipc);
            String orderStatus = "Open";
-           c0.insertDBOrder(id, lastname, firstname, address, pho, mail, orderStatus);
+           c0.insertDBOrder(id, lastname, firstname, glue, pho, mail, orderStatus);
            
             RequestDispatcher rd;
             rd = request.getRequestDispatcher("/Pages/payment.jsp");
@@ -83,7 +89,7 @@ public class CustOrderServlet extends HttpServlet {
            // getCustId to grab customer info.
            // Use SQL JOIN, UNION, etc.
            
-           
+         
            
         
     }

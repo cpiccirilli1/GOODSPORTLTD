@@ -55,9 +55,7 @@ $(function() {
         } else if (!isCvvValid) {
             alert("Wrong CVV");
         } else {
-            // Everything is correct. Add your form submission code here.
-            alert("Everything is correct");
-            window.open ("http://localhost:8080/GoodSportProject/Pages/orderConfirmation.jsp");
+            window.open ("http://localhost:8080/GoodSportProject/CustPaymentServlet");
         }
     });
 });
