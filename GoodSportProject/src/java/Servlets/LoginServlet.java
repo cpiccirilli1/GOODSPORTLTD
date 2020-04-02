@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("emailSignIn");
         String password = request.getParameter("passwordSignIn");
         String check = request.getParameter("employeeCheck");
+        String signInErr = null;
         RequestDispatcher rd;
         //used for determining login type in future files
         boolean customer;
@@ -40,6 +41,8 @@ public class LoginServlet extends HttpServlet {
             Customer c1 = new Customer();
             c1.selectDB(email);
             if (null == c1.getEmail()){
+                signInErr = ("Email incorrect. Please try again.");
+                ses1.setAttribute("signInErr", signInErr);
                 rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
                 rd.forward(request, response);
             }
@@ -66,7 +69,9 @@ public class LoginServlet extends HttpServlet {
                 rd = request.getRequestDispatcher("/Pages/account.jsp");
                 rd.forward(request, response);
             } else {
-                rd = request.getRequestDispatcher("/Pages/accterr.jsp");
+                signInErr = ("Password incorrect. Please try again.");
+                ses1.setAttribute("signInErr", signInErr);
+                rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
                 rd.forward(request, response);
             }
         } else {
@@ -74,6 +79,8 @@ public class LoginServlet extends HttpServlet {
             customer = false;
             e1.selectDB(email);
             if (null == e1.getEmail()){
+            signInErr = ("Email incorrect. Please try again.");
+            ses1.setAttribute("signInErr", signInErr);
             rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
             rd.forward(request, response);
             }
@@ -85,7 +92,9 @@ public class LoginServlet extends HttpServlet {
                 rd = request.getRequestDispatcher("/Pages/empPortal.jsp");
                 rd.forward(request, response);
             } else {
-                rd = request.getRequestDispatcher("/Pages/accterr.jsp");
+                signInErr = ("Password incorrect. Please try again.");
+                ses1.setAttribute("signInErr", signInErr);
+                rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
                 rd.forward(request, response);
             }
         }

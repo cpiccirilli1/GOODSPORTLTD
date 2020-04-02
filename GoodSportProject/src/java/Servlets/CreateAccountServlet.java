@@ -43,6 +43,7 @@ public class CreateAccountServlet extends HttpServlet {
         String phone = request.getParameter("phoneNumberSignUp");
         String adEntered = request.getParameter("address");
         String address = "NA,NA,NA,NA,NA";
+        String signUpErr = null;
         
         System.out.println(email);
         System.out.println(passwd);
@@ -57,12 +58,21 @@ public class CreateAccountServlet extends HttpServlet {
             String state = request.getParameter("stateSignUp");
             String zipcode = request.getParameter("zipcodeSignUp");
             address = street + ","+street1+","+ city + "," + state + "," + zipcode;
-        } else {
-        }
+        } else {}
         Customer c1 = new Customer();
+        c1.selectDB(email);
+        if(c1.getEmail() == null){
         c1.insertDB2(lName, fName, address, phone, email, passwd);
+        ses1.setAttribute("c1", c1);
         RequestDispatcher rd = request.getRequestDispatcher("Pages/SignIn.jsp");
         rd.forward(request, response);
+        }
+        else{
+        signUpErr = ("Account already exist with this email. Either sign in or use another email.");
+        ses1.setAttribute("signUpErr", signUpErr);
+        RequestDispatcher rd = request.getRequestDispatcher("Pages/SignIn.jsp");
+        rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

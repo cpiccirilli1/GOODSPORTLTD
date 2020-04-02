@@ -70,7 +70,10 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-3">
                     <h3>Sign In</h3>
-                  
+                            <%if(null!=session.getAttribute("signInErr")){
+                            String inErr = (String)session.getAttribute("signInErr");
+                            out.println(inErr);
+                            }%>
                     <form method="post" action="http://localhost:8080/GoodSportProject/LoginServlet">
                         <div class="form-group">
                             <label>Email: </label>
@@ -96,6 +99,10 @@
                 <div class="col-sm-3">
                     <h3>Sign Up</h3>
                     <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/CreateAccountServlet" method="Post">
+                        <%if(null!=session.getAttribute("signUpErr")){
+                        String upErr = (String)session.getAttribute("signUpErr");
+                        out.println(upErr);
+                        }%>
                         <div class="form-group">
                             <label>Email: </label>
                             <input type="text" class="form-control" name="emailSignUp" required>
