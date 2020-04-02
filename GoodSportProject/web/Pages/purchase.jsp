@@ -70,7 +70,7 @@
                             <input type="address" class="form-control" name="addr" required/>
                             <br>
                             <label for="name"></label>
-                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addr"/>
+                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addrext"/>
                             <br>
                             <label>City</label>
                             <input type="city" class="form-control" name="city" required/>

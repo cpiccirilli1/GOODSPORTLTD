@@ -6,6 +6,8 @@ import java.sql.*;
  *
  * @author natha
  */
+
+/* Properties */
 public class CustOrder {
 
     int orderID;
@@ -16,7 +18,8 @@ public class CustOrder {
     String phonenum;
     String email;
     String orderStatus;
-
+    
+    /* No args constructor */
     public void CustOrder() {
         orderID = 0;
         custID = "";
@@ -28,6 +31,7 @@ public class CustOrder {
         orderStatus = "";
     }
 
+    /* Get/Set methods */
     public void CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
         
 
@@ -61,6 +65,7 @@ public class CustOrder {
         return orderStatus;
     }
 
+    /* selectDB selects everything in the database table */
     public void selectDB(int OrderID) {
         try {
             String sql = "SELECT * FROM CustOrders WHERE OrderID = '" + OrderID + "'";
@@ -81,6 +86,7 @@ public class CustOrder {
         }
     }
     
+    /* default insertDB method */
     public void insertDB(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
         try {
             String sql = "INSERT INTO CustOrders VALUES ('" + order + "', '" + 
@@ -93,6 +99,9 @@ public class CustOrder {
         }
     }
     
+    /* insertDBOrder is a modifcation of the default insertDB where only specific
+    columns are filled.
+    */
     public void insertDBOrder(String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
         try {
             String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, OrderStatus ) VALUES ('" + 
@@ -105,6 +114,17 @@ public class CustOrder {
         }
     }
     
+    /* addressGlue is a method used to string together information from multiple
+    data fields.
+    */
+    public String addressGlue(String add1, String add2, String city, String state,
+            String zip){
+        String AddressStr = add1 + "," + add2 + "," + city + "," + state + "," + zip;
+        
+        return AddressStr;
+    }
+    
+    /* updateDB updates the table columns */
     public void updateDB(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
     try {
             String sql = "UPDATE CustOrders SET OrderID = '" + order + "', CustID = '"
@@ -117,6 +137,7 @@ public class CustOrder {
         }
     }
     
+    /* updateStatus is used to change order status from Open to Shipped */
     public void updateStatus(int order) {
         try {
             String sql = "UPDATE CustOrders SET OrderStatus = 'Shipped' WHERE OrderID = '" + order + "'";
@@ -127,6 +148,7 @@ public class CustOrder {
         }
     }
     
+    /* deleteDB method */
      public void deleteDB(int order) {
         try {
             String sql = "DELETE FROM CustOrders WHERE OrderID = '" + order + "'";
