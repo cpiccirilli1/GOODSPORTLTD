@@ -47,6 +47,7 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -88,9 +89,9 @@
         
        <div class="container">  
         <div class="row">
-         <div class="col-sm-3"></div>  
-        <div class="col-sm-6">
-        <h1 style="font-size:2vw;" class="center">Customer Account</h1>
+         <div class="col-sm-2"></div>  
+        <div class="col-sm-7">
+        <h1 style="font-size:2vw; font-weight: bold;" class="center">Customer Account</h1>
         <table class="table">
             <tr>
                 <td style="font-weight: bold;">Name: </td><td><%= name %></td>
@@ -122,6 +123,9 @@
         </div>
         </div>
        </div>
+                    <br>
+                    <br>
+                    <br>
                     <br>
                     <br>
                     <br>
@@ -161,6 +165,8 @@
                         </div>
                         <br>
                         <br>
+                        <br>
+                      
                     </div>
             </div>
 	</footer>

@@ -16,7 +16,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Order Complete!</title>
     </head>
-    <body>
+    <body style="background-color: #f2f2f2;">
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -33,6 +33,7 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -44,84 +45,84 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-                     <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
             </div>
         </nav>
-		<div id="order" class="container-fluid">
-		  <div class="text-center">
-			<h3 style="font-size:2.5vw;">Thank you for your order!</h3>
-		  </div>
-		  <div class="col-sm-3 col-xs-12">
-		  </div>
-		  <div class="col-sm-4 col-xs-12">
-			<h3>Order number: </h3>
-			<hr class="style2">
-			<p>We are currently processing your order.</p>
-			<p>For your convenience you may want to save your order confirmation.</p>
-			<br>
-			<h3>Deliverly Details</h3>
-			<hr class="style2">
-			<h4><strong>Delivery for</strong></h4>
-			<br>
-			<br>
-			<br>
-			<br>
-			<h4><strong>Address</strong></h4>
-			<br>
-			<br>
-			<h4><strong>Shipping Method</strong></h4>
-			<br>
-			<br>
-		  </div>
-		  <div class="col-sm-2 col-xs-12">
-			<h3 style="font-size:1.5vw;">Order Summary</h3>
-			 <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-			 <h3 style="font-size:1vw;">Order Subtotal: </h3>
-				<h3 style="font-size:1vw;">Estimated Shipping: </h3>
-				<h3 style="font-size:1vw;">Estimated Tax: </h3>
-				<h3 style="font-size:1.2vw;">Estimated Order Total: </h3>
-				<br>
-				<br>
-			</div>
-		</div>
-		</div>
-		</div>
-		</div>
+        <div id="order" class="container">
+            <div class="text-center">
+                <h3 style="font-size:2.5vw; font-family: 'Arial Black', Gadget, sans-serif;">Thank you for your order!</h3>
+                <hr class="style1" style="border: 1px solid #999999;">
+                <br>
+            </div>
+            <div class="col-sm-5">
+                <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order number: </h3>
+                <hr class="style1" style="border: 1px solid #999999;">
+                <p>We are currently processing your order.</p>
+                <p>For your convenience you may want to save your order confirmation.</p>
+                <br>
+                <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Delivery Details</h3>
+                <hr class="style2" style="border: 1px solid #999999;">
+                <h4><strong>Delivery for</strong></h4>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h4><strong>Address</strong></h4>
+                <br>
+                <br>
+                <br>
+            </div>
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-5" style="background-color:#ffffff; border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
+                <h3 style="font-size:1.8vw; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
+                <hr class="style1" style="border: 1px solid #999999;">
+                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:50%" alt="Image"></div>
+                <h3 style="font-size:1vw;">Order Subtotal: </h3>
+                <h3 style="font-size:1vw;">Estimated Shipping: </h3>
+                <h3 style="font-size:1vw;">Estimated Tax: </h3>
+                <h3 style="font-size:1.6vw; font-weight: bold;">Estimated Order Total: </h3>
+                <br>
+                <br>
+            </div>
+        </div>
+        <br>
+        <br>
         <footer>									<!-- footer begins here -->
             <div class="footer">
-                    <div class="signature container">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <br>
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
-                            </div>
-                           <div class="col-sm-3">
+                <div class="signature container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <br>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
+                            <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                            <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                            <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                        </div>
+                        <div class="col-sm-3">
                             <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
                             <p style="text-align: center;">This website was create and designed by Project Team #1</p>
                             <br>
-                           </div>
-                            <br>
-                            <br>
-                            <div class="col-sm-2">
-                                <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
-                                </div>
-                            </div>
                         </div>
                         <br>
                         <br>
+                        <div class="col-sm-2">
+                            <div class="contactbutton">
+                                <a href="" class="contact" title="Contact Info">Contact us</a>
+                            </div>
+                        </div>
                     </div>
+                    <br>
+                    <br>
+                </div>
             </div>
-	</footer>
+        </footer>
     </body>
 </html>

@@ -20,7 +20,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Your Cart</title>
     </head>
-    <body>
+    <body style="background-color: #f2f2f2;">
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -37,6 +37,7 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -54,9 +55,9 @@
         </nav>
         <br>
         <br>
-        <div class="container" style="background-color: #f2f2f2;">	
-			<h2 style="font-size:2.5vw; font-weight: bold;">Your Cart</h2>
-			<hr class="style2">
+        <div class="container">	
+			<h2 style="font-size:2.5vw; font-weight: bold; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Your Cart</h2>
+                        <hr class="style1" style="border: 1px solid #999999;">
                         <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
@@ -97,7 +98,7 @@
                                     <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
 				</div>
 				<div class="form-group col-sm-4">
-                                    <h3 style="font-size:1.2vw; font-weight: bold;" >Product ID: <%=id%></h3>
+                                    <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" >Product ID: <%=id%></h3>
                                     <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
 				</div>
                             </div>
@@ -109,11 +110,13 @@
                             <div class="row">
                                 <div class="form-group col-sm-3">
                                 </div>
-                                <div class="form-group col-sm-4">
-                                    <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
-                                    <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
-                                    <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
-                                    <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
+                                <div class="form-group col-sm-5" style="background-color: #ffffff; border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
+                                    <h2 style="font-size:1.6vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h2>
+                                    <hr class="style1" style="border: 1px solid #999999;">
+                                    <h2 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h2>
+                                    <h2 style="font-size:1vw;">Estimated Shipping: $<%=10%></h2>
+                                    <h2 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h2>
+                                    <h3 style="font-weight: bold;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
                                     <br>
                                     <a href="http://localhost:8080/GoodSportProject/Pages/purchase.jsp"<button type="button" class="btn btn-primary btn-block">PROCEED TO CHECKOUT</a>
                                     <br>

@@ -46,6 +46,7 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
                          </ul>
                      </li>
                  </ul>
@@ -62,21 +63,21 @@
              </div>
          </nav>
         <br>
-        <div class="container" style="background-color: #f2f2f2;">
+        <div class="container">
             <div class="row">
             <div class="col-sm-3">
             <img src= "<%=img%>" alt="testpic" height="160" width="240" id = "floatright"/>
             </div>
-            <div class="col-sm-9"><!--/product-information-->
+            <div class="col-sm-9" style="background-color: #f2f2f2; border-collapse: collapse; border-radius: 25px; border: 2px solid #999999;"><!--/product-information-->
                 <form>
-                    <h2><%= name %></h2>
-                    <hr class="style2">
+                    <h2 style="font-family: Tahoma, Geneva, sans-serif; font-weight: bold; text-align: center"><%= name %></h2>
+                    <hr class="style1" style="border: 1px solid #999999;">
                     <input type="hidden" value="<%= id %>" name="itemNumber">
-                    <h3 style="font-size:1.4vw; font-weight: bold;">Product ID: <%= id %></h3>
-                    <h3 style="font-size:1.4vw; font-weight: bold;">Price: $<%= price %></h3>
+                    <h3 style="font-size:1.4vw; font-family: Tahoma, Geneva, sans-serif; font-weight: bold;">Product ID: <%= id %></h3>
+                    <h3 style="font-size:1.4vw; font-family: Tahoma, Geneva, sans-serif; font-weight: bold;">Price: $<%= price %></h3>
                             <div class="row">
                             <div class="col-sm-2">
-                            <label for="lname"> Quantity: <%= quant %></label>
+                                <label for="lname" style="font-family: Tahoma, Geneva, sans-serif;"> Quantity: <%= quant %></label>
                             <input type="text" class="form-control" id="lname" name="Quantity" value="1" /> 
                             </div>
                             </div>
@@ -91,10 +92,10 @@
                             Out of stock!
                             <% } %>
                             <br>
-                    <p><b>Availability:</b> <%= avail %></p>
+                            <p style="font-family: Verdana, Geneva, sans-serif;"><b>Availability:</b> <%= avail %></p>
                 </form>
-                    <p><b>Condition:</b> New</p>
-                    <p><b>Description:</b> <%=desc%></p>
+                    <p style="font-family: Verdana, Geneva, sans-serif;"><b>Condition:</b> New</p>
+                    <p style="font-family: Verdana, Geneva, sans-serif;"><b>Description:</b> <%=desc%></p>
                     <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
                     <br>
                     <br>

@@ -55,6 +55,7 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -74,7 +75,7 @@
         <div class="row">
          <div class="col-sm-3"></div>  
          <div class="col-sm-6">
-             <h1 style="font-size:2vw;" class="center">Update Customer Account</h1>
+             <h1 style="font-size:2vw; font-weight: bold;" class="center">Update Customer Account</h1>
             
         <form method="post" action="http://localhost:8080/GoodSportProject/accountservlet">
         <table class="table">          

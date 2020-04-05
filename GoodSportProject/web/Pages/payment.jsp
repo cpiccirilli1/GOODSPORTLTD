@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/GoodSportProject/CSS/purchaseCSS.css">
     </head>
-    <body>
+    <body style="background-color: #f2f2f2">
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -39,6 +39,7 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -54,68 +55,73 @@
                 </ul>
             </div>
         </nav>
-		<div class="container">
-		<div class="row">
-                <div class="col-sm-4">
-                <div class="payment">
-               <form action="http://localhost:8080/GoodSportProject/CustPaymentServlet" method="Post">
-                    <div class="form-group owner">
-                        <br>
-                        <label for="owner">Name on Card</label>
-                        <input type="text" class="form-control" id="owner" name="owner">
-                    </div>
-                    
-                    <div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Card Number</label>
-                        <input type="text" class="form-control" id="cardNumber" name="cardNumber">
-                    </div>
-                    <div class="form-group CVV">
-                        <label for="cvv">CVV</label>
-                        <input type="text" class="form-control" id="cvv" name="cvv">
-                    </div>
-                    <div class="form-group" id="expiration-month" name="expiration-month">
-                        <label>Expiration Date</label>
-                        <select name="expiration-month">
-                            <option value="JAN">January</option>
-                            <option value="FEB">February </option>
-                            <option value="MAR">March</option>
-                            <option value="APR">April</option>
-                            <option value="MAY">May</option>
-                            <option value="JUN">June</option>
-                            <option value="JUL">July</option>
-                            <option value="AUG">August</option>
-                            <option value="SEPT">September</option>
-                            <option value="OCT">October</option>
-                            <option value="NOV">November</option>
-                            <option value="DEC">December</option>
-                        </select>
+        <div class="container">
+            <h2 style="font-size:2.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Payment Information</h2>
+            <hr class="style1" style="border: 1px solid #999999;">
+            <br>
+            <div class="row">
+                <div class="col-sm-5" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #999999;">
+                    <div class="payment">
+                        <form action="http://localhost:8080/GoodSportProject/CustPaymentServlet" method="Post">
+                            <div class="form-group owner">
+                                <br>
+                                <label for="owner">Name on Card</label>
+                                <input type="text" class="form-control" id="owner" name="owner" required>
+                            </div>
 
-                        <select name="expiration-year">
-                            <option value=" 2020"> 2020</option>
-                            <option value=" 2021"> 2021</option>
-                            <option value=" 2022"> 2022</option>
-                            <option value=" 2023"> 2023</option>
-                            <option value=" 2024"> 2024</option>
-                            <option value=" 2025"> 2025</option>
-                            <option value=" 2026"> 2026</option>
-                        </select>
+                            <div class="form-group" id="card-number-field">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
+                            </div>
+                            <div class="form-group CVV">
+                                <label for="cvv">CVV</label>
+                                <input type="text" class="form-control" id="cvv" name="cvv" required>
+                            </div>
+                            <div class="form-group" id="expiration-month" name="expiration-month" required>
+                                <label>Expiration Date</label>
+                                <select name="expiration-month">
+                                    <option value="JAN">January</option>
+                                    <option value="FEB">February </option>
+                                    <option value="MAR">March</option>
+                                    <option value="APR">April</option>
+                                    <option value="MAY">May</option>
+                                    <option value="JUN">June</option>
+                                    <option value="JUL">July</option>
+                                    <option value="AUG">August</option>
+                                    <option value="SEPT">September</option>
+                                    <option value="OCT">October</option>
+                                    <option value="NOV">November</option>
+                                    <option value="DEC">December</option>
+                                </select>
+
+                                <select name="expiration-year">
+                                    <option value=" 2020"> 2020</option>
+                                    <option value=" 2021"> 2021</option>
+                                    <option value=" 2022"> 2022</option>
+                                    <option value=" 2023"> 2023</option>
+                                    <option value=" 2024"> 2024</option>
+                                    <option value=" 2025"> 2025</option>
+                                    <option value=" 2026"> 2026</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="credit_cards">
+                                <img src="http://localhost:8080/GoodSportProject/Media/visa.jpg" id="visa">
+                                <img src="http://localhost:8080/GoodSportProject/Media/amex.jpg" id="amex">
+                                <img src="http://localhost:8080/GoodSportProject/Media/mastercard.jpg" id="mastercard">
+                            </div>
+                            <br>
+                            <div class="form-group" id="pay-now">
+                                <button type="submit" class="btn btn-primary btn-block" id="confirm-order">COMPLETE MY ORDER</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group" id="credit_cards">
-                        <img src="http://localhost:8080/GoodSportProject/Media/visa.jpg" id="visa">
-                        <img src="http://localhost:8080/GoodSportProject/Media/amex.jpg" id="amex">
-                        <img src="http://localhost:8080/GoodSportProject/Media/mastercard.jpg" id="mastercard">
-                    </div>
-                    <div class="form-group" id="pay-now">
-                        <button type="submit" class="btn btn-primary btn-block" id="confirm-order">COMPLETE MY ORDER</button>
-                    </div>
-                </form>
-            </div>
                 </div>
-                
-		<div class="col-sm-1">
-		</div>
-		<div class="col-sm-4">
-			<h3 style="font-size:1.6vw;">Order Summary</h3>
+                <br>
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-6" style="background-color:#ffffff; border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
+                    <h3 style="font-size:1.8vw; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
+                    <hr class="style1" style="border: 1px solid #999999;">
 			 <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
@@ -157,20 +163,20 @@
                                 }
                             }
                         %>
-			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
-                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
-                            <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
-                            <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
-				<br>
-				<br>
-		</div>
-		</div>
-		</div>
-		<br>
-	<br>
-	<br>
-	<br>
-	<br>
+                        <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
+                        <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
+                        <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost * 0.06)%></h3>
+                        <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: $<%=df.format(cost + (cost * 0.06) + 10)%></h3>
+                        <br>
+                        <br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     
         <footer>									<!-- footer begins here -->
             <div class="footer">
@@ -189,11 +195,11 @@
                                 <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
                                 <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
                             </div>
-                           <div class="col-sm-3">
-                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
-                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
-                            <br>
-                           </div>
+                            <div class="col-sm-3">
+                                <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                                <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                                <br>
+                            </div>
                             <br>
                             <br>
                             <div class="col-sm-2">

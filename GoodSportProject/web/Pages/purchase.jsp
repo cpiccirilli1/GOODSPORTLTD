@@ -21,7 +21,7 @@
         <title>Getting Your Order</title>
      
     </head>
-    <body>
+    <body style="background-color: #f2f2f2">
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="navbar-header">
@@ -38,6 +38,7 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -54,12 +55,14 @@
             </div>
         </nav>
         <div class="container">
-		<h2 style="font-size:2.5vw;">Getting Your Order</h2>
-		<hr class="style2">
-		<h3 style="font-size:2vw;">Shipping Information</h3>
+		<h2 style="font-size:2.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Getting Your Order</h2>
+		<hr class="style1" style="border: 1px solid #999999;">
+                <br>
 		<div class="row">
                     <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/CustOrderServlet" method="Post" >
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-5" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #999999;" >
+                            <h3 style="font-size:1.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Shipping Information</h3>
+                            <br>
                             <label>First Name</label>
                             <input type="name" class="form-control" name="fname"/>
                             <br>
@@ -82,7 +85,8 @@
                             <input type="zip" class="form-control" name="zip" required/>
                             <br>
                             <hr class="style2">               
-                            <h3 style="font-size:2vw;">Contact Information</h3>
+                            <h3 style="font-size:1.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Contact Information</h3>
+                            <br>
                             <label for="email">Email Address</label>
                             <input type="email" class="form-control" id="email" name="email" required/>
                             <br>
@@ -90,7 +94,8 @@
                             <input type="phone" class="form-control" id="phone" name="phone" required/>
                             <br>
                             <hr class="style2">
-                            <h3 style="font-size:1.5vw;">Billing Address</h3>
+                            <h3 style="font-size:1.4vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Billing Address</h3>
+                            <br>
                             <label>First Name</label>
                             <input type="name" class="form-control" name="fname2"/>
                             <br>
@@ -113,10 +118,11 @@
                             <input type="zip" class="form-control" name="zip2" required/>
                             <br>
                         </div>
-			<div class="col-sm-3">
+			<div class="col-sm-1">
 			</div>
-			<div class="form-group col-sm-3">
-			<h3 style="font-size:1.8vw;">Order Summary</h3>
+			<div class="form-group col-sm-6" style="background-color:#ffffff; border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
+			<h3 style="font-size:1.8vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
+                        <hr class="style1" style="border: 1px solid #999999;">
 			 <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
@@ -161,10 +167,12 @@
 			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
                             <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
                             <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
-                            <h3 style="font-size:1.5vw;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
+                            <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
 				<br>
 				<br>
                                 <button type="submit" class="btn btn-primary btn-block">CONTINUE TO PAYMENT</button>
+                                <br>
+                                <br>
 			</div>
 			<br>
 			<br>
