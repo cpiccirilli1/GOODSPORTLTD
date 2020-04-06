@@ -162,13 +162,22 @@
                                 {
                                     Item i1 = cart.iArr.get(i);
                                     cost += i1.getPrice();
+                                    int id = i1.getId();
+                                    String name = i1.getProdName();
+                                    String desc = i1.getProdDesc();
+                                    String cat = i1.getCategory();
+                                    String sport = i1.getSport();
+                                    int quantity = i1.getQuantity();
+                                    double price = i1.getPrice();
+                                    String img = i1.getimgLink();
                         %>
                             <div class="row">
 				<div class="form-group col-sm-3">
                                     <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
 				</div>
 				<div class="form-group col-sm-5">
-                                    <h3 style="font-size:1.2vw;">Product ID: <%=i1.getId()%></h3>
+                                    <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
+                                    <h4 style="color: red">$<%=price%></h4>
 				</div>
                             </div>
                         <%
@@ -178,7 +187,7 @@
 			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
                             <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
                             <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
-                            <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
+                            <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
 				<br>
 				<br>
                                 <button type="submit" class="btn btn-primary btn-block">CONTINUE TO PAYMENT</button>

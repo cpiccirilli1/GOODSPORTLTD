@@ -34,7 +34,7 @@
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
@@ -89,6 +89,13 @@
                                     Item i1 = cart.iArr.get(i);
                                     cost += i1.getPrice();
                                     int id = i1.getId();
+                                    String name = i1.getProdName();
+                                    String desc = i1.getProdDesc();
+                                    String cat = i1.getCategory();
+                                    String sport = i1.getSport();
+                                    int quantity = i1.getQuantity();
+                                    double price = i1.getPrice();
+                                    String img = i1.getimgLink();
                         %>
                             
                             <div class="row">
@@ -98,8 +105,9 @@
                                     <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
 				</div>
 				<div class="form-group col-sm-4">
-                                    <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" >Product ID: <%=id%></h3>
-                                    <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
+                                    <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
+                                    <h4 style="color: red">$<%=price%></h4>
+                                    <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i1%>" data-toggle="tooltip">Remove</a></p>
 				</div>
                             </div>
                         
@@ -117,7 +125,7 @@
                                     <h2 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h2>
                                     <h2 style="font-size:1vw;">Estimated Shipping: $<%=10%></h2>
                                     <h2 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h2>
-                                    <h3 style="font-weight: bold;">Estimated Order Total: $<%=df.format(cost + (cost*0.06) + 10)%></h3>
+                                    <h3 style="font-weight: bold;">Estimated Order Total:<span style="color: red"> $<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
                                     <br>
                                     <a href="http://localhost:8080/GoodSportProject/Pages/purchase.jsp"<button type="button" class="btn btn-primary btn-block">PROCEED TO CHECKOUT</a>
                                     <br>
