@@ -14,6 +14,9 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author natha
+ * 
+ * This servlet is designed to take all information from the payment page and compile it into
+ * the Payments table in the database. It will not process if CC information is incorrect.
  */
 @WebServlet(name = "CustPaymentServlet", urlPatterns = {"/CustPaymentServlet"})
 public class CustPaymentServlet extends HttpServlet {
@@ -40,11 +43,10 @@ public class CustPaymentServlet extends HttpServlet {
            CustOrder c01 = new CustOrder();
            int payid = c01.getOrder();
            payments p1 = new payments();
-           //Double payment = 0.00;
+           Double payment = (Double)ses1.getAttribute("c");
  
-             
            String glueexpiration = p1.expirationGlue(expMonth, expYear);
-           p1.insertDB(payid, name, creditcard, glueexpiration, security);
+           p1.insertDB(payid, name, payment, creditcard, glueexpiration, security);
            //p1.insertDBtemp(name, creditcard, glueexpiration, security);
            
            RequestDispatcher rd;

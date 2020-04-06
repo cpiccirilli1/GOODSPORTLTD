@@ -16,7 +16,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author natha
  * 
- * CustOrderServlet takes input from the purchase.jsp page, compiling the data and inserting into the database.
+ * CustOrderServlet takes input from the purchase.jsp page. It will take customer object
+ * out of the session to find its CustID for use in the CustOrders table.
  */
 @WebServlet(name = "CustOrderServlet", urlPatterns = {"/CustOrderServlet"})
 public class CustOrderServlet extends HttpServlet {
