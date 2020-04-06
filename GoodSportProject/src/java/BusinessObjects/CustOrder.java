@@ -38,7 +38,18 @@ public class CustOrder {
     }
 
     public int getOrder() {
-        return orderID;
+        int i = 0;
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM CustOrders";
+            Statement stmt = Customer.connectDB();
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            i = rs.getInt("count");
+            System.out.println(i);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return i++;
     }
 
     public String getLname() {

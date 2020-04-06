@@ -105,6 +105,7 @@
                         
                         <%
                                 }
+                                session.setAttribute("cost", cost);
                             }
                         %>
                             <div class="row">

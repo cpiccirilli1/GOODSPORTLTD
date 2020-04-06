@@ -54,6 +54,17 @@
                 </ul>
             </div>
         </nav>
+        <%
+            Customer c1 = new Customer();
+            try {
+                c1 = (Customer)session.getAttribute("c1");
+                c1.getCustId();
+            } catch (Exception e) {
+                c1 = new Customer();
+                c1.Customer("", "", "", "", " , , , , ", "", "", "");
+            }
+            String[] addr = c1.getAddr().split(",");
+            %>
         <div class="container">
 		<h2 style="font-size:2.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Getting Your Order</h2>
 		<hr class="style1" style="border: 1px solid #999999;">
@@ -64,58 +75,58 @@
                             <h3 style="font-size:1.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Shipping Information</h3>
                             <br>
                             <label>First Name</label>
-                            <input type="name" class="form-control" name="fname"/>
+                            <input type="name" class="form-control" name="fname" value="<%=c1.getFName()%>"/>
                             <br>
                             <label>Last Name</label>
-                            <input type="name" class="form-control" name="lname"/>
+                            <input type="name" class="form-control" name="lname" value="<%=c1.getLName()%>"/>
                             <br>
                             <label>Address</label>
-                            <input type="address" class="form-control" name="addr" required/>
+                            <input type="address" class="form-control" name="addr" value="<%=addr[0]%>" required/>
                             <br>
-                            <label for="name"></label>
-                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addrext"/>
+                            <label for="name">Apt #, Suite, Floor (optional)</label>
+                            <input type="address" class="form-control" name="addr" value="<%=addr[1]%>"/>
                             <br>
                             <label>City</label>
-                            <input type="city" class="form-control" name="city" required/>
+                            <input type="city" class="form-control" name="city" value="<%=addr[2]%>" required/>
                             <br>
                             <label>State</label>
-                            <input type="state" class="form-control" name="state" required/>
+                            <input type="state" class="form-control" name="state" value="<%=addr[3]%>" required/>
                             <br>
                             <label>Zip Code</label>
-                            <input type="zip" class="form-control" name="zip" required/>
+                            <input type="zip" class="form-control" name="zip" value="<%=addr[4]%>" required/>
                             <br>
                             <hr class="style2">               
                             <h3 style="font-size:1.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Contact Information</h3>
                             <br>
                             <label for="email">Email Address</label>
-                            <input type="email" class="form-control" id="email" name="email" required/>
+                            <input type="email" class="form-control" id="email" name="email" value="<%=c1.getEmail()%>" required/>
                             <br>
                             <label for="phone">Phone Number</label>
-                            <input type="phone" class="form-control" id="phone" name="phone" required/>
+                            <input type="phone" class="form-control" id="phone" name="phone" value="<%=c1.getPhone()%>" required/>
                             <br>
                             <hr class="style2">
                             <h3 style="font-size:1.4vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Billing Address</h3>
                             <br>
                             <label>First Name</label>
-                            <input type="name" class="form-control" name="fname2"/>
+                            <input type="name" class="form-control" name="fname2" value="<%=c1.getFName()%>"/>
                             <br>
                             <label>Last Name</label>
-                            <input type="name" class="form-control" name="lname2"/>
+                            <input type="name" class="form-control" name="lname2" value="<%=c1.getLName()%>"/>
                             <br>
                             <label>Address</label>
-                            <input type="address" class="form-control" name="addr2" required/>
+                            <input type="address" class="form-control" name="addr2" value="<%=addr[0]%>" required/>
                             <br>
-                            <label for="name"></label>
-                            <input type="address" class="form-control" placeholder="Apt #, Suite, Floor (optional)" name="addr2"/>
+                            <label for="name">Apt #, Suite, Floor (optional)</label>
+                            <input type="address" class="form-control" name="addr2" value="<%=addr[1]%>"/>
                             <br>
                             <label>City</label>
-                            <input type="city" class="form-control" name="city2" required/>
+                            <input type="city" class="form-control" name="city2" value="<%=addr[2]%>" required/>
                             <br>
                             <label>State</label>
-                            <input type="state" class="form-control" name="state2" required/>
+                            <input type="state" class="form-control" name="state2" value="<%=addr[3]%>" required/>
                             <br>
                             <label>Zip Code</label>
-                            <input type="zip" class="form-control" name="zip2" required/>
+                            <input type="zip" class="form-control" name="zip2" value="<%=addr[4]%>" required/>
                             <br>
                         </div>
 			<div class="col-sm-1">
@@ -126,19 +137,19 @@
 			 <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
-                            try
-                            {
-                                Customer c1 = (Customer)session.getAttribute("c1");
-                                cart.populateCart(c1.getCart().split(","));
-                            } catch (NullPointerException e)
-                            {
-                                try {
-                                    cart = (ItemList)session.getAttribute("cart");
-                                    cart.getArray();
-                                } catch (NullPointerException npe) {
-                                    cart = new ItemList();
+                            try {
+                                cart = (ItemList)session.getAttribute("cart");
+                                cart.getArray();
+                            } catch (NullPointerException npe) {
+                                cart = new ItemList();
+                                try
+                                {
+                                    c1 = (Customer)session.getAttribute("c1");
+                                    cart.populateCart(c1.getCart().split(","));
+                                } catch (NullPointerException e)
+                                {
+
                                 }
-                                
                             }
                             double cost = 0;
                             if (cart.iArr.size() == 0) {

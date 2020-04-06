@@ -36,16 +36,16 @@ public class CustPaymentServlet extends HttpServlet {
            System.out.println("Expiration Date: " + expMonth + expYear);
            System.out.println("CVC: "+ security);
            
-           
-           //CustOrder c01 = (CustOrder)request.getSession().getAttribute("c01");
-           //int payid = c01.getOrder();
+           Customer c1 = (Customer)ses1.getAttribute("c1");
+           CustOrder c01 = new CustOrder();
+           int payid = c01.getOrder();
            payments p1 = new payments();
            //Double payment = 0.00;
  
              
            String glueexpiration = p1.expirationGlue(expMonth, expYear);
-           //p1.insertDB(payid, name, creditcard, glueexpiration, security);
-           p1.insertDBtemp(name, creditcard, glueexpiration, security);
+           p1.insertDB(payid, name, creditcard, glueexpiration, security);
+           //p1.insertDBtemp(name, creditcard, glueexpiration, security);
            
            RequestDispatcher rd;
             rd = request.getRequestDispatcher("/Pages/orderConfirmation.jsp");
