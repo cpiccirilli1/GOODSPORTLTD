@@ -40,6 +40,7 @@ public class CreateAccountServlet extends HttpServlet {
         HttpSession ses1 = request.getSession();
         String email = request.getParameter("emailSignUp");
         String passwd = request.getParameter("passwordSignUp");
+        String confirmpasswd = request.getParameter("confirmPswd");
         String fName = request.getParameter("firstNameSignUp");
         String lName = request.getParameter("lastNameSignUp");
         String phone = request.getParameter("phoneNumberSignUp");
@@ -63,25 +64,34 @@ public class CreateAccountServlet extends HttpServlet {
         } else {}
         Customer c1 = new Customer();
         c1.selectDB(email);
-        if(c1.getEmail() == null){
-        c1.insertDB2(lName, fName, address, phone, email, passwd);
-        c1.setCustFirstName(fName);
-        c1.setCustLastName(lName);
-        c1.setCustAddress(address);
-        c1.setCustEmail(email);
-        c1.setCustPassword(passwd);
-        c1.setCustPhone(phone);
-        ses1.setAttribute("c1", c1);
-        RequestDispatcher rd;
-        rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
-        rd.forward(request, response);
+        if (passwd.equals(confirmpasswd)){
+            if(c1.getEmail() == null){
+            c1.insertDB2(lName, fName, address, phone, email, passwd);
+            c1.setCustFirstName(fName);
+            c1.setCustLastName(lName);
+            c1.setCustAddress(address);
+            c1.setCustEmail(email);
+            c1.setCustPassword(passwd);
+            c1.setCustPhone(phone);
+            ses1.setAttribute("c1", c1);
+            RequestDispatcher rd;
+            rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
+            rd.forward(request, response);
+            }
+            else{
+            signUpErr = ("Account already exist with this email. Either sign in or use another email.");
+            ses1.setAttribute("signUpErr", signUpErr);
+            RequestDispatcher rd;
+            rd = request.getRequestDispatcher("Pages/SignIn.jsp");
+            rd.forward(request, response);
+            }
         }
-        else{
-        signUpErr = ("Account already exist with this email. Either sign in or use another email.");
-        ses1.setAttribute("signUpErr", signUpErr);
-        RequestDispatcher rd;
-        rd = request.getRequestDispatcher("Pages/SignIn.jsp");
-        rd.forward(request, response);
+        else{            
+            signUpErr = ("Passwords do not match. Please retry.");
+            ses1.setAttribute("signUpErr", signUpErr);
+            RequestDispatcher rd;
+            rd = request.getRequestDispatcher("Pages/SignIn.jsp");
+            rd.forward(request, response);
         }
     }
     }
