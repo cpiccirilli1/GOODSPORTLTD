@@ -51,6 +51,10 @@ public class CustOrder {
         }
         return i++;
     }
+    
+    public int getOrderId() {
+        return orderID;
+    }
 
     public String getLname() {
         return lastname;

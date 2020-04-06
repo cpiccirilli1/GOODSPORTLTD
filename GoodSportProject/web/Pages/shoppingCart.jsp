@@ -105,7 +105,9 @@
                         
                         <%
                                 }
-                                session.setAttribute("cost", cost);
+                             double finalcost = cost + (cost*0.06) + 10;
+                             session.setAttribute("c", finalcost);
+                             
                             }
                         %>
                             <div class="row">

@@ -77,7 +77,7 @@
                                         co = order.iArr.get(i);
                                 %>
                                 <tr>
-                                   <td><%=co.getOrder()%></td>
+                                   <td><%=co.getOrderId()%></td>
                                     <td><%=co.getFname()%></td>
                                     <td><%=co.getLname()%></td>
                                     <td><%=co.getAddress()%></td>
@@ -114,7 +114,7 @@
                                                 co2 = shippedOrder.iArr.get(i);
                                         %>
                                         <tr>
-                                            <td><%=co2.getOrder()%></td>
+                                            <td><%=co2.getOrderId()%></td>
                                             <td><%=co2.getFname()%></td>
                                             <td><%=co2.getLname()%></td>
                                             <td><%=co2.getAddress()%></td>

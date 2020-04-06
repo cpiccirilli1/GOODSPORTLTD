@@ -124,14 +124,15 @@ public class payments {
     }
     
     
-    public void insertDB(int payId, String NameOnCard,
+    public void insertDB(int payId, String NameOnCard, Double currency,
             String card, String exp, String cvc){
         
         try{
-            String sql = "INSERT INTO Payments(PayID, NameOnCard, CCNum, ExpDate, CVC)"+
-                    "Values('" + payId + "', '" + 
-                    NameOnCard + "', '" + card + "', '" + exp + 
-                    "', '" + cvc+ "')";                        
+            String sql = "INSERT INTO Payments(PayID, NameOnCard, PaymentTotal, CCNum, ExpDate, CVC)"+
+                    "Values('" + 
+                    payId + "','" + 
+                    NameOnCard + "',  '" + currency + "',  '" + card + "', '" + exp + 
+                    "', '" + cvc + "')";                        
             Statement stmt = Customer.connectDB();
            
             stmt.execute(sql);
@@ -218,9 +219,9 @@ public class payments {
         pay.selectDB(53);
         pay.display(); */
  
- payments p1 = new payments();
- p1.insertDB(6, "JOHN A DOE", "4716108999716531", "January 2023", "257");
-        p1.display();
+ //payments p1 = new payments();
+// p1.insertDB(6, "JOHN A DOE", "4716108999716531", "January 2023", "257");
+     //   p1.display();
         
     }
 
