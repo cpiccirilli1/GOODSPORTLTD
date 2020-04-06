@@ -107,7 +107,7 @@
 				<div class="form-group col-sm-4">
                                     <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
                                     <h4 style="color: red">$<%=price%></h4>
-                                    <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i1%>" data-toggle="tooltip">Remove</a></p>
+                                    <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
 				</div>
                             </div>
                         
@@ -129,7 +129,7 @@
                                     <h2 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h2>
                                     <h3 style="font-weight: bold;">Estimated Order Total:<span style="color: red"> $<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
                                     <br>
-                                    <a href="http://localhost:8080/GoodSportProject/Pages/purchase.jsp"<button type="button" class="btn btn-primary btn-block">PROCEED TO CHECKOUT</a>
+                                    <a href="http://localhost:8080/GoodSportProject/Pages/purchase.jsp"><button class="btn btn-primary btn-block">PROCEED TO CHECKOUT</button></a>
                                     <br>
                                 </div>
                             </div>
