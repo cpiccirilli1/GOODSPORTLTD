@@ -3,10 +3,16 @@ import java.sql.*;
 import java.util.ArrayList;
 /**
  *
- * @author natha
+ *    natha
  */
 public class EmpOrderList {
     public ArrayList<EmpOrder> iArr = new ArrayList<>();
+    
+        
+/****************************** 
+* pulls all orders from emporders table
+*
+*******************************/
     public void findAllItems() {
         try {
             String sql = "SELECT * FROM EmpOrders";

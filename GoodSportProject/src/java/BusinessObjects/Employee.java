@@ -5,7 +5,7 @@ import java.sql.*;
 
 /**
  *
- * @author mitho
+ *    mitho
  */
 public class Employee {
     String empId;
@@ -13,7 +13,11 @@ public class Employee {
     String empFirstName;
     String empLastName;
     String empEmail;
-    
+        
+/****************************** 
+* 
+*Empty constructor
+*******************************/
     public void Employee() {
         empId = "";
         empPassword = "";
@@ -21,7 +25,12 @@ public class Employee {
         empLastName = "";
         empEmail = "";
     }
-    
+        
+/****************************** 
+* 
+*setter constructor
+* String Id, String Pswd, String FName, String LName, String Email
+*******************************/
     public void Employee(String Id, String Pswd, String FName, String LName, 
             String Email) {
         empId = Id;
@@ -31,26 +40,45 @@ public class Employee {
         empEmail = Email;
     }
     
+/****************************** 
+* 
+*returns empId
+*******************************/
     public String getId() {
         return empId;
     }
-    
+/****************************** 
+* 
+*returns empPassword
+*******************************/
     public String getPassword() {
         return empPassword;
     }
-    
+/****************************** 
+*  
+* returns empFName
+*******************************/
     public String getFName() {
         return empFirstName;
     }
-    
+/****************************** 
+* 
+*returns empLastName
+*******************************/    
     public String getLName() {
         return empLastName;
     }
-    
+/****************************** 
+* 
+* returns empEmail
+*******************************/    
     public String getEmail() {
         return empEmail;
     }
-    
+/****************************** 
+* 
+* select statement to fill class based on email variable
+*******************************/    
     public void selectDB(String Email) {
         try {
             String sql = "SELECT * FROM Employees WHERE EmpEmail = '" + Email + "'";
@@ -67,7 +95,10 @@ public class Employee {
             System.out.println(e);
         }
     }
-    
+/****************************** 
+* 
+* inserts into the employees database
+*******************************/    
     public void insertDB(String Id, String Pswd, String FName, 
             String LName, String Email) {
         try {
@@ -79,7 +110,10 @@ public class Employee {
             System.out.println(e);
         }
     }
-    
+/****************************** 
+* 
+*updates employees database
+*******************************/    
     public void updateDB(String passwd, String fName, String lName, String eMail) {
         try {
             String sql = "UPDATE Employees SET EmpID = '" + empId + "', EmpPassword = '"
@@ -92,7 +126,10 @@ public class Employee {
             System.out.println(e);
         }
     }
-    
+/****************************** 
+* 
+*deletes from employees database
+*******************************/    
     public void deleteDB() {
         try {
             String sql = "DELETE FROM Employees WHERE EmpID = '" + empId + "'";

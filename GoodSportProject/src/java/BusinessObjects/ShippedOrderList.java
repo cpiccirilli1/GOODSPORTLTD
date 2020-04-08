@@ -5,10 +5,15 @@ import java.util.ArrayList;
 
 /**
  *
- * @author natha
+ *   author natha
  */
 public class ShippedOrderList {
     public ArrayList<CustOrder> iArr = new ArrayList<>();
+    /****************************** 
+* 
+* selects all shipped orders from CustOrders
+*
+*******************************/
     public void findShippedItems() {
         try {
             String sql = "SELECT * FROM CustOrders WHERE OrderStatus = 'Shipped'";

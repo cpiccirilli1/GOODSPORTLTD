@@ -4,7 +4,7 @@ import java.sql.*;
 
 /**
  *
- * @author mitho
+ *   author mitho
  */
 public class Item {
 
@@ -18,6 +18,10 @@ public class Item {
     private String imgLink;
     private ItemList iList;
 
+    /****************************** 
+* 
+* empty constructor
+*******************************/
     public void Item() {
         setProductID(0);
         setProductName("");
@@ -28,7 +32,10 @@ public class Item {
         setPrice(0.00);
         setImgLink(" ");
     }
-
+/****************************** 
+* 
+* setter constructor
+*******************************/
     public void Item(int id, String name, String desc, String cat, String sprt, int quant, double pri, String img) {
         setProductID(id);
         setProductName(name);
@@ -95,39 +102,43 @@ public class Item {
     public void setImgLink(String imgLink) {
         this.imgLink = imgLink;
     }
-
+/*get productID */
     public int getId() {
         return productID;
     }
-
+/*return productName*/
     public String getProdName() {
         return productName;
     }
-
+/*return productDesc*/
     public String getProdDesc() {
         return productDesc;
     }
-
+/*return category*/
     public String getCategory() {
         return category;
     }
-
+/*return sport*/
     public String getSport() {
         return sport;
     }
-
+/*return quantity*/
     public int getQuantity() {
         return quantity;
     }
-
+/*return price*/
     public double getPrice() {
         return price;
     }
-
+/*return imgLink*/
     public String getimgLink() {
         return imgLink;
     }
-
+/****************************** 
+* 
+* fills class variables from Inventory table
+* uses productID
+*******************************/
     public void selectDB(int ID) {
         try {
             String sql = "SELECT * FROM Inventory WHERE ProductID = '" + ID + "'";
@@ -147,7 +158,11 @@ public class Item {
             System.out.println(e);
         }
     }
-
+/****************************** 
+* 
+*Insert into Inventory table
+* 
+*******************************/
     public void insertDB(int Id, String ProductName, String Description, String cat, String sprt, int Quantity, Double Price, String imgLink) {
         try {
             String sql = "INSERT INTO Inventory VALUES ('" + Id + "', '" + ProductName + "', '" + Description + "', '" + cat + "', '" + sprt + "', '" + Quantity + "', '" + Price + ", " + imgLink + "')";
@@ -157,7 +172,11 @@ public class Item {
             System.out.println(e);
         }
     }
-
+/****************************** 
+* 
+* update Inventory
+* 
+*******************************/
     public void updateDB(String ProductName, String Description, String cat, String sprt, int Quantity, Double Price) {
         try {
             String sql = "UPDATE Inventory SET ProductID = '" + productID + "', ProductName = '"
@@ -170,7 +189,11 @@ public class Item {
             System.out.println(e);
         }
     }
-
+/****************************** 
+* 
+* updates individual row for quantity column in Inventory table
+*
+*******************************/
     public void updateQuantity(int Quantity) {
         try {
             String sql = "UPDATE Inventory SET Quantity = '"
@@ -181,7 +204,11 @@ public class Item {
             System.out.println(e);
         }
     }
-
+/****************************** 
+* 
+* updates Inventory row
+*
+*******************************/
     public void updateItemDB(String ProductName, String Description, String cat, String sprt, /*double Price,*/ String imglink) {
         try {
             String sql = "UPDATE Inventory SET ProductName = '" + ProductName + "', Description = '" + Description + "', Category = '" + cat + "', Sport = '" + sprt + "',  ImageLink = '" + imgLink
@@ -192,7 +219,11 @@ public class Item {
             System.out.println(e);
         }
     }
-
+/****************************** 
+* 
+* deletes row from table
+*
+*******************************/
     public void deleteDB() {
         try {
             String sql = "DELETE FROM Inventory WHERE ProductID = '" + productID + "'";
@@ -202,7 +233,11 @@ public class Item {
             System.out.println(e);
         }
     }
-
+/****************************** 
+* 
+* displays variables in class for testing
+*
+*******************************/
     public void display() {
         //int id, String name, String desc, String cat, String sprt, int quant, double pri, String img
 
@@ -218,7 +253,11 @@ public class Item {
         System.out.println("QUANTITY: " + this.getQuantity());
 
     }
-
+/****************************** 
+* 
+* used for testing the class
+*
+*******************************/
     public static void main(String[] args) {
         Item i = new Item();
         i.selectDB(1);

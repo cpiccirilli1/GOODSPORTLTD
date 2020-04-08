@@ -4,7 +4,7 @@ import java.sql.*;
 
 /**
  *
- * @author nkerns
+ *    nkerns
  */
 public class EmpOrder {
 
@@ -12,14 +12,14 @@ public class EmpOrder {
     String productID;
     String quantityreq;
 
-
+    /*empty constructor */
     public void EmpOrder() {
         emporderID = 0;
         productID = "";
         quantityreq = "";
 
     }
-
+    /*setting constructor*/
     public void EmpOrder(int orderID, String prodID, String quantity) {
         emporderID = orderID;
         productID = prodID;
@@ -27,19 +27,23 @@ public class EmpOrder {
 
 
     }
-
+    /* gets emporderID variable*/
     public int getOrderID() {
         return emporderID;
     }
-
+    /* gets productID  variable*/
     public String getProductID() {
         return productID;
     }
-
+    /*gets quantityreq variable*/
     public String getQuantity() {
         return quantityreq;
     }
-
+    
+/****************************** 
+* gets Employee order by EmpOrderId
+*
+*******************************/
     public void selectDB(int EmpOrderID) {
         try {
             String sql = "SELECT * FROM EmpOrders WHERE EmpOrderID = '" + EmpOrderID + "'";
@@ -55,7 +59,11 @@ public class EmpOrder {
             System.out.println(e);
         }
     }
-
+    
+/****************************** 
+*  Inserts into the EmpOrders table
+*
+*******************************/
     public void insertDB(int orderID, String prodID, String quantity) {
         try {
             String sql = "INSERT INTO EmpOrders VALUES ('" + orderID + "', '"
@@ -66,7 +74,11 @@ public class EmpOrder {
             System.out.println(e);
         }
     }
-    
+        
+/****************************** 
+* Inserts into EmpOrders Database using prodID and quantity
+*
+*******************************/
     public void insertDBorder(String prodID, String quantity) {
         try {
         String sql = "INSERT INTO EmpOrders (ProductID, QuantityNeeded) VALUES ('" + prodID + "', '" + quantity + "')";
@@ -77,6 +89,12 @@ public class EmpOrder {
         }
     }
 
+        
+/****************************** 
+* updates emporders table 
+* requires orderID prodID and quantity
+*
+*******************************/
     public void updateDB(int orderID, String prodID, String quantity) {
         try {
             String sql = "UPDATE EmpOrders SET EmpOrderID = '" + orderID + "', ProductID = '"
@@ -87,7 +105,11 @@ public class EmpOrder {
             System.out.println(e);
         }
     }
-
+    
+/****************************** 
+* deletes row from emporders table, requires orderID
+*
+*******************************/
     public void deleteDB(int orderID) {
         try {
             String sql = "DELETE FROM EmpOrders WHERE EmpOrderID = '" + orderID + "'";

@@ -103,7 +103,11 @@ public class payments {
     private String exp;
     private String cvc;
     
-    
+    /***************************
+     * 
+     * blank constructor 
+     * 
+     ****************************/
     public void payments(){
         this.setPayId(0);
         this.setNameOnCard("");;
@@ -113,7 +117,12 @@ public class payments {
         this.setCvc("");
     }
     
-    
+        
+    /***************************
+     * 
+     * setter constructor
+     * 
+     ****************************/
     public void payments( int payId, Double currency,
             String card, String exp, String cvc){
         this.setPayId(payId);
@@ -123,6 +132,12 @@ public class payments {
         this.setCvc(cvc);
     }
     
+        
+    /***************************
+     * 
+     *Database table insert 
+     * 
+     ****************************/
     
     public void insertDB(int payId, String NameOnCard, Double currency,
             String card, String exp, String cvc){
@@ -163,16 +178,18 @@ public class payments {
         
     }
     
+    /***************************
+     * 
+     * select all from payments table based on orderid
+     * 
+     ****************************/    
     public void selectDB(int payid){
          try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection conn;
-            //Edit this next line of code starting with C: to the file path of the database
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\cpicciri\\Documents\\Database\\GoodSportsDB.accdb");
-            String query = "SELECT * from payments where orderid=?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, payid);
-            ResultSet rs = stmt.executeQuery();
+            
+            String query = "SELECT * from payments where orderid='"+payid+"'";
+            Statement stmt = Customer.connectDB();
+            ResultSet rs = stmt.executeQuery(query);
             
             while(rs.next()){
                 
@@ -201,7 +218,11 @@ public class payments {
         
         return expirationStr;
     }
-    
+    /**********************
+     * 
+     * displays all variables to test class
+     * 
+     ************************/
     public void display(){
         System.out.println("Pay Id: " + payId );
         System.out.println("Currency: "+ currency);
@@ -214,7 +235,7 @@ public class payments {
     public static void main(String[] args){
         
  /*       payments pay = new payments();
-        pay.payments(53, "C", "Piccirilli", "Hi@gmail.com", 32.95, "34", "2/2021", "232");
+        pay.payments(53, "C", "Piccirilli", "Hi  gmail.com", 32.95, "34", "2/2021", "232");
         pay.insertDB();
         pay.selectDB(53);
         pay.display(); */

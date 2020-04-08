@@ -6,12 +6,12 @@ import java.util.List;
 
 /**
  *
- * @author mitho
+ *   author mitho
  */
 public class ItemList {
 
     /**
-     * @return the iCount
+     *   return the iCount
      */
     public int getCount() {
         return iCount;
@@ -33,12 +33,16 @@ public class ItemList {
             System.out.println(e);
         }
     }
-    
+    /* returns iArr*/
     public ArrayList getArray(){
         return iArr;
     }
     
-    
+/****************************** 
+* 
+* adds to cart 
+*
+*******************************/
     public void addToCart(String itemID) {
         Item i1 = new Item();
         int id = Integer.parseInt(itemID);
@@ -50,11 +54,19 @@ public class ItemList {
             }
         }
     }
-    
+    /****************************** 
+* 
+*removes from cart
+* 
+*******************************/
     public void removeFromCart(String itemID) {
         System.out.println(iArr.remove(Integer.parseInt(itemID)));
     }
-    
+/****************************** 
+* 
+* populate cart 
+*
+*******************************/    
     public void populateCart(String[] cart) {
         for(int i = 0; i < cart.length; i++) {
             Item i1 = new Item();
@@ -62,7 +74,11 @@ public class ItemList {
             iArr.add(i1);
         }
     }
-    
+ /****************************** 
+* 
+* get all from Inventory table that matches the Sport column
+*
+*******************************/   
     public void selectSportDB(String sport){
         try{
             String sql = "SELECT * FROM Inventory WHERE Sport = '" + sport + "'";
@@ -81,7 +97,12 @@ public class ItemList {
         }
     
     }
-
+/****************************** 
+* 
+* method to search database inventory item descriptions for
+* key words.
+* 
+*******************************/
     public void get_related(String term){
         
          try {
@@ -110,7 +131,11 @@ public class ItemList {
          }
          
     }
-    
+/****************************** 
+* 
+* display all in array
+* 
+*******************************/    
     public void display(){
         
         
@@ -118,7 +143,11 @@ public class ItemList {
             i.display();
         }
     }
-    
+/****************************** 
+* ! HELP
+* overrides to string to display something. 
+* 
+*******************************/    
     @Override
     public String toString() {
         String newCart = "";
@@ -127,7 +156,12 @@ public class ItemList {
             }
         return newCart;
     }
-    
+/****************************** 
+*
+* !HELP
+* 
+*
+*******************************/
     public void storeIds() {
          for (int i = 0; i < iArr.size(); i++) {
             int id = iArr.get(i).getId();
@@ -136,7 +170,13 @@ public class ItemList {
             }
          }
     }
-    
+
+
+/****************************** 
+* 
+* Used to test methods.
+*
+*******************************/    
     public static void main(String[] args){
         ItemList il = new ItemList();
         il.get_related("Ball");

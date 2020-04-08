@@ -4,10 +4,9 @@ import java.sql.*;
 
 /**
  *
- * @author natha
+ *   author natha
  */
 
-/* Properties */
 public class CustOrder {
 
     int orderID;
@@ -37,6 +36,10 @@ public class CustOrder {
 
     }
 
+/***********  
+* Gets the number of orders in the database
+*
+*************/
     public int getOrder() {
         int i = 0;
         try {
@@ -52,30 +55,58 @@ public class CustOrder {
         return i++;
     }
     
+/****************************** 
+* Gets orderId variable 
+*
+*******************************/
     public int getOrderId() {
         return orderID;
     }
-
+    
+/****************************** 
+* gets Lname variable
+*
+*******************************/
     public String getLname() {
         return lastname;
     }
-
+    
+/****************************** 
+* gets Fname variable
+*
+*******************************/
     public String getFname() {
         return firstname;
     }
-
+    
+/****************************** 
+* Gets address variable
+*
+*******************************/
     public String getAddress() {
         return address;
     }
-
+    
+/****************************** 
+* gets phone number variable
+*
+*******************************/
     public String getPhone() {
         return phonenum;
     }
-
+    
+/****************************** 
+* gets email variable
+*
+*******************************/
     public String getEmail() {
         return email;
     }
-    
+        
+/****************************** 
+* gets orderStatus variable
+*
+*******************************/
     public String getStatus() {
         return orderStatus;
     }

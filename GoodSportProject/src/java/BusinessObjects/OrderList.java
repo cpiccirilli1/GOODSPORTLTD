@@ -3,10 +3,16 @@ import java.sql.*;
 import java.util.ArrayList;
 /**
  *
- * @author nkerns
+ *   author nkerns
  */
 public class OrderList {
     public ArrayList<CustOrder> iArr = new ArrayList<>();
+    
+    /****************************** 
+* 
+* selects all from custorders table where orderstatus = OPEN
+*
+*******************************/
     public void findOpenItems() {
         try {
             String sql = "SELECT * FROM CustOrders WHERE OrderStatus = 'Open'";
