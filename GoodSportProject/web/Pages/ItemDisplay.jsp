@@ -65,20 +65,24 @@
         <br>
         <div class="container">
             <div class="row">
-            <div class="col-sm-3">
-            <img src= "<%=img%>" alt="testpic" height="160" width="240" id = "floatright"/>
-            </div>
-            <div class="col-sm-9" style="background-color: #f2f2f2; border-collapse: collapse; border-radius: 25px; border: 2px solid #999999;"><!--/product-information-->
+                
+                <div class="col-md-6 col-sm-6">
+                        <div class="product-grid8">
+                            <div class="itemimg itemimg-scaledown">
+                               <img src= "<%=img%>" alt="<%=name%>">
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-sm-6" style="background-color: #f2f2f2; border-collapse: collapse; border-radius: 25px; border: 2px solid #999999;"><!--/product-information-->
                 <form>
                     <h2 style="font-family: Tahoma, Geneva, sans-serif; font-weight: bold; text-align: center"><%= name %></h2>
                     <hr class="style1" style="border: 1px solid #999999;">
                     <input type="hidden" value="<%= id %>" name="itemNumber">
-                    <h3 style="font-size:1.4vw; font-family: Tahoma, Geneva, sans-serif; font-weight: bold;">Product ID: <%= id %></h3>
                     <h3 style="font-size:1.4vw; font-family: Tahoma, Geneva, sans-serif; font-weight: bold;">Price: $<%= price %></h3>
                             <div class="row">
                             <div class="col-sm-2">
                                 <label for="lname" style="font-family: Tahoma, Geneva, sans-serif;"> Quantity: <%= quant %></label>
-                            <input type="text" class="form-control" id="lname" name="Quantity" value="1" /> 
+                            <input type="text" class="form-control" id="lname" name="Quantity" value="1" />
                             </div>
                             </div>
                             <%
