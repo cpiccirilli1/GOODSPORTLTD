@@ -72,7 +72,6 @@
                 <div class="col-sm-3">
                     <h3>Sign In</h3>
                             <%
-                                System.out.println("determening error");
                                 if(null!=session.getAttribute("signInErr")){
                             String inErr = (String)session.getAttribute("signInErr");
                             out.println(inErr);
@@ -104,7 +103,6 @@
                     <h3>Sign Up</h3>
                     <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/CreateAccountServlet" method="Post">
                         <%
-                          System.out.println("determening error2");
                         if(null!=session.getAttribute("signUpErr")){
                         String upErr = (String)session.getAttribute("signUpErr");
                         out.println(upErr);

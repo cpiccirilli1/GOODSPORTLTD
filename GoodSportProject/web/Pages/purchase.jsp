@@ -64,13 +64,24 @@
                 c1.Customer("", "", "", "", " , , , , ", "", "", "");
             }
             String[] addr = c1.getAddr().split(",");
+            Boolean updateAddr = false;
+            if (addr[0].equals("NA")) {
+                updateAddr = true;
+                addr[0] = "";
+                addr[1] = "";
+                addr[2] = "";
+                addr[3] = "";
+                addr[4] = "";
+                System.out.println("reset Address");
+            }
+            session.setAttribute("updateAddr", updateAddr);
             %>
         <div class="container">
 		<h2 style="font-size:2.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Getting Your Order</h2>
 		<hr class="style1" style="border: 1px solid #999999;">
                 <br>
 		<div class="row">
-                    <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/CustOrderServlet" method="Post" >
+                    <form action="http://localhost:8080/GoodSportProject/CustOrderServlet" method="Post" >
                         <div class="form-group col-sm-5" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #999999;" >
                             <h3 style="font-size:1.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Shipping Information</h3>
                             <br>
@@ -81,7 +92,7 @@
                             <input type="name" class="form-control" name="lname" value="<%=c1.getLName()%>"/>
                             <br>
                             <label>Address</label>
-                            <input type="address" class="form-control" name="addr" value="<%=addr[0]%>" required/>
+                            <input type="address" class="form-control" name="streetAddr" value="<%=addr[0]%>" required/>
                             <br>
                             <label for="name">Apt #, Suite, Floor (optional)</label>
                             <input type="address" class="form-control" name="addr" value="<%=addr[1]%>"/>
@@ -106,28 +117,56 @@
                             <br>
                             <hr class="style2">
                             <h3 style="font-size:1.4vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Billing Address</h3>
-                            <br>
-                            <label>First Name</label>
-                            <input type="name" class="form-control" name="fname2" value="<%=c1.getFName()%>"/>
-                            <br>
-                            <label>Last Name</label>
-                            <input type="name" class="form-control" name="lname2" value="<%=c1.getLName()%>"/>
-                            <br>
-                            <label>Address</label>
-                            <input type="address" class="form-control" name="addr2" value="<%=addr[0]%>" required/>
-                            <br>
-                            <label for="name">Apt #, Suite, Floor (optional)</label>
-                            <input type="address" class="form-control" name="addr2" value="<%=addr[1]%>"/>
-                            <br>
-                            <label>City</label>
-                            <input type="city" class="form-control" name="city2" value="<%=addr[2]%>" required/>
-                            <br>
-                            <label>State</label>
-                            <input type="state" class="form-control" name="state2" value="<%=addr[3]%>" required/>
-                            <br>
-                            <label>Zip Code</label>
-                            <input type="zip" class="form-control" name="zip2" value="<%=addr[4]%>" required/>
-                            <br>
+                            <div class="form-group">
+                                <label>Same as Mailing Address</label>
+                                <input type="checkbox" name="address" onclick="visibility()">
+                            </div>
+                            <div id="addressBoxes">
+                                <br>
+                                <label>First Name</label>
+                                <input type="name" class="form-control" name="fname2" value="<%=c1.getFName()%>"/>
+                                <br>
+                                <label>Last Name</label>
+                                <input type="name" class="form-control" name="lname2" value="<%=c1.getLName()%>"/>
+                                <br>
+                                <label>Address</label>
+                                <input type="address" class="form-control" name="streetAddr2" id="streetAddr2" value="<%=addr[0]%>" required/>
+                                <br>
+                                <label for="name">Apt #, Suite, Floor (optional)</label>
+                                <input type="address" class="form-control" name="addr2" value="<%=addr[1]%>"/>
+                                <br>
+                                <label>City</label>
+                                <input type="city" class="form-control" name="city2" id="city2" value="<%=addr[2]%>" required/>
+                                <br>
+                                <label>State</label>
+                                <input type="state" class="form-control" name="state2" id="state2" value="<%=addr[3]%>" required/>
+                                <br>
+                                <label>Zip Code</label>
+                                <input type="zip" class="form-control" name="zip2" id="zip2" value="<%=addr[4]%>" required/>
+                                <br>
+                            </div>
+                                <script>
+                                    function visibility() {
+                                        var x = document.getElementById("addressBoxes");
+                                        var addr = document.getElementById("streetAddr2");
+                                        var city = document.getElementById("city2");
+                                        var state = document.getElementById("state2");
+                                        var zip = document.getElementById("zip2")
+                                        if (x.style.display === "none") {
+                                            x.style.display = "block";
+                                            addr.required = true;
+                                            city.required = true;
+                                            state.required = true;
+                                            zip.required = true;
+                                        } else {
+                                            x.style.display = "none";
+                                            addr.required = false;
+                                            city.required = false;
+                                            state.required = false;
+                                            zip.required = false;
+                                        }
+                                    }
+                                </script>
                         </div>
 			<div class="col-sm-1">
 			</div>
@@ -157,11 +196,10 @@
                                 <h3>No items in cart</h3>
                                 <%
                             } else {
-                                
+                                String[] quantities = cart.quantities.split(",");
                                 for(int i = 0; i < cart.iArr.size(); i++)
                                 {
                                     Item i1 = cart.iArr.get(i);
-                                    cost += i1.getPrice();
                                     int id = i1.getId();
                                     String name = i1.getProdName();
                                     String desc = i1.getProdDesc();
@@ -170,6 +208,7 @@
                                     int quantity = i1.getQuantity();
                                     double price = i1.getPrice();
                                     String img = i1.getimgLink();
+                                    cost += (i1.getPrice() * Double.parseDouble(quantities[i]));
                         %>
                             <div class="row">
 				<div class="form-group col-sm-3">

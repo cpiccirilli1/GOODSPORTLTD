@@ -35,11 +35,18 @@ public class RemoveCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("In remove servlet");
         HttpSession ses1 = request.getSession();
         ItemList cart = (ItemList)ses1.getAttribute("cart");
         String id = request.getParameter("id");
         cart.removeFromCart(id);
+        cart.added.remove(Integer.parseInt(id));
+        String[] quant = cart.quantities.split(",");
+        cart.quantities = "";
+        for (int i = 0; i < quant.length; i++){
+            if (i != Integer.parseInt(id)) {
+                cart.quantities = cart.quantities.concat(quant[i] + ",");
+            }
+        }
         ses1.setAttribute("cart", cart);
         try {
             Customer c1 = (Customer)ses1.getAttribute("c1");

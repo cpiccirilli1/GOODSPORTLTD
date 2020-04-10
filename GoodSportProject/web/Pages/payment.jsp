@@ -145,11 +145,10 @@
                                 <h3>No items in cart</h3>
                                 <%
                             } else {
-                                
+                                String[] quantities = cart.quantities.split(",");
                                 for(int i = 0; i < cart.iArr.size(); i++)
                                 {
                                     Item i1 = cart.iArr.get(i);
-                                    cost += i1.getPrice();
                                     int id = i1.getId();
                                     String name = i1.getProdName();
                                     String desc = i1.getProdDesc();
@@ -158,6 +157,7 @@
                                     int quantity = i1.getQuantity();
                                     double price = i1.getPrice();
                                     String img = i1.getimgLink();
+                                    cost += (i1.getPrice() * Double.parseDouble(quantities[i]));
                         %>
                             <div class="row">
 				<div class="form-group col-sm-3">

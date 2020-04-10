@@ -5,11 +5,9 @@
  */
 package Servlets;
 
-import BusinessObjects.Customer;
-import BusinessObjects.Item;
 import BusinessObjects.ItemList;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author mitho
  */
-@WebServlet(name = "CartServlet", urlPatterns = {"/CartServlet"})
-public class CartServlet extends HttpServlet {
+@WebServlet(name = "ChangeQuantServlet", urlPatterns = {"/ChangeQuantServlet"})
+public class ChangeQuantServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,29 +35,16 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
-        String itemID = request.getParameter("itemNumber");
-        String quantity = request.getParameter("Quantity");
-        try {
-            Customer c1 = (Customer)ses1.getAttribute("c1");
-            c1.getId();
-            ItemList shoppingCart = (ItemList)ses1.getAttribute("cart");
-            shoppingCart.addToCart(itemID, quantity);
-            String newCart = shoppingCart.toString();
-            c1.updateCart(newCart);
-            ses1.setAttribute("c1", c1);
-            ses1.setAttribute("cart", shoppingCart);
-        } catch(NullPointerException e) {
-            ItemList cart = new ItemList();
-            if (ses1.getAttribute("cart") != null) {
-                cart = (ItemList)ses1.getAttribute("cart");
-            }
-            cart.addToCart(itemID, quantity);
-            ses1.setAttribute("cart", cart);
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/shoppingCart.jsp");
-            rd.forward(request, response);
+        String quant = request.getParameter("Quantity");
+        String i = request.getParameter("id");
+        ItemList cart = (ItemList)ses1.getAttribute("cart");
+        String[] quantities = cart.quantities.split(",");
+        quantities[Integer.parseInt(i)] = quant;
+        cart.quantities = "";
+        for (int count = 0; count < quantities.length; count++){
+            cart.quantities = cart.quantities.concat(quantities[count] + ",");
         }
-        
+        response.sendRedirect("http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

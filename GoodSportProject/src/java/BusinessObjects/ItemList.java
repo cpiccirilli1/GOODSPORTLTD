@@ -18,6 +18,7 @@ public class ItemList {
     }
     public ArrayList<Item> iArr = new ArrayList<>();
     public List<Integer> added = new ArrayList<>();
+    public String quantities = "";
     public int iCount;
     public void findAllItems() {
         try {
@@ -43,12 +44,13 @@ public class ItemList {
 * adds to cart 
 *
 *******************************/
-    public void addToCart(String itemID) {
+    public void addToCart(String itemID, String quantity) {
         Item i1 = new Item();
         int id = Integer.parseInt(itemID);
         i1.selectDB(id);
         for (int i = 0; i <= added.size(); i++) {
             if (!(added.contains(id)) && (i == added.size())) {
+                quantities = quantities.concat(quantity + ",");
                 added.add(id);
                 iArr.add(i1);
             }
@@ -60,7 +62,7 @@ public class ItemList {
 * 
 *******************************/
     public void removeFromCart(String itemID) {
-        System.out.println(iArr.remove(Integer.parseInt(itemID)));
+        iArr.remove(Integer.parseInt(itemID));
     }
 /****************************** 
 * 
@@ -69,8 +71,10 @@ public class ItemList {
 *******************************/    
     public void populateCart(String[] cart) {
         for(int i = 0; i < cart.length; i++) {
+            String[] item = cart[i].split("x");
             Item i1 = new Item();
-            i1.selectDB(Integer.parseInt(cart[i]));
+            i1.selectDB(Integer.parseInt(item[0]));
+            quantities = quantities.concat(item[1] + ",");
             iArr.add(i1);
         }
     }
@@ -106,7 +110,7 @@ public class ItemList {
     public void get_related(String term){
         
          try {
-            String sql = "SELECT * FROM Inventory WHERE description LIKE '% "+term+" %'";
+            String sql = "SELECT * FROM Inventory WHERE description LIKE '% "+term+" %' OR ProductName LIKE '% " + term + "%'" ;
             Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -144,22 +148,21 @@ public class ItemList {
         }
     }
 /****************************** 
-* ! HELP
-* overrides to string to display something. 
+* 
+* overrides to string to turn the cart into a string value. 
 * 
 *******************************/    
     @Override
     public String toString() {
         String newCart = "";
             for (int i = 0; i < iArr.size(); i++) {
-                newCart = newCart.concat(iArr.get(i).getId() + ",");
+                newCart = newCart.concat(iArr.get(i).getId() + "x" + iArr.get(i).getQuantity() + ",");
             }
         return newCart;
     }
 /****************************** 
 *
-* !HELP
-* 
+* Puts all of the ids in the cart into a list to keep duplicates from being added.
 *
 *******************************/
     public void storeIds() {

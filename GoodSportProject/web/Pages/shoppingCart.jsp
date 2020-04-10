@@ -83,11 +83,10 @@
                                 <h3>No items in cart</h3>
                                 <%
                             } else {
-                                
+                                String[] quantities = cart.quantities.split(",");
                                 for(int i = 0; i < cart.iArr.size(); i++)
                                 {
                                     Item i1 = cart.iArr.get(i);
-                                    cost += i1.getPrice();
                                     int id = i1.getId();
                                     String name = i1.getProdName();
                                     String desc = i1.getProdDesc();
@@ -96,6 +95,7 @@
                                     int quantity = i1.getQuantity();
                                     double price = i1.getPrice();
                                     String img = i1.getimgLink();
+                                    cost += (i1.getPrice() * Double.parseDouble(quantities[i]));
                         %>
                             
                             <div class="row">
@@ -104,11 +104,14 @@
 				<div class="form-group col-sm-3">
                                     <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
 				</div>
-				<div class="form-group col-sm-4">
-                                    <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
-                                    <h4 style="color: red">$<%=price%></h4>
-                                    <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
-				</div>
+                                <form action="http://localhost:8080/GoodSportProject/ChangeQuantServlet?id=<%=i%>" method="post">
+                                    <div class="form-group col-sm-4">
+                                        <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
+                                        <h4 style="color: red">$<%=price%></h4>
+                                        <h4>Quantity : <input type="number" min="1" max="<%=quantity%>" id="Quantity" name="Quantity" value="<%=quantities[i]%>"><input type="Submit" value="Change"></h4>
+                                        <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
+                                    </div>
+                                </form>
                             </div>
                         
                         <%

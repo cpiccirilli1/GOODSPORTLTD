@@ -30,8 +30,8 @@ public class CustOrderServlet extends HttpServlet {
            //grab shipping info from purchase.jsp
            String firstname = request.getParameter("fname");
            String lastname = request.getParameter("lname");
-           String address = request.getParameter("addr");
-           String addressext = request.getParameter("addrext");
+           String address = request.getParameter("streetAddr");
+           String addressext = request.getParameter("addr");
            String city = request.getParameter("city");
            String stat = request.getParameter("state");
            String zipc = request.getParameter("zip");
@@ -52,29 +52,38 @@ public class CustOrderServlet extends HttpServlet {
            System.out.println("Email: " + mail);
            System.out.println("Phone Number: " + pho);
            // billing address
-           
-           String fname2 = request.getParameter("fname2");
-           String lname2 = request.getParameter("lname2");
-           String address2 = request.getParameter("addr");
-           String city2 = request.getParameter("city2");
-           String state2 = request.getParameter("state2");
-           String zipc2 = request.getParameter("zip2");
-           
-           
-           
-           System.out.println("== BILLING INFO ==");
-           System.out.println("First Name: " + fname2);           
-           System.out.println("Last Name: " + lname2);
-           System.out.println("Address: " + address2);
-           System.out.println("City: " + city2);
-           System.out.println("State: " + state2);
-           System.out.println("Zip Code: "+ zipc2);
-           
+           if ("on".equals(request.getParameter("address"))) {
+            String fname2 = request.getParameter("fname2");
+            String lname2 = request.getParameter("lname2");
+            String address2 = request.getParameter("streetAddr2");
+            String addressext2 = request.getParameter("addr2");
+            String city2 = request.getParameter("city2");
+            String state2 = request.getParameter("state2");
+            String zipc2 = request.getParameter("zip2");
+
+
+
+            System.out.println("== BILLING INFO ==");
+            System.out.println("First Name: " + fname2);           
+            System.out.println("Last Name: " + lname2);
+            System.out.println("Address: " + address2 + addressext2);
+            System.out.println("City: " + city2);
+            System.out.println("State: " + state2);
+            System.out.println("Zip Code: "+ zipc2);
+           }
           
            Customer c1 = (Customer)request.getSession().getAttribute("c1");
-           String id = c1.getCustId();
+           String id = "guest";
            CustOrder c0 = new CustOrder();
            String glue = c0.addressGlue(address, addressext, city, stat, zipc);
+           Boolean update = (Boolean)ses1.getAttribute("updateAddr");
+           if (c1 == null) {
+           } else {
+               id = c1.getCustId();
+               if (update == true) {
+                   c1.updateDB(id, c1.getFName(), c1.getLName(), glue, c1.getPhone(), c1.getEmail(), c1.getCart());
+               }
+           }
            String orderStatus = "Open";
            c0.insertDBOrder(id, lastname, firstname, glue, pho, mail, orderStatus);
            
