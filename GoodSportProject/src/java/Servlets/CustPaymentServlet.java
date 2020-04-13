@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author natha
+ *  natha
  * 
  * This servlet is designed to take all information from the payment page and compile it into
  * the Payments table in the database. It will not process if CC information is incorrect.
@@ -62,10 +62,10 @@ public class CustPaymentServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -76,10 +76,10 @@ public class CustPaymentServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -90,7 +90,7 @@ public class CustPaymentServlet extends HttpServlet {
     /**
      * Returns a short description of the servlet.
      *
-     * @return a String containing servlet description
+     * return a String containing servlet description
      */
     @Override
     public String getServletInfo() {

@@ -1,6 +1,6 @@
 /**
  * Chelsea
- * UNTESTED!
+ * 
  */
 package Servlets;
 
@@ -82,13 +82,20 @@ public class accountservlet extends HttpServlet {
         
         
     }
-    
+    /*****
+     * checks str to see if null or empty. 
+     * param str
+     * return 
+     */
     protected static boolean isNullOrEmpty(String str) {
         if(str != null && !str.isEmpty())
             return false;
         return true;
     }
-
+    /*****
+    * sticks all of the address strings together, returns one string.
+    * 
+    ********/
     protected static String addressGlue(String add1, String add2, String city, String state,
             String zip){
         String AddressStr = add1 + "," + add2 + "," + city + "," + state + "," + zip;
@@ -99,10 +106,10 @@ public class accountservlet extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -113,10 +120,10 @@ public class accountservlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -127,7 +134,7 @@ public class accountservlet extends HttpServlet {
     /**
      * Returns a short description of the servlet.
      *
-     * @return a String containing servlet description
+     * return a String containing servlet description
      */
     @Override
     public String getServletInfo() {

@@ -19,12 +19,17 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author cpicciri
+ * author cpicciri
  */
 @WebServlet(name = "Search", urlPatterns = {"/Search"})
 public class Search extends HttpServlet {
 
     /**
+     * 
+     * Gets search query and searches product discriptions for matching using
+     * like statements.
+     * pushes to itemgrid page
+     * 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -55,10 +60,10 @@ public class Search extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -69,10 +74,10 @@ public class Search extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -83,7 +88,7 @@ public class Search extends HttpServlet {
     /**
      * Returns a short description of the servlet.
      *
-     * @return a String containing servlet description
+     * return a String containing servlet description
      */
     @Override
     public String getServletInfo() {

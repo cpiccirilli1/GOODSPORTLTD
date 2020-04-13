@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author nkerns
+ * Processes employee orders
  */
 @WebServlet(name = "EmpOrderServlet", urlPatterns = {"/EmpOrderServlet"})
 public class EmpOrderServlet extends HttpServlet {
@@ -75,7 +75,8 @@ public class EmpOrderServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            //throws ServletException, IOException 
+{
         processRequest(request, response);
     }
 

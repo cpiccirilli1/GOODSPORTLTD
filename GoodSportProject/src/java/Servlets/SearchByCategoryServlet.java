@@ -18,19 +18,22 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author cgoswic1
+ * author cgoswic1
  */
 @WebServlet(name = "SearchByCategoryServlet", urlPatterns = {"/SearchByCategoryServlet"})
 public class SearchByCategoryServlet extends HttpServlet {
 
     /**
+     * Gets sport from top menu bar and then kicks all the products under that sport
+     * to the itemgrid
+     * 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -53,10 +56,10 @@ public class SearchByCategoryServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -67,10 +70,10 @@ public class SearchByCategoryServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -81,7 +84,7 @@ public class SearchByCategoryServlet extends HttpServlet {
     /**
      * Returns a short description of the servlet.
      *
-     * @return a String containing servlet description
+     * return a String containing servlet description
      */
     @Override
     public String getServletInfo() {

@@ -18,19 +18,23 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mitho
+ *   mitho
  */
 @WebServlet(name = "CreateAccountServlet", urlPatterns = {"/CreateAccountServlet"})
 public class CreateAccountServlet extends HttpServlet {
 
     /**
+     * Creates an account for users in the database. Puts blanks info in the address 
+     * field....
+     * 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
+     * 
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     *   request servlet request
+     *   response servlet response
+     *   ServletException if a servlet-specific error occurs
+     *   IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -100,10 +104,10 @@ public class CreateAccountServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     *   request servlet request
+     *   response servlet response
+     *   ServletException if a servlet-specific error occurs
+     *   IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -114,10 +118,10 @@ public class CreateAccountServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     *   request servlet request
+     *   response servlet response
+     *   ServletException if a servlet-specific error occurs
+     *   IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

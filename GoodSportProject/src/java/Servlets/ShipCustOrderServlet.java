@@ -13,7 +13,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author natha
+ * author natha
+ * 
+ * HELP!!!
+ * 
  */
 @WebServlet(name = "ShipCustOrderServlet", urlPatterns = {"/ShipCustOrderServlet"})
 public class ShipCustOrderServlet extends HttpServlet {
@@ -43,10 +46,10 @@ public class ShipCustOrderServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -57,10 +60,10 @@ public class ShipCustOrderServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * param request servlet request
+     * param response servlet response
+     * throws ServletException if a servlet-specific error occurs
+     * throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -71,7 +74,7 @@ public class ShipCustOrderServlet extends HttpServlet {
     /**
      * Returns a short description of the servlet.
      *
-     * @return a String containing servlet description
+     * return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
