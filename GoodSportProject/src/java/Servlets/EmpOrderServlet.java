@@ -62,7 +62,7 @@ public class EmpOrderServlet extends HttpServlet {
 
             
         }
-    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -75,7 +75,7 @@ public class EmpOrderServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            //throws ServletException, IOException 
+            throws ServletException, IOException 
 {
         processRequest(request, response);
     }
