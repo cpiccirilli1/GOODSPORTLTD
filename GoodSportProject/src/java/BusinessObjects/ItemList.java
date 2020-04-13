@@ -155,8 +155,9 @@ public class ItemList {
     @Override
     public String toString() {
         String newCart = "";
+        String[] quant = quantities.split(",");
             for (int i = 0; i < iArr.size(); i++) {
-                newCart = newCart.concat(iArr.get(i).getId() + "x" + iArr.get(i).getQuantity() + ",");
+                newCart = newCart.concat(iArr.get(i).getId() + "x" + quant[i] + ",");
             }
         return newCart;
     }

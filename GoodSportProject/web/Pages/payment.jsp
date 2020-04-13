@@ -182,6 +182,7 @@
                                 </div>
                                 <div class="form-group col-sm-5">
                                     <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
+                                    <h4>Quantity : <%=quantities[i]%></h4>
                                     <h4 style="color: red">$<%=price%></h4>
 				</div>
                             </div>
