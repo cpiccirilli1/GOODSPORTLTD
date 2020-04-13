@@ -36,41 +36,53 @@
             %>
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
-                <div class="navbar-header">
-                    <div class="logo_wrapper">
-                        <a href="http://localhost:8080/GoodSportProject/index.jsp"><img class="logo" src="http://localhost:8080/GoodSportProject/Media/Logo.png"/></a>
+                <div class="row">
+                    <div class="form-group col-sm-1">
+                        <div class="navbar-header">
+                            <div class="logo_wrapper">
+                                <a href="http://localhost:8080/GoodSportProject/index.jsp"><img class="logo" src="http://localhost:8080/GoodSportProject/Media/Logo.png"/></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop <span class="caret"></span></a>
+                                <ul class="dropdown-menu category-drop-down">
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <form class="navbar-form navbar-left search-bar-wrapper" action="http://localhost:8080/GoodSportProject/Search">
+                            <div class="input-group search-bar-wrapper">
+                                <input type="text" class="form-control" placeholder="Search" size="50" name="search" required>
+                                <div class="input-group-btn">
+                                <button type="text" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                  
+                    <div class="form-group col-sm-6">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                        </ul>
                     </div>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop <span class="caret"></span></a>
-                        <ul class="dropdown-menu category-drop-down">
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left search-bar-wrapper" action="http://localhost:8080/GoodSportProject/Search">
-                    <div class="form-group search-bar-wrapper">
-                        <input type="text" class="search-bar" placeholder="Search" name="search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Search</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> <%=fName%> Account  </a></li>
-                     <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                </ul>
             </div>
         </nav>
         <div class="container-fluid" style="background-color: #f2f2f2;">
             <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-3">
-                    <h3>Sign In</h3>
+                    <h3 style="font-weight: bold;">Sign In</h3>
                             <%
                                 if(null!=session.getAttribute("signInErr")){
                             String inErr = (String)session.getAttribute("signInErr");
@@ -96,11 +108,11 @@
                                 <label>Employee</label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-default">Sign In</button>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
                     </form>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Sign Up</h3>
+                    <h3 style="font-weight: bold;">Sign Up</h3>
                     <form onsubmit="return validate()" action="http://localhost:8080/GoodSportProject/CreateAccountServlet" method="Post">
                         <%
                         if(null!=session.getAttribute("signUpErr")){
@@ -158,7 +170,7 @@
                                 <input type="text" class="form-control" name="zipcodeSignUp">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-default">Sign Up</button>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
                         <br>
                         <br>
                     </form>
@@ -191,28 +203,23 @@
             <div class="footer">
                     <div class="signature container">
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-12">
+                                <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                                <p style="text-align: center;">This website was create and designed by Project Team #1</p>
                                 <br>
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" >
-                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" >
-                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" >
-                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" >
+                            </div>                       
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12" style="text-align: center;">
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                             </div>
-                           <div class="col-sm-3">
-                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
-                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
-                            <br>
-                           </div>
-                            <br>
-                            <br>
-                            <div class="col-sm-2">
-                                <div class="contactbutton">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="contactbutton" style="text-align: center;">
                                     <a href="" class="contact" title="Contact Info">Contact us</a>
                                 </div>
                             </div>
