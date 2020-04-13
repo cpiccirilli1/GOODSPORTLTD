@@ -34,6 +34,9 @@
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp">Check Inventory</a></li>
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li>
                 </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li><a href="http://localhost:8080/GoodSportProject/LogoutServlet">Logout</a></li>
+    </ul>
             </div>
         </nav>
             <div class="container">
@@ -68,6 +71,7 @@
                                     <th scope="col">Street</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">In Cart</th>
                                     <th scope="col">Order Status</th>
                                 </tr>
                             </thead>
@@ -83,6 +87,7 @@
                                     <td><%=co.getAddress()%></td>
                                     <td><%=co.getPhone()%></td>
                                     <td><%=co.getEmail()%></td>
+                                    <td><%=co.getItemList()%></td>
                                     <td><%=co.getStatus()%></td>                    
                                 </tr>
                                 <% }%>
@@ -105,6 +110,7 @@
                                             <th scope="col">Street</th>
                                             <th scope="col">Phone</th>
                                             <th scope="col">Email</th>
+                                            <th scope="col">In Cart</th>
                                             <th scope="col">Order Status</th>
                                         </tr>
                                     </thead>
@@ -120,6 +126,7 @@
                                             <td><%=co2.getAddress()%></td>
                                             <td><%=co2.getPhone()%></td>
                                             <td><%=co2.getEmail()%></td>
+                                            <td><%=co2.getItemList()%></td>
                                             <td><%=co2.getStatus()%></td>
 
                                         </tr>

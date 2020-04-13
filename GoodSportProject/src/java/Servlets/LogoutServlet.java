@@ -6,7 +6,6 @@
 package Servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,10 +37,14 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
+        
+        
         ses1.removeAttribute("c1");
+        ses1.removeAttribute("e1");
         ses1.removeAttribute("cart");
         RequestDispatcher rd = request.getRequestDispatcher("/Pages/SignIn.jsp");
         rd.forward(request, response);
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

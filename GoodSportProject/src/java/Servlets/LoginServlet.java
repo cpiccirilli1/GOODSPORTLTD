@@ -90,7 +90,6 @@ public class LoginServlet extends HttpServlet {
             String dbPassword = e1.getPassword();
             if (dbPassword.equals(password)) {
                 ses1.setAttribute("e1", e1);
-                ses1.setAttribute("customer", customer);
                 rd = request.getRequestDispatcher("/Pages/empPortal.jsp");
                 rd.forward(request, response);
             } else {

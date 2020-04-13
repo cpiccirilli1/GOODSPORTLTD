@@ -1,6 +1,7 @@
 package Servlets;
 import BusinessObjects.CustOrder;
 import BusinessObjects.Customer;
+import BusinessObjects.ItemList;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -74,18 +75,22 @@ public class CustOrderServlet extends HttpServlet {
           
            Customer c1 = (Customer)request.getSession().getAttribute("c1");
            String id = "guest";
+           ItemList cart = (ItemList)ses1.getAttribute("cart");
+           String stringCart = cart.toString();
+           
            CustOrder c0 = new CustOrder();
            String glue = c0.addressGlue(address, addressext, city, stat, zipc);
            Boolean update = (Boolean)ses1.getAttribute("updateAddr");
            if (c1 == null) {
            } else {
                id = c1.getCustId();
+               stringCart = c1.getCart();
                if (update == true) {
-                   c1.updateDB(id, c1.getFName(), c1.getLName(), glue, c1.getPhone(), c1.getEmail(), c1.getCart());
+                   c1.updateDB(c1.getPassword(), c1.getFName(), c1.getLName(), glue, c1.getPhone(), c1.getEmail(), c1.getCart());
                }
            }
            String orderStatus = "Open";
-           c0.insertDBOrder(id, lastname, firstname, glue, pho, mail, orderStatus);
+           c0.insertDBOrder(id, lastname, firstname, glue, pho, mail, stringCart, orderStatus);
            
             RequestDispatcher rd;
             rd = request.getRequestDispatcher("/Pages/payment.jsp");
@@ -94,16 +99,8 @@ public class CustOrderServlet extends HttpServlet {
         }
         catch (Exception e) {
             System.out.println(e);
-        }
-           
-           // getCustId to grab customer info.
-           // Use SQL JOIN, UNION, etc.
-           
-         
-           
-        
+        }   
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

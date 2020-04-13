@@ -16,6 +16,7 @@ public class CustOrder {
     String address;
     String phonenum;
     String email;
+    String itemlist;
     String orderStatus;
     
     /* No args constructor */
@@ -27,6 +28,7 @@ public class CustOrder {
         address = "";
         phonenum = "";
         email = "";
+        itemlist = "";
         orderStatus = "";
     }
 
@@ -102,11 +104,16 @@ public class CustOrder {
     public String getEmail() {
         return email;
     }
-        
-/****************************** 
-* gets orderStatus variable
+    
+    
+    /****************************** 
+* gets itemlist variable
 *
 *******************************/
+    public String getItemList() {
+       return itemlist;
+    }
+    
     public String getStatus() {
         return orderStatus;
     }
@@ -125,6 +132,7 @@ public class CustOrder {
                 address = rs.getString("Address");
                 phonenum = rs.getString("PhoneNum");
                 email = rs.getString("Email");
+                itemlist = rs.getString("ItemList");
                 orderStatus = rs.getString("OrderStatus");
             }
         } catch (Exception e) {
@@ -148,11 +156,11 @@ public class CustOrder {
     /* insertDBOrder is a modifcation of the default insertDB where only specific
     columns are filled.
     */
-    public void insertDBOrder(String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
+    public void insertDBOrder(String ID, String lname, String fname, String add, String phone, String mail, String itemlist, String orderStatus) {
         try {
-            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, OrderStatus ) VALUES ('" + 
+            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, ItemList, OrderStatus ) VALUES ('" + 
                     ID + "', '" + lname + "', '" + fname + "', '" + add + 
-                    "', '" + phone + "', '" + mail + "', '" + orderStatus + "')";
+                    "', '" + phone + "', '" + mail + "', '" + itemlist + "', '" + orderStatus + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
