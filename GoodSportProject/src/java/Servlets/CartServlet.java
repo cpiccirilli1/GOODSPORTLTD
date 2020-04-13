@@ -40,10 +40,12 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
         String itemID = request.getParameter("itemNumber");
+        String quantity = request.getParameter("Quantity");
         try {
             Customer c1 = (Customer)ses1.getAttribute("c1");
+            c1.getId();
             ItemList shoppingCart = (ItemList)ses1.getAttribute("cart");
-            shoppingCart.addToCart(itemID);
+            shoppingCart.addToCart(itemID, quantity);
             String newCart = shoppingCart.toString();
             c1.updateCart(newCart);
             ses1.setAttribute("c1", c1);
@@ -53,7 +55,7 @@ public class CartServlet extends HttpServlet {
             if (ses1.getAttribute("cart") != null) {
                 cart = (ItemList)ses1.getAttribute("cart");
             }
-            cart.addToCart(itemID);
+            cart.addToCart(itemID, quantity);
             ses1.setAttribute("cart", cart);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/shoppingCart.jsp");

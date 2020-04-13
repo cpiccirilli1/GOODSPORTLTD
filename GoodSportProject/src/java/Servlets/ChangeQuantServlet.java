@@ -5,10 +5,9 @@
  */
 package Servlets;
 
-import BusinessObjects.Customer;
 import BusinessObjects.ItemList;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,58 +17,44 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- *  mitho
+ * @author mitho
  */
-@WebServlet(name = "RemoveCartServlet", urlPatterns = {"/RemoveCartServlet"})
-public class RemoveCartServlet extends HttpServlet {
+@WebServlet(name = "ChangeQuantServlet", urlPatterns = {"/ChangeQuantServlet"})
+public class ChangeQuantServlet extends HttpServlet {
 
     /**
-     * Removes cart info from customer shoppingcart column
-     * 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * param request servlet request
-     * param response servlet response
-     * throws ServletException if a servlet-specific error occurs
-     * throws IOException if an I/O error occurs
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses1 = request.getSession();
+        String quant = request.getParameter("Quantity");
+        String i = request.getParameter("id");
         ItemList cart = (ItemList)ses1.getAttribute("cart");
-        String id = request.getParameter("id");
-        cart.removeFromCart(id);
-        cart.added.remove(Integer.parseInt(id));
-        String[] quant = cart.quantities.split(",");
+        String[] quantities = cart.quantities.split(",");
+        quantities[Integer.parseInt(i)] = quant;
         cart.quantities = "";
-        for (int i = 0; i < quant.length; i++){
-            if (i != Integer.parseInt(id)) {
-                cart.quantities = cart.quantities.concat(quant[i] + ",");
-            }
+        for (int count = 0; count < quantities.length; count++){
+            cart.quantities = cart.quantities.concat(quantities[count] + ",");
         }
-        ses1.setAttribute("cart", cart);
-        try {
-            Customer c1 = (Customer)ses1.getAttribute("c1");
-            c1.updateCart(cart.toString());
-        } catch (Exception e) {
-            
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/shoppingCart.jsp");
-            rd.forward(request, response);
-        }
-        
+        response.sendRedirect("http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * param request servlet request
-     * param response servlet response
-     * throws ServletException if a servlet-specific error occurs
-     * throws IOException if an I/O error occurs
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -80,10 +65,10 @@ public class RemoveCartServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * param request servlet request
-     * param response servlet response
-     * throws ServletException if a servlet-specific error occurs
-     * throws IOException if an I/O error occurs
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -94,7 +79,7 @@ public class RemoveCartServlet extends HttpServlet {
     /**
      * Returns a short description of the servlet.
      *
-     * return a String containing servlet description
+     * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {

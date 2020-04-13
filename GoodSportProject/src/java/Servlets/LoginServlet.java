@@ -56,14 +56,15 @@ public class LoginServlet extends HttpServlet {
                 ItemList cart = new ItemList();
                 try {
                     cart.populateCart(c1.getCart().split(","));
+                    cart.storeIds();
                 } catch (Exception e) {
-                    
+                    System.out.println(e);
                 }
                 if (ses1.getAttribute("cart") != null) {
-                    cart.storeIds();
                     ItemList guestCart = (ItemList)ses1.getAttribute("cart");
                     for (int i = 0; i < guestCart.iArr.size(); i++) {
-                        cart.addToCart(String.valueOf(guestCart.iArr.get(i).getId()));
+                        Item i1 = guestCart.iArr.get(i);
+                        cart.addToCart(String.valueOf(i1.getId()), String.valueOf(i1.getQuantity()));
                     }
                     c1.updateCart(cart.toString());
                 }
@@ -87,7 +88,6 @@ public class LoginServlet extends HttpServlet {
             rd.forward(request, response);
             }
             String dbPassword = e1.getPassword();
-            System.out.println(dbPassword);
             if (dbPassword.equals(password)) {
                 ses1.setAttribute("e1", e1);
                 ses1.setAttribute("customer", customer);

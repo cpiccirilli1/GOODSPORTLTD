@@ -7,4 +7,21 @@
   font-weight: bold;
   font-family: 'Trebuchet MS', Helvetica, sans-serif;
 }
+.itemimg {
+  margin: 1em 0;
+  text-align: center;
+  display:block;
+  box-shadow:0 0 10px rgba(0,0,0,.15);
+  border:1px solid #e4e9ef;
+  transition:all .3s ease 0s
+}
+
+.itemimg img {
+  width: 500px;
+  height: 500px;
+}
+
+.itemimg-scaledown img {
+  object-fit: scale-down;
+}
 

@@ -5,7 +5,6 @@
     z-index:1
 }
 .product-grid8 .product-image8{
-    border:1px solid #e4e9ef;
     position:relative;
     transition:all .3s ease 0s}
 .product-grid8:hover .product-image8{
@@ -14,10 +13,7 @@
 .product-grid8 .product-image8 a{
     display:block
 }
-.product-grid8 .product-image8 img{
-    width:100%;
-    height:auto;
-}
+
 .product-grid8 .pic-1{
     opacity:1;
     transition:all .5s ease-out 0s
@@ -152,6 +148,11 @@
 .product-grid8 .all-deals:hover{
     background-color:#0081c2
 }
+
+.itemimg-scaledown img {
+  object-fit: scale-down;
+}
+
 @media only screen and (max-width:990px){.product-grid8{
     margin-bottom:30px
     }

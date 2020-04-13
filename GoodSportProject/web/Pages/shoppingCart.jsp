@@ -15,42 +15,56 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
+        <link href="http://localhost:8080/GoodSportProject/CSS/shoppingCartCSS.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
         <title>Your Cart</title>
     </head>
     <body style="background-color: #f2f2f2;">
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
-                <div class="navbar-header">
-                    <div class="logo_wrapper">
-                        <a href="http://localhost:8080/GoodSportProject/index.jsp"><img class="logo" src="http://localhost:8080/GoodSportProject/Media/Logo.png"/></a>
+                <div class="row">
+                    <div class="form-group col-sm-1">
+                        <div class="navbar-header">
+                            <div class="logo_wrapper">
+                                <a href="http://localhost:8080/GoodSportProject/index.jsp"><img class="logo" src="http://localhost:8080/GoodSportProject/Media/Logo.png"/></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop <span class="caret"></span></a>
+                                <ul class="dropdown-menu category-drop-down">
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <form class="navbar-form navbar-left search-bar-wrapper" action="http://localhost:8080/GoodSportProject/Search">
+                            <div class="input-group search-bar-wrapper">
+                                <input type="text" class="form-control" placeholder="Search" size="50" name="search" required>
+                                <div class="input-group-btn">
+                                <button type="text" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                  
+                    <div class="form-group col-sm-6">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                        </ul>
                     </div>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop <span class="caret"></span></a>
-                        <ul class="dropdown-menu category-drop-down">
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
-                            <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left search-bar-wrapper" action="http://localhost:8080/GoodSportProject/Search">
-                    <div class="form-group search-bar-wrapper">
-                        <input type="text" class="search-bar" placeholder="Search" name="search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Search</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-                     <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                </ul>
             </div>
         </nav>
         <br>
@@ -83,11 +97,10 @@
                                 <h3>No items in cart</h3>
                                 <%
                             } else {
-                                
+                                String[] quantities = cart.quantities.split(",");
                                 for(int i = 0; i < cart.iArr.size(); i++)
                                 {
                                     Item i1 = cart.iArr.get(i);
-                                    cost += i1.getPrice();
                                     int id = i1.getId();
                                     String name = i1.getProdName();
                                     String desc = i1.getProdDesc();
@@ -96,21 +109,28 @@
                                     int quantity = i1.getQuantity();
                                     double price = i1.getPrice();
                                     String img = i1.getimgLink();
+                                    cost += (i1.getPrice() * Double.parseDouble(quantities[i]));
                         %>
                             
                             <div class="row">
                                 <div class="form-group col-sm-3">
                                 </div>
 				<div class="form-group col-sm-3">
-                                    <div class="panel-body"><img src="<%=i1.getimgLink()%>" class="img-responsive" style="width:100%" alt="Image"></div>
-				</div>
-				<div class="form-group col-sm-4">
-                                    <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
-                                    <h4 style="color: red">$<%=price%></h4>
-                                    <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
-				</div>
+                                    <div class="product-grid8">
+                                        <div class="itemimg itemimg-scaledown">
+                                            <img src="<%=i1.getimgLink()%>" style="background-color: #ffffff; width:250px; height: 250px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s">
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="http://localhost:8080/GoodSportProject/ChangeQuantServlet?id=<%=i%>" method="post">
+                                    <div class="form-group col-sm-4">
+                                        <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
+                                        <h4 style="color: red">$<%=price%></h4>
+                                        <h4>Quantity : <input type="number" min="1" max="<%=quantity%>" id="Quantity" name="Quantity" value="<%=quantities[i]%>"><input type="Submit" value="Change"></h4>
+                                        <p><a href="http://localhost:8080/GoodSportProject/RemoveCartServlet?id=<%=i%>" data-toggle="tooltip">Remove</a></p>
+                                    </div>
+                                </form>
                             </div>
-                        
                         <%
                                 }
                              double finalcost = cost + (cost*0.06) + 10;
@@ -121,7 +141,7 @@
                             <div class="row">
                                 <div class="form-group col-sm-3">
                                 </div>
-                                <div class="form-group col-sm-5" style="background-color: #ffffff; border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
+                                <div class="form-group col-sm-5" style="background-color: #ffffff; box-shadow:0 0 10px rgba(0,0,0,.15); border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
                                     <h2 style="font-size:1.6vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h2>
                                     <hr class="style1" style="border: 1px solid #999999;">
                                     <h2 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h2>
@@ -136,40 +156,36 @@
 		</div>
                 <br>
                 <br>
+                
                 <footer>									<!-- footer begins here -->
-			<div class="footer">
-				<div class="signature container">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <br>
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png" title="basketball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="80" height="80" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png" title="baseball" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png" title="football" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/football.png" title="soccer" class="img-thumbnail" style=" background-color: transparent; border: 0;" alt="Baseball" width="70" height="70" ></a>
+                    <div class="footer">
+                        <div class="signature container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                                    <p style="text-align: center;">This website was create and designed by Project Team #1</p>
+                                    <br>
+                                </div>                       
                             </div>
-                           <div class="col-sm-3">
-                            <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
-                            <p style="text-align: center;">This website was create and designed by Project Team #1</p>
-                            <br>
-                           </div>
-                            <br>
-                            <br>
-                            <div class="col-sm-2">
-                                <div class="contactbutton">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                            <div class="row">
+                                <div class="col-sm-12" style="text-align: center;">
+                                    <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" ></a>
+                                    <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
+                                    <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
+                                    <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="contactbutton" style="text-align: center;">
+                                        <a href="" class="contact" title="Contact Info">Contact us</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
                         </div>
-                        <br>
-                        <br>
                     </div>
-			</div>
-		</footer>
+                </footer>
 	</body>
 </html>
