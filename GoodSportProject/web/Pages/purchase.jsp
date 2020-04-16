@@ -188,6 +188,7 @@
 			 <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
+                            df.setMinimumFractionDigits(2);
                             try {
                                 cart = (ItemList)session.getAttribute("cart");
                                 cart.getArray();
@@ -197,6 +198,7 @@
                                 {
                                     c1 = (Customer)session.getAttribute("c1");
                                     cart.populateCart(c1.getCart().split(","));
+                                    session.setAttribute("cart", cart);
                                 } catch (NullPointerException e)
                                 {
 

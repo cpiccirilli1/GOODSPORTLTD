@@ -129,6 +129,7 @@
 
                                 }
                             }
+                            session.removeAttribute("cart");
                             double cost = 0;
                             if (cart.iArr.size() == 0) {
                                 %>

@@ -149,7 +149,7 @@
                                     <h2 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h2>
                                     <h3 style="font-weight: bold;">Estimated Order Total:<span style="color: red"> $<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
                                     <br>
-                                    <a href="http://localhost:8080/GoodSportProject/Pages/purchase.jsp"><button class="btn btn-primary btn-block">PROCEED TO CHECKOUT</button></a>
+                                    <a href="http://localhost:8080/GoodSportProject/Pages/purchase.jsp"><button class="btn btn-primary btn-block"<% if (cart.iArr.size() == 0) {%>disabled<%}%>>PROCEED TO CHECKOUT</button></a>
                                     <br>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                         <div class="signature container">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                                    <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="http://localhost:8080/GoodSportProject/index.jsp">Good Sport</a></h2>
                                     <p style="text-align: center;">This website was create and designed by Project Team #1</p>
                                     <br>
                                 </div>                       
