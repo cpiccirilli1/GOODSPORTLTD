@@ -67,8 +67,18 @@ public class CustOrder {
     }
 
     /* Get/Set methods */
-    public void CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
+    public void CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String iList, String orderStatus) {
         
+        orderID = order;
+        custID = ID;
+        lastname = lname;
+        firstname = fname;
+        address = add;
+        phonenum = phone;
+        email = mail;
+        itemlist = iList;
+        
+        orderStatus = orderStatus;
 
     }
 
