@@ -107,11 +107,8 @@ public class CustOrderServlet extends HttpServlet {
                }
            }
            String orderStatus = "Open";
-           //c0.insertDBOrder(id, lastname, firstname, glue, pho, mail, stringCart, orderStatus);
-           CustOrder cust1 = new CustOrder(id, lastname, firstname, glue, pho, mail, stringCart, orderStatus, glue2, fname2, lname2);
-//                                  String id, String lname, String fname, String add, String custPhone, String custEmail, String iList, String OrderStatus, String b_add, String b_fname, String b_lname
-           
-           
+           CustOrder cust1 = new CustOrder(id, lastname, firstname, glue, pho, mail, stringCart, orderStatus, glue2, fname2, lname2);           
+           ses1.setAttribute("cust1", cust1);
            response.sendRedirect("/Pages/payment.jsp");
            
         }
