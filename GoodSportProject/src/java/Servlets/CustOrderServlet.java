@@ -109,7 +109,7 @@ public class CustOrderServlet extends HttpServlet {
            String orderStatus = "Open";
            CustOrder cust1 = new CustOrder(id, lastname, firstname, glue, pho, mail, stringCart, orderStatus, glue2, fname2, lname2);           
            ses1.setAttribute("cust1", cust1);
-           response.sendRedirect("/Pages/payment.jsp");
+           response.sendRedirect("http://localhost:8080/GoodSportProject/Pages/payment.jsp");
            
         }
         catch (Exception e) {

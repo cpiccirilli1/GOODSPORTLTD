@@ -194,12 +194,11 @@ public class CustOrder {
     /* insertDBOrder is a modifcation of the default insertDB where only specific
     columns are filled.
     */
-    public void insertDBOrder(String ID, String lname, String fname, String add, String phone, String mail,  String itemlist, String orderStatus,
-            String b_add, String b_lname, String b_fname) {
+    public void insertDBOrder() {
         try {
             String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, ItemList, OrderStatus, BillingAddress, b_fname, b_lname) VALUES ('" + 
-                    ID + "', '" + lname + "', '" + fname + "', '" + add + 
-                    "', '" + phone + "', '" + mail + "', '" + itemlist + "', '" + orderStatus +"', '" + b_add +"', '" + b_fname +"', '" + b_lname + "')";
+                    custID + "', '" + lastname + "', '" + firstname + "', '" + address + 
+                    "', '" + phonenum + "', '" + email + "', '" + itemlist + "', '" + orderStatus +"', '" + b_Address +"', '" + b_FName +"', '" + b_LName + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {

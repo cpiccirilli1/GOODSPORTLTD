@@ -4,6 +4,7 @@
     Author     : rikam
 --%>
 
+<%@page import="BusinessObjects.payments"%>
 <%@page import="BusinessObjects.Item"%>
 <%@page import="BusinessObjects.Customer"%>
 <%@page import="BusinessObjects.ItemList"%>
@@ -42,7 +43,7 @@
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
-                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
@@ -78,6 +79,8 @@
                     c1 = new Customer();
                     c1.Customer("", "", "", "", " , , , , ", "", "", "");
                 }
+                CustOrder cust1 = (CustOrder)session.getAttribute("cust1");
+                payments p1 = (payments)session.getAttribute("p1");
                 
             %>
         <div id="order" class="container">
@@ -89,7 +92,8 @@
             <div class="row">
                 <div class="col-sm-5" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #999999;">
                     <div class="col-sm-5">
-                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order number: </h3>
+                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order number: <%%></h3>
+                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Payment Number: <%%></h3>
                         <hr class="style1" style="border: 1px solid #999999;">
                         <p>We are currently processing your order.</p>
                         <p>For your convenience you may want to save your order confirmation.</p>
@@ -192,10 +196,10 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12" style="text-align: center;">
-                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
                             </div>
                         </div>
                         <div class="row">

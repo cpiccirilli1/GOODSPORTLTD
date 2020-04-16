@@ -56,8 +56,7 @@ public class RemoveCartServlet extends HttpServlet {
         } catch (Exception e) {
             
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/shoppingCart.jsp");
-            rd.forward(request, response);
+             response.sendRedirect("http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp");
         }
         
     }

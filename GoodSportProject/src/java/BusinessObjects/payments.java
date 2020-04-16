@@ -139,13 +139,12 @@ public class payments {
      * 
      ****************************/
     
-    public void insertDB(int payId, String NameOnCard, Double currency,
+    public void insertDB(String NameOnCard, Double currency,
             String card, String exp, String cvc){
         
         try{
-            String sql = "INSERT INTO Payments(PayID, NameOnCard, PaymentTotal, CCNum, ExpDate, CVC)"+
+            String sql = "INSERT INTO Payments(NameOnCard, PaymentTotal, CCNum, ExpDate, CVC)"+
                     "Values('" + 
-                    payId + "','" + 
                     NameOnCard + "',  '" + currency + "',  '" + card + "', '" + exp + 
                     "', '" + cvc + "')";                        
             Statement stmt = Customer.connectDB();

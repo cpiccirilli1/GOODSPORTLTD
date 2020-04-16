@@ -40,18 +40,19 @@ public class CustPaymentServlet extends HttpServlet {
            System.out.println("CVC: "+ security);
            
            Customer c1 = (Customer)ses1.getAttribute("c1");
-           CustOrder c01 = new CustOrder();
-           int payid = c01.getOrder();
            payments p1 = new payments();
+           //This double is the subtotal of the cart within the session.
            Double payment = (Double)ses1.getAttribute("c");
  
            String glueexpiration = p1.expirationGlue(expMonth, expYear);
-           p1.insertDB(payid, name, payment, creditcard, glueexpiration, security);
-           //p1.insertDBtemp(name, creditcard, glueexpiration, security);
+           p1.insertDB(name, payment, creditcard, glueexpiration, security);
+           ses1.setAttribute("p1", p1);
            
            c1.updateCart(",");
            
-           response.sendRedirect("/Pages/orderConfirmation.jsp");
+           CustOrder cust1 = (CustOrder)ses1.getAttribute("cust1");
+           cust1.insertDBOrder();
+           response.sendRedirect("http://localhost:8080/GoodSportProject/Pages/orderConfirmation.jsp");
         }
         catch (Exception e) {
             System.out.println(e);
