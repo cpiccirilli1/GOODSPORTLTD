@@ -92,8 +92,8 @@
             <div class="row">
                 <div class="col-sm-5" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #999999;">
                     <div class="col-sm-5">
-                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order number: <%%></h3>
-                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Payment Number: <%%></h3>
+                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order number: <%=cust1.getOrderId()%></h3>
+                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Payment Number: <%=p1.getPayId()%></h3>
                         <hr class="style1" style="border: 1px solid #999999;">
                         <p>We are currently processing your order.</p>
                         <p>For your convenience you may want to save your order confirmation.</p>
