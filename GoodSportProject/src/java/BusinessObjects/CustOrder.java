@@ -8,7 +8,7 @@ import java.sql.*;
  */
 
 public class CustOrder {
-
+    
     int orderID;
     String custID;
     String lastname;
@@ -19,7 +19,41 @@ public class CustOrder {
     String itemlist;
     String orderStatus;
     
-    /* No args constructor */
+    //billing variables
+
+    String b_Address;
+    String b_LName;
+    String b_FName;
+    
+    
+    /*****************
+     * Constructor for billing information/customer order
+     ****************/
+    
+    public void CustOrder(String id, String lname, String fname, String add, String custPhone,
+            String custEmail, String iList, String OrderStatus, String b_add, String b_fname, String b_lname){
+        
+        custID = id;
+        lastname = lname;
+        firstname = fname;
+        address = add;
+        phonenum = custPhone;
+        email = custEmail;
+        itemlist = iList;
+        orderStatus = OrderStatus;
+        
+        //Billing variables
+         b_Address  = b_add;
+         b_LName = b_lname;
+         b_FName = b_fname;
+         
+         
+    }
+    
+    
+    /*************
+     *No args constructor
+     ****************/
     public void CustOrder() {
         orderID = 0;
         custID = "";
@@ -156,11 +190,12 @@ public class CustOrder {
     /* insertDBOrder is a modifcation of the default insertDB where only specific
     columns are filled.
     */
-    public void insertDBOrder(String ID, String lname, String fname, String add, String phone, String mail, String itemlist, String orderStatus) {
+    public void insertDBOrder(String ID, String lname, String fname, String add, String phone, String mail,  String itemlist, String orderStatus,
+            String b_add, String b_lname, String b_fname) {
         try {
-            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, ItemList, OrderStatus ) VALUES ('" + 
+            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, ItemList, OrderStatus, BillingAddress, b_fname, b_lname) VALUES ('" + 
                     ID + "', '" + lname + "', '" + fname + "', '" + add + 
-                    "', '" + phone + "', '" + mail + "', '" + itemlist + "', '" + orderStatus + "')";
+                    "', '" + phone + "', '" + mail + "', '" + itemlist + "', '" + orderStatus +"', '" + b_add +"', '" + b_fname +"', '" + b_lname + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
