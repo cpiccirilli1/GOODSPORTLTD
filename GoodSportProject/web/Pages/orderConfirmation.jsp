@@ -4,6 +4,12 @@
     Author     : rikam
 --%>
 
+<%@page import="BusinessObjects.Item"%>
+<%@page import="BusinessObjects.Customer"%>
+<%@page import="BusinessObjects.ItemList"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="BusinessObjects.ItemList"%>
+<%@page import="BusinessObjects.CustOrder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +20,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/GoodSportProject/CSS/purchaseCSS.css">
         <title>Order Complete!</title>
     </head>
     <body style="background-color: #f2f2f2;">
@@ -61,46 +69,116 @@
                 </div>
             </div>
         </nav>
+            <%
+                Customer c1 = new Customer();
+                try {
+                    c1 = (Customer)session.getAttribute("c1");
+                    c1.getCustId();
+                } catch (Exception e) {
+                    c1 = new Customer();
+                    c1.Customer("", "", "", "", " , , , , ", "", "", "");
+                }
+                
+            %>
         <div id="order" class="container">
             <div class="text-center">
                 <h3 style="font-size:2.5vw; font-family: 'Arial Black', Gadget, sans-serif;">Thank you for your order!</h3>
                 <hr class="style1" style="border: 1px solid #999999;">
                 <br>
             </div>
-            <div class="col-sm-5">
-                <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order number: </h3>
-                <hr class="style1" style="border: 1px solid #999999;">
-                <p>We are currently processing your order.</p>
-                <p>For your convenience you may want to save your order confirmation.</p>
-                <br>
-                <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Delivery Details</h3>
-                <hr class="style2" style="border: 1px solid #999999;">
-                <h4><strong>Delivery for</strong></h4>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h4><strong>Address</strong></h4>
-                <br>
-                <br>
-                <br>
+            <div class="row">
+                <div class="col-sm-5" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #999999;">
+                    <div class="col-sm-5">
+                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order number: </h3>
+                        <hr class="style1" style="border: 1px solid #999999;">
+                        <p>We are currently processing your order.</p>
+                        <p>For your convenience you may want to save your order confirmation.</p>
+                        <br>
+                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Delivery Details</h3>
+                        <hr class="style2" style="border: 1px solid #999999;">
+                        <h4><strong>Delivery for</strong></h4>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h4><strong>Address</strong></h4>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                </div>
+			<div class="form-group col-sm-6" style="background-color:#ffffff; box-shadow:0 0 10px rgba(0,0,0,.15); border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
+			<h3 style="font-size:1.8vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
+                        <hr class="style1" style="border: 1px solid #999999;">
+			 <%
+                            ItemList cart = new ItemList();
+                            DecimalFormat df = new DecimalFormat("#,###.##");
+                            try {
+                                cart = (ItemList)session.getAttribute("cart");
+                                cart.getArray();
+                            } catch (NullPointerException npe) {
+                                cart = new ItemList();
+                                try
+                                {
+                                    c1 = (Customer)session.getAttribute("c1");
+                                    cart.populateCart(c1.getCart().split(","));
+                                } catch (NullPointerException e)
+                                {
+
+                                }
+                            }
+                            double cost = 0;
+                            if (cart.iArr.size() == 0) {
+                                %>
+                                <h3>No items in cart</h3>
+                                <%
+                            } else {
+                                String[] quantities = cart.quantities.split(",");
+                                for(int i = 0; i < cart.iArr.size(); i++)
+                                {
+                                    Item i1 = cart.iArr.get(i);
+                                    int id = i1.getId();
+                                    String name = i1.getProdName();
+                                    String desc = i1.getProdDesc();
+                                    String cat = i1.getCategory();
+                                    String sport = i1.getSport();
+                                    int quantity = i1.getQuantity();
+                                    double price = i1.getPrice();
+                                    String img = i1.getimgLink();
+                                    cost += (i1.getPrice() * Double.parseDouble(quantities[i]));
+                        %>
+                            <div class="row">
+				<div class="form-group col-sm-4">
+                                    <div class="product-grid8">
+                                    <div class="itemimg itemimg-scaledown">
+                                    <div class="panel-body"><img src="<%=i1.getimgLink()%>" style="width:120px; height: 120px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s" alt="Image"></div>
+                                    </div>
+				    </div>
+                                </div>
+				<div class="form-group col-sm-5">
+                                    <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
+                                    <h4>Quantity : <%=quantities[i]%></h4>
+                                    <h4 style="color: red">$<%=price%></h4>
+				</div>
+                            </div>
+                        <%
+                                }
+                            }
+                        %>
+			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
+                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
+                            <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
+                            <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
+				<br>
+                                <br>
+                                <br>
+			</div>
             </div>
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-5" style="background-color:#ffffff; box-shadow:0 0 10px rgba(0,0,0,.15); border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
-                <h3 style="font-size:1.8vw; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
-                <hr class="style1" style="border: 1px solid #999999;">
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:50%" alt="Image"></div>
-                <h3 style="font-size:1vw;">Order Subtotal: </h3>
-                <h3 style="font-size:1vw;">Estimated Shipping: </h3>
-                <h3 style="font-size:1vw;">Estimated Tax: </h3>
-                <h3 style="font-size:1.6vw; font-weight: bold;">Estimated Order Total: </h3>
-                <br>
-                <br>
-            </div>
+            <br>
+            <br>
         </div>
-        <br>
-        <br>
         <footer>									<!-- footer begins here -->
             <div class="footer">
                 <div class="signature container">

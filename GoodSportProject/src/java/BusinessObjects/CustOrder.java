@@ -24,15 +24,11 @@ public class CustOrder {
     String b_Address;
     String b_LName;
     String b_FName;
-    
-    
     /*****************
      * Constructor for billing information/customer order
      ****************/
-    
-    public void CustOrder(String id, String lname, String fname, String add, String custPhone,
-            String custEmail, String iList, String OrderStatus, String b_add, String b_fname, String b_lname){
-        
+    public CustOrder(String id, String lname, String fname, String add, String custPhone,
+            String custEmail, String iList, String OrderStatus, String b_add, String b_fname, String b_lname) { 
         custID = id;
         lastname = lname;
         firstname = fname;
@@ -47,14 +43,11 @@ public class CustOrder {
          b_LName = b_lname;
          b_FName = b_fname;
          
-         
     }
-    
-    
     /*************
      *No args constructor
      ****************/
-    public void CustOrder() {
+    public CustOrder() {
         orderID = 0;
         custID = "";
         lastname = "";
@@ -66,8 +59,10 @@ public class CustOrder {
         orderStatus = "";
     }
 
+
+
     /* Get/Set methods */
-    public void CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String iList, String orderStatus) {
+    public CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String iList, String orderStatus1) {
         
         orderID = order;
         custID = ID;
@@ -77,8 +72,7 @@ public class CustOrder {
         phonenum = phone;
         email = mail;
         itemlist = iList;
-        
-        orderStatus = orderStatus;
+        orderStatus = orderStatus1;
 
     }
 

@@ -48,10 +48,7 @@ public class CustPaymentServlet extends HttpServlet {
            String glueexpiration = p1.expirationGlue(expMonth, expYear);
            p1.insertDB(payid, name, payment, creditcard, glueexpiration, security);
            //p1.insertDBtemp(name, creditcard, glueexpiration, security);
-           
-           RequestDispatcher rd;
-            rd = request.getRequestDispatcher("/Pages/orderConfirmation.jsp");
-            rd.forward(request, response);
+           response.sendRedirect("/Pages/orderConfirmation.jsp");
         }
         catch (Exception e) {
             System.out.println(e);

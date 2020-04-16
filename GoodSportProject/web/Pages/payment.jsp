@@ -68,6 +68,27 @@
                 </div>
             </div>
         </nav>
+         <%
+            Customer c1 = new Customer();
+            try {
+                c1 = (Customer)session.getAttribute("c1");
+                c1.getCustId();
+            } catch (Exception e) {
+                c1 = new Customer();
+                c1.Customer("", "", "", "", " , , , , ", "", "", "");
+            }
+            String[] addr = c1.getAddr().split(",");
+            Boolean updateAddr = false;
+            if (addr[0].equals("NA")) {
+                updateAddr = true;
+                addr[0] = "";
+                addr[1] = "";
+                addr[2] = "";
+                addr[3] = "";
+                addr[4] = "";
+            }
+            session.setAttribute("updateAddr", updateAddr);
+            %>
         <div class="container">
             <h2 style="font-size:2.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Payment Information</h2>
             <hr class="style1" style="border: 1px solid #999999;">
@@ -132,25 +153,25 @@
                 <br>
                 <div class="col-sm-1">
                 </div>
-                <div class="col-sm-6" style="background-color:#ffffff; box-shadow:0 0 10px rgba(0,0,0,.15); border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
-                    <h3 style="font-size:1.8vw; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
-                    <hr class="style1" style="border: 1px solid #999999;">
+			<div class="form-group col-sm-6" style="background-color:#ffffff; box-shadow:0 0 10px rgba(0,0,0,.15); border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
+			<h3 style="font-size:1.8vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
+                        <hr class="style1" style="border: 1px solid #999999;">
 			 <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
-                            try
-                            {
-                                Customer c1 = (Customer)session.getAttribute("c1");
-                                cart.populateCart(c1.getCart().split(","));
-                            } catch (NullPointerException e)
-                            {
-                                try {
-                                    cart = (ItemList)session.getAttribute("cart");
-                                    cart.getArray();
-                                } catch (NullPointerException npe) {
-                                    cart = new ItemList();
+                            try {
+                                cart = (ItemList)session.getAttribute("cart");
+                                cart.getArray();
+                            } catch (NullPointerException npe) {
+                                cart = new ItemList();
+                                try
+                                {
+                                    c1 = (Customer)session.getAttribute("c1");
+                                    cart.populateCart(c1.getCart().split(","));
+                                } catch (NullPointerException e)
+                                {
+
                                 }
-                                
                             }
                             double cost = 0;
                             if (cart.iArr.size() == 0) {
@@ -173,14 +194,14 @@
                                     cost += (i1.getPrice() * Double.parseDouble(quantities[i]));
                         %>
                             <div class="row">
-                                <div class="form-group col-sm-4">
+				<div class="form-group col-sm-4">
                                     <div class="product-grid8">
-                                    <div class="itemimg itemimg-scaledown">                                     
-                                            <div class="panel-body"><img src="<%=i1.getimgLink()%>"  style="width:120px; height: 120px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s" alt="Image"></div>
+                                    <div class="itemimg itemimg-scaledown">
+                                    <div class="panel-body"><img src="<%=i1.getimgLink()%>" style="width:120px; height: 120px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s" alt="Image"></div>
                                     </div>
-                                    </div>
+				    </div>
                                 </div>
-                                <div class="form-group col-sm-5">
+				<div class="form-group col-sm-5">
                                     <h3 style="font-size:1.2vw; font-weight: bold; font-family: Verdana, Geneva, sans-serif;" ><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
                                     <h4>Quantity : <%=quantities[i]%></h4>
                                     <h4 style="color: red">$<%=price%></h4>
@@ -190,13 +211,14 @@
                                 }
                             }
                         %>
-                        <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
-                        <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
-                        <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost * 0.06)%></h3>
-                        <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
-                        <br>
-                        <br>
-                </div>
+			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
+                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
+                            <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
+                            <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
+				<br>
+                                <br>
+                                <br>
+			</div>
             </div>
         </div>
         <br>
