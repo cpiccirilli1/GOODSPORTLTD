@@ -83,7 +83,7 @@
             
             <%
             } else{
-                String name = c1.getFName()+c1.getLName();
+                String name = c1.getFName()+ " " + c1.getLName();
                 String email = c1.getEmail();
                 String phone = c1.getPhone();
                 String address = c1.getAddr();

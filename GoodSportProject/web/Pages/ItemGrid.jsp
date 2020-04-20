@@ -102,7 +102,17 @@
                                 <div class="price">$<%= price%></div>
                                 <span class="product-shipping">Free Shipping</span>
                                 <h3 class="title"><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
+                                <%
+                                    if (quantity != 0){
+                                    %>
                                 <a class="all-deals" href="http://localhost:8080/GoodSportProject/CartServlet?itemNumber=<%=id%>&Quantity=<%=1%>">Add to cart <i class="fa fa-angle-right icon"></i></a>
+                                <%
+                                    }else {
+                                    %>
+                                Out of stock!
+                                <%
+                                    }
+                                    %>
                                 <br>
                             </div>
                         </div>

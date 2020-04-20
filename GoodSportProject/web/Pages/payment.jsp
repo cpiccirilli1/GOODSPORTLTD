@@ -159,22 +159,19 @@
 			 <%
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
+                            boolean emptyCart = false;
                             try {
                                 cart = (ItemList)session.getAttribute("cart");
                                 cart.getArray();
                             } catch (NullPointerException npe) {
-                                cart = new ItemList();
-                                try
-                                {
-                                    c1 = (Customer)session.getAttribute("c1");
-                                    cart.populateCart(c1.getCart().split(","));
-                                } catch (NullPointerException e)
-                                {
-
-                                }
-                            }
+                              cart = new ItemList();
+                                emptyCart = true;
+                                
+                          }
+                            
                             double cost = 0;
-                            if (cart.iArr.size() == 0) {
+                            if (cart.iArr.size() == 0 || emptyCart == true) {
+
                                 %>
                                 <h3>No items in cart</h3>
                                 <%

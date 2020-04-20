@@ -55,6 +55,12 @@ public class CustPaymentServlet extends HttpServlet {
            p1.insertDB(name, order, payment, creditcard, glueexpiration, security);
            ses1.setAttribute("p1", p1);
            
+           ItemList cart = (ItemList)ses1.getAttribute("cart");
+           String[] quant = cart.quantities.split(",");
+           for (int i = 0; i < cart.iArr.size(); i++){
+               Item i1 = cart.iArr.get(i);
+               i1.updateQuantity(i1.getQuantity() - Integer.parseInt(quant[i]));
+           }
            try {
            c1.updateCart("");
            } catch (Exception e) {
