@@ -68,7 +68,8 @@
                                     <th scope="col">OrderID</th>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
-                                    <th scope="col">Street</th>
+                                    <th scope="col">Billing Address</th>
+                                    <th scope="col">Shipping Address</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">In Cart</th>
@@ -84,7 +85,8 @@
                                    <td><%=co.getOrderId()%></td>
                                     <td><%=co.getFname()%></td>
                                     <td><%=co.getLname()%></td>
-                                    <td><%=co.getAddress()%></td>
+                                    <td><%=co.getbillingAddress()%></td>
+                                    <td><%=co.getshippingAddress()%></td>
                                     <td><%=co.getPhone()%></td>
                                     <td><%=co.getEmail()%></td>
                                     <td><%=co.getItemList()%></td>
@@ -107,7 +109,8 @@
                                             <th scope="col">OrderID</th>
                                             <th scope="col">First Name</th>
                                             <th scope="col">Last Name</th>
-                                            <th scope="col">Street</th>
+                                            <th scope="col">Billing Address</th>
+                                            <th scope="col">Shipping Address</th>
                                             <th scope="col">Phone</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">In Cart</th>
@@ -123,7 +126,8 @@
                                             <td><%=co2.getOrderId()%></td>
                                             <td><%=co2.getFname()%></td>
                                             <td><%=co2.getLname()%></td>
-                                            <td><%=co2.getAddress()%></td>
+                                            <td><%=co2.getbillingAddress()%></td>
+                                            <td><%=co2.getshippingAddress()%></td>
                                             <td><%=co2.getPhone()%></td>
                                             <td><%=co2.getEmail()%></td>
                                             <td><%=co2.getItemList()%></td>

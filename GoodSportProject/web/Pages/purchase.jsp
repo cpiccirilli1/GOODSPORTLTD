@@ -131,7 +131,7 @@
                             <h3 style="font-size:1.4vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Billing Address</h3>
                             <div class="form-group">
                                 <label>Same as Mailing Address</label>
-                                <input type="checkbox" name="address" onclick="visibility()" required/>
+                                <input type="checkbox" name="address" onclick="visibility()"/>
                             </div>
                             <div id="addressBoxes">
                                 <br>

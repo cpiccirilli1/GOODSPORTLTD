@@ -39,7 +39,7 @@ public class CustOrderServlet extends HttpServlet {
 
            System.out.println("== SHIPPING INFO ==");
            System.out.println("First Name: " + firstname);
-           System.out.println(" Last Name: " + lastname);
+           System.out.println("Last Name: " + lastname);
            System.out.println("Address: " + address + addressext);
            System.out.println("City: " + city);
            System.out.println("State: " + stat);
@@ -60,8 +60,8 @@ public class CustOrderServlet extends HttpServlet {
             String city2;
             String state2;
             String zipc2;
-            String glue2;
-           if ("on".equals(request.getParameter("address"))) {
+            
+            if (!"on".equals(request.getParameter("address"))) {
             fname2 = request.getParameter("fname2");
             lname2 = request.getParameter("lname2");
             address2 = request.getParameter("streetAddr2");
@@ -69,7 +69,6 @@ public class CustOrderServlet extends HttpServlet {
             city2 = request.getParameter("city2");
             state2 = request.getParameter("state2");
             zipc2 = request.getParameter("zip2");
-            glue2 = c0.addressGlue(address2, addressext2, city2, state2, zipc2);
 
 
             System.out.println("== BILLING INFO ==");
@@ -87,7 +86,6 @@ public class CustOrderServlet extends HttpServlet {
             city2 = city;
             state2 = stat;
             zipc2 = zipc;
-            glue2 = c0.addressGlue(address, addressext, city, stat, zipc);
            
            }
           
@@ -97,17 +95,18 @@ public class CustOrderServlet extends HttpServlet {
            String stringCart = cart.toString();
            
            String glue = c0.addressGlue(address, addressext, city, stat, zipc);
+           String Bglue = c0.addressGlue(address2, addressext2, city2, state2, zipc2);
            Boolean update = (Boolean)ses1.getAttribute("updateAddr");
            if (c1 == null) {
            } else {
                id = c1.getCustId();
-               stringCart = c1.getCart();
+
                if (update == true) {
                    c1.updateDB(c1.getPassword(), c1.getFName(), c1.getLName(), glue, c1.getPhone(), c1.getEmail(), c1.getCart());
                }
            }
            String orderStatus = "Open";
-           CustOrder cust1 = new CustOrder(id, lastname, firstname, glue, pho, mail, stringCart, orderStatus, glue2, fname2, lname2);           
+           CustOrder cust1 = new CustOrder(id, lastname, firstname, glue, fname2, lname2, Bglue, pho, mail, stringCart, orderStatus);           
            ses1.setAttribute("cust1", cust1);
            response.sendRedirect("http://localhost:8080/GoodSportProject/Pages/payment.jsp");
            

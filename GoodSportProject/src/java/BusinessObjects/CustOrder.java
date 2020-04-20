@@ -27,8 +27,8 @@ public class CustOrder {
     /*****************
      * Constructor for billing information/customer order
      ****************/
-    public CustOrder(String id, String lname, String fname, String add, String custPhone,
-            String custEmail, String iList, String OrderStatus, String b_add, String b_fname, String b_lname) { 
+    public CustOrder(String id, String lname, String fname, String add, String b_fname, String b_lname, String b_add, String custPhone,
+            String custEmail, String iList, String OrderStatus) { 
         custID = id;
         lastname = lname;
         firstname = fname;
@@ -52,7 +52,10 @@ public class CustOrder {
         custID = "";
         lastname = "";
         firstname = "";
-        address = "";
+        address = "";       
+        b_LName = "";
+        b_FName = "";
+        b_Address = "";
         phonenum = "";
         email = "";
         itemlist = "";
@@ -62,13 +65,16 @@ public class CustOrder {
 
 
     /* Get/Set methods */
-    public CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String iList, String orderStatus1) {
+    public CustOrder(int order, String ID, String lname, String fname, String add, String badd, String bLname, String bFname, String phone, String mail, String iList, String orderStatus1) {
         
         orderID = order;
         custID = ID;
         lastname = lname;
         firstname = fname;
         address = add;
+        b_LName = bLname;
+        b_FName = bFname;
+        b_Address = badd;
         phonenum = phone;
         email = mail;
         itemlist = iList;
@@ -128,6 +134,30 @@ public class CustOrder {
     }
     
 /****************************** 
+* Gets BillingFirstName variable
+*
+*******************************/
+    public String getBillingFirstName() {
+        return b_FName;
+    }
+
+/****************************** 
+* Gets BillingLastName variable
+*
+*******************************/
+    public String getBillingLastName() {
+        return b_LName;
+    }    
+    
+/****************************** 
+* Gets billing address variable
+*
+*******************************/
+    public String getbillingAddress() {
+        return b_Address;
+    }
+    
+/****************************** 
 * gets phone number variable
 *
 *******************************/
@@ -167,7 +197,10 @@ public class CustOrder {
                 custID = rs.getString("CustID");
                 lastname = rs.getString("LastName");
                 firstname = rs.getString("FirstName");
-                address = rs.getString("Address");
+                address = rs.getString("ShippingAddress");
+                b_FName = rs.getString("BillingFirstName");
+                b_LName = rs.getString("BillingLastName");
+                b_Address = rs.getString("BillingAddress");
                 phonenum = rs.getString("PhoneNum");
                 email = rs.getString("Email");
                 itemlist = rs.getString("ItemList");
@@ -196,9 +229,9 @@ public class CustOrder {
     */
     public void insertDBOrder() {
         try {
-            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, ItemList, OrderStatus, BillingAddress, b_fname, b_lname) VALUES ('" + 
+            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, ShippingAddress, BillingFirstName, BillingLastName, BillingAddress, PhoneNum, Email, ItemList, OrderStatus) VALUES ('" + 
                     custID + "', '" + lastname + "', '" + firstname + "', '" + address + 
-                    "', '" + phonenum + "', '" + email + "', '" + itemlist + "', '" + orderStatus +"', '" + b_Address +"', '" + b_FName +"', '" + b_LName + "')";
+                    "', '" + b_FName + "', '" + b_LName + "', '" + b_Address + "', '" + phonenum + "', '" + email + "', '" + itemlist + "', '" + orderStatus +"')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
         } catch (Exception e) {
@@ -214,6 +247,12 @@ public class CustOrder {
         String AddressStr = add1 + "," + add2 + "," + city + "," + state + "," + zip;
         
         return AddressStr;
+    }
+    
+    public String BaddressGlue(String add1, String add2, String city, String state, String zip) {
+        String AddressStr2 = add1 + "," + add2 + "," + city + "," + state + "," + zip;
+        
+        return AddressStr2;
     }
     
     /* updateDB updates the table columns */
