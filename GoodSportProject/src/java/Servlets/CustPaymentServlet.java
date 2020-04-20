@@ -45,13 +45,19 @@ public class CustPaymentServlet extends HttpServlet {
            Double payment = (Double)ses1.getAttribute("c");
  
            String glueexpiration = p1.expirationGlue(expMonth, expYear);
-           p1.insertDB(name, payment, creditcard, glueexpiration, security);
+           
+           
+           CustOrder cust1 = (CustOrder)ses1.getAttribute("cust1");
+           cust1.insertDBOrder();
+           int order = cust1.getOrderId();
+           
+           
+           p1.insertDB(name, order, payment, creditcard, glueexpiration, security);
            ses1.setAttribute("p1", p1);
            
            c1.updateCart(",");
            
-           CustOrder cust1 = (CustOrder)ses1.getAttribute("cust1");
-           cust1.insertDBOrder();
+           
            response.sendRedirect("http://localhost:8080/GoodSportProject/Pages/orderConfirmation.jsp");
         }
         catch (Exception e) {

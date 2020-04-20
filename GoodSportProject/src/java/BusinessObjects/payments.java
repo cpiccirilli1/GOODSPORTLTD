@@ -13,6 +13,20 @@ import java.sql.*;
 public class payments {
 
     /**
+     * @return the orderID
+     */
+    public int getOrderID() {
+        return orderID;
+    }
+
+    /**
+     * @param orderID the orderID to set
+     */
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    /**
      *  the payId
      */
     public int getPayId() {
@@ -97,6 +111,7 @@ public class payments {
     }
     
     private int payId;
+    private int orderID;
     private String NameOnCard;
     private Double currency;
     private String cardNumber;
@@ -139,12 +154,13 @@ public class payments {
      * 
      ****************************/
     
-    public void insertDB(String NameOnCard, Double currency,
+    public void insertDB( String NameOnCard, int orderid, Double currency,
             String card, String exp, String cvc){
         
         try{
-            String sql = "INSERT INTO Payments(NameOnCard, PaymentTotal, CCNum, ExpDate, CVC)"+
-                    "Values('" + 
+            String sql = "INSERT INTO Payments(orderID, NameOnCard, PaymentTotal, CCNum, ExpDate, CVC)"+
+                    "Values('" +
+                    orderid+ "', '"+
                     NameOnCard + "',  '" + currency + "',  '" + card + "', '" + exp + 
                     "', '" + cvc + "')";                        
             Statement stmt = Customer.connectDB();
