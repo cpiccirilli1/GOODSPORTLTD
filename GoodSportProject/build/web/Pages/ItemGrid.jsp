@@ -75,7 +75,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="container">   <!--product-information-->
             <h3 class="h3"></h3>
         <% for(int x=0;x<rows;x++){%>
              <div class="row">
@@ -113,7 +113,7 @@
              <br>
             
     
-         </div>    
+         </div>    <!--/product-information ends here-->
          <footer>									<!-- footer begins here -->
             <div class="footer">
                     <div class="signature container">
@@ -132,13 +132,7 @@
                                 <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="contactbutton" style="text-align: center;">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <br>
                         <br>
                     </div>

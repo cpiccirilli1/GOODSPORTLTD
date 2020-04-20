@@ -12,6 +12,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
+        <link href="http://localhost:8080/GoodSportProject/CSS/shoppingCartCSS.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -109,15 +110,19 @@
         <div class="container">    
             <div class="row">
               <div class="col-sm-4">
-                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Nike Barcelona Authentic Home Jersey 19-20.jpg " title="Soccer" class="img-thumbnail" alt="Soccer" width="400" height="300"></a>
-                <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Soccer</h3>
+                  <div class="itemimg itemimg-scaledown">
+                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Nike Barcelona Authentic Home Jersey 19-20.jpg " title="Soccer" style="width: 358px; height: 358px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s"></a>
+                  <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Soccer</h3>
+                  </div>
               </div>
               <div class="col-sm-4"> 
-                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Spalding NBA Official Game Basketball 29.5.jpg " title="Basketball" class="img-thumbnail" alt="Basketball" width="400" height="300"></a>
-                <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Basketball</h3>
-                </div>
+                  <div class="itemimg itemimg-scaledown">
+                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Spalding NBA Official Game Basketball 29.5.jpg " title="Basketball" style="width: 358px; height: 358px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s"></a>
+                  <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Basketball</h3>
+                  </div>
+              </div>
               <div class="col-sm-4"> 
-                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Easton Project 3 ADV BBCOR 2019 Bat.jpg " title="Baseball" class="img-thumbnail" alt="Baseball" width="300" height="400"></a>
+                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Easton Project 3 ADV BBCOR 2019 Bat.jpg " title="Baseball" style="width: 358px; height: 358px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s"></a>
                 <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Baseball</h3>
               </div>
             </div>
@@ -126,15 +131,15 @@
           <div class="container">    
             <div class="row">
               <div class="col-sm-4">
-                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Wilson Optix AVP Tour Outdoor Volleyball.jpg" title="Shoes" class="img-thumbnail" alt="Volleball" width="300" height="300"></a>
+                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Wilson Optix AVP Tour Outdoor Volleyball.jpg" title="Volleyball" style="width: 358px; height: 358px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s"></a>
                 <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Volleyball</h3>
               </div>
               <div class="col-sm-4"> 
-                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Wilson NFL The Duke Official Football.jpg" title="Football" class="img-thumbnail" alt="Football" width="350" height="300"></a>
+                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Wilson NFL The Duke Official Football.jpg" title="Football" style="width: 358px; height: 358px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s"></a>
                 <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Football</h3>
               </div>
               <div class="col-sm-4"> 
-                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/adidas Women's Ultraboost 20 Running Shoes.jpg" title="Running" class="img-thumbnail" alt="Running" width="400" height="300"></a>
+                  <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/adidas Women's Ultraboost 20 Running Shoes.jpg" title="Running" style="width: 358px; height: 358px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s"></a>
                 <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Running</h3>
               </div>
             </div>
@@ -159,13 +164,6 @@
                                 <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                                 <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                                 <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="contactbutton" style="text-align: center;">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
-                                </div>
                             </div>
                         </div>
                         <br>

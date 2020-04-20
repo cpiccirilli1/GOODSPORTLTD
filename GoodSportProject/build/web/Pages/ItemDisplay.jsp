@@ -141,13 +141,7 @@
                                 <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="contactbutton" style="text-align: center;">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <br>
                         <br>
                     </div>

@@ -98,10 +98,10 @@
                             <h3 style="font-size:1.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Shipping Information</h3>
                             <br>
                             <label>First Name</label>
-                            <input type="name" class="form-control" name="fname" value="<%=c1.getFName()%>"/>
+                            <input type="name" class="form-control" name="fname" value="<%=c1.getFName()%>" required/>
                             <br>
                             <label>Last Name</label>
-                            <input type="name" class="form-control" name="lname" value="<%=c1.getLName()%>"/>
+                            <input type="name" class="form-control" name="lname" value="<%=c1.getLName()%>" required/>
                             <br>
                             <label>Address</label>
                             <input type="address" class="form-control" name="streetAddr" value="<%=addr[0]%>" required/>
@@ -131,7 +131,7 @@
                             <h3 style="font-size:1.4vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Billing Address</h3>
                             <div class="form-group">
                                 <label>Same as Mailing Address</label>
-                                <input type="checkbox" name="address" onclick="visibility()">
+                                <input type="checkbox" name="address" onclick="visibility()" required/>
                             </div>
                             <div id="addressBoxes">
                                 <br>

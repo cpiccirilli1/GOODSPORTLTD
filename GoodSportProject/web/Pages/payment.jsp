@@ -24,7 +24,7 @@
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/GoodSportProject/CSS/purchaseCSS.css">
     </head>
     <body style="background-color: #f2f2f2">
-        <nav class="navbar-custom-wrapper">
+        <nav class="navbar-custom-wrapper">                  <!-- navbar begins here -->
             <div class="container-fluid navbar-custom">
                 <div class="row">
                     <div class="form-group col-sm-1">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> 
          <%
             Customer c1 = new Customer();
             try {
@@ -89,7 +89,7 @@
             }
             session.setAttribute("updateAddr", updateAddr);
             %>
-        <div class="container">
+        <div class="container">                       <!-- payment info begins here -->
             <h2 style="font-size:2.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Payment Information</h2>
             <hr class="style1" style="border: 1px solid #999999;">
             <br>
@@ -153,7 +153,7 @@
                 <br>
                 <div class="col-sm-1">
                 </div>
-			<div class="form-group col-sm-6" style="background-color:#ffffff; box-shadow:0 0 10px rgba(0,0,0,.15); border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">
+			<div class="form-group col-sm-6" style="background-color:#ffffff; box-shadow:0 0 10px rgba(0,0,0,.15); border-collapse: collapse; border-radius: 25px; border: 1px solid #999999;">  <!-- order summary begins here -->
 			<h3 style="font-size:1.8vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
                         <hr class="style1" style="border: 1px solid #999999;">
 			 <%
@@ -243,13 +243,6 @@
                                 <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                                 <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                                 <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="contactbutton" style="text-align: center;">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
-                                </div>
                             </div>
                         </div>
                         <br>
