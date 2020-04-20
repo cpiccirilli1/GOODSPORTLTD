@@ -55,7 +55,11 @@ public class CustPaymentServlet extends HttpServlet {
            p1.insertDB(name, order, payment, creditcard, glueexpiration, security);
            ses1.setAttribute("p1", p1);
            
-           c1.updateCart(",");
+           try {
+           c1.updateCart("");
+           } catch (Exception e) {
+               
+           }
            
            
            response.sendRedirect("http://localhost:8080/GoodSportProject/Pages/orderConfirmation.jsp");
