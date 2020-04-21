@@ -23,6 +23,19 @@
      
     </head>
     <body style="background-color: #f2f2f2">
+        <%
+            session = request.getSession();
+            String fName;
+            Customer c1 = new Customer();
+            if(null==session.getAttribute("c1")){
+                fName = "My";
+                
+            }
+            else{
+                c1 = (Customer)session.getAttribute("c1");
+                fName = c1.getFName()+"'s";
+            }
+            %>
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="row">
@@ -40,10 +53,13 @@
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
-                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Rugby">Rugby</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Hockey">Hockey</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Hunting">Hunting</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -53,22 +69,21 @@
                             <div class="input-group search-bar-wrapper">
                                 <input type="text" class="form-control" placeholder="Search" size="50" name="search" required>
                                 <div class="input-group-btn">
-                                <button type="text" class="btn btn-primary">Search</button>
+                                <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </div>
                         </form>
                     </div>                  
                     <div class="form-group col-sm-6">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> <%=fName%> Account</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </nav>
+       </nav>  
         <%
-            Customer c1 = new Customer();
             try {
                 c1 = (Customer)session.getAttribute("c1");
                 c1.getCustId();
@@ -98,25 +113,25 @@
                             <h3 style="font-size:1.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Shipping Information</h3>
                             <br>
                             <label>First Name</label>
-                            <input type="name" class="form-control" name="fname" value="<%=c1.getFName()%>" required/>
+                            <input type="text" class="form-control" name="fname" value="<%=c1.getFName()%>" required/>
                             <br>
                             <label>Last Name</label>
-                            <input type="name" class="form-control" name="lname" value="<%=c1.getLName()%>" required/>
+                            <input type="text" class="form-control" name="lname" value="<%=c1.getLName()%>" required/>
                             <br>
                             <label>Address</label>
-                            <input type="address" class="form-control" name="streetAddr" value="<%=addr[0]%>" required/>
+                            <input type="text" class="form-control" name="streetAddr" value="<%=addr[0]%>" required/>
                             <br>
                             <label for="name">Apt #, Suite, Floor (optional)</label>
-                            <input type="address" class="form-control" name="addr" value="<%=addr[1]%>"/>
+                            <input type="text" class="form-control" name="addr" value="<%=addr[1]%>"/>
                             <br>
                             <label>City</label>
-                            <input type="city" class="form-control" name="city" value="<%=addr[2]%>" required/>
+                            <input type="text" class="form-control" name="city" value="<%=addr[2]%>" required/>
                             <br>
                             <label>State</label>
-                            <input type="state" class="form-control" name="state" value="<%=addr[3]%>" required/>
+                            <input type="text" class="form-control" name="state" value="<%=addr[3]%>" required/>
                             <br>
                             <label>Zip Code</label>
-                            <input type="zip" class="form-control" name="zip" value="<%=addr[4]%>" required/>
+                            <input type="text" class="form-control" name="zip" value="<%=addr[4]%>" required/>
                             <br>
                             <hr class="style2">               
                             <h3 style="font-size:1.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Contact Information</h3>
@@ -125,7 +140,7 @@
                             <input type="email" class="form-control" id="email" name="email" value="<%=c1.getEmail()%>" required/>
                             <br>
                             <label for="phone">Phone Number</label>
-                            <input type="phone" class="form-control" id="phone" name="phone" value="<%=c1.getPhone()%>" required/>
+                            <input type="tel" class="form-control" id="phone" name="phone" value="<%=c1.getPhone()%>" required/>
                             <br>
                             <hr class="style2">
                             <h3 style="font-size:1.4vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Billing Address</h3>
@@ -136,25 +151,25 @@
                             <div id="addressBoxes">
                                 <br>
                                 <label>First Name</label>
-                                <input type="name" class="form-control" name="fname2" value="<%=c1.getFName()%>"/>
+                                <input type="text" class="form-control" name="fname2" value="<%=c1.getFName()%>"/>
                                 <br>
                                 <label>Last Name</label>
-                                <input type="name" class="form-control" name="lname2" value="<%=c1.getLName()%>"/>
+                                <input type="text" class="form-control" name="lname2" value="<%=c1.getLName()%>"/>
                                 <br>
                                 <label>Address</label>
-                                <input type="address" class="form-control" name="streetAddr2" id="streetAddr2" value="<%=addr[0]%>" required/>
+                                <input type="text" class="form-control" name="streetAddr2" id="streetAddr2" value="<%=addr[0]%>" required/>
                                 <br>
                                 <label for="name">Apt #, Suite, Floor (optional)</label>
-                                <input type="address" class="form-control" name="addr2" value="<%=addr[1]%>"/>
+                                <input type="text" class="form-control" name="addr2" value="<%=addr[1]%>"/>
                                 <br>
                                 <label>City</label>
-                                <input type="city" class="form-control" name="city2" id="city2" value="<%=addr[2]%>" required/>
+                                <input type="text" class="form-control" name="city2" id="city2" value="<%=addr[2]%>" required/>
                                 <br>
                                 <label>State</label>
-                                <input type="state" class="form-control" name="state2" id="state2" value="<%=addr[3]%>" required/>
+                                <input type="text" class="form-control" name="state2" id="state2" value="<%=addr[3]%>" required/>
                                 <br>
                                 <label>Zip Code</label>
-                                <input type="zip" class="form-control" name="zip2" id="zip2" value="<%=addr[4]%>" required/>
+                                <input type="text" class="form-control" name="zip2" id="zip2" value="<%=addr[4]%>" required/>
                                 <br>
                             </div>
                                 <script>
@@ -275,10 +290,10 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12" style="text-align: center;">
-                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
                             </div>
                         </div>
                         <div class="row">
@@ -292,9 +307,7 @@
                         <br>
                     </div>
             </div>
-	</footer>
-        <script
-            
+        </footer>
     </body>
 </html>
 

@@ -5,12 +5,39 @@
 package BusinessObjects;
 
 import java.sql.*;
+import BusinessObjects.CustOrder;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  *   cpicciri
  */
 public class payments {
+    private int payId;
+    private int orderID;
+    private String NameOnCard;
+    private Double currency;
+    private String cardNumber;
+    private String exp;
+    private String cvc;
+    public payments(String name, int order, Double payment, String creditcard, String glueexpiration, String security) {
+        NameOnCard = name;
+        orderID = order;
+        currency = payment;
+        cardNumber = creditcard;
+        exp = glueexpiration;
+        cvc = security;
+    }
+
+    public payments() {
+        payId = 0;
+        NameOnCard = "";
+        orderID = 0;
+        currency = 0.0;
+        cardNumber = "";
+        exp = "";
+        cvc = "";
+    }
 
     /**
      * @return the orderID
@@ -109,15 +136,6 @@ public class payments {
     public void setCvc(String cvc) {
         this.cvc = cvc;
     }
-    
-    private int payId;
-    private int orderID;
-    private String NameOnCard;
-    private Double currency;
-    private String cardNumber;
-    private String exp;
-    private String cvc;
-    
     /***************************
      * 
      * blank constructor 
@@ -164,33 +182,31 @@ public class payments {
                     NameOnCard + "',  '" + currency + "',  '" + card + "', '" + exp + 
                     "', '" + cvc + "')";                        
             Statement stmt = Customer.connectDB();
-           
             stmt.execute(sql);
             System.out.println("Payments - Insert Successful!");   
         }
-        catch(SQLException ex){
-            System.out.println(ex.toString());
-        }
+        catch(SQLException ex){        }
         
     }
+//        private int payId;
+//    private int orderID;
+//    private String NameOnCard;
+//    private Double currency;
+//    private String cardNumber;
+//    private String exp;
+//    private String cvc;
     
-    /* temporary bypass */
-    public void insertDBtemp(String NameOnCard,
-            String card, String exp, String cvc){
-        
+    /* This method input the data withing this BO into the DB*/
+    public void insertDBPayment() {
         try{
-            String sql = "INSERT INTO Payments(NameOnCard, CCNum, ExpDate, CVC)"+
-                    "Values('" + NameOnCard + "', '" + card + "', '" + exp + 
-                    "', '" + cvc + "')";                        
+            String sql = "INSERT INTO Payments(NameOnCard, PaymentTotal, CCNum, ExpDate, CVC, orderID)" +
+            "Values('" + NameOnCard + "',  '" + currency + "',  '" + cardNumber + "',  '" + exp + "',  '" + cvc + "',  '" + orderID + "')";
             Statement stmt = Customer.connectDB();
-           
             stmt.execute(sql);
+            newIDGrab();
             System.out.println("Payments - Insert Successful!");   
         }
-        catch(SQLException ex){
-            System.out.println(ex.toString());
-        }
-        
+        catch(Exception e){System.out.println("Somthing went wrong in the payment insertDBPayment method: " + e);}
     }
     
     /***************************
@@ -223,6 +239,17 @@ public class payments {
         catch(ClassNotFoundException cnfe){
             System.out.println(cnfe.toString());
         }
+    }
+   private void newIDGrab() {
+        try{
+        String sql = "SELECT MAX(PayID) FROM Payments Where OrderID = " + orderID + ";";
+        Statement stmt = Customer.connectDB();
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        payId = rs.getInt(1);
+        System.out.println("This is the newly grabbed payment id: " + payId);
+        }
+        catch(Exception e){System.out.println("Error in payment BO: " + e);}
     }
     
     /* expirationGlue is a method used to string together information from multiple
@@ -260,6 +287,5 @@ public class payments {
      //   p1.display();
         
     }
-
 
 }

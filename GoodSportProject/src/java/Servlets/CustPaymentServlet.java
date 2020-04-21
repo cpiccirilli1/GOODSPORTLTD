@@ -40,19 +40,19 @@ public class CustPaymentServlet extends HttpServlet {
            System.out.println("CVC: "+ security);
            
            Customer c1 = (Customer)ses1.getAttribute("c1");
-           payments p1 = new payments();
+           payments p2 = new payments();
            //This double is the subtotal of the cart within the session.
            Double payment = (Double)ses1.getAttribute("c");
  
-           String glueexpiration = p1.expirationGlue(expMonth, expYear);
+           String glueexpiration = p2.expirationGlue(expMonth, expYear);
            
            
            CustOrder cust1 = (CustOrder)ses1.getAttribute("cust1");
            cust1.insertDBOrder();
            int order = cust1.getOrderId();
            
-           
-           p1.insertDB(name, order, payment, creditcard, glueexpiration, security);
+           payments p1 = new payments(name, order, payment, creditcard, glueexpiration, security);
+           p1.insertDBPayment();
            ses1.setAttribute("p1", p1);
            
            ItemList cart = (ItemList)ses1.getAttribute("cart");

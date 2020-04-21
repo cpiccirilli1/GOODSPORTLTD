@@ -24,7 +24,20 @@
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/GoodSportProject/CSS/purchaseCSS.css">
     </head>
     <body style="background-color: #f2f2f2">
-        <nav class="navbar-custom-wrapper">                  <!-- navbar begins here -->
+        <%
+            session = request.getSession();
+            String fName;
+            Customer c1 = new Customer();
+            if(null==session.getAttribute("c1")){
+                fName = "My";
+                
+            }
+            else{
+                c1 = (Customer)session.getAttribute("c1");
+                fName = c1.getFName()+"'s";
+            }
+            %>
+        <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="row">
                     <div class="form-group col-sm-1">
@@ -41,10 +54,13 @@
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
-                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Rugby">Rugby</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Hockey">Hockey</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Hunting">Hunting</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -54,22 +70,21 @@
                             <div class="input-group search-bar-wrapper">
                                 <input type="text" class="form-control" placeholder="Search" size="50" name="search" required>
                                 <div class="input-group-btn">
-                                <button type="text" class="btn btn-primary">Search</button>
+                                <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </div>
                         </form>
                     </div>                  
                     <div class="form-group col-sm-6">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> <%=fName%> Account</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </nav> 
+       </nav>  
          <%
-            Customer c1 = new Customer();
             try {
                 c1 = (Customer)session.getAttribute("c1");
                 c1.getCustId();
@@ -111,9 +126,9 @@
                                 <label for="cvv">CVV</label>
                                 <input type="text" class="form-control" id="cvv" name="cvv" required>
                             </div>
-                            <div class="form-group" id="expiration-month" name="expiration-month" required>
+                            <div class="form-group" id="expiration-month">
                                 <label>Expiration Date</label>
-                                <select name="expiration-month">
+                                <select name="expiration-month" required>
                                     <option value="JAN">January</option>
                                     <option value="FEB">February </option>
                                     <option value="MAR">March</option>
@@ -236,10 +251,10 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12" style="text-align: center;">
-                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
                             </div>
                         </div>
                         <br>

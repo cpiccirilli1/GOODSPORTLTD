@@ -108,7 +108,9 @@ public class CustOrder {
     public int getOrderId() {
         return orderID;
     }
-    
+    public String getCustID() {
+        return custID;
+    }
 /****************************** 
 * gets Lname variable
 *
@@ -234,6 +236,7 @@ public class CustOrder {
                     "', '" + b_FName + "', '" + b_LName + "', '" + b_Address + "', '" + phonenum + "', '" + email + "', '" + itemlist + "', '" + orderStatus +"')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
+            newIDGrab();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -288,6 +291,18 @@ public class CustOrder {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private void newIDGrab() {
+        try{
+        String sql = "SELECT MAX(OrderID) FROM CustOrders Where CustID = " + custID + ";";
+        Statement stmt = Customer.connectDB();
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        orderID = rs.getInt(1);
+        System.out.println("This is the newly grabbed order id: " + orderID);
+        }
+        catch(Exception e){System.out.println("Error in Cust BO: " + e);}
     }
      
 }

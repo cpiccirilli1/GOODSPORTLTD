@@ -26,7 +26,33 @@
         <title>Order Complete!</title>
     </head>
     <body style="background-color: #f2f2f2;">
-        <nav class="navbar-custom-wrapper">
+        <script>
+            function printDiv(divName) {
+                var printContents = document.getElementById(divName).innerHTML;
+                var originalContents = document.body.innerHTML;
+
+                document.body.innerHTML = printContents;
+
+                window.print();
+
+                document.body.innerHTML = originalContents;
+            }
+        </script>
+        
+        <%
+            session = request.getSession();
+            String fName;
+            Customer c1 = new Customer();
+            if(null==session.getAttribute("c1")){
+                fName = "My";
+                
+            }
+            else{
+                c1 = (Customer)session.getAttribute("c1");
+                fName = c1.getFName()+"'s";
+            }
+            %>
+       <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="row">
                     <div class="form-group col-sm-1">
@@ -47,6 +73,9 @@
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Rugby">Rugby</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Hockey">Hockey</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Hunting">Hunting</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -56,22 +85,21 @@
                             <div class="input-group search-bar-wrapper">
                                 <input type="text" class="form-control" placeholder="Search" size="50" name="search" required>
                                 <div class="input-group-btn">
-                                <button type="text" class="btn btn-primary">Search</button>
+                                <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </div>
                         </form>
                     </div>                  
                     <div class="form-group col-sm-6">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> <%=fName%> Account</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </nav>
+       </nav> 
             <%
-                Customer c1 = new Customer();
                 try {
                     c1 = (Customer)session.getAttribute("c1");
                     c1.getCustId();
@@ -83,7 +111,7 @@
                 payments p1 = (payments)session.getAttribute("p1");
                 
             %>
-        <div id="order" class="container">
+        <div id="printableArea" class="container">
             <div class="text-center">
                 <h3 style="font-size:2.5vw; font-family: 'Arial Black', Gadget, sans-serif;">Thank you for your order!</h3>
                 <hr class="style1" style="border: 1px solid #999999;">
@@ -91,21 +119,25 @@
             </div>
             <div class="row">
                 <div class="col-sm-5" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #999999;">
-                    <div class="col-sm-5">
-                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order number: <%=cust1.getOrderId()%></h3>
-                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Payment Number: <%=p1.getPayId()%></h3>
+                    <div class="col-sm-7">
+                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order Details:</h3>
                         <hr class="style1" style="border: 1px solid #999999;">
-                        <p>We are currently processing your order.</p>
-                        <p>For your convenience you may want to save your order confirmation.</p>
+                        <p>We are currently processing your order. You will receive and email when we have shipped your order.</p>
+                        <p>It is recommended that you save your order confirmation. You can this by pressing the button below.</p>
+                        <button class="btn btn-block btn-primary" onclick="printDiv('printableArea')">Print this page</button>
                         <br>
-                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Delivery Details</h3>
+                        <b>Payment Number: <%=p1.getPayId()%></b>
+                        <br>
+                        <b>Order number: <%=cust1.getOrderId()%></b>
+                        <br>
+                        <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Delivery Details:</h3>
                         <hr class="style2" style="border: 1px solid #999999;">
-                        <h4><strong>Delivery for</strong></h4>
+                        <h4><strong>Delivery for:</strong></h4>
+                        <%cust1.getFname();%> <%cust1.getLname();%>
+                        <%out.println(cust1.getFname());%> <%out.println(cust1.getLname());%>
                         <br>
-                        <br>
-                        <br>
-                        <br>
-                        <h4><strong>Address</strong></h4>
+                        <h4><strong>Delivering To:</strong></h4>
+                        <%out.println(cust1.getAddress());%>
                         <br>
                         <br>
                         <br>
@@ -169,9 +201,9 @@
                             }
                         %>
 			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
-                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
-                            <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
-                            <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
+                            <h3 style="font-size:1vw;">Shipping: $<%=10%></h3>
+                            <h3 style="font-size:1vw;">Tax: $<%=df.format(cost*0.06)%></h3>
+                            <h3 style="font-size:1.5vw; font-weight: bold;">Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
 				<br>
                                 <br>
                                 <br>
