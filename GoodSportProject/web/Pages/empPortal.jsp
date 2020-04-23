@@ -86,7 +86,7 @@
                                     <td><%=co.getFname()%></td>
                                     <td><%=co.getLname()%></td>
                                     <td><%=co.getbillingAddress()%></td>
-                                    <td><%=co.getshippingAddress()%></td>
+                                    <td><%=co.getAddress()%></td>
                                     <td><%=co.getPhone()%></td>
                                     <td><%=co.getEmail()%></td>
                                     <td><%=co.getItemList()%></td>
@@ -127,7 +127,7 @@
                                             <td><%=co2.getFname()%></td>
                                             <td><%=co2.getLname()%></td>
                                             <td><%=co2.getbillingAddress()%></td>
-                                            <td><%=co2.getshippingAddress()%></td>
+                                            <td><%=co2.getAddress()%></td>
                                             <td><%=co2.getPhone()%></td>
                                             <td><%=co2.getEmail()%></td>
                                             <td><%=co2.getItemList()%></td>

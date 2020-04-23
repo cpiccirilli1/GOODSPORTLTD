@@ -28,12 +28,22 @@ public class UpdateItemListServlet extends HttpServlet {
            HttpSession ses1 = request.getSession();
 
             String product = request.getParameter("productID");
-            String productName = request.getParameter("productName");
-            String desc = request.getParameter("description");
-            String cat = request.getParameter("category");
-            String sport = request.getParameter("sport");
-            String price = request.getParameter("Price");
-            String imglink = request.getParameter("img");
+            String productName = "";
+            String desc = "";
+            String cat = "";
+            String sport = "";
+            String price = "";
+            String imglink = "";
+            try {
+            productName = request.getParameter("productName");
+            desc = request.getParameter("description");
+            cat = request.getParameter("category");
+            sport = request.getParameter("sport");
+            price = request.getParameter("price");
+            imglink = request.getParameter("img");
+            } catch (Exception e) {
+                
+            }
             int prod = Integer.parseInt(product);
             //double pri = Double.parseDouble(price);
             System.out.println("ENTERED STATEMENTS:");
@@ -52,13 +62,14 @@ public class UpdateItemListServlet extends HttpServlet {
             Item i3 = new Item();
             i3.selectDB(prod);
             i3.display();
+            ses1.setAttribute("i3", i3);
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/UpdateItemList.jsp");
             rd.forward(request,response);
             }
             else if ("update".equals(action)){
             Item i4 = new Item();
             i4.selectDB(prod);
-            i4.updateItemDB(productName, desc, cat, sport, imglink);
+            i4.updateItemDB(productName, desc, cat, sport, Double.parseDouble(price), imglink);
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/empinventory.jsp");
             rd.forward(request,response);
             }  

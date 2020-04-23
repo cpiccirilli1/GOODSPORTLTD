@@ -295,7 +295,7 @@ public class CustOrder {
 
     private void newIDGrab() {
         try{
-        String sql = "SELECT MAX(OrderID) FROM CustOrders Where CustID = " + custID + ";";
+        String sql = "SELECT MAX(OrderID) FROM CustOrders Where CustID = '" + custID + "'";
         Statement stmt = Customer.connectDB();
         ResultSet rs = stmt.executeQuery(sql);
         rs.next();

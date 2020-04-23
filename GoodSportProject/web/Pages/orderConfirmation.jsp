@@ -217,7 +217,7 @@
                 <div class="signature container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                                <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="http://localhost:8080/GoodSportProject/index.jsp">Good Sport</a></h2>
                                 <p style="text-align: center;">This website was create and designed by Project Team #1</p>
                                 <br>
                             </div>                       

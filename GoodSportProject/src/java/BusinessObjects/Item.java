@@ -209,9 +209,9 @@ public class Item {
 * updates Inventory row
 *
 *******************************/
-    public void updateItemDB(String ProductName, String Description, String cat, String sprt, /*double Price,*/ String imglink) {
+    public void updateItemDB(String ProductName, String Description, String cat, String sprt, double Price, String imglink) {
         try {
-            String sql = "UPDATE Inventory SET ProductName = '" + ProductName + "', Description = '" + Description + "', Category = '" + cat + "', Sport = '" + sprt + "',  ImageLink = '" + imgLink
+            String sql = "UPDATE Inventory SET ProductName = '" + ProductName + "', Description = '" + Description + "', Category = '" + cat + "', Sport = '" + sprt + "', Price = '" + Price + "', ImageLink = '" + imgLink
                     + "' WHERE ProductID = '" + productID + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);

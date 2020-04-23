@@ -33,13 +33,14 @@
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empPortal.jsp">Order Fulfillment</a></li>
                     <li class="active"><a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp">Check Inventory</a></li>
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li>
+                </ul>
        <ul class="nav navbar-nav navbar-right">
                       <li><a href="http://localhost:8080/GoodSportProject/LogoutServlet">Logout</a></li>
     </ul>
             </div>
         </nav>
         <div class="mx-auto" style="width: 95%;">
-        <h1>Inventory</h1>
+        <h1 style="text-align:center">Inventory</h1>
         <h2><a href="http://localhost:8080/GoodSportProject/Pages/UpdateItemList.jsp">Update product listing here.</a></h2>
         <table class="table table-striped">
             <thead>
