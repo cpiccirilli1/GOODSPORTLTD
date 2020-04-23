@@ -80,6 +80,7 @@
                 </div>
             </div>
        </nav>  
+      <main>
         <div class="container-fluid" style="background-color: #f2f2f2;">
             <div class="row">
                 <div class="col-sm-3"></div>
@@ -186,7 +187,7 @@
                         <br>
                         <br>
         </div>
-                        
+      </main>             
         <script>
             function visibility() {
                 var x = document.getElementById("addressBoxes");

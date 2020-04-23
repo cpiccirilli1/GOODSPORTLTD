@@ -10,6 +10,10 @@ body{
     padding:0px;
     width:100%;
 }
+
+main{
+    min-height: calc(100vh - 211px - 58px);
+}
                             /*body CSS ends*/
                             /*navbar CSS begins*/
 .navbar-custom{

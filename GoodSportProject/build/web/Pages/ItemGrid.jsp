@@ -92,7 +92,9 @@
                     </div>
                 </div>
             </div>
-       </nav>  
+       </nav> 
+                            
+       <main>
         <div class="container">   <!--product-information-->
             <h3 class="h3"></h3>
         <% for(int x=0;x<rows;x++){%>
@@ -146,7 +148,8 @@
              <br>
             
     
-         </div>    <!--/product-information ends here-->
+         </div>    
+       </main>           <!--/product-information ends here-->
          <footer>									<!-- footer begins here -->
             <div class="footer">
                     <div class="signature container">

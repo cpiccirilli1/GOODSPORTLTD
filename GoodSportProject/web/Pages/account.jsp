@@ -102,7 +102,7 @@
                 
                 
             %>
-        
+       <main>
        <div class="container">  
         <div class="row">
          <div class="col-sm-2"></div>  
@@ -139,15 +139,7 @@
         </div>
         </div>
        </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+       </main>
         <% } %>
         <footer>									<!-- footer begins here -->
             <div class="footer">

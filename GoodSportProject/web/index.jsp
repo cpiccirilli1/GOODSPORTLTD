@@ -124,6 +124,7 @@
             </div>
         <br>
         <br>
+        <main>
         <div class="container">    
             <div class="row">
               <div class="col-sm-4">
@@ -143,9 +144,7 @@
                 <h3 style="font-size:20px; text-align: center; font-family: Impact, Charcoal, sans-serif;">Shop for Baseball</h3>
               </div>
             </div>
-          </div><br>
-
-          <div class="container">    
+            <br>
             <div class="row">
               <div class="col-sm-4">
                   <a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball"><img src="http://localhost:8080/GoodSportProject/InventoryPictures/Wilson Optix AVP Tour Outdoor Volleyball.jpg" title="Volleyball" style="width: 358px; height: 358px; box-shadow:0 0 10px rgba(0,0,0,.15); border:1px solid #e4e9ef; transition:all .3s ease 0s"></a>
@@ -161,10 +160,7 @@
               </div>
             </div>
           </div><br><br>
-        <br>
-	<br>
-	<br>
-	<br>
+        </main>
         <footer>									<!-- footer begins here -->
             <div class="footer">
                     <div class="signature container">

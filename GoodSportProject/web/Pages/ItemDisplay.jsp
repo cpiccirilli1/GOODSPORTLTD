@@ -94,6 +94,7 @@
             </div>
        </nav>  
         <br>
+        <main>
         <div class="container">
             <div class="row">
                 
@@ -137,10 +138,10 @@
                     <br>
             </div>
             </div>
-            </div><!--/product-information-->
-            <br>
-            <br>
-            <br>
+                    <br>
+            </div>
+        </main><!--/product-information-->
+           
         <footer>									<!-- footer begins here -->
             <div class="footer">
                     <div class="signature container">

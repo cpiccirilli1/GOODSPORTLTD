@@ -103,6 +103,7 @@
             }
             session.setAttribute("updateAddr", updateAddr);
             %>
+        <main>
         <div class="container">
 		<h2 style="font-size:2.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Getting Your Order</h2>
 		<hr class="style1" style="border: 1px solid #999999;">
@@ -276,10 +277,7 @@
                    </form>
 		</div>	
         </div>
-	<br>
-	<br>
-	<br>
-	<br>
+        </main>
         <footer>									<!-- footer begins here -->
             <div class="footer">
                     <div class="signature container">
@@ -296,13 +294,6 @@
                                 <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
                                 <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
                                 <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="contactbutton" style="text-align: center;">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
-                                </div>
                             </div>
                         </div>
                         <br>

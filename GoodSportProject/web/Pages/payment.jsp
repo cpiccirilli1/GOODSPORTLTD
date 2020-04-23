@@ -104,6 +104,7 @@
             }
             session.setAttribute("updateAddr", updateAddr);
             %>
+       <main>
         <div class="container">                       <!-- payment info begins here -->
             <h2 style="font-size:2.5vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Payment Information</h2>
             <hr class="style1" style="border: 1px solid #999999;">
@@ -236,12 +237,7 @@
 			</div>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    
+       </main>
         <footer>									<!-- footer begins here -->
             <div class="footer">
                     <div class="signature container">

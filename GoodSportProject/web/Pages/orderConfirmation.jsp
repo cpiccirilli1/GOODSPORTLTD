@@ -18,6 +18,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="http://localhost:8080/GoodSportProject/CSS/FrameCSS.css" rel="stylesheet">
+        <link href="http://localhost:8080/GoodSportProject/CSS/shoppingCartCSS.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -111,6 +112,7 @@
                 payments p1 = (payments)session.getAttribute("p1");
                 
             %>
+       <main>
         <div id="printableArea" class="container">
             <div class="text-center">
                 <h3 style="font-size:2.5vw; font-family: 'Arial Black', Gadget, sans-serif;">Thank you for your order!</h3>
@@ -123,7 +125,7 @@
                         <h3 style="font-family: 'Arial Black', Gadget, sans-serif;">Order Details:</h3>
                         <hr class="style1" style="border: 1px solid #999999;">
                         <p>We are currently processing your order. You will receive and email when we have shipped your order.</p>
-                        <p>It is recommended that you save your order confirmation. You can this by pressing the button below.</p>
+                        <p>It is recommended that you save your order confirmation. You can print this page by pressing the button below.</p>
                         <button class="btn btn-block btn-primary" onclick="printDiv('printableArea')">Print this page</button>
                         <br>
                         <b>Payment Number: <%=p1.getPayId()%></b>
@@ -214,6 +216,7 @@
             <br>
             <br>
         </div>
+       </main>
         <footer>									<!-- footer begins here -->
             <div class="footer">
                 <div class="signature container">

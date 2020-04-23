@@ -85,6 +85,7 @@
        </nav> 
         <br>
         <br>
+        <main>
         <div class="container">	
 			<h2 style="font-size:2.5vw; font-weight: bold; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Your Cart</h2>
                         <hr class="style1" style="border: 1px solid #999999;">
@@ -166,8 +167,7 @@
                                 </div>
                             </div>
 		</div>
-                <br>
-                <br>
+        </main>
                 
                 <footer>									<!-- footer begins here -->
                     <div class="footer">
