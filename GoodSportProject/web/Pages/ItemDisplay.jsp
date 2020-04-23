@@ -4,6 +4,7 @@
     Author     : cgoswic1
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="BusinessObjects.*" %>
 <!DOCTYPE html>
@@ -29,6 +30,8 @@
             int quant = item1.getQuantity();
             String img = item1.getimgLink();
             String avail = "Out of stock";
+            double shipping = price*0.09245;
+            DecimalFormat df = new DecimalFormat("#.##");
             %>
         <%
             session = request.getSession();
@@ -106,11 +109,11 @@
                     <h2 style="font-family: Tahoma, Geneva, sans-serif; font-weight: bold; text-align: center"><%= name %></h2>
                     <hr class="style1" style="border: 1px solid #999999;">
                     <input type="hidden" value="<%= id %>" name="itemNumber">
-                    <h3 style="font-size:1.4vw; font-family: Tahoma, Geneva, sans-serif; font-weight: bold;">Product ID: <%= id %></h3>
                     <h3 style="font-size:1.4vw; font-family: Tahoma, Geneva, sans-serif; font-weight: bold;">Price: $<%= price %></h3>
+                    <span class="product-shipping">Shipping: $<%=df.format(shipping)%></span>
                             <div class="row">
-                            <div class="col-sm-2">
-                                <label for="lname" style="font-family: Tahoma, Geneva, sans-serif;"> Quantity: <%= quant %></label>
+                            <div class="col-sm-3">
+                                <label for="" style="font-family: Tahoma, Geneva, sans-serif;">In Stock: <%=quant%></label>
                                 <input type="number" min="1" max="<%=quant%>" class="form-control" id="lname" name="Quantity" value="1" />
                             </div>
                             </div>

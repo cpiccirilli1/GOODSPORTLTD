@@ -172,6 +172,7 @@
 			<h3 style="font-size:1.8vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h3>
                         <hr class="style1" style="border: 1px solid #999999;">
 			 <%
+                            double shipping = 0.0;
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
                             boolean emptyCart = false;
@@ -204,6 +205,7 @@
                                     double price = i1.getPrice();
                                     String img = i1.getimgLink();
                                     cost += (i1.getPrice() * Double.parseDouble(quantities[i]));
+                                    shipping = cost*0.09245;
                         %>
                             <div class="row">
 				<div class="form-group col-sm-4">
@@ -220,13 +222,14 @@
 				</div>
                             </div>
                         <%
+                        
                                 }
                             }
                         %>
 			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
-                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=10%></h3>
+                            <h3 style="font-size:1vw;">Estimated Shipping: $<%=df.format(shipping)%></h3>
                             <h3 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h3>
-                            <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
+                            <h3 style="font-size:1.5vw; font-weight: bold;">Estimated Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + shipping)%></span></h3>
 				<br>
                                 <br>
                                 <br>

@@ -89,6 +89,7 @@
 			<h2 style="font-size:2.5vw; font-weight: bold; text-align: center; font-family: 'Arial Black', Gadget, sans-serif;">Your Cart</h2>
                         <hr class="style1" style="border: 1px solid #999999;">
                         <%
+                            double shipping= 0.0;
                             ItemList cart = new ItemList();
                             DecimalFormat df = new DecimalFormat("#,###.##");
                             boolean emptyCart = false;
@@ -120,6 +121,7 @@
                                     double price = i1.getPrice();
                                     String img = i1.getimgLink();
                                     cost += (i1.getPrice() * Double.parseDouble(quantities[i]));
+                                    shipping = cost*0.09245;
                         %>
                             
                             <div class="row">
@@ -143,7 +145,7 @@
                             </div>
                         <%
                                 }
-                             double finalcost = cost + (cost*0.06) + 10;
+                             double finalcost = cost + (cost*0.06) + shipping;
                              session.setAttribute("c", finalcost);
                              
                             }
@@ -155,9 +157,9 @@
                                     <h2 style="font-size:1.6vw; text-align: center; font-family: 'Arial Black', Gadget, sans-serif; text-align: center">Order Summary</h2>
                                     <hr class="style1" style="border: 1px solid #999999;">
                                     <h2 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h2>
-                                    <h2 style="font-size:1vw;">Estimated Shipping: $<%=10%></h2>
+                                    <h2 style="font-size:1vw;">Estimated Shipping: $<%=df.format(shipping)%></h2>
                                     <h2 style="font-size:1vw;">Estimated Tax: $<%=df.format(cost*0.06)%></h2>
-                                    <h3 style="font-weight: bold;">Estimated Order Total:<span style="color: red"> $<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
+                                    <h3 style="font-weight: bold;">Estimated Order Total:<span style="color: red"> $<%=df.format(cost + (cost*0.06) + shipping)%></span></h3>
                                     <br>
                                     <a href="http://localhost:8080/GoodSportProject/Pages/purchase.jsp"><button class="btn btn-primary btn-block"<% if (cart.iArr.size() == 0) {%>disabled<%}%>>PROCEED TO CHECKOUT</button></a>
                                     <br>

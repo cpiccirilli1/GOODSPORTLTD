@@ -4,6 +4,7 @@
     Author     : cgoswic1
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="BusinessObjects.Customer"%>
 <%@page import="BusinessObjects.ItemList"%>
 <%@page import="java.util.ArrayList"%>
@@ -107,6 +108,11 @@
                         int quantity = i.getQuantity();
                         double price = i.getPrice();
                         String img = i.getimgLink();
+                        double shipping = price*0.09245;
+                        DecimalFormat df = new DecimalFormat("#.##");
+
+                        
+                   //     if(price > 100.00){shipping = "Free shipping on items over $100!";}
                 %>
                     <div class="col-md-4 col-sm-6">
                         <div class="product-grid8">
@@ -117,7 +123,7 @@
                             </div>
                                 <div class="product-content">
                                 <div class="price">$<%= price%></div>
-                                <span class="product-shipping">Free Shipping</span>
+                                <span class="product-shipping">Shipping: $<%=df.format(shipping)%></span>
                                 <h3 class="title"><a href="http://localhost:8080/GoodSportProject/ItemDisplayServlet?id=<%=id%>"><%=name%></a></h3>
                                 <%
                                     if (quantity != 0){
