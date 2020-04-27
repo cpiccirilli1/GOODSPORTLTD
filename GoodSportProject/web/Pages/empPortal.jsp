@@ -34,6 +34,7 @@
                     <li class="active"><a href="http://localhost:8080/GoodSportProject/Pages/empPortal.jsp">Order Fulfillment</a></li>
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp">Check Inventory</a></li>
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li> 
+                     <li><a href="http://localhost:8080/GoodSportProject/Pages/employeeFaq.jsp">FAQ</a></li>
                 </ul>
                   <ul class="nav navbar-nav navbar-right">
                       <% Employee e1 = new Employee();
@@ -72,6 +73,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">OrderID</th>
+                                    <th scope="col">CustID</th>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Billing Address</th>
@@ -89,6 +91,7 @@
                                 %>
                                 <tr>
                                    <td><%=co.getOrderId()%></td>
+                                   <td><%=co.getCustID()%></td>
                                     <td><%=co.getFname()%></td>
                                     <td><%=co.getLname()%></td>
                                     <td><%=co.getbillingAddress()%></td>
@@ -113,6 +116,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">OrderID</th>
+                                            <th scope="col">CustID</th>
                                             <th scope="col">First Name</th>
                                             <th scope="col">Last Name</th>
                                             <th scope="col">Billing Address</th>
@@ -130,6 +134,7 @@
                                         %>
                                         <tr>
                                             <td><%=co2.getOrderId()%></td>
+                                            <td><%=co2.getCustID()%></td>
                                             <td><%=co2.getFname()%></td>
                                             <td><%=co2.getLname()%></td>
                                             <td><%=co2.getbillingAddress()%></td>
