@@ -3,6 +3,7 @@
     Created on : Feb 10, 2020, 2:10:41 PM
     Author     : natha
 --%>
+<%@page import="BusinessObjects.Employee"%>
 <%@page import="BusinessObjects.CustOrder"%>
 <%@page import="BusinessObjects.ShippedOrderList"%>
 <%@page import="BusinessObjects.OrderList"%>
@@ -21,26 +22,32 @@
     </head>
     <% OrderList order = new OrderList();
         order.findOpenItems();
-    %>
+    %> 
 
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">GoodSports</a>
+                    <a class="navbar-brand"><b>GoodSport</b></a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="http://localhost:8080/GoodSportProject/Pages/empPortal.jsp">Order Fulfillment</a></li>
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp">Check Inventory</a></li>
-                    <li><a href="http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li>
+                    <li><a href="http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li> 
                 </ul>
                   <ul class="nav navbar-nav navbar-right">
+                      <% Employee e1 = new Employee();
+                          e1 = (Employee)session.getAttribute("e1");
+            String efname = e1.getFName();
+            String elname = e1.getLName();
+            %>
+            <p class="navbar-text">Logged in as: <%=efname%> <%=elname%></p>
                       <li><a href="http://localhost:8080/GoodSportProject/LogoutServlet">Logout</a></li>
     </ul>
             </div>
         </nav>
             <div class="container">
-                <h1>View Customer Orders</h1>
+                <h2><b>View Customer Orders</b></h2>
                 <p>Open orders will need to be fulfilled first. All completed orders will be shown on the Completed Orders tabs for viewing/deleting.</p>
                 <p>Please enter the OrderID that needs to be shipped.</p>
                 
@@ -60,8 +67,7 @@
 
                 <div class="tab-content">
                     <div id="open" class="tab-pane fade in active">
-                        <h1>Open Orders</h1>
-                        
+                        <h2><b>Open Orders</b></h2>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -98,7 +104,7 @@
                         
                     </div>
                     <div id="shipped" class="tab-pane fade">
-                        <h1>Completed Orders</h1>
+                        <h2><b>Shipped Orders</b></h2>
                                 <table class="table table-striped">
                                     <%
                                         ShippedOrderList shippedOrder = new ShippedOrderList();

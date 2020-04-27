@@ -4,6 +4,7 @@
     Author     : natha
 --%>
 
+<%@page import="BusinessObjects.Employee"%>
 <%@page import="BusinessObjects.EmpOrderList"%>
 <%@page import="BusinessObjects.EmpOrder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,10 +20,10 @@
 
     </head>
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">GoodSports</a>
+                    <a class="navbar-brand" href="#"><b>GoodSport</b></a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empPortal.jsp">Order Fulfillment</a></li>
@@ -30,16 +31,22 @@
                     <li class="active"><a href=http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li>
                 </ul>
                        <ul class="nav navbar-nav navbar-right">
+                              <% Employee e1 = new Employee();
+                          e1 = (Employee)session.getAttribute("e1");
+            String efname = e1.getFName();
+            String elname = e1.getLName();
+            %>
+            <p class="navbar-text" class="active">Logged in as: <%=efname%> <%=elname%></p>
                       <li><a href="http://localhost:8080/GoodSportProject/LogoutServlet">Logout</a></li>
     </ul></div>
         </nav>
-        <div class="mx-auto" style="width: 90%;">
             <div class="container">
-            <h1>Inventory Reorder</h1>
-            <br/>
+                <h2><b>Inventory Reorder</b></h2>
+                <br>
             <div class="well">
                 Refer to the ProductID that requires a restock with the desired quantity.
-                
+                <br>
+                <br>
                 <form method="post" action="http://localhost:8080/GoodSportProject/EmpOrderServlet">
                     <div class="form-group">
                         <label for="productID">ProductID:</label>
@@ -55,8 +62,8 @@
                 </form> 
                 
             </div>
-            
-             <h1>Reorder History</h1>
+            <br>
+             <h2><b>Inventory Reorder History</b></h2>
         <table class="table table-striped">
             <% EmpOrderList restock = new EmpOrderList();
     restock.findAllItems();
@@ -82,7 +89,6 @@
                 <% } %>
             </tbody>
         </table>
-        </div>
         </div>
     </body>
 </html>

@@ -17,8 +17,8 @@
         <title>Update Item List</title>
     </head>
     <body>
-        <a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp">Back</a>
-        <h1 style="text-align:center">Update Product Listing</h1>
+        <div class="container">
+        <h1 style="text-align:center"><b>Update Product Listing</b></h1>
                 <div class="well">
                 Please enter the product ID that you want to edit the listing for.
                 Find ProductID first, then make necessary changes.
@@ -83,7 +83,9 @@
                     </div>
                     <button type="submit" name="action" value="search" class="btn btn-default">Find</button>
                     <button type="submit" name="action" value="update" class="btn btn-default">Update</button>
+                    <a href="http://localhost:8080/GoodSportProject/Pages/empinventory.jsp"><b>  Cancel</b></a>
                 </form>
                 </div>
+        </div>
     </body>
 </html>

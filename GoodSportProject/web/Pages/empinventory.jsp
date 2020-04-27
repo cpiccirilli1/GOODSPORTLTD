@@ -4,6 +4,7 @@
     Author     : natha
 --%>
 
+<%@page import="BusinessObjects.Employee"%>
 <%@page import="BusinessObjects.Item"%>
 <%@page import="BusinessObjects.ItemList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,10 +25,10 @@
     
     
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">GoodSports</a>
+                    <a class="navbar-brand" href="#"><b>GoodSport</b></a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empPortal.jsp">Order Fulfillment</a></li>
@@ -35,13 +36,19 @@
                     <li><a href="http://localhost:8080/GoodSportProject/Pages/empReorder.jsp">Reorder Products</a></li>
                 </ul>
        <ul class="nav navbar-nav navbar-right">
+              <% Employee e1 = new Employee();
+                          e1 = (Employee)session.getAttribute("e1");
+            String efname = e1.getFName();
+            String elname = e1.getLName();
+            %>
+            <p class="navbar-text">Logged in as: <%=efname%> <%=elname%></p>
                       <li><a href="http://localhost:8080/GoodSportProject/LogoutServlet">Logout</a></li>
     </ul>
             </div>
         </nav>
-        <div class="mx-auto" style="width: 95%;">
-        <h1 style="text-align:center">Inventory</h1>
-        <h2><a href="http://localhost:8080/GoodSportProject/Pages/UpdateItemList.jsp">Update product listing here.</a></h2>
+        <div class="container">
+            <h2 style="text-align:center"><b>Inventory</b></h2>
+        <h4 style="text-align:center"><a href="http://localhost:8080/GoodSportProject/Pages/UpdateItemList.jsp"><b>Update product listing here.</b></a></h4>
         <table class="table table-striped">
             <thead>
                 <tr>
