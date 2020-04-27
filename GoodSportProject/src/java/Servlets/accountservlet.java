@@ -74,7 +74,7 @@ public class accountservlet extends HttpServlet {
            
            
             System.out.println("AccountServlet: Successful insert");
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/account.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("accountinfo");
             rd.forward(request, response);
         }
         
@@ -82,6 +82,10 @@ public class accountservlet extends HttpServlet {
         
         
     }
+    
+    
+    
+    
     /*****
      * checks str to see if null or empty. 
      * param str

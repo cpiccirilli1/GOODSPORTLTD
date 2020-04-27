@@ -62,15 +62,14 @@ public class LoginServlet extends HttpServlet {
                 }
                 if (ses1.getAttribute("cart") != null) {
                     ItemList guestCart = (ItemList)ses1.getAttribute("cart");
-                    String[] quantities = guestCart.quantities.split(",");
                     for (int i = 0; i < guestCart.iArr.size(); i++) {
                         Item i1 = guestCart.iArr.get(i);
-                        cart.addToCart(String.valueOf(i1.getId()), quantities[i]);
+                        cart.addToCart(String.valueOf(i1.getId()), String.valueOf(i1.getQuantity()));
                     }
                     c1.updateCart(cart.toString());
                 }
                 ses1.setAttribute("cart", cart);
-                rd = request.getRequestDispatcher("/Pages/account.jsp");
+                rd = request.getRequestDispatcher("accountinfo");
                 rd.forward(request, response);
             } else {
                 signInErr = ("Password incorrect. Please try again.");
