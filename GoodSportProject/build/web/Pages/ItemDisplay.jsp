@@ -160,8 +160,13 @@
                                 <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
                             </div>
                         </div>
-                        
                         <br>
+                        <div class="row">
+                            <div class="col-sm-12" style="text-align: center;">
+                                <h4 style="font-family: sans-serif; font-size: 15px;"><a href="http://localhost:8080/GoodSportProject/Pages/FAQ.jsp" target="_blank">Frequently Asked Questions</a></h4>
+                            </div>
+                        </div>
+                        
                         <br>
                     </div>
             </div>
