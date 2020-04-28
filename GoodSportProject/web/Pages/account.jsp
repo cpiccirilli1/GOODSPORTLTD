@@ -53,10 +53,13 @@
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Running">Running</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Football">Football</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Basketball">Basketball</a></li>
-                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Baseball">Baseball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Volleyball">Volleyball</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Soccer">Soccer</a></li>
                                     <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Golf">Golf</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Rugby">Rugby</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Hockey">Hockey</a></li>
+                                    <li><a href="http://localhost:8080/GoodSportProject/SearchByCategoryServlet?sport=Hunting">Hunting</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -66,14 +69,14 @@
                             <div class="input-group search-bar-wrapper">
                                 <input type="text" class="form-control" placeholder="Search" size="50" name="search" required>
                                 <div class="input-group-btn">
-                                <button type="text" class="btn btn-primary">Search</button>
+                                <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </div>
                         </form>
                     </div>                  
                     <div class="form-group col-sm-6">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                            <li><a href="http://localhost:8080/GoodSportProject/Pages/SignIn.jsp"><span class="glyphicon glyphicon-user"></span> <%=fName%> Account</a></li>
                             <li><a href="http://localhost:8080/GoodSportProject/Pages/shoppingCart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                         </ul>
                     </div>
@@ -88,7 +91,7 @@
             
             <%
             } else{
-                String name = c1.getFName()+c1.getLName();
+                String name = c1.getFName()+ " " + c1.getLName();
                 String email = c1.getEmail();
                 String phone = c1.getPhone();
                 String address = c1.getAddr();
@@ -103,7 +106,7 @@
                 
                 
             %>
-        
+       <main>
        <div class="container">  
         <div class="row">
          <div class="col-sm-2"></div>  
@@ -147,6 +150,7 @@
                         <th>Delivered to:</th><th>Amount:</th>
                         </tr>
                         <%
+                            try{
                             int count = 1;
                             ArrayList<payments> payARR = p0.reverseArrayList();
                             for(payments i : payARR){
@@ -169,7 +173,9 @@
                             </td>
                             
                         </tr>
-                        <% } %>
+                        <% }
+                            }catch(Exception e){}
+                        %>
                     </table>
         </div>
         </div>
@@ -183,13 +189,14 @@
                     <br>
                     <br>
                     <br>
+       </main>
         <% } %>
         <footer>									<!-- footer begins here -->
             <div class="footer">
                     <div class="signature container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="index.jsp">Good Sport</a></h2>
+                                <h2 style="text-align: center; font-family: Impact, Charcoal, sans-serif; font-size: 50px;"><a href="http://localhost:8080/GoodSportProject/index.jsp">Good Sport</a></h2>
                                 <p style="text-align: center;">This website was create and designed by Project Team #1</p>
                                 <br>
                             </div>                       
@@ -202,10 +209,10 @@
                                 <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
                             </div>
                         </div>
+                        <br>
                         <div class="row">
-                            <div class="col-sm-12">
-                                <div class="contactbutton" style="text-align: center;">
-                                    <a href="" class="contact" title="Contact Info">Contact us</a>
+                            <div class="col-sm-12" style="text-align: center;">
+                                <h4 style="font-family: sans-serif; font-size: 15px;"><a href="http://localhost:8080/GoodSportProject/Pages/FAQ.jsp" target="_blank">Frequently Asked Questions</a></h4>
                                 </div>
                             </div>
                         </div>

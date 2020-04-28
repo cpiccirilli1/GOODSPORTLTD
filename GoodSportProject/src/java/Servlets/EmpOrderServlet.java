@@ -31,22 +31,12 @@ public class EmpOrderServlet extends HttpServlet {
             System.out.println(prod);
             System.out.println(quan);
 
-            // if statement to determine whether user clicked Submit Order or Update Quantity
-
-            String action = request.getParameter("action");
-
-            if ("addtoOrderList".equals(action)) {
             EmpOrder emp1 = new EmpOrder();
             ses1.setAttribute("emp1", emp1);
             ses1.setAttribute("product", product);
             ses1.setAttribute("quant", quant);
             
             emp1.insertDBorder(product, quant);
-            RequestDispatcher rd;
-            rd = request.getRequestDispatcher("/Pages/empReorder.jsp");
-            rd.forward(request, response);
-            
-            } else if ("updateInventory".equals(action)) {
             Item i2 = new Item();
             i2.selectDB(prod);
             int currentquant = i2.getQuantity();
@@ -56,7 +46,6 @@ public class EmpOrderServlet extends HttpServlet {
             RequestDispatcher rd;
             rd = request.getRequestDispatcher("/Pages/empinventory.jsp");
             rd.forward(request, response);
-            }
             
             }
 
