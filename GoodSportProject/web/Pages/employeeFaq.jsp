@@ -60,7 +60,7 @@
       <ul>
         <li>If you need to update the item name, description, category, sport, or price, click on the link under Inventory and follow the form.</li>
         <li>First, type in the Product ID and click Find, it will automatically fill in the rest of the information so you can update the item. Click Update when you are done.</li>
-        <li><i>The servlet for the order fulfillment is responsible for changing the OrderStatus from "Open" to "Shipped".</i>
+        <li><i>The servlet for the update of products in the inventory is responsible for updating a part or whole listing of each product.</i>
       </ul>
     </li>
 </div>

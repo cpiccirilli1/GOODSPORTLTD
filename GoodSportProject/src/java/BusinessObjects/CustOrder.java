@@ -63,6 +63,7 @@ public class CustOrder {
         lastname = "";
         firstname = "";
         address = "";
+        b_Address = "";
         phonenum = "";
         email = "";
         itemlist = "";
@@ -72,13 +73,16 @@ public class CustOrder {
 
 
     /* Get/Set methods */
-    public CustOrder(int order, String ID, String lname, String fname, String add, String phone, String mail, String iList, String orderStatus1) {
+    public CustOrder(int order, String ID, String lname, String fname, String add, String bfname, String blname, String add2, String phone, String mail, String iList, String orderStatus1) {
         
         orderID = order;
         custID = ID;
         lastname = lname;
         firstname = fname;
         address = add;
+        b_FName = bfname;
+        b_LName = blname;
+        b_Address = add2;
         phonenum = phone;
         email = mail;
         itemlist = iList;
@@ -103,6 +107,14 @@ public class CustOrder {
             System.out.println(e);
         }
         return i++;
+    }
+    
+/****************************** 
+* Gets CustID variable 
+*
+*******************************/
+    public String getCustId() {
+        return custID;
     }
     
 /****************************** 
@@ -136,6 +148,15 @@ public class CustOrder {
     public String getAddress() {
         return address;
     }
+    
+/****************************** 
+* Gets baddress variable
+*
+*******************************/
+    public String getbillingAddress() {
+        return b_Address;
+    }
+    
     
 /****************************** 
 * gets phone number variable
@@ -179,7 +200,10 @@ public class CustOrder {
                 custID = rs.getString("CustID");
                 lastname = rs.getString("LastName");
                 firstname = rs.getString("FirstName");
-                address = rs.getString("Address");
+                address = rs.getString("ShippingAddress");
+                b_FName = rs.getString("BillingFirstName");
+                b_LName = rs.getString("BillingFirstName");
+                b_Address = rs.getString("BillingAddress");
                 phonenum = rs.getString("PhoneNum");
                 email = rs.getString("Email");
                 itemlist = rs.getString("ItemList");
@@ -239,7 +263,7 @@ public class CustOrder {
     *******************************/
     public void insertDBOrder() {
         try {
-            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, Address, PhoneNum, Email, ItemList, OrderStatus, BillingAddress, b_fname, b_lname) VALUES ('" + 
+            String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, ShippingAddress, BillingFirstName, BillingLastName, BillingAddress, PhoneNum, Email, ItemList, OrderStatus) VALUES ('" + 
                     custID + "', '" + lastname + "', '" + firstname + "', '" + address + 
                     "', '" + phonenum + "', '" + email + "', '" + itemlist + "', '" + orderStatus +"', '" + b_Address +"', '" + b_FName +"', '" + b_LName + "')";
             Statement stmt = Customer.connectDB();

@@ -127,6 +127,7 @@ public class payments {
      ****************************/
     public void payments(){
         this.setPayId(0);
+        this.setOrderID(0);
         this.setNameOnCard("");;
         this.setCurrency(0.0);
         this.setCardNumber("");
@@ -140,9 +141,9 @@ public class payments {
      * setter constructor
      * 
      ****************************/
-    public void payments( int payId, Double currency,
+    public void payments( int orderId, Double currency,
             String card, String exp, String cvc){
-        this.setPayId(payId);
+        this.setOrderID(orderId);
         this.setCurrency(currency);
         this.setCardNumber(card);
         this.setExp(exp);
@@ -156,7 +157,7 @@ public class payments {
      * 
      ****************************/
     
-    public void insertDB( String NameOnCard, int orderid, Double currency,
+    public void insertDB( int orderid, String NameOnCard, Double currency,
             String card, String exp, String cvc){
         
         try{

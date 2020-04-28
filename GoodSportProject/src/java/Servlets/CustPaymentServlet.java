@@ -51,8 +51,8 @@ public class CustPaymentServlet extends HttpServlet {
            cust1.insertDBOrder();
            int order = cust1.getOrderId();
            
-           payments p1 = new payments(name, order, payment, creditcard, glueexpiration, security);
-           p1.insertDBPayment();
+           payments p1 = new payments();
+           p1.insertDB(order, name, payment, creditcard, glueexpiration, security);
            ses1.setAttribute("p1", p1);
            
            ItemList cart = (ItemList)ses1.getAttribute("cart");

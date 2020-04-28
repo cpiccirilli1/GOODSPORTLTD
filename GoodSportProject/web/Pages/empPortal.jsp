@@ -91,7 +91,7 @@
                                 %>
                                 <tr>
                                    <td><%=co.getOrderId()%></td>
-                                   <td><%=co.getCustID()%></td>
+                                   <td><%=co.getCustId()%></td>
                                     <td><%=co.getFname()%></td>
                                     <td><%=co.getLname()%></td>
                                     <td><%=co.getbillingAddress()%></td>
@@ -134,7 +134,7 @@
                                         %>
                                         <tr>
                                             <td><%=co2.getOrderId()%></td>
-                                            <td><%=co2.getCustID()%></td>
+                                            <td><%=co2.getCustId()%></td>
                                             <td><%=co2.getFname()%></td>
                                             <td><%=co2.getLname()%></td>
                                             <td><%=co2.getbillingAddress()%></td>
