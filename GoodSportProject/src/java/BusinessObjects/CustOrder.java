@@ -20,6 +20,7 @@ public class CustOrder {
     String itemlist;
     String orderStatus;
     ArrayList<CustOrder> arr = new ArrayList<>();
+    
     //billing variables
 
     String b_Address;
@@ -28,8 +29,8 @@ public class CustOrder {
     /*****************
      * Constructor for billing information/customer order
      ****************/
-    public CustOrder(String id, String lname, String fname, String add, String custPhone,
-            String custEmail, String iList, String OrderStatus, String b_add, String b_fname, String b_lname) { 
+    public CustOrder(String id, String lname, String fname, String add, String b_fname, String b_lname, String b_add, String custPhone,
+            String custEmail, String iList, String OrderStatus) { 
         custID = id;
         lastname = lname;
         firstname = fname;
@@ -37,7 +38,7 @@ public class CustOrder {
         phonenum = custPhone;
         email = custEmail;
         itemlist = iList;
-        orderStatus = OrderStatus;
+        orderStatus = OrderStatus;        
         
         
         //Billing variables
@@ -47,13 +48,11 @@ public class CustOrder {
          
     }
     
-    public CustOrder(int orderId) { 
+        public CustOrder(int orderId) { 
         orderID = orderId;
-        
-         
+
+
     }
-    
-    
     /*************
      *No args constructor
      ****************/
@@ -62,7 +61,9 @@ public class CustOrder {
         custID = "";
         lastname = "";
         firstname = "";
-        address = "";
+        address = "";       
+        b_LName = "";
+        b_FName = "";
         b_Address = "";
         phonenum = "";
         email = "";
@@ -73,16 +74,16 @@ public class CustOrder {
 
 
     /* Get/Set methods */
-    public CustOrder(int order, String ID, String lname, String fname, String add, String bfname, String blname, String add2, String phone, String mail, String iList, String orderStatus1) {
+    public CustOrder(int order, String ID, String lname, String fname, String add, String badd, String bLname, String bFname, String phone, String mail, String iList, String orderStatus1) {
         
         orderID = order;
         custID = ID;
         lastname = lname;
         firstname = fname;
         address = add;
-        b_FName = bfname;
-        b_LName = blname;
-        b_Address = add2;
+        b_LName = bLname;
+        b_FName = bFname;
+        b_Address = badd;
         phonenum = phone;
         email = mail;
         itemlist = iList;
@@ -124,7 +125,9 @@ public class CustOrder {
     public int getOrderId() {
         return orderID;
     }
-    
+    public String getCustID() {
+        return custID;
+    }
 /****************************** 
 * gets Lname variable
 *
@@ -150,14 +153,28 @@ public class CustOrder {
     }
     
 /****************************** 
-* Gets baddress variable
+* Gets BillingFirstName variable
+*
+*******************************/
+    public String getBillingFirstName() {
+        return b_FName;
+    }
+
+/****************************** 
+* Gets BillingLastName variable
+*
+*******************************/
+    public String getBillingLastName() {
+        return b_LName;
+    }    
+    
+/****************************** 
+* Gets billing address variable
 *
 *******************************/
     public String getbillingAddress() {
         return b_Address;
-    }
-    
-    
+    }    
 /****************************** 
 * gets phone number variable
 *
@@ -187,9 +204,7 @@ public class CustOrder {
         return orderStatus;
     }
 
-    /***************
-     * selectDB selects everything in the database table 
-     ************************/
+    /* selectDB selects everything in the database table */
     public void selectDB(int OrderID) {
         try {
             String sql = "SELECT * FROM CustOrders WHERE OrderID = '" + OrderID + "'";
@@ -202,7 +217,7 @@ public class CustOrder {
                 firstname = rs.getString("FirstName");
                 address = rs.getString("ShippingAddress");
                 b_FName = rs.getString("BillingFirstName");
-                b_LName = rs.getString("BillingFirstName");
+                b_LName = rs.getString("BillingLastName");
                 b_Address = rs.getString("BillingAddress");
                 phonenum = rs.getString("PhoneNum");
                 email = rs.getString("Email");
@@ -213,7 +228,7 @@ public class CustOrder {
             System.out.println(e);
         }
     }
-    /****************************
+     /****************************
      * Selects orders by customer id
      * @param custID 
      ******************************/
@@ -223,12 +238,12 @@ public class CustOrder {
             Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                
-                
-                
+
+
+
                 orderID = rs.getInt("OrderID");
-                
-                
+
+
                 /*
                 *String id, int orderId, String lname, String fname, String add, String custPhone,
             String custEmail, String iList, String OrderStatus, String b_add, String b_fname, String b_lname
@@ -242,9 +257,7 @@ public class CustOrder {
         }
     }
     
-    /*************************
-     * default insertDB method 
-     **************************/
+    /* default insertDB method */
     public void insertDB(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
         try {
             String sql = "INSERT INTO CustOrders VALUES ('" + order + "', '" + 
@@ -257,25 +270,25 @@ public class CustOrder {
         }
     }
     
-    /******************************
-     * insertDBOrder is a modification of the default insertDB where only specific
-     * columns are filled.
-    *******************************/
+    /* insertDBOrder is a modifcation of the default insertDB where only specific
+    columns are filled.
+    */
     public void insertDBOrder() {
         try {
             String sql = "INSERT INTO CustOrders ( CustID, LastName, FirstName, ShippingAddress, BillingFirstName, BillingLastName, BillingAddress, PhoneNum, Email, ItemList, OrderStatus) VALUES ('" + 
                     custID + "', '" + lastname + "', '" + firstname + "', '" + address + 
-                    "', '" + phonenum + "', '" + email + "', '" + itemlist + "', '" + orderStatus +"', '" + b_Address +"', '" + b_FName +"', '" + b_LName + "')";
+                    "', '" + b_FName + "', '" + b_LName + "', '" + b_Address + "', '" + phonenum + "', '" + email + "', '" + itemlist + "', '" + orderStatus +"')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
+            newIDGrab();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
     
-    /********************************
-     * addressGlue is a method used to string together information from multiple data fields.
-    ********************************/
+    /* addressGlue is a method used to string together information from multiple
+    data fields.
+    */
     public String addressGlue(String add1, String add2, String city, String state,
             String zip){
         String AddressStr = add1 + "," + add2 + "," + city + "," + state + "," + zip;
@@ -283,9 +296,13 @@ public class CustOrder {
         return AddressStr;
     }
     
-    /********************************
-     * updateDB updates the table columns 
-     ************************************/
+    public String BaddressGlue(String add1, String add2, String city, String state, String zip) {
+        String AddressStr2 = add1 + "," + add2 + "," + city + "," + state + "," + zip;
+        
+        return AddressStr2;
+    }
+    
+    /* updateDB updates the table columns */
     public void updateDB(int order, String ID, String lname, String fname, String add, String phone, String mail, String orderStatus) {
     try {
             String sql = "UPDATE CustOrders SET OrderID = '" + order + "', CustID = '"
@@ -298,9 +315,7 @@ public class CustOrder {
         }
     }
     
-    /*****************************
-     * updateStatus is used to change order status from Open to Shipped 
-     *******************************/
+    /* updateStatus is used to change order status from Open to Shipped */
     public void updateStatus(int order) {
         try {
             String sql = "UPDATE CustOrders SET OrderStatus = 'Shipped' WHERE OrderID = '" + order + "'";
@@ -311,9 +326,7 @@ public class CustOrder {
         }
     }
     
-    /************************ 
-     * deleteDB method 
-     ***************************/
+    /* deleteDB method */
      public void deleteDB(int order) {
         try {
             String sql = "DELETE FROM CustOrders WHERE OrderID = '" + order + "'";
@@ -323,9 +336,7 @@ public class CustOrder {
             System.out.println(e);
         }
     }
-    
-
-    /**
+        /**
      * @return the orderID
      */
     public int getOrderID() {
@@ -338,23 +349,26 @@ public class CustOrder {
     public void setOrderID(int orderID) {
         this.orderID = orderID;
     }
-    
+
     public ArrayList getArr(){
         return arr;
     }
-
     public void displayArr(){
         for(CustOrder i : arr){
             System.out.println(""+i.getOrderID());
         }
     }
-    
-    public static void main(String[] args){
-       CustOrder c = new CustOrder();
-       c.selectCustDB("2");
-       c.displayArr();
-       
-       
-        
+
+    private void newIDGrab() {
+        try{
+        String sql = "SELECT MAX(OrderID) FROM CustOrders Where CustID = '" + custID + "'";
+        Statement stmt = Customer.connectDB();
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        orderID = rs.getInt(1);
+        System.out.println("This is the newly grabbed order id: " + orderID);
+        }
+        catch(Exception e){System.out.println("Error in Cust BO: " + e);}
     }
+     
 }

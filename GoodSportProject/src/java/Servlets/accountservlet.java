@@ -82,10 +82,6 @@ public class accountservlet extends HttpServlet {
         
         
     }
-    
-    
-    
-    
     /*****
      * checks str to see if null or empty. 
      * param str

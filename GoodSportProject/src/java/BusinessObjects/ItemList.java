@@ -73,7 +73,9 @@ public class ItemList {
         for(int i = 0; i < cart.length; i++) {
             String[] item = cart[i].split("x");
             Item i1 = new Item();
+            try{
             i1.selectDB(Integer.parseInt(item[0]));
+            }catch(Exception e){System.out.println("This is the error I am looking for:" + e);}
             quantities = quantities.concat(item[1] + ",");
             iArr.add(i1);
         }

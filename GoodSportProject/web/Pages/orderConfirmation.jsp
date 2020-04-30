@@ -207,7 +207,7 @@
 			 <h3 style="font-size:1vw;">Order Subtotal: $<%=df.format(cost)%></h3>
                             <h3 style="font-size:1vw;">Shipping: $<%=df.format(shipping)%></h3>
                             <h3 style="font-size:1vw;">Tax: $<%=df.format(cost*0.06)%></h3>
-                            <h3 style="font-size:1.5vw; font-weight: bold;">Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + 10)%></span></h3>
+                            <h3 style="font-size:1.5vw; font-weight: bold;">Order Total: <span style="color: red">$<%=df.format(cost + (cost*0.06) + shipping)%></span></h3>
 				<br>
                                 <br>
                                 <br>

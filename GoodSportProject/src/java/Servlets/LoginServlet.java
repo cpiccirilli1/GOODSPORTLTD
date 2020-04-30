@@ -62,9 +62,10 @@ public class LoginServlet extends HttpServlet {
                 }
                 if (ses1.getAttribute("cart") != null) {
                     ItemList guestCart = (ItemList)ses1.getAttribute("cart");
+                    String[] quantities = guestCart.quantities.split(",");
                     for (int i = 0; i < guestCart.iArr.size(); i++) {
                         Item i1 = guestCart.iArr.get(i);
-                        cart.addToCart(String.valueOf(i1.getId()), String.valueOf(i1.getQuantity()));
+                        cart.addToCart(String.valueOf(i1.getId()), quantities[i]);
                     }
                     c1.updateCart(cart.toString());
                 }

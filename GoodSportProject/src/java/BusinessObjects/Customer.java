@@ -9,7 +9,7 @@ import java.sql.*;
  */
 public class Customer {
     /**
-     *   cart the cart to set
+     *   @param cart the cart to set
      */
     public void setCart(String cart) {
         this.cart = cart;

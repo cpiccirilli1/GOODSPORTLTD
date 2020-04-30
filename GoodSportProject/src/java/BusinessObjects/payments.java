@@ -5,6 +5,8 @@
 package BusinessObjects;
 
 import java.sql.*;
+import BusinessObjects.CustOrder;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +14,32 @@ import java.util.ArrayList;
  *   cpicciri
  */
 public class payments {
+    private int payId;
+    private int orderID;
+    private String NameOnCard;
+    private Double currency;
+    private String cardNumber;
+    private String exp;
+    private String cvc;
+    ArrayList<payments> payArr = new ArrayList<>();
+    public payments(String name, int order, Double payment, String creditcard, String glueexpiration, String security) {
+        NameOnCard = name;
+        orderID = order;
+        currency = payment;
+        cardNumber = creditcard;
+        exp = glueexpiration;
+        cvc = security;
+    }
+
+    public payments() {
+        payId = 0;
+        NameOnCard = "";
+        orderID = 0;
+        currency = 0.0;
+        cardNumber = "";
+        exp = "";
+        cvc = "";
+    }
 
     /**
      * @return the orderID
@@ -110,16 +138,6 @@ public class payments {
     public void setCvc(String cvc) {
         this.cvc = cvc;
     }
-    
-    private int payId;
-    private int orderID;
-    private String NameOnCard;
-    private Double currency;
-    private String cardNumber;
-    private String exp;
-    private String cvc;
-    ArrayList<payments> payArr = new ArrayList<>();
-    
     /***************************
      * 
      * blank constructor 
@@ -127,7 +145,6 @@ public class payments {
      ****************************/
     public void payments(){
         this.setPayId(0);
-        this.setOrderID(0);
         this.setNameOnCard("");;
         this.setCurrency(0.0);
         this.setCardNumber("");
@@ -141,9 +158,9 @@ public class payments {
      * setter constructor
      * 
      ****************************/
-    public void payments( int orderId, Double currency,
+    public void payments( int payId, Double currency,
             String card, String exp, String cvc){
-        this.setOrderID(orderId);
+        this.setPayId(payId);
         this.setCurrency(currency);
         this.setCardNumber(card);
         this.setExp(exp);
@@ -157,7 +174,7 @@ public class payments {
      * 
      ****************************/
     
-    public void insertDB( int orderid, String NameOnCard, Double currency,
+    public void insertDB( String NameOnCard, int orderid, Double currency,
             String card, String exp, String cvc){
         
         try{
@@ -167,33 +184,24 @@ public class payments {
                     NameOnCard + "',  '" + currency + "',  '" + card + "', '" + exp + 
                     "', '" + cvc + "')";                        
             Statement stmt = Customer.connectDB();
-           
             stmt.execute(sql);
             System.out.println("Payments - Insert Successful!");   
         }
-        catch(SQLException ex){
-            System.out.println(ex.toString());
-        }
+        catch(SQLException ex){System.out.println(ex.toString());}
         
     }
     
-    /* temporary bypass */
-    public void insertDBtemp(String NameOnCard,
-            String card, String exp, String cvc){
-        
+    /* This method input the data within this BO into the DB*/
+    public void insertDBPayment() {
         try{
-            String sql = "INSERT INTO Payments(NameOnCard, CCNum, ExpDate, CVC)"+
-                    "Values('" + NameOnCard + "', '" + card + "', '" + exp + 
-                    "', '" + cvc + "')";                        
+            String sql = "INSERT INTO Payments(NameOnCard, PaymentTotal, CCNum, ExpDate, CVC, orderID)" +
+            "Values('" + NameOnCard + "',  '" + currency + "',  '" + cardNumber + "',  '" + exp + "',  '" + cvc + "',  '" + orderID + "')";
             Statement stmt = Customer.connectDB();
-           
             stmt.execute(sql);
+            newIDGrab();
             System.out.println("Payments - Insert Successful!");   
         }
-        catch(SQLException ex){
-            System.out.println(ex.toString());
-        }
-        
+        catch(Exception e){System.out.println("Somthing went wrong in the payment insertDBPayment method: " + e);}
     }
     
     /***************************
@@ -227,29 +235,38 @@ public class payments {
             System.out.println(cnfe.toString());
         }
     }
-    
-    /*******************
-     * expirationGlue is a method used to string together information from multiple
-        data fields.
-    ********************/
-    public void selectByOrderID(int OrderID){
-        
+   private void newIDGrab() {
         try{
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            
+        String sql = "SELECT MAX(PayID) FROM Payments Where OrderID = " + orderID + ";";
+        Statement stmt = Customer.connectDB();
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        payId = rs.getInt(1);
+        System.out.println("This is the newly grabbed payment id: " + payId);
+        }
+        catch(Exception e){System.out.println("Error in payment BO: " + e);}
+    }
+   public void selectByOrderID(int OrderID){
+       try{
+        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
             String query = "SELECT * from payments where orderid='"+OrderID+"'";
             Statement stmt = Customer.connectDB();
             ResultSet rs = stmt.executeQuery(query);
-            
+
             while(rs.next()){
-                
+
                 payments nPay = new payments();
                 nPay.setCurrency(rs.getDouble("PaymentTotal"));
+                nPay.setOrderID(rs.getInt("OrderID"));
+                System.out.println(nPay.getOrderID());
+                nPay.setPayId(rs.getInt("PayID"));
+                System.out.println(nPay.getPayId());
 //                nPay.display();
                 payArr.add(nPay);
-  
+
             }
-            
+
          }
          catch(SQLException ex){
             System.out.println(ex.toString());
@@ -257,62 +274,60 @@ public class payments {
         catch(ClassNotFoundException cnfe){
             System.out.println(cnfe.toString());
         }
-        
+
     }
-    
-    public void fillPayArray(String custID){
+   public void fillPayArray(String custID){
         CustOrder c = new CustOrder();
         c.selectCustDB(custID);
-        
+
         System.out.println("*Start*fillPayArray******");
         c.displayArr();
         System.out.println("**end**fillPayArray******");
         ArrayList<CustOrder> custArr = c.getArr();
-        
+
         for(CustOrder i : custArr){
-            
+
             this.selectByOrderID(i.getOrderID());
-            
+
         }
-        
-        
+
+
     }
-    
+
     public ArrayList<payments> reverseArrayList() 
     { 
         // Arraylist for storing reversed elements 
         ArrayList<payments> revArrayList = new ArrayList<payments>(); 
-        
+
         for (int i = payArr.size() - 1; i >= 0; i--) { 
-  
+
             // Append the elements in reverse order 
             revArrayList.add(payArr.get(i)); 
         } 
-  
+
         // Return the reversed arraylist 
         return revArrayList; 
     } 
-    
-    
+
+
     public ArrayList getPayArr(){
         return payArr;
     }
-    
+
     public void DisplayArr(){
         for(payments i : payArr){
             System.out.println(""+i.getCurrency());
         }
     }
     
+    /* expirationGlue is a method used to string together information from multiple
+    data fields.
+    */
     public String expirationGlue(String month, String year){
         String expirationStr = month + "," + year;
         
         return expirationStr;
     }
-    
-    
-    
-    
     /**********************
      * 
      * displays all variables to test class
@@ -328,11 +343,17 @@ public class payments {
     }
     
     public static void main(String[] args){
-       payments p = new payments();
-//       p.selectByOrderID(50);
-       p.fillPayArray("2");
-       p.DisplayArr();
+        
+ /*       payments pay = new payments();
+        pay.payments(53, "C", "Piccirilli", "Hi  gmail.com", 32.95, "34", "2/2021", "232");
+        pay.insertDB();
+        pay.selectDB(53);
+        pay.display(); */
+ 
+ //payments p1 = new payments();
+// p1.insertDB(6, "JOHN A DOE", "4716108999716531", "January 2023", "257");
+     //   p1.display();
+        
     }
-
 
 }

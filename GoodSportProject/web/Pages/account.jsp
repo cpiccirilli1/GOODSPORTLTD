@@ -4,10 +4,10 @@
     Author     : mitho
 --%>
 
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="BusinessObjects.*" %>
 <%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,18 +24,22 @@
         <%
             DecimalFormat df = new DecimalFormat("#,###.##");
             session = request.getSession();
-            Customer c1 = (Customer)session.getAttribute("c1");
-            String fName;            
-            payments p0 = (payments)session.getAttribute("payArr");
-            
+            String fName;
+            Customer c1 = new Customer();
+            c1 = (Customer)session.getAttribute("c1");
+            payments p0 = new payments();
+            try{
+            p0 = (payments)session.getAttribute("payArr");
+            }catch(Exception e){}
             if(null==session.getAttribute("c1")){
                 fName = "My";
                 
             }
             else{
+                c1 = (Customer)session.getAttribute("c1");
                 fName = c1.getFName()+"'s";
             }
-        %>
+            %>
         <nav class="navbar-custom-wrapper">
             <div class="container-fluid navbar-custom">
                 <div class="row">
@@ -82,7 +86,7 @@
                     </div>
                 </div>
             </div>
-        </nav>
+       </nav>  
         
         <%
             if (null == session.getAttribute("c1")){
@@ -140,55 +144,44 @@
                 <td><a href="http://localhost:8080/GoodSportProject/LogoutServlet">Logout</td>
             </tr>
         </table>
-                    
-                    <br/><br/>
-                    <h3 style="font-size:2vw; font-weight: bold;" class="center">Purchase History</h3>
-                    Most Recent is first: 
-                    <table class="table">
-                        <tr>
-                            <th></th>
-                        <th>Delivered to:</th><th>Amount:</th>
-                        </tr>
-                        <%
-                            try{
-                            int count = 1;
-                            ArrayList<payments> payARR = p0.reverseArrayList();
-                            for(payments i : payARR){
-                            %>
-                        <tr>
-                            <td><%= count %></td>
-                            <td><%= addr1 %>
-                    <% 
-                        if (addr2!=null){
-                            %>
-                            <br/><%= addr2 %> <br/> 
-                       <%     
-                        }
-                    %>
-                    <%= city+", "+state+" "+ zip %>
-                            </td>
-                            <td>
-                                $<%=df.format(i.getCurrency() + (i.getCurrency()*0.06) + 10)%> 
-                                <% count += 1; %>
-                            </td>
-                            
-                        </tr>
-                        <% }
-                            }catch(Exception e){}
-                        %>
-                    </table>
+            <br/><br/>
+           <h1 style="font-size:2vw; font-weight: bold;" class="center">Purchase History</h1>
+           <span class="center">Most Recent is first: </span>
+           <table class="table">
+               <tr>
+                   <th>Order Information: </th>
+               <th>Delivered to:</th><th>Amount:</th>
+               </tr>
+               <%
+                   try{
+                   int count = 1;
+                   ArrayList<payments> payARR = p0.reverseArrayList();
+                   for(payments i : payARR){
+                   %>
+               <tr>
+                   <td>Order ID: <%=i.getOrderID()%><br/>
+                   Payment ID: <%=i.getPayId()%></td>
+                   <td><%= addr1 %>
+           <% 
+               if (addr2!=null){
+                   %>
+                   <br/><%= addr2 %> <br/> 
+              <%     
+               }
+           %>
+           <%= city+", "+state+" "+ zip %>
+                   </td>
+                   <td>
+                       $<%=df.format(i.getCurrency())%> 
+                       <% count += 1; %>
+                   </td>
+
+               </tr>
+               <% }}catch(Exception e){System.out.println(e);} %>
+           </table>
         </div>
         </div>
        </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
        </main>
         <% } %>
         <footer>									<!-- footer begins here -->
@@ -203,20 +196,18 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12" style="text-align: center;">
-                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
-                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" ></a>
+                                <img src="http://localhost:8080/GoodSportProject/Media/basketball-court.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="55" height="55" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/baseball.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/american-football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
+                                <img src="http://localhost:8080/GoodSportProject/Media/football.png"  class="img-thumbnail" style=" background-color: transparent; border: 0;"  width="50" height="50" >
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-sm-12" style="text-align: center;">
                                 <h4 style="font-family: sans-serif; font-size: 15px;"><a href="http://localhost:8080/GoodSportProject/Pages/FAQ.jsp" target="_blank">Frequently Asked Questions</a></h4>
-                                </div>
                             </div>
                         </div>
-                        <br>
                         <br>
                     </div>
             </div>
