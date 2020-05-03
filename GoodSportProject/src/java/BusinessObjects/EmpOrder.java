@@ -41,8 +41,9 @@ public class EmpOrder {
     }
     
 /****************************** 
-* gets Employee order by EmpOrderId
 *
+     * @param EmpOrderID
+     * gets Employee order by EmpOrderId
 *******************************/
     public void selectDB(int EmpOrderID) {
         try {
@@ -55,7 +56,7 @@ public class EmpOrder {
                 quantityreq = rs.getString("QuantityNeeded");
 
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -63,6 +64,12 @@ public class EmpOrder {
 /****************************** 
 *  Inserts into the EmpOrders table
 *
+     * @param orderID
+     * Order ID
+     * @param prodID
+     * Product ID
+     * @param quantity
+     * Quantity
 *******************************/
     public void insertDB(int orderID, String prodID, String quantity) {
         try {
@@ -70,7 +77,7 @@ public class EmpOrder {
                     + prodID + "', '" + quantity + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -78,13 +85,17 @@ public class EmpOrder {
 /****************************** 
 * Inserts into EmpOrders Database using prodID and quantity
 *
+     * @param prodID
+     * Product ID
+     * @param quantity
+     * Quantity
 *******************************/
     public void insertDBorder(String prodID, String quantity) {
         try {
         String sql = "INSERT INTO EmpOrders (ProductID, QuantityNeeded) VALUES ('" + prodID + "', '" + quantity + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -94,6 +105,12 @@ public class EmpOrder {
 * updates emporders table 
 * requires orderID prodID and quantity
 *
+     * @param orderID
+     * Order ID
+     * @param prodID
+     * product ID
+     * @param quantity
+     * Quantity
 *******************************/
     public void updateDB(int orderID, String prodID, String quantity) {
         try {
@@ -101,21 +118,22 @@ public class EmpOrder {
                     + prodID + "', QuanitityNeeded = '" + quantity + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
     
 /****************************** 
-* deletes row from emporders table, requires orderID
 *
+     * @param orderID
+     * deletes row from emporders table, requires orderID
 *******************************/
     public void deleteDB(int orderID) {
         try {
             String sql = "DELETE FROM EmpOrders WHERE EmpOrderID = '" + orderID + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }

@@ -35,6 +35,12 @@ public class Item {
 /****************************** 
 * 
 * setter constructor
+     * @param id
+     * ID
+     * @param name
+     * Name
+     * @param pri
+     * Price
 *******************************/
     public void Item(int id, String name, String desc, String cat, String sprt, int quant, double pri, String img) {
         setProductID(id);
@@ -48,6 +54,8 @@ public class Item {
     }
 
     /**
+     * 
+     * @param productID
      * productID the productID to set
      */
     public void setProductID(int productID) {
@@ -55,6 +63,8 @@ public class Item {
     }
 
     /**
+     * 
+     * @param productName
      * productName the productName to set
      */
     public void setProductName(String productName) {
@@ -62,6 +72,8 @@ public class Item {
     }
 
     /**
+     * 
+     * @param productDesc
      * productDesc the productDesc to set
      */
     public void setProductDesc(String productDesc) {
@@ -69,6 +81,8 @@ public class Item {
     }
 
     /**
+     * 
+     * @param category
      * category the category to set
      */
     public void setCategory(String category) {
@@ -77,12 +91,16 @@ public class Item {
 
     /**
      * sport the sport to set
+     * @param sport
+     * sport the sport to set
      */
     public void setSport(String sport) {
         this.sport = sport;
     }
 
     /**
+     * 
+     * @param quantity
      * quantity the quantity to set
      */
     public void setQuantity(int quantity) {
@@ -90,6 +108,8 @@ public class Item {
     }
 
     /**
+     * 
+     * @param price
      * price the price to set
      */
     public void setPrice(double price) {
@@ -97,6 +117,8 @@ public class Item {
     }
 
     /**
+     * 
+     * @param imgLink
      * imgLink the imgLink to set
      */
     public void setImgLink(String imgLink) {
@@ -136,8 +158,11 @@ public class Item {
     }
 /****************************** 
 * 
-* fills class variables from Inventory table
-* uses productID
+* 
+     * @param ID
+     * fills class variables from Inventory table
+     * uses productID
+     * 
 *******************************/
     public void selectDB(int ID) {
         try {
@@ -154,7 +179,7 @@ public class Item {
                 setPrice(rs.getDouble("Price"));
                 setImgLink(rs.getString("ImageLink"));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -162,13 +187,29 @@ public class Item {
 * 
 *Insert into Inventory table
 * 
+     * @param Id
+     * ID
+     * @param ProductName
+     * Product Name
+     * @param Description
+     * Description
+     * @param cat
+     * Cat
+     * @param sprt
+     * Sport
+     * @param Quantity
+     * Quantity
+     * @param Price
+     * Price
+     * @param imgLink
+     * Image Link
 *******************************/
     public void insertDB(int Id, String ProductName, String Description, String cat, String sprt, int Quantity, Double Price, String imgLink) {
         try {
             String sql = "INSERT INTO Inventory VALUES ('" + Id + "', '" + ProductName + "', '" + Description + "', '" + cat + "', '" + sprt + "', '" + Quantity + "', '" + Price + ", " + imgLink + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -176,6 +217,18 @@ public class Item {
 * 
 * update Inventory
 * 
+     * @param ProductName
+     * Product Name
+     * @param Description
+     * Item Description
+     * @param cat
+     * Category
+     * @param Price
+     * Price
+     * @param Quantity
+     * Quantity
+     * @param sprt
+     * Sport
 *******************************/
     public void updateDB(String ProductName, String Description, String cat, String sprt, int Quantity, Double Price) {
         try {
@@ -185,7 +238,7 @@ public class Item {
                     + "' WHERE ProductID = '" + productID + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -193,6 +246,8 @@ public class Item {
 * 
 * updates individual row for quantity column in Inventory table
 *
+     * @param Quantity
+     * quantity
 *******************************/
     public void updateQuantity(int Quantity) {
         try {
@@ -200,7 +255,7 @@ public class Item {
                     + Quantity + "' WHERE ProductID = '" + productID + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -208,6 +263,18 @@ public class Item {
 * 
 * updates Inventory row
 *
+     * @param ProductName
+     * Product Name
+     * @param Description
+     * Description
+     * @param cat
+     * Cat
+     * @param sprt
+     * Sport
+     * @param Price
+     * Price
+     * @param imglink
+     * Image Link
 *******************************/
     public void updateItemDB(String ProductName, String Description, String cat, String sprt, double Price, String imglink) {
         try {
@@ -215,7 +282,7 @@ public class Item {
                     + "' WHERE ProductID = '" + productID + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -229,7 +296,7 @@ public class Item {
             String sql = "DELETE FROM Inventory WHERE ProductID = '" + productID + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -257,6 +324,8 @@ public class Item {
 * 
 * used for testing the class
 *
+     * @param args
+     * Arguments
 *******************************/
     public static void main(String[] args) {
         Item i = new Item();

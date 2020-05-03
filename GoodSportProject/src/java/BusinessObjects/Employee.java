@@ -30,6 +30,16 @@ public class Employee {
 * 
 *setter constructor
 * String Id, String Pswd, String FName, String LName, String Email
+     * @param Id
+     * ID
+     * @param Pswd
+     * Password
+     * @param FName
+     * First Name
+     * @param LName
+     * Last Name
+     * @param Email
+     * Email
 *******************************/
     public void Employee(String Id, String Pswd, String FName, String LName, 
             String Email) {
@@ -42,42 +52,48 @@ public class Employee {
     
 /****************************** 
 * 
-*returns empId
+     * @return 
+     * returns empId
 *******************************/
     public String getId() {
         return empId;
     }
 /****************************** 
 * 
-*returns empPassword
+     * @return 
+     * returns empPassword
 *******************************/
     public String getPassword() {
         return empPassword;
     }
 /****************************** 
 *  
-* returns empFName
+     * @return 
+     * returns empFName
 *******************************/
     public String getFName() {
         return empFirstName;
     }
 /****************************** 
-* 
-*returns empLastName
+*
+     * @return 
+     * returns empLastName
 *******************************/    
     public String getLName() {
         return empLastName;
     }
 /****************************** 
 * 
-* returns empEmail
+     * @return 
+     * returns empEmail
 *******************************/    
     public String getEmail() {
         return empEmail;
     }
 /****************************** 
 * 
-* select statement to fill class based on email variable
+     * @param Email
+     * select statement to fill class based on email variable
 *******************************/    
     public void selectDB(String Email) {
         try {
@@ -91,13 +107,23 @@ public class Employee {
                 empEmail = rs.getString("EmpEmail");
                 empPassword = rs.getString("EmpPassword");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
 /****************************** 
 * 
 * inserts into the employees database
+     * @param Id
+     * ID
+     * @param Pswd
+     * Password
+     * @param FName
+     * Fist Name
+     * @param LName
+     * Last Name
+     * @param Email
+     * Email
 *******************************/    
     public void insertDB(String Id, String Pswd, String FName, 
             String LName, String Email) {
@@ -106,13 +132,21 @@ public class Employee {
                     Pswd + "', '" + FName + "', '" + LName + "', '" + Email + "')";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
 /****************************** 
 * 
 *updates employees database
+     * @param passwd
+     * Password
+     * @param fName
+     * First Name
+     * @param lName
+     * Last Name
+     * @param eMail
+     * Email
 *******************************/    
     public void updateDB(String passwd, String fName, String lName, String eMail) {
         try {
@@ -122,7 +156,7 @@ public class Employee {
                     "' WHERE EmpID = '" + empId + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -135,7 +169,7 @@ public class Employee {
             String sql = "DELETE FROM Employees WHERE EmpID = '" + empId + "'";
             Statement stmt = Customer.connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }

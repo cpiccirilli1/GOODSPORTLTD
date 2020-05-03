@@ -344,7 +344,8 @@ public class CustOrder {
     }
 
     /**
-     * @param custID the custID to set
+     * @param orderID 
+     * the custID to set
      */
     public void setOrderID(int orderID) {
         this.orderID = orderID;

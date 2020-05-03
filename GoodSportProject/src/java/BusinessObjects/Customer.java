@@ -16,14 +16,16 @@ public class Customer {
     }
 
     /**
-     *    the custId
+     *    @return custId the custId
      */
     public String getCustId() {
         return custId;
     }
 
     /**
-     *   custId the custId to set
+     * 
+     * @param custId
+     *  custId the custId to set
      */
     public void setCustId(String custId) {
         this.custId = custId;
@@ -31,34 +33,42 @@ public class Customer {
 
 
     /**
-     *   custPassword the custPassword to set
+     *   
+     * @param custPassword
+     *  custPassword the custPassword to set
      */
     public void setCustPassword(String custPassword) {
         this.custPassword = custPassword;
     }
 
     /**
-     *   custFirstName the custFirstName to set
+     *   
+     * @param custFirstName
+     *  custFirstName the custFirstName to set
      */
     public void setCustFirstName(String custFirstName) {
         this.custFirstName = custFirstName;
     }
 
     /**
-     *   custLastName the custLastName to set
+     *   
+     * @param custLastName
+     *  custLastName the custLastName to set
      */
     public void setCustLastName(String custLastName) {
         this.custLastName = custLastName;
     }
 
     /**
-     *   custAddress the custAddress to set
+     * @param custAddress
+     *  custAddress the custAddress to set
      */
     public void setCustAddress(String custAddress) {
         this.custAddress = custAddress;
     }
 
     /**
+     * @param custPhone
      *   custPhone the custPhone to set
      */
     public void setCustPhone(String custPhone) {
@@ -66,6 +76,7 @@ public class Customer {
     }
 
     /**
+     * @param custEmail
      *   custEmail the custEmail to set
      */
     public void setCustEmail(String custEmail) {
@@ -100,6 +111,22 @@ public class Customer {
 /****************************** 
 * Constructor that sets all variables
 *
+     * @param Id
+     *  Id
+     * @param Pswd
+     *  pasword
+     * @param FName
+     *  first name
+     * @param LName
+     *  Last name
+     * @param Adr
+     *  Address
+     * @param Phone
+     * Phone
+     * @param Email
+     * Email
+     * @param cart
+     * Cart
 *******************************/
     public void Customer(String Id, String Pswd, String FName, String LName, 
             String Adr, String Phone, String Email, String cart) {
@@ -143,14 +170,16 @@ public class Customer {
     }
     
     /**
-     *    the cart
+     * @return 
+     *  the cart
      */
     public String getCart() {
         return cart;
     }
         
 /****************************** 
-* Main database connection Statement
+     * @return 
+     * Main database connection Statement
 * Update path if needed.  
 *******************************/
     protected static Statement connectDB() {
@@ -161,15 +190,17 @@ public class Customer {
             conn = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\coope\\OneDrive\\Documents\\Database\\GoodSportsDB.accdb");
             Statement stmt = conn.createStatement();
             return stmt;
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
         return null;
     }
         
 /****************************** 
-* pulls customers from database using email address
+* 
 *
+     * @param Email
+     * pulls customers from database using email address
 *******************************/
     public void selectDB(String Email) {
         try {
@@ -186,7 +217,7 @@ public class Customer {
                 setCustPassword(rs.getString("CustPassword"));
                 setCart(rs.getString("ShoppingCart"));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -194,6 +225,22 @@ public class Customer {
 /****************************** 
 * inserts into customer table
 *
+     * @param Id
+     *  Id
+     * @param Pswd
+     *  pasword
+     * @param FName
+     *  first name
+     * @param LName
+     *  Last name
+     * @param Adr
+     *  Address
+     * @param cart
+     * cart
+     * @param Phone
+     * Phone
+     * @param Email
+     * Email
 *******************************/
     public void insertDB(String Id, String Pswd, String FName, 
             String LName, String Adr, String Phone,  String Email, String cart) {
@@ -203,7 +250,7 @@ public class Customer {
                     "', '" + Phone + "', '" + Email + "', '" + cart + "')";
             Statement stmt = connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -211,13 +258,25 @@ public class Customer {
 /****************************** 
 * A different insert into the customer table
 *
+     * @param Pswd
+     *  pasword
+     * @param FName
+     *  first name
+     * @param LName
+     *  Last name
+     * @param Adr
+     *  Address
+     * @param Phone
+     * Phone
+     * @param Email
+     * Email
 *******************************/
     public void insertDB2(String LName, String FName, String Adr, String Phone, String Email, String Pswd) {
         try {
             String sql = "INSERT INTO Customers (LastName, FirstName, Address, PhoneNum, Email, CustPassword) VALUES ('" + LName + "', '" + FName + "','" + Adr + "','" + Phone + "','" + Email + "','" + Pswd + "')";
             Statement stmt = connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }            
@@ -226,6 +285,20 @@ public class Customer {
 /****************************** 
 * Updates line based on customer id
 *
+     * @param passwd
+     *password
+     * @param fName
+     * first name
+     * @param lName
+     * Last name
+     * @param address
+     * Address
+     * @param cart
+     * cart
+     * @param phone
+     * Phone
+     * @param eMail
+     * Email
 *******************************/
     public void updateDB(String passwd, String fName, String lName, String address, String phone, String eMail, String cart) {
         try {
@@ -236,21 +309,22 @@ public class Customer {
                     "' WHERE CustID = '" + getCustId() + "'";
             Statement stmt = connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
     
 /****************************** 
-* updates the customer ShoppingCart based oncustomer id
 *
+     * @param cart
+     * updates the customer ShoppingCart based on customer id
 *******************************/
     public void updateCart(String cart) {
         try {
             String sql = "UPDATE Customers Set ShoppingCart = '" + cart + "' WHERE CustID = '" + getCustId() + "'";
             Statement stmt = connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -264,7 +338,7 @@ public class Customer {
             String sql = "DELETE FROM Customers WHERE CustID = '" + getCustId() + "'";
             Statement stmt = connectDB();
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -285,8 +359,9 @@ public class Customer {
     }
         
 /****************************** 
-* Tests class
 *
+     * @param args
+        Tests class
 *******************************/
     public static void main(String[] args){
         Customer c1 = new Customer();
